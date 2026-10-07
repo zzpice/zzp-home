@@ -62,3 +62,7 @@ Cloudflare DNS 负责解析，GitHub Pages 负责托管与 HTTPS。根域名通�
 若停用此站点，先移除或调整对应 DNS，再停用 Pages，避免留下失效托管指向。新增项目一般不需要改 DNS。
 
 官方参考：[GitHub Pages 域名继承](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains-and-github-pages)、[自定义域名配置](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site)、[Cloudflare CNAME Flattening](https://developers.cloudflare.com/dns/cname-flattening/)、[MDN 安装要求](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Guides/Making_PWAs_installable)。
+
+## 共同规范
+
+公开项目的[设计与仓库规范](docs/design.md)在此维护；`design.css` 是共同视觉变量的原文件，各网页项目保存本地副本。主站仍只在 `index.html` 维护项目目录，不增加运行依赖或自动同步仓库元数据的流程。
