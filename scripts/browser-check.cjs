@@ -4,7 +4,7 @@ const http = require('node:http');
 const fs = require('node:fs');
 const path = require('node:path');
 const root = path.resolve(process.env.SITE_ROOT || path.join(__dirname, '..'));
-const types = {'.html':'text/html', '.css':'text/css', '.svg':'image/svg+xml', '.png':'image/png', '.webmanifest':'application/manifest+json'};
+const types = {'.html':'text/html', '.css':'text/css', '.svg':'image/svg+xml', '.png':'image/png', '.webp':'image/webp', '.webmanifest':'application/manifest+json'};
 const server = http.createServer((req, res) => {
   const url = new URL(req.url, 'http://localhost');
   const name = decodeURIComponent(url.pathname).replace(/^\/zzp-home\//, '/');
