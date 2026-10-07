@@ -11,7 +11,6 @@
   <link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="./icons/icon-180.png">
   <link rel="manifest" href="./manifest.webmanifest">
-  <link rel="stylesheet" href="./design.css">
   <link rel="stylesheet" href="./style.css">
   <link rel="canonical" href="https://zzp.moe/">
   <meta property="og:type" content="website">
@@ -41,13 +40,14 @@
     </header>
 
     <main id="main" tabindex="-1">
+      <div class="introduction"><h2>个人工具与资源</h2><p>整理知识，处理日常计算，收藏有用的图片。</p></div>
       <section id="web" aria-labelledby="web-title">
         <div class="section-heading"><h2 id="web-title">网页工具</h2><span>新标签页打开</span></div>
         <!-- 新增网页项目：复制一个 article，名称、说明和链接只在此处维护。主链接内不嵌套其他链接。 -->
         <div class="project-grid">
           <article class="entry project-card">
             <a class="entry-main" href="https://zzpice.github.io/anki-template/" target="_blank" rel="noopener noreferrer" aria-labelledby="anki-title" aria-describedby="anki-description">
-              <div class="entry-icon ink-blue" aria-hidden="true"><svg viewBox="0 0 32 32"><rect x="7" y="5" width="19" height="23" rx="3"/><path d="M11 5v23M4 11h6M4 17h6M4 23h6M16 12h6M16 17h6"/></svg></div>
+              <div class="entry-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><rect x="7" y="5" width="19" height="23" rx="3"/><path d="M11 5v23M4 11h6M4 17h6M4 23h6M16 12h6M16 17h6"/></svg></div>
               <div class="entry-copy">
                 <h3 id="anki-title"><span>Anki 模板</span><span class="sr-only">（新标签页）</span></h3>
                 <p id="anki-description">安装复习模板，整理笔记与图片制卡。</p>
@@ -60,7 +60,7 @@
           </article>
           <article class="entry project-card">
             <a class="entry-main" href="https://zzpice.github.io/zp-folio/" target="_blank" rel="noopener noreferrer" aria-labelledby="folio-title" aria-describedby="folio-description">
-              <div class="entry-icon ink-green" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M5 27h23M8 27V17h5v10M17 27V9h5v18M26 27V5"/></svg></div>
+              <div class="entry-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M5 27h23M8 27V17h5v10M17 27V9h5v18M26 27V5"/></svg></div>
               <div class="entry-copy">
                 <h3 id="folio-title"><span>基金再平衡</span><span class="sr-only">（新标签页）</span></h3>
                 <p id="folio-description">输入四只固定基金的持仓与资金变动，生成调整方案。</p>
@@ -70,7 +70,7 @@
           </article>
           <article class="entry project-card">
             <a class="entry-main" href="https://zzpice.github.io/assets/" target="_blank" rel="noopener noreferrer" aria-labelledby="assets-title" aria-describedby="assets-description">
-              <div class="entry-icon ink-amber" aria-hidden="true"><svg viewBox="0 0 32 32"><rect x="5" y="5" width="23" height="23" rx="3"/><circle cx="12" cy="12" r="2"/><path d="m6 24 8-8 5 5 4-4 5 5"/></svg></div>
+              <div class="entry-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><rect x="5" y="5" width="23" height="23" rx="3"/><circle cx="12" cy="12" r="2"/><path d="m6 24 8-8 5 5 4-4 5 5"/></svg></div>
               <div class="entry-copy">
                 <h3 id="assets-title"><span>图片资源库</span><span class="sr-only">（新标签页）</span></h3>
                 <p id="assets-description">浏览壁纸、头像、图标与游戏封面。</p>
@@ -86,19 +86,19 @@
         <!-- 新增规则或配置：复制一个 resource-card，主链接指向公开仓库的说明。 -->
         <div class="resource-grid">
           <a class="entry entry-main resource-card" href="https://github.com/zzpice/routeros-adlist#readme" target="_blank" rel="noopener noreferrer" aria-labelledby="routeros-title" aria-describedby="routeros-description">
-            <span class="entry-icon ink-green" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 4 6 8v8c0 6 10 12 10 12s10-6 10-12V8Z"/><path d="m11 16 3 3 7-7"/></svg></span>
+            <span class="entry-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 4 6 8v8c0 6 10 12 10 12s10-6 10-12V8Z"/><path d="m11 16 3 3 7-7"/></svg></span>
             <div class="entry-copy"><h3 id="routeros-title">RouterOS Adlist <span class="sr-only">（新标签页）</span></h3><p id="routeros-description">由 anti-AD 转换的 DNS 广告过滤规则。</p></div>
           </a>
           <a class="entry entry-main resource-card" href="https://github.com/zzpice/sing-box-adblock#readme" target="_blank" rel="noopener noreferrer" aria-labelledby="adblock-title" aria-describedby="adblock-description">
-            <span class="entry-icon ink-green" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 4 6 8v8c0 6 10 12 10 12s10-6 10-12V8Z"/><path d="M11 16h10"/></svg></span>
+            <span class="entry-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 4 6 8v8c0 6 10 12 10 12s10-6 10-12V8Z"/><path d="M11 16h10"/></svg></span>
             <div class="entry-copy"><h3 id="adblock-title">sing-box 广告过滤 <span class="sr-only">（新标签页）</span></h3><p id="adblock-description">由 AdGuard DNS Filter 生成的 SRS 规则。</p></div>
           </a>
           <a class="entry entry-main resource-card" href="https://github.com/zzpice/sing-box-rules#readme" target="_blank" rel="noopener noreferrer" aria-labelledby="rules-title" aria-describedby="rules-description">
-            <span class="entry-icon ink-green" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M7 26v-6c0-8 18-4 18-12M20 8h5V3M7 4v8M7 23v5"/><circle cx="7" cy="16" r="4"/></svg></span>
+            <span class="entry-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M7 26v-6c0-8 18-4 18-12M20 8h5V3M7 4v8M7 23v5"/><circle cx="7" cy="16" r="4"/></svg></span>
             <div class="entry-copy"><h3 id="rules-title">sing-box 例外分流 <span class="sr-only">（新标签页）</span></h3><p id="rules-description">个人维护的强制代理与强制直连覆盖项。</p></div>
           </a>
           <a class="entry entry-main resource-card" href="https://github.com/zzpice/zashboard-config#readme" target="_blank" rel="noopener noreferrer" aria-labelledby="zashboard-title" aria-describedby="zashboard-description">
-            <span class="entry-icon ink-green" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M5 8h22M5 16h22M5 24h22"/><rect x="10" y="5" width="5" height="6" rx="1"/><rect x="19" y="13" width="5" height="6" rx="1"/><rect x="8" y="21" width="5" height="6" rx="1"/></svg></span>
+            <span class="entry-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M5 8h22M5 16h22M5 24h22"/><rect x="10" y="5" width="5" height="6" rx="1"/><rect x="19" y="13" width="5" height="6" rx="1"/><rect x="8" y="21" width="5" height="6" rx="1"/></svg></span>
             <div class="entry-copy"><h3 id="zashboard-title">Zashboard 界面设置 <span class="sr-only">（新标签页）</span></h3><p id="zashboard-description">个人面板外观与界面偏好，按需导入。</p></div>
           </a>
         </div>

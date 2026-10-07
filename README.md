@@ -1,27 +1,25 @@
 # ZZP · 项目入口
 
-[打开项目入口](https://zzp.moe/) · [GitHub Pages 原始地址](https://zzpice.github.io/zzp-home/)
+[打开入口](https://zzp.moe/) · [GitHub Pages 原始地址](https://zzpice.github.io/zzp-home/) · [项目架构](docs/architecture.md)
 
-个人网页工具、图片资源与公开规则的统一入口。纯 HTML / CSS，无构建、运行依赖、后端、登录或运行时 API 请求。
+个人网页工具、图片资源与公开网络规则的目录。纯 HTML / CSS，没有前端构建、运行依赖、后端或运行时 GitHub API。
 
-## 定位与边界
+## 定位
 
-`zzp.moe` 是可公开分享、跨设备打开的工具与资源入口。先让人知道能做什么，再用稳定链接抵达对应项目；页面标题按用途命名，项目代号可保留在辅助说明中。
+`zzp.moe` 只负责帮助人找到公开项目。网页工具直接打开应用，规则与设置先打开接入说明；各项目自己负责数据、安装、离线和维护。GitHub 保存源码、资源、规则与文档，Pages 托管适合公开的网页。
 
-个人 NAS 导航里的服务地址、订阅和带凭据的链接不属于公开内容。静态文件、HTML 注释、折叠分组、前端密码和 `robots.txt` 都不能提供访问控制。若日后确实需要统一私人服务，应先设计独立的认证和部署边界，再决定如何连接；不先复制地址到公开仓库，也不把浏览器本地存储作为唯一长期数据源。
+入口不聚合私人服务地址、仓库元数据、订阅或凭据。折叠区域、HTML 注释和浏览器存储都不是访问控制。
 
-当前两组分别服务“打开工具”和“查看接入方法”，不按技术栈、仓库名或更新日期继续细分。只有实际定位困难才增加站内搜索；只有确实需要聚合状态才引入服务端集成。天气、时钟、信息流和装饰动画不占用入口的主内容。
+## 维护
 
-## 维护项目
+`index.html` 是项目名称、用途、顺序和链接的唯一维护位置：
 
-只需编辑 `index.html`：
+- 网页工具放在 `#web`，主链接引用唯一标题和说明 ID；少量直达入口放在主链接外的 `.entry-footer`。
+- 规则与设置放在 `#network`，指向公开仓库 README，避免手机用户直接打开二进制文件。
+- 只收录确认适合公开的项目。不要同步私有仓库的名称、地址或说明；页脚仓库链接依靠 GitHub 本身的授权。
+- 顺序按实际用途维护，不同步提交时间、星数、状态面板或另一份项目清单。
 
-- 网页工具放在 `#web`，复制一个 `.project-card`，填写名称、一句话用途和网页链接，并为标题、说明分配唯一 `id`。主链接通过 `aria-labelledby` / `aria-describedby` 引用它们；必要时在主链接外的 `.entry-footer` 中放少量常用直达入口，勿嵌套链接。
-- 规则与配置放在 `#network`，复制一个 `.resource-card` 链接，为标题、说明分配唯一 `id` 并更新对应的 ARIA 引用，主链接指向公开仓库的 README，避免让手机用户直接下载无法阅读的二进制规则。
-- 顺序代表展示优先级；不按最近提交时间自动重排。没有可用页面的项目不标为网页工具。停止维护的项目按实际情况移除或在说明中注明。
-- 上线前先核实仓库公开状态和内容是否适合被推荐。**不要把私有仓库的名称、地址、说明或配置写入这里**，也不在 HTML、注释、图标、manifest 中隐藏它们。页脚“我的仓库”依靠 GitHub 自身登录和授权显示私有项目。
-- 不需要同步星数、提交时间、构建徽章或每个项目的详细文档；说明由各项目维护。本入口只维护项目去向。
-- 只有项目数量明显增多、手机浏览变得困难时，才考虑增加分类或搜索；当前七个项目用两组即可。
+真实链接支持右键、复制、文字选择与浏览器原生打开方式；次要入口不嵌套在主链接中。桌面以列表和双列资源索引呈现，手机转为单列。浅深色跟随系统，键盘有跳转入口与焦点轮廓。
 
 本地预览：
 
@@ -29,40 +27,24 @@
 python3 -m http.server 4173 --bind 127.0.0.1
 ```
 
-打开 `http://127.0.0.1:4173/`，检查桌面与手机宽度、键盘焦点、展开安装说明及所有修改的链接，再提交到 `main`。没有前端构建步骤。
+检查 `http://127.0.0.1:4173/`。浏览器检查只需要开发依赖：
 
-## 交互与验证
+```sh
+npm install --no-save --package-lock=false playwright@1.62.1
+npx playwright install --with-deps chromium webkit
+node scripts/browser-check.cjs
+```
 
-网页卡片的主内容、规则条目都是真实的块级链接，支持文字选择、右键和浏览器原生打开方式。网页卡片的次要入口是独立链接；不用透明覆盖层模拟整卡点击。所有外部入口统一使用新标签页及 `noopener noreferrer`，以分组提示说明打开方式，不再重复放置外链箭头。辅助技术可获得名称、用途和打开方式。
+检查两种引擎、桌面 / 手机 / 平板、浅深色、键盘、安装说明、资源路径及公开链接。界面文件不需要打包。
 
-两组共用 `.entry`、`.entry-main`、`.entry-icon`、`.entry-copy`：左侧图标、右侧标题与说明，边框、圆角、字号和间距保持一致。网页工具用底部一行容纳直达入口或简短使用提示；资源链接指向说明，不再附加编号和重复的类型标签。首页只有品牌、两组入口和页脚，不再为七个项目重复建立大标题和分组导航。
+## 安装与部署
 
-鼠标悬停统一强调边框和标题，不改变背景，不加下划线或外链箭头；键盘焦点保留清晰轮廓。触屏不使用悬停位移。布局按可读宽度切换列数，分组标题、页脚和长名称允许换行；浅深色共用结构，只更换颜色变量。保持至少 44px 的交互高度，检查缩放与窄屏时无横向溢出。
+manifest 的 `id`、`scope`、`start_url` 使用相对路径，适配域名根路径与项目子路径。添加到主屏幕只提供快捷入口。这里需要联网，没有 Service Worker，不接管其他项目的缓存。
 
-布局参考 [Homer](https://github.com/bastienwirtz/homer) 的紧凑图标与文字排列、[Homepage](https://gethomepage.dev/) 的统一服务入口，以及 [Glance](https://github.com/glanceapp/glance) 的克制分组与信息层级。仅借鉴排列与层级，不引入它们的运行环境、组件代码或仪表盘功能。
+Pages 使用 GitHub Actions：检查成功后，仅打包 `index.html`、`style.css`、`icons/`、manifest、`CNAME` 和 `.nojekyll`，再发布到同一地址。文档、维护脚本和开发依赖不进入部署产物；具体流程见 [.github/workflows/pages.yml](.github/workflows/pages.yml)。失败时保留上次成功页面，修复后重跑工作流或提交修复。
 
-提交前除布局与交互外，还应核实链接目的地和用途是否一致、引用的标题 `id` 是否唯一、资源是否使用相对路径，以及是否误带入个人数据。检查根路径和 `/zzp-home/` 子路径。没有自动化依赖或生成的项目目录；需要自动验证时使用临时开发工具，不为简单页面引入构建流程。
+`CNAME` 仍为 `zzp.moe`，不建立带自定义域名的 `zzpice.github.io` 用户站点，避免其他项目继承域名并改变浏览器数据来源。各应用继续使用 `https://zzpice.github.io/<项目>/`；原图和 raw 规则地址也保持不变。修改域名时必须一起检查 DNS、HTTPS、重定向和浏览器本地数据迁移；本轮无需改 DNS。
 
-## 手机与安装
+恢复页面时可撤销有问题的提交，再运行检查和部署。若工作流本身损坏，可修复工作流后重跑；紧急时可在 Pages 设置恢复 `main` 根目录发布，但它会绕过检查门槛。域名退役前先调整 DNS，避免失效的托管指向。
 
-`manifest.webmanifest` 提供图标与主屏幕安装信息，`id`、`scope`、`start_url` 使用相对路径，适配项目子路径与自定义域名根路径。
-
-此入口需要联网，**没有 Service Worker**，不会拦截或缓存其他项目。添加主屏幕只是方便启动入口，不会合并其他项目的安装、离线能力或本地数据。iOS / Android 的安装入口依浏览器而异；页面提供通用说明。
-
-外部项目在新标签页 / 浏览器窗口打开；保留入口，已有工具中的草稿、计算和收藏继续由各工具自身管理。浅深色跟随系统，无额外偏好存储。
-
-## 部署与域名
-
-GitHub Pages 从 `main` 根目录发布，`.nojekyll` 禁用 Jekyll，`CNAME` 绑定 `zzp.moe`。使用独立项目仓库 `zzp-home`，不建立带自定义域名的 `zzpice.github.io` 用户站点，以免让其他项目继承域名并改变访问来源。
-
-Cloudflare DNS 负责解析，GitHub Pages 负责托管与 HTTPS。根域名通过 Cloudflare 的 CNAME Flattening 指向 `zzpice.github.io`；`www` 同样指向 `zzpice.github.io`，GitHub Pages 将其重定向到根域名。两条记录均仅 DNS，不增加代理和第二层缓存。域名已通过 GitHub Pages 的 TXT 所有权验证，保留该 TXT 记录。
-
-各项目继续使用现有 `https://zzpice.github.io/<项目>/` 地址；现有原图、raw 规则和配置链接保持原地址。无需迁移浏览器数据或重新安装已有项目 PWA。
-
-若停用此站点，先移除或调整对应 DNS，再停用 Pages，避免留下失效托管指向。新增项目一般不需要改 DNS。
-
-官方参考：[GitHub Pages 域名继承](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains-and-github-pages)、[自定义域名配置](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site)、[Cloudflare CNAME Flattening](https://developers.cloudflare.com/dns/cname-flattening/)、[MDN 安装要求](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Guides/Making_PWAs_installable)。
-
-## 共同规范
-
-公开项目的[设计与仓库规范](docs/design.md)在此维护；`design.css` 是共同视觉变量的原文件，各网页项目保存本地副本。主站仍只在 `index.html` 维护项目目录，不增加运行依赖或自动同步仓库元数据的流程。
+[GitHub Pages 自定义工作流](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages) · [项目站点与域名继承](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains-and-github-pages)
