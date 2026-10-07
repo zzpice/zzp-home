@@ -35,7 +35,7 @@ npx playwright install --with-deps chromium webkit
 node scripts/browser-check.cjs
 ```
 
-检查两种引擎、桌面 / 手机 / 平板、浅深色、键盘、安装说明、资源路径及公开链接。界面文件不需要打包。
+检查两种引擎、桌面 / 手机 / 平板、浅深色、键盘、安装说明、资源路径及公开链接。CI 先组装 `build/pages`，再用 `SITE_ROOT=build/pages` 检查实际发布文件。界面文件不需要打包。
 
 ## 安装与部署
 

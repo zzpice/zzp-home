@@ -26,12 +26,11 @@ jobs:
           node-version: '24'
       - run: npm install --no-save --package-lock=false playwright@1.62.1
       - run: npx playwright install --with-deps chromium webkit
-      - run: node scripts/browser-check.cjs
       - name: Assemble public site
-        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         run: |
           mkdir -p build/pages
           cp -R index.html style.css icons manifest.webmanifest CNAME .nojekyll build/pages/
+      - run: SITE_ROOT=build/pages node scripts/browser-check.cjs
       - uses: actions/upload-pages-artifact@v5
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         with:
