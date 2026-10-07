@@ -17,58 +17,104 @@
   <a class="skip-link" href="#main">跳到项目</a>
   <div class="shell">
     <header class="site-header">
-      <a class="brand" href="./" aria-label="ZZP 项目入口首页"><img src="./icons/icon.svg" width="36" height="36" alt=""><span>ZZP<span class="brand-divider">/</span><span class="brand-label">项目入口</span></span></a>
+      <a class="brand" href="./" aria-label="ZZP 项目入口首页">
+        <img src="./icons/icon.svg" width="36" height="36" alt="">
+        <span>ZZP<span class="brand-divider">/</span><span class="brand-label">项目入口</span></span>
+      </a>
       <a class="github-link" href="https://github.com/zzpice" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span><span class="sr-only">（新标签页）</span></a>
     </header>
 
-    <main id="main">
+    <main id="main" tabindex="-1">
       <div class="intro">
-        <div><h1>工具与资源</h1><p>个人维护的网页工具、图片资源和网络规则。</p></div>
-        <nav class="section-nav" aria-label="项目分组"><a href="#web">网页项目</a><a href="#network">规则与配置</a></nav>
+        <div>
+          <h1>工具与资源</h1>
+          <p>复习制卡、基金再平衡、图片素材，以及网络规则。</p>
+        </div>
+        <nav class="section-nav" aria-label="项目分组">
+          <a href="#web">网页工具</a>
+          <a href="#network">规则与配置</a>
+        </nav>
       </div>
 
       <section id="web" aria-labelledby="web-title">
-        <div class="section-heading"><h2 id="web-title">网页项目</h2><span>直接打开使用</span></div>
-        <!-- 新增网页项目：复制一个 article，维护名称、说明和链接。 -->
+        <div class="section-heading"><h2 id="web-title">网页工具</h2><span>直接打开使用 <span aria-hidden="true">↗</span><span class="sr-only">，在新标签页打开</span></span></div>
+        <!-- 新增网页项目：复制一个 article，名称、说明和链接只在此处维护。主链接内不嵌套其他链接。 -->
         <div class="project-grid">
           <article class="project-card">
-            <div class="project-icon ink-blue" aria-hidden="true"><svg viewBox="0 0 32 32"><rect x="7" y="5" width="19" height="23" rx="3"/><path d="M11 5v23M4 11h6M4 17h6M4 23h6M16 12h6M16 17h6"/></svg></div>
-            <h3><a class="project-primary" href="https://zzpice.github.io/anki-template/" target="_blank" rel="noopener noreferrer">Anki 模板<span class="arrow" aria-hidden="true">↗</span><span class="sr-only">（新标签页）</span></a></h3>
-            <p>安装复习模板，整理笔记与图片，制作自己的卡片。</p>
-            <div class="project-links"><a href="https://zzpice.github.io/anki-template/tools.html" target="_blank" rel="noopener noreferrer">网页制卡 ↗<span class="sr-only">（新标签页）</span></a><a href="https://zzpice.github.io/anki-template/preview.html" target="_blank" rel="noopener noreferrer">示例预览 ↗<span class="sr-only">（新标签页）</span></a></div>
+            <a class="project-primary" href="https://zzpice.github.io/anki-template/" target="_blank" rel="noopener noreferrer" aria-labelledby="anki-title" aria-describedby="anki-description">
+              <div class="project-icon ink-blue" aria-hidden="true"><svg viewBox="0 0 32 32"><rect x="7" y="5" width="19" height="23" rx="3"/><path d="M11 5v23M4 11h6M4 17h6M4 23h6M16 12h6M16 17h6"/></svg></div>
+              <h3 id="anki-title"><span>Anki 模板</span><span class="arrow" aria-hidden="true">↗</span><span class="sr-only">（新标签页）</span></h3>
+              <p id="anki-description">安装复习模板，整理笔记与图片，制作自己的卡片。</p>
+            </a>
+            <div class="project-links">
+              <a href="https://zzpice.github.io/anki-template/tools.html" target="_blank" rel="noopener noreferrer">网页制卡 <span aria-hidden="true">↗</span><span class="sr-only">（新标签页）</span></a>
+              <a href="https://zzpice.github.io/anki-template/preview.html" target="_blank" rel="noopener noreferrer">示例预览 <span aria-hidden="true">↗</span><span class="sr-only">（新标签页）</span></a>
+            </div>
           </article>
           <article class="project-card">
-            <div class="project-icon ink-green" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M5 27h23M8 27V17h5v10M17 27V9h5v18M26 27V5"/></svg></div>
-            <h3><a class="project-primary" href="https://zzpice.github.io/zp-folio/" target="_blank" rel="noopener noreferrer">zp-folio<span class="arrow" aria-hidden="true">↗</span><span class="sr-only">（新标签页）</span></a></h3>
-            <p>固定四基金的再平衡工具，输入持仓与资金变动，生成调整方案。</p>
-            <div class="project-note">本地计算 · 可独立安装</div>
+            <a class="project-primary" href="https://zzpice.github.io/zp-folio/" target="_blank" rel="noopener noreferrer" aria-labelledby="folio-title" aria-describedby="folio-description">
+              <div class="project-icon ink-green" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M5 27h23M8 27V17h5v10M17 27V9h5v18M26 27V5"/></svg></div>
+              <h3 id="folio-title"><span>基金再平衡</span><span class="arrow" aria-hidden="true">↗</span><span class="sr-only">（新标签页）</span></h3>
+              <p id="folio-description">输入四只固定基金的持仓与资金变动，生成调整方案。</p>
+              <div class="project-note">zp-folio · 本地计算 · 可独立安装</div>
+            </a>
           </article>
           <article class="project-card">
-            <div class="project-icon ink-amber" aria-hidden="true"><svg viewBox="0 0 32 32"><rect x="5" y="5" width="23" height="23" rx="3"/><circle cx="12" cy="12" r="2"/><path d="m6 24 8-8 5 5 4-4 5 5"/></svg></div>
-            <h3><a class="project-primary" href="https://zzpice.github.io/assets/" target="_blank" rel="noopener noreferrer">图片资源库<span class="arrow" aria-hidden="true">↗</span><span class="sr-only">（新标签页）</span></a></h3>
-            <p>浏览壁纸、头像、图标与游戏封面，下载原图或复制外链。</p>
-            <div class="project-note">预览 · 下载 · 收藏</div>
+            <a class="project-primary" href="https://zzpice.github.io/assets/" target="_blank" rel="noopener noreferrer" aria-labelledby="assets-title" aria-describedby="assets-description">
+              <div class="project-icon ink-amber" aria-hidden="true"><svg viewBox="0 0 32 32"><rect x="5" y="5" width="23" height="23" rx="3"/><circle cx="12" cy="12" r="2"/><path d="m6 24 8-8 5 5 4-4 5 5"/></svg></div>
+              <h3 id="assets-title"><span>图片资源库</span><span class="arrow" aria-hidden="true">↗</span><span class="sr-only">（新标签页）</span></h3>
+              <p id="assets-description">浏览壁纸、头像、图标与游戏封面，下载原图或复制外链。</p>
+              <div class="project-note">预览 · 下载 · 收藏</div>
+            </a>
           </article>
         </div>
       </section>
 
       <section id="network" aria-labelledby="network-title">
-        <div class="section-heading"><h2 id="network-title">规则与配置</h2><span>先查看说明，再导入使用</span></div>
-        <!-- 新增规则或配置：复制一个 article，主链接指向公开仓库的说明。 -->
+        <div class="section-heading"><h2 id="network-title">规则与配置</h2><span>查看说明与导入方法</span></div>
+        <!-- 新增规则或配置：复制一个 resource-row，主链接指向公开仓库的说明。 -->
         <div class="resource-grid">
-          <article class="resource-row"><span class="resource-mark" aria-hidden="true">01</span><div><h3><a href="https://github.com/zzpice/routeros-adlist#readme" target="_blank" rel="noopener noreferrer">RouterOS Adlist <span aria-hidden="true">↗</span><span class="sr-only">（新标签页）</span></a></h3><p>由 anti-AD 转换的 DNS 广告过滤规则。</p></div><span class="resource-type">规则</span></article>
-          <article class="resource-row"><span class="resource-mark" aria-hidden="true">02</span><div><h3><a href="https://github.com/zzpice/sing-box-adblock#readme" target="_blank" rel="noopener noreferrer">sing-box 广告过滤 <span aria-hidden="true">↗</span><span class="sr-only">（新标签页）</span></a></h3><p>由 AdGuard DNS Filter 生成的 SRS 规则。</p></div><span class="resource-type">规则</span></article>
-          <article class="resource-row"><span class="resource-mark" aria-hidden="true">03</span><div><h3><a href="https://github.com/zzpice/sing-box-rules#readme" target="_blank" rel="noopener noreferrer">sing-box 例外分流 <span aria-hidden="true">↗</span><span class="sr-only">（新标签页）</span></a></h3><p>个人维护的强制代理与强制直连覆盖项。</p></div><span class="resource-type">规则</span></article>
-          <article class="resource-row"><span class="resource-mark" aria-hidden="true">04</span><div><h3><a href="https://github.com/zzpice/zashboard-config#readme" target="_blank" rel="noopener noreferrer">Zashboard 界面设置 <span aria-hidden="true">↗</span><span class="sr-only">（新标签页）</span></a></h3><p>个人面板外观与界面偏好，按需导入。</p></div><span class="resource-type">配置</span></article>
+          <a class="resource-row" href="https://github.com/zzpice/routeros-adlist#readme" target="_blank" rel="noopener noreferrer" aria-labelledby="routeros-title" aria-describedby="routeros-description">
+            <span class="resource-mark" aria-hidden="true">01</span>
+            <div><h3 id="routeros-title">RouterOS Adlist <span class="arrow" aria-hidden="true">↗</span><span class="sr-only">（新标签页）</span></h3><p id="routeros-description">由 anti-AD 转换的 DNS 广告过滤规则。</p></div>
+            <span class="resource-type">规则</span>
+          </a>
+          <a class="resource-row" href="https://github.com/zzpice/sing-box-adblock#readme" target="_blank" rel="noopener noreferrer" aria-labelledby="adblock-title" aria-describedby="adblock-description">
+            <span class="resource-mark" aria-hidden="true">02</span>
+            <div><h3 id="adblock-title">sing-box 广告过滤 <span class="arrow" aria-hidden="true">↗</span><span class="sr-only">（新标签页）</span></h3><p id="adblock-description">由 AdGuard DNS Filter 生成的 SRS 规则。</p></div>
+            <span class="resource-type">规则</span>
+          </a>
+          <a class="resource-row" href="https://github.com/zzpice/sing-box-rules#readme" target="_blank" rel="noopener noreferrer" aria-labelledby="rules-title" aria-describedby="rules-description">
+            <span class="resource-mark" aria-hidden="true">03</span>
+            <div><h3 id="rules-title">sing-box 例外分流 <span class="arrow" aria-hidden="true">↗</span><span class="sr-only">（新标签页）</span></h3><p id="rules-description">个人维护的强制代理与强制直连覆盖项。</p></div>
+            <span class="resource-type">规则</span>
+          </a>
+          <a class="resource-row" href="https://github.com/zzpice/zashboard-config#readme" target="_blank" rel="noopener noreferrer" aria-labelledby="zashboard-title" aria-describedby="zashboard-description">
+            <span class="resource-mark" aria-hidden="true">04</span>
+            <div><h3 id="zashboard-title">Zashboard 界面设置 <span class="arrow" aria-hidden="true">↗</span><span class="sr-only">（新标签页）</span></h3><p id="zashboard-description">个人面板外观与界面偏好，按需导入。</p></div>
+            <span class="resource-type">配置</span>
+          </a>
         </div>
       </section>
 
       <aside class="home-screen" aria-label="手机使用">
-        <details><summary><span aria-hidden="true">⊞</span> 添加到主屏幕</summary><div class="install-guide"><p>iPhone / iPad：在 Safari 分享菜单中选择“添加到主屏幕”。Android：在浏览器菜单中选择“安装应用”或“添加到主屏幕”。</p><p>此入口需要联网。各项目的安装与离线能力由项目自身提供。</p></div></details>
+        <details>
+          <summary><span aria-hidden="true">⊞</span> 添加到主屏幕</summary>
+          <div class="install-guide">
+            <p>iPhone / iPad：在 Safari 分享菜单中选择“添加到主屏幕”。Android：在浏览器菜单中选择“安装应用”或“添加到主屏幕”。</p>
+            <p>此入口需要联网。各项目的安装与离线能力由项目自身提供。</p>
+          </div>
+        </details>
       </aside>
     </main>
 
-    <footer class="site-footer"><span>zzpice</span><div><a href="https://github.com/zzpice?tab=repositories" target="_blank" rel="noopener noreferrer">管理仓库 ↗<span class="sr-only">（新标签页；私有仓库需登录 GitHub）</span></a><a href="https://github.com/zzpice/zzp-home" target="_blank" rel="noopener noreferrer">入口源码 ↗<span class="sr-only">（新标签页）</span></a></div></footer>
+    <footer class="site-footer">
+      <span>zzpice</span>
+      <div>
+        <a href="https://github.com/zzpice?tab=repositories" target="_blank" rel="noopener noreferrer">我的仓库 <span aria-hidden="true">↗</span><span class="sr-only">（新标签页；私有仓库需登录 GitHub）</span></a>
+        <a href="https://github.com/zzpice/zzp-home" target="_blank" rel="noopener noreferrer">入口源码 <span aria-hidden="true">↗</span><span class="sr-only">（新标签页）</span></a>
+      </div>
+    </footer>
   </div>
 </body>
 </html>
