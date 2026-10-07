@@ -35,7 +35,7 @@ python3 -m http.server 4173 --bind 127.0.0.1
 
 GitHub Pages 从 `main` 根目录发布，`.nojekyll` 禁用 Jekyll，`CNAME` 绑定 `zzp.moe`。使用独立项目仓库 `zzp-home`，不建立带自定义域名的 `zzpice.github.io` 用户站点，以免让其他项目继承域名并改变访问来源。
 
-Cloudflare DNS 负责解析，GitHub Pages 负责托管与 HTTPS。根域名通过 Cloudflare 的 CNAME Flattening 指向 `zzpice.github.io`；`www` 同样指向 `zzpice.github.io`，GitHub Pages 将其重定向到根域名。两条记录均仅 DNS，不增加代理和第二层缓存。
+Cloudflare DNS 负责解析，GitHub Pages 负责托管与 HTTPS。根域名通过 Cloudflare 的 CNAME Flattening 指向 `zzpice.github.io`；`www` 同样指向 `zzpice.github.io`，GitHub Pages 将其重定向到根域名。两条记录均仅 DNS，不增加代理和第二层缓存。域名已通过 GitHub Pages 的 TXT 所有权验证，保留该 TXT 记录。
 
 各项目继续使用现有 `https://zzpice.github.io/<项目>/` 地址；现有原图、raw 规则和配置链接保持原地址。无需迁移浏览器数据或重新安装已有项目 PWA。
 
