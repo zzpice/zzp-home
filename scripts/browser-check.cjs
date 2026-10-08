@@ -71,6 +71,7 @@ async function checkThemes(page, url, initial) {
           assert.equal(labels, true);
           const hrefs = await page.locator('main a').evaluateAll(links => links.map(link => link.href));
           assert.equal(hrefs.every(href => /^https:\/\/(?:zzpice\.github\.io|github\.com)\//.test(href)), true);
+          assert.ok((await page.locator('#appearance').boundingBox()).height >= 44, `${name}: appearance target must remain at least 44px high`);
           if (width === 1440) await checkThemes(page, url, colorScheme);
           await page.keyboard.press('Tab');
           // WebKit follows the host's full-keyboard-access preference for links.
