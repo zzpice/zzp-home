@@ -1,4 +1,4 @@
-name: Check and deploy entry
+name: Check and deploy ZZP project directory
 
 on:
   push:

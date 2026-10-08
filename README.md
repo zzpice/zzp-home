@@ -23,7 +23,7 @@
 
 主题偏好只保存在本机 `zzp-home-theme`；跟随系统时移除此键，并实时响应系统变化。同站其他标签页、刷新与重新打开也会恢复正确状态；存储被禁用时选择在当前页面仍有效。内联初始化在样式和控制脚本下载前设置背景、原生控件外观与浏览器主题色，`theme.js` 管理后续交互。配色仍在本项目 `style.css` 维护；修改静态界面资源时，同步更新 HTML 中受影响的资源版本，避免旧浏览器缓存混用。
 
-工具入口的三张图片缩略图来自本人 [assets 资源库的现有生成图](https://github.com/zzpice/assets/blob/main/wallpapers/SOURCES.md)，来源说明沿用该清单；不引入第三方产品的品牌素材。
+工具入口的三张图片缩略图来自本人 [图片资源库的现有生成图](https://github.com/zzpice/assets/blob/main/wallpapers/SOURCES.md)，来源说明沿用该清单；不引入第三方产品的品牌素材。
 
 本地预览：
 
@@ -47,7 +47,7 @@ node scripts/browser-check.cjs
 
 Pages 使用 GitHub Actions：检查成功后，仅打包 `index.html`、`style.css`、`theme.js`、`icons/`、两份 manifest、`CNAME` 和 `.nojekyll`，再发布到同一地址。文档、维护脚本和开发依赖不进入部署产物；具体流程见 [.github/workflows/pages.yml](.github/workflows/pages.yml)。失败时保留上次成功页面，修复后重跑工作流或提交修复。
 
-`CNAME` 仍为 `zzp.moe`，不建立带自定义域名的 `zzpice.github.io` 用户站点，避免其他项目继承域名并改变浏览器数据来源。各应用继续使用 `https://zzpice.github.io/<项目>/`；原图和 raw 规则地址也保持不变。修改域名时必须一起检查 DNS、HTTPS、重定向和浏览器本地数据迁移；本轮无需改 DNS。
+`CNAME` 仍为 `zzp.moe`，不建立带自定义域名的 `zzpice.github.io` 用户站点，避免其他项目继承域名并改变浏览器数据来源。各应用继续使用 `https://zzpice.github.io/<项目>/`；原图和 raw 规则地址也保持不变。修改域名时必须一起检查 DNS、HTTPS、重定向和浏览器本地数据迁移。
 
 恢复页面时可撤销有问题的提交，再运行检查和部署。若工作流本身损坏，可修复工作流后重跑；紧急时可在 Pages 设置恢复 `main` 根目录发布，但它会绕过检查门槛。域名退役前先调整 DNS，避免失效的托管指向。
 
