@@ -17,6 +17,7 @@ import {
 } from "./model.js";
 import { saveDraft, loadDrafts, tabID } from "./storage.js";
 import { GitHubPublisher, ConflictError } from "./github.js";
+import { loadWallpaperIndex, fillWallpaperSelect } from "./wallpaper.js";
 const escape = (value) =>
   String(value ?? "").replace(
     /[&<>"']/g,
@@ -278,6 +279,15 @@ export async function createEditor({ boot, releaseURL, toast, onPreview }) {
         "",
       )}</select></label><label class="field"><span>默认布局</span><select name="layout"><option value="grid" ${s.layout === "grid" ? "selected" : ""}>图标网格</option><option value="list" ${s.layout === "list" ? "selected" : ""}>列表</option></select></label></div><label class="field"><span>默认密度</span><select name="density"><option value="comfortable" ${s.density === "comfortable" ? "selected" : ""}>舒展</option><option value="compact" ${s.density === "compact" ? "selected" : ""}>紧凑</option></select></label><label class="check-field"><input type="checkbox" name="showDescriptions" ${s.showDescriptions ? "checked" : ""}>显示网站描述</label><p class="form-error" role="alert"></p><button class="primary" type="submit">应用外观设置</button></form>`;
     const form = $(panel, "form");
+    const wallpaperFields = document.createElement("div");
+    wallpaperFields.innerHTML = `<label class="field"><span>默认壁纸</span><select name="wallpaperMode"><option value="daily">仓库每日轮换</option><option value="fixed">固定仓库壁纸</option><option value="bing">Bing 每日壁纸（失败时回退）</option><option value="off">关闭壁纸</option></select></label><label class="field" id="shared-wallpaper-fixed"><span>固定图片</span><select name="wallpaperPath"></select></label>`;
+    form.querySelector(".check-field").before(wallpaperFields);
+    form.elements.wallpaperMode.value = s.wallpaper?.mode || "daily";
+    const syncWallpaper = () => { wallpaperFields.querySelector("#shared-wallpaper-fixed").hidden = form.elements.wallpaperMode.value !== "fixed"; };
+    fillWallpaperSelect(form.elements.wallpaperPath, [], s.wallpaper?.path || "");
+    loadWallpaperIndex().then(items => { if (form.isConnected) fillWallpaperSelect(form.elements.wallpaperPath, items, form.elements.wallpaperPath.value); });
+    form.elements.wallpaperMode.addEventListener("change", syncWallpaper);
+    syncWallpaper();
     const values = () => ({
       title: form.elements.title.value,
       subtitle: form.elements.subtitle.value,
@@ -285,6 +295,7 @@ export async function createEditor({ boot, releaseURL, toast, onPreview }) {
       layout: form.elements.layout.value,
       density: form.elements.density.value,
       showDescriptions: form.elements.showDescriptions.checked,
+      wallpaper: {mode: form.elements.wallpaperMode.value, path: form.elements.wallpaperMode.value === "fixed" ? form.elements.wallpaperPath.value : ""},
     });
     form.addEventListener("input", () => {
       if (working?.type !== "settings")

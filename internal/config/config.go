@@ -19,12 +19,17 @@ type Config struct {
 	Groups        []Group  `json:"groups"`
 }
 type Settings struct {
-	Title            string `json:"title"`
-	Subtitle         string `json:"subtitle"`
-	Theme            string `json:"theme"`
-	Layout           string `json:"layout"`
-	Density          string `json:"density"`
-	ShowDescriptions bool   `json:"showDescriptions"`
+	Title            string     `json:"title"`
+	Subtitle         string     `json:"subtitle"`
+	Theme            string     `json:"theme"`
+	Layout           string     `json:"layout"`
+	Density          string     `json:"density"`
+	ShowDescriptions bool       `json:"showDescriptions"`
+	Wallpaper        *Wallpaper `json:"wallpaper,omitempty"`
+}
+type Wallpaper struct {
+	Mode string `json:"mode"`
+	Path string `json:"path"`
 }
 type Group struct {
 	ID    string `json:"id"`
@@ -134,6 +139,13 @@ func (c Config) Validate() error {
 	if !text(c.Settings.Title, 80, true) || !text(c.Settings.Subtitle, 200, false) {
 		return errors.New("站点标题 / 副标题无效")
 	}
+	if w := c.Settings.Wallpaper; w != nil {
+		validMode := w.Mode == "daily" || w.Mode == "fixed" || w.Mode == "bing" || w.Mode == "off"
+		validPath := regexp.MustCompile(`^wallpapers/[a-z0-9][a-z0-9-]*/[1-9][0-9]*x[1-9][0-9]*/[a-z0-9][a-z0-9-]*\.(png|jpe?g|gif|webp|avif)$`).MatchString(w.Path)
+		if !validMode || (w.Path != "" && !validPath) || (w.Mode == "fixed" && !validPath) {
+			return errors.New("壁纸设置无效")
+		}
+	}
 	in := func(s string, a ...string) bool {
 		for _, v := range a {
 			if s == v {
@@ -234,8 +246,17 @@ func requiredFields(raw []byte) error {
 	if e != nil {
 		return e
 	}
-	if _, e = require(root["settings"], "title", "subtitle", "theme", "layout", "density", "showDescriptions"); e != nil {
+	settings, e := require(root["settings"], "title", "subtitle", "theme", "layout", "density", "showDescriptions")
+	if e != nil {
 		return e
+	}
+	if wallpaper, exists := settings["wallpaper"]; exists {
+		if bytes.Equal(bytes.TrimSpace(wallpaper), []byte("null")) {
+			return errors.New("wallpaper 不能为 null")
+		}
+		if _, e = require(wallpaper, "mode", "path"); e != nil {
+			return e
+		}
 	}
 	var groups []json.RawMessage
 	if e = json.Unmarshal(root["groups"], &groups); e != nil {

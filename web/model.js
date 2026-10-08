@@ -88,6 +88,10 @@ export function urlProblem(raw) {
     return "链接包含疑似订阅凭据";
   return "";
 }
+// Browsing visibility never alters the complete data used by the editor or publisher.
+export function browseGroups(config, showAdult = false) {
+  return config.groups.filter(group => showAdult || group.id !== "adult").map(group => ({...group, sites: group.sites.filter(site => showAdult || !site.icon.startsWith("icons/adult/"))}));
+}
 export function validateConfig(c) {
   const errors = [];
   const object = (v, keys, path) => {
@@ -114,12 +118,19 @@ export function validateConfig(c) {
   if (
     object(
       c.settings,
-      ["title", "subtitle", "theme", "layout", "density", "showDescriptions"],
+      ["title", "subtitle", "theme", "layout", "density", "showDescriptions", "wallpaper"],
       "外观",
     )
   ) {
     text(c.settings.title, 80, true, "站点名称");
     text(c.settings.subtitle, 200, false, "副标题");
+    if ("wallpaper" in c.settings) {
+      const w = c.settings.wallpaper;
+      if (object(w, ["mode", "path"], "壁纸")) {
+        const validPath = typeof w.path === "string" && /^wallpapers\/[a-z0-9][a-z0-9-]*\/[1-9][0-9]*x[1-9][0-9]*\/[a-z0-9][a-z0-9-]*\.(png|jpe?g|gif|webp|avif)$/.test(w.path);
+        if (!["daily", "fixed", "bing", "off"].includes(w.mode) || typeof w.path !== "string" || (w.path !== "" && !validPath) || (w.mode === "fixed" && !validPath)) errors.push("壁纸设置无效");
+      }
+    }
     if (
       !["system", "light", "dark"].includes(c.settings.theme) ||
       !["grid", "list"].includes(c.settings.layout) ||

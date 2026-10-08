@@ -27,6 +27,7 @@ flowchart LR
 | `data/icon-aliases.json` | 一次迁移时的原名称 → assets 路径映射；日常编辑不读取它 |
 | `web/shell.html` / `style.css` | 首页 / projects 的静态模板和共同视觉语言 |
 | `web/model.js` | 纯数据校验、查询、移动、历史与三方合并 |
+| `web/wallpaper.js` | UTC+8 每日选择、公开 assets 索引、局部图片缓存与本地偏好 |
 | `web/app.js` | 浏览增强、主题、草稿预览、编辑器按需加载与版本提示 |
 | `web/editor.js` | 网站 / 分类 / 外观表单、图标选择、Pointer Events 排序与发布界面 |
 | `web/storage.js` | 按标签页隔离的 IndexedDB 草稿，序列化事务与存储失败提示 |
@@ -54,7 +55,7 @@ URL 支持 HTTP / HTTPS、普通查询参数和内网 IP；拒绝 userinfo、常
 
 ## 缓存与更新
 
-Go 从配置、项目、图标固定索引、网页和构建器源码生成内容版本。页面引用 `r/<版本>/...`，JSON 快照直接嵌入 HTML，导航首次可在 JS 下载前显示。源图下载与用户浏览无关：只在构建时接触 assets，日常访问不依赖 raw GitHub 或 API。
+Go 从配置、项目、图标固定索引、网页和构建器源码生成内容版本。页面引用 `r/<版本>/...`，JSON 快照直接嵌入 HTML，导航首次可在 JS 下载前显示。源图下载与用户浏览无关：只在构建时接触 assets，日常图标访问不依赖 raw GitHub 或 API；背景壁纸通过 assets 公开静态轻量索引与衍生图片读取，失败不影响导航。
 
 Worker 的清单为每个必需文件保存 SHA-256。安装时并发 6 个请求，全部下载和校验成功才成为候选；缺失或混入其他版本会使安装失败，旧版继续可用。页面与当前资源优先读缓存，缓存损坏 / 缺失时只接受匹配的网络响应；旧页面的版本地址不会替换成新版资源。保留一代旧缓存，限定导航首页、projects、recovery 和版本资源，外部 URL、API 及其他路由不接管。
 
@@ -62,6 +63,6 @@ Worker 的清单为每个必需文件保存 SHA-256。安装时并发 6 个请�
 
 ## 工程选择
 
-采用 Go 标准库，免除 Node 在生产构建中的必需性；原生 HTML / CSS / JS 已能覆盖 91 个网站和完整编辑器，不需要组件框架、路由库、拖动库或数据库。开发用 Playwright 是唯一 npm 测试依赖。保留项目仓库各自的发布、许可和缓存边界，不建立共同主题 CDN，不迁移其他应用。
+采用 Go 标准库，免除 Node 在生产构建中的必需性；原生 HTML / CSS / JS 已能覆盖 当前导航数据和完整编辑器，不需要组件框架、路由库、拖动库或数据库。开发用 Playwright 是唯一 npm 测试依赖。保留项目仓库各自的发布、许可和缓存边界，不建立共同主题 CDN，不迁移其他应用。
 
 [GitHub Pages 自定义工作流](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages) · [GitHub REST 跨域支持](https://docs.github.com/en/rest/using-the-rest-api/using-cors-and-jsonp-to-make-cross-origin-requests) · [OAuth Web 流程](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps#web-application-flow) · [Contents API](https://docs.github.com/en/rest/repos/contents#create-or-update-file-contents)

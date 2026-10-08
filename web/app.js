@@ -1,4 +1,5 @@
-import { allSites, pinnedSites, matches, assertValid } from "./model.js";
+import { allSites, pinnedSites, matches, assertValid, browseGroups } from "./model.js";
+import { startWallpapers } from "./wallpaper.js";
 const boot = JSON.parse(document.querySelector("#bootstrap").textContent);
 let official = assertValid(boot.config);
 const baseURL = new URL("../../", import.meta.url);
@@ -18,6 +19,18 @@ let sort =
 let themeMode = document.documentElement.dataset.themeMode || "shared";
 const system = matchMedia("(prefers-color-scheme: dark)");
 let toastTimer;
+let showAdult = false;
+try { showAdult = localStorage.getItem("zzp-home-show-adult") === "1"; } catch {}
+const wallpapers = startWallpapers(current.settings.wallpaper);
+$("#browse-settings").hidden = false;
+$("#browse-settings").addEventListener("click", () => $("#browse-dialog").showModal());
+$("#close-browse-settings").addEventListener("click", () => $("#browse-dialog").close());
+$("#show-adult").checked = showAdult;
+$("#show-adult").addEventListener("change", event => {
+  showAdult = event.target.checked;
+  try { localStorage.setItem("zzp-home-show-adult", showAdult ? "1" : "0"); } catch {}
+  renderConfig(current, preview);
+});
 export function toast(message) {
   $("#toast").textContent = message;
   $("#toast").hidden = false;
@@ -59,6 +72,11 @@ $("#appearance").addEventListener("change", (event) => {
 });
 system.addEventListener("change", applyTheme);
 window.addEventListener("storage", (event) => {
+  if (event.key === "zzp-home-show-adult" || event.key === null) {
+    try { showAdult = localStorage.getItem("zzp-home-show-adult") === "1"; } catch { showAdult = false; }
+    $("#show-adult").checked = showAdult;
+    renderConfig(current, preview);
+  }
   if (event.key === "zzp-home-theme" || event.key === null) {
     themeMode = ["light", "dark", "system"].includes(event.newValue)
       ? event.newValue
@@ -157,11 +175,13 @@ function renderConfig(config, isPreview = false) {
   root.dataset.density = current.settings.density;
   root.dataset.descriptions = String(current.settings.showDescriptions);
   applyTheme();
+  wallpapers.updateDefaults(current.settings.wallpaper);
   if (boot.page !== "home") return;
   $(".brand strong").textContent = current.settings.title;
   $(".introduction>p:last-child").textContent = current.settings.subtitle;
-  const sites = allSites(current),
-    pinned = pinnedSites(current);
+  const groups = browseGroups(current, showAdult);
+  const visible = {...current, groups};
+  const sites = allSites(visible), pinned = pinnedSites(visible);
   const content = $("#navigation-content");
   content.replaceChildren();
   if (pinned.length)
@@ -171,7 +191,7 @@ function renderConfig(config, isPreview = false) {
   for (const [id, title, count] of [
     ["", "全部网站", sites.length],
     ["pinned", "☆ 置顶", pinned.length],
-    ...current.groups.map((g) => [g.id, g.title, g.sites.length]),
+    ...groups.map((g) => [g.id, g.title, g.sites.length]),
   ]) {
     const a = node("a");
     a.href = id
@@ -181,7 +201,7 @@ function renderConfig(config, isPreview = false) {
     a.append(node("span", "", title), node("small", "", String(count)));
     nav.append(a);
   }
-  for (const g of current.groups) {
+  for (const g of groups) {
     const el = section("g-" + g.id, g.title, g.sites, "group");
     el.dataset.group = g.id;
     content.append(el);
@@ -204,7 +224,7 @@ function filter(updateURL = false) {
   if (
     group &&
     group !== "pinned" &&
-    !current.groups.some((g) => g.id === group)
+    !browseGroups(current, showAdult).some((g) => g.id === group)
   )
     group = "";
   const sites = allSites(current),
@@ -282,7 +302,7 @@ window.addEventListener("online", connection);
 window.addEventListener("offline", connection);
 connection();
 if (boot.page === "home") {
-  filter();
+  renderConfig(current);
   $("#search").addEventListener("input", (event) => {
     query = event.target.value;
     filter(true);

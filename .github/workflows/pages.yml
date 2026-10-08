@@ -20,21 +20,48 @@ jobs:
     steps:
       - uses: actions/checkout@v7
         with:
+          fetch-depth: 2
           persist-credentials: false
+      - name: Select related checks
+        id: changes
+        env:
+          BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          python3 - <<'PYCODE'
+          import os, subprocess
+          try:
+              files = subprocess.check_output(['git', 'diff', '--name-only', os.environ.get('BASE', ''), 'HEAD'], text=True).splitlines()
+              code = any(p.startswith(('web/', 'internal/', 'cmd/', 'tests/', 'scripts/', '.github/workflows/')) or p == 'go.mod' for p in files)
+              core = any(p.startswith(('internal/', 'cmd/', '.github/workflows/')) or p in ('go.mod', 'web/worker.template', 'web/storage.js', 'web/recovery.js') for p in files)
+              editor = any(p in ('web/editor.js', 'web/github.js', 'web/model.js') for p in files)
+          except subprocess.CalledProcessError:
+              code = core = editor = True
+          browser = 'browse,preferences'
+          if editor: browser += ',edit,publish,updates'
+          if core: browser = 'browse,preferences,edit,publish,offline,updates,failures'
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write('code=' + str(code).lower() + '\n' + 'browser=' + browser + '\n')
+          PYCODE
       - uses: actions/setup-go@v7
         with:
           go-version-file: go.mod
           cache: false
       - run: go test ./...
+        if: steps.changes.outputs.code == 'true'
       - run: go vet ./...
+        if: steps.changes.outputs.code == 'true'
       - run: go run ./cmd/zzp-home validate
       - run: go run ./cmd/zzp-home build
       - uses: actions/setup-node@v7
+        if: steps.changes.outputs.code == 'true'
         with:
           node-version: '24'
       - run: node --test tests/*.test.js
+        if: steps.changes.outputs.code == 'true'
       - run: npm install --no-save --package-lock=false playwright@1.62.1
+        if: steps.changes.outputs.code == 'true'
       - name: Install headless browsers
+        if: steps.changes.outputs.code == 'true'
         run: |
           for apt_source in /etc/apt/sources.list /etc/apt/sources.list.d/*.{list,sources}; do
             if [ -f "$apt_source" ]; then
@@ -43,6 +70,9 @@ jobs:
           done
           npx playwright install --with-deps --only-shell chromium webkit
       - run: node scripts/browser-check.cjs
+        if: steps.changes.outputs.code == 'true'
+        env:
+          BROWSER_CHECK: ${{ steps.changes.outputs.browser }}
       - uses: actions/upload-pages-artifact@v5
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         with:

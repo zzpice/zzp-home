@@ -261,13 +261,28 @@ func Build(root, out, assets string) (BuildResult, error) {
 		if e != nil {
 			return result, e
 		}
-		pinned := c.PinnedSites()
+		browse := c
+		browse.Groups = []config.Group{}
+		for _, group := range c.Groups {
+			if group.ID == "adult" {
+				continue
+			}
+			visible := group
+			visible.Sites = []config.Site{}
+			for _, site := range group.Sites {
+				if !strings.HasPrefix(site.Icon, "icons/adult/") {
+					visible.Sites = append(visible.Sites, site)
+				}
+			}
+			browse.Groups = append(browse.Groups, visible)
+		}
+		pinned := browse.PinnedSites()
 		total := 0
-		for _, g := range c.Groups {
+		for _, g := range browse.Groups {
 			total += len(g.Sites)
 		}
 		var rendered strings.Builder
-		data := map[string]any{"Config": c, "Projects": projects, "Page": page, "Prefix": prefix, "Version": version, "Canonical": canonical, "Bootstrap": template.JS(boot), "ThemeScript": template.JS(themeScript), "CSPHash": cspHash, "Pinned": pinned, "Total": total}
+		data := map[string]any{"Config": c, "BrowseGroups": browse.Groups, "Projects": projects, "Page": page, "Prefix": prefix, "Version": version, "Canonical": canonical, "Bootstrap": template.JS(boot), "ThemeScript": template.JS(themeScript), "CSPHash": cspHash, "Pinned": pinned, "Total": total}
 		if e = t.Execute(&rendered, data); e != nil {
 			return result, e
 		}

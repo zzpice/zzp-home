@@ -196,17 +196,17 @@ async function browse(browser, label) {
       );
       await noOverflow(page);
       await page.goto(origin + "/projects/");
-      assert.equal(await page.locator(".project-card").count(), 3);
-      assert.equal(await page.locator(".resource-card").count(), 4);
+      assert.equal(await page.locator(".project-card").count(), projects.filter(p => p.kind === "tool").length);
+      assert.equal(await page.locator(".resource-card").count(), projects.filter(p => p.kind === "resource").length);
       assert.equal(
         await page.locator(".resource-card .resource-icon img").count(),
-        4,
+        projects.filter(p => p.kind === "resource").length,
       );
       assert.deepEqual(
         await page.locator(".allocation-numbers b").allTextContents(),
         ["50%", "33.33%", "12.5%", "4.17%"],
       );
-      assert.equal(await page.locator(".preview-gallery img").count(), 3);
+      assert.equal(await page.locator(".preview-gallery img").count(), projects.filter(p => p.kind === "tool" && !["anki", "fund"].includes(p.preview)).length * 3);
       assert.ok(
         await page
           .locator(".allocation-numbers")
@@ -750,7 +750,7 @@ async function offline(browser) {
     await page.locator("#search").fill("Emby");
     assert.equal(await page.locator(".site-card:visible").count(), embyCount);
     await page.goto(origin + "/preview/projects/");
-    assert.equal(await page.locator(".project-card").count(), 3);
+    assert.equal(await page.locator(".project-card").count(), projects.filter(p => p.kind === "tool").length);
     await page.goto(origin + "/preview/");
     await openEditor(page);
     const f = await addSite(page, "离线编辑");
@@ -1018,24 +1018,26 @@ async function updates(browser) {
     ]) {
       const browser = await engine.launch();
       try {
-        const only = process.env.BROWSER_CHECK;
-        if (!only || only === "browse") await browse(browser, name);
-        if (!only || only === "edit") {
+        const checks = process.env.BROWSER_CHECK?.split(",");
+        const run = name => !checks || checks.includes(name);
+        if (run("browse")) await browse(browser, name);
+        if (run("preferences")) await require("./preferences-check.cjs")(browser, name, origin, repo);
+        if (run("edit")) {
           await edit(browser, name, 1440);
           await edit(browser, name, 390);
           await pins(browser, name, 1440);
           await pins(browser, name, 390);
         }
-        if (only === "pins") {
+        if (checks?.includes("pins")) {
           await pins(browser, name, 1440);
           await pins(browser, name, 390);
         }
-        if (!only || only === "failures")
+        if (run("failures"))
           await unavailableStorageAndIcon(browser, name);
         if (name === "Chromium") {
-          if (!only || only === "publish") await publish(browser);
-          if (!only || only === "offline") await offline(browser);
-          if (!only || only === "updates") await updates(browser);
+          if (run("publish")) await publish(browser);
+          if (run("offline")) await offline(browser);
+          if (run("updates")) await updates(browser);
         }
       } finally {
         await browser.close();

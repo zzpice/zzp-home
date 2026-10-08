@@ -52,8 +52,10 @@ func TestBuildDeterminismAndWhitelist(t *testing.T) {
 	}
 	for _, group := range source.Groups {
 		for _, site := range group.Sites {
-			if !bytes.Contains(html, []byte(`data-site="`+site.ID+`"`)) {
-				t.Fatalf("missing prerendered site %s", site.ID)
+			visible := bytes.Contains(html, []byte(`data-site="`+site.ID+`"`))
+			adult := group.ID == "adult" || strings.HasPrefix(site.Icon, "icons/adult/")
+			if visible == adult {
+				t.Fatalf("incorrect default visibility for %s", site.ID)
 			}
 		}
 	}
