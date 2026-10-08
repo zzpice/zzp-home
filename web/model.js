@@ -28,7 +28,7 @@ export const containsCredential = (text) =>
 export function urlProblem(raw) {
   if (
     typeof raw !== "string" ||
-    raw.length > 2048 ||
+    new TextEncoder().encode(raw).length > 2048 ||
     raw.trim() !== raw ||
     /[\r\n\t]/.test(raw)
   )
@@ -122,6 +122,8 @@ export function validateConfig(c) {
   for (const g of c.groups) {
     if (!object(g, ["id", "title", "sites"], "分类")) continue;
     id(g.id, "分类");
+    if (["pinned", "settings"].includes(g.id))
+      errors.push("分类 ID 与保留视图冲突");
     text(g.title, 80, true, "分类名称");
     if (!Array.isArray(g.sites)) {
       errors.push("sites 必须是数组");

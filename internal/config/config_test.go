@@ -71,6 +71,16 @@ func TestStrictConfig(t *testing.T) {
 	if c.Validate() == nil {
 		t.Fatal("accepted duplicate ID")
 	}
+	for _, reserved := range []string{"pinned", "settings"} {
+		c := realConfig(t)
+		c.Groups[0].ID = reserved
+		if c.Validate() == nil {
+			t.Fatal("accepted reserved view as group ID")
+		}
+	}
+	if URLProblem("https://example.com/"+strings.Repeat("中", 700)) == "" {
+		t.Fatal("accepted URL beyond UTF-8 byte limit")
+	}
 }
 func TestRequiredFieldsDoNotBecomeSilentDefaults(t *testing.T) {
 	for _, value := range []string{"missing", "null"} {

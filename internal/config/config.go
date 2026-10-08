@@ -133,7 +133,7 @@ func (c Config) Validate() error {
 	ids := map[string]bool{}
 	count := 0
 	for _, g := range c.Groups {
-		if !idPattern.MatchString(g.ID) || ids[g.ID] || !text(g.Title, 80, true) {
+		if !idPattern.MatchString(g.ID) || ids[g.ID] || g.ID == "pinned" || g.ID == "settings" || !text(g.Title, 80, true) {
 			return fmt.Errorf("分类 ID / 名称无效: %s", g.ID)
 		}
 		ids[g.ID] = true

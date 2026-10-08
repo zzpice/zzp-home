@@ -42,6 +42,12 @@ test("credential parameters, encoded credentials and unsafe protocols are blocke
   const c = clone(baseline);
   c.extra = "not supported";
   assert.throws(() => assertValid(c));
+  for (const reserved of ["pinned", "settings"]) {
+    const c = clone(baseline);
+    c.groups[0].id = reserved;
+    assert.throws(() => assertValid(c));
+  }
+  assert.ok(urlProblem("https://example.com/" + "中".repeat(700)));
 });
 test("search uses all terms, description, alternate URL and normalized width", () => {
   const site = {
