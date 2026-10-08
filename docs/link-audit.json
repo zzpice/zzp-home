@@ -1,0 +1,545 @@
+{
+  "checkedAt": "2026-10-08T12:20:22Z",
+  "checks": [
+    {
+      "id": "sp-01-001",
+      "url": "https://www.youtube.com/",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-01-002",
+      "url": "https://www.bilibili.com/",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-01-003",
+      "url": "https://music.youtube.com/",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-01-004",
+      "url": "https://music.apple.com",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-01-005",
+      "url": "https://x.com",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-01-006",
+      "url": "https://spotify.com/",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-01-007",
+      "url": "https://www.notion.so",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-01-008",
+      "url": "https://mail.ryanvan.com",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-01-011",
+      "url": "https://img.seedvault.cn/dashboard",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-05-001",
+      "url": "https://file.ankichinas.cn/",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-05-002",
+      "url": "https://guru.kevin2li.top/",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-05-003",
+      "url": "https://www.wolai.com/6K1VeECU181Ey32svoX7Rq",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-05-004",
+      "url": "https://kikkua.online/",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-02-001",
+      "url": "http://192.168.100.1/",
+      "result": "内网：需在所属网络人工验证"
+    },
+    {
+      "id": "sp-02-002",
+      "url": "https://192.168.100.51:8006",
+      "result": "内网：需在所属网络人工验证"
+    },
+    {
+      "id": "sp-02-003",
+      "url": "http://192.168.100.57:5666/",
+      "result": "内网：需在所属网络人工验证"
+    },
+    {
+      "id": "sp-02-004",
+      "url": "https://icezzp.fnos.net/",
+      "result": "网络 / TLS / 超时：不能据此判定失效"
+    },
+    {
+      "id": "sp-02-005",
+      "url": "http://192.168.100.57:3000",
+      "result": "内网：需在所属网络人工验证"
+    },
+    {
+      "id": "sp-02-006",
+      "url": "http://192.168.100.57:8085/",
+      "result": "内网：需在所属网络人工验证"
+    },
+    {
+      "id": "sp-02-007",
+      "url": "http://192.168.100.57:8096",
+      "result": "内网：需在所属网络人工验证"
+    },
+    {
+      "id": "sp-02-008",
+      "url": "http://192.168.100.57:7001",
+      "result": "内网：需在所属网络人工验证"
+    },
+    {
+      "id": "sp-02-009",
+      "url": "http://192.168.100.57:9527",
+      "result": "内网：需在所属网络人工验证"
+    },
+    {
+      "id": "sp-02-010",
+      "url": "http://192.168.100.53",
+      "result": "内网：需在所属网络人工验证"
+    },
+    {
+      "id": "sp-02-011",
+      "url": "http://192.168.100.61",
+      "result": "内网：需在所属网络人工验证"
+    },
+    {
+      "id": "sp-02-012",
+      "url": "https://192.168.100.100",
+      "result": "内网：需在所属网络人工验证"
+    },
+    {
+      "id": "sp-02-013",
+      "url": "http://192.168.8.1",
+      "result": "内网：需在所属网络人工验证"
+    },
+    {
+      "id": "sp-02-014",
+      "url": "http://192.168.100.57:3011?api=http://192.168.100.57:3011/T3B9dgzBzdRbBF8Aqzzp",
+      "result": "内网：需在所属网络人工验证",
+      "checkedAt": "2026-10-08T13:53:17.875057+00:00"
+    },
+    {
+      "id": "sp-02-015",
+      "url": "http://154.17.2.75:49520/zhouzhipeng/",
+      "result": "HTTP 可响应（未验证登录后内容）",
+      "checkedAt": "2026-10-08T13:53:17.875057+00:00",
+      "status": 200
+    },
+    {
+      "id": "sp-02-016",
+      "url": "http://192.168.100.57:33002",
+      "result": "内网：需在所属网络人工验证"
+    },
+    {
+      "id": "sp-02-017",
+      "url": "http://192.168.100.57:4533/",
+      "result": "内网：需在所属网络人工验证"
+    },
+    {
+      "id": "sp-02-018",
+      "url": "http://192.168.100.57:8002",
+      "result": "内网：需在所属网络人工验证"
+    },
+    {
+      "id": "sp-04-001",
+      "url": "https://www.v2ex.com/",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-04-002",
+      "url": "https://www.right.com.cn/forum/index.php",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-04-003",
+      "url": "https://hostloc.com/",
+      "status": 403,
+      "result": "认证 / 访问限制：人工验证"
+    },
+    {
+      "id": "sp-04-004",
+      "url": "https://linux.do/",
+      "status": 403,
+      "result": "认证 / 访问限制：人工验证"
+    },
+    {
+      "id": "sp-04-005",
+      "url": "https://www.chiphell.com/",
+      "status": 567,
+      "result": "HTTP 异常：人工验证，不自动删除"
+    },
+    {
+      "id": "sp-04-006",
+      "url": "https://bbs.nga.cn",
+      "status": 403,
+      "result": "认证 / 访问限制：人工验证"
+    },
+    {
+      "id": "sp-04-007",
+      "url": "https://github.com/",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-04-008",
+      "url": "https://www.nodeseek.com/",
+      "status": 403,
+      "result": "认证 / 访问限制：人工验证"
+    },
+    {
+      "id": "sp-04-009",
+      "url": "https://www.playgm.cc/",
+      "result": "网络 / TLS / 超时：不能据此判定失效"
+    },
+    {
+      "id": "sp-04-010",
+      "url": "https://forum.mikrotik.com/",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-04-011",
+      "url": "https://www.reddit.com/",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-04-012",
+      "url": "https://www.gamer.com.tw/",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-04-013",
+      "url": "https://www.52pojie.cn",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-03-001",
+      "url": "https://kp.m-team.cc/index",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-03-002",
+      "url": "https://ptchdbits.co",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-03-003",
+      "url": "https://audiences.me",
+      "status": 403,
+      "result": "认证 / 访问限制：人工验证"
+    },
+    {
+      "id": "sp-03-004",
+      "url": "https://www.hdkyl.in",
+      "status": 468,
+      "result": "HTTP 异常：人工验证，不自动删除"
+    },
+    {
+      "id": "sp-03-005",
+      "url": "https://www.agsvpt.com",
+      "status": 403,
+      "result": "认证 / 访问限制：人工验证"
+    },
+    {
+      "id": "sp-03-006",
+      "url": "https://pt.btschool.club",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-03-007",
+      "url": "https://zhuque.in",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-03-008",
+      "url": "https://carpt.net",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-06-001",
+      "url": "https://www.guaniumusic.com/",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-06-002",
+      "url": "https://www.gying.org",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-06-002",
+      "url": "https://www.gying.net",
+      "result": "网络 / TLS / 超时：不能据此判定失效"
+    },
+    {
+      "id": "sp-06-003",
+      "url": "https://haowallpaper.com",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-06-004",
+      "url": "https://flowus.cn/wwkejishe/share/af6188ab-ce17-464b-b4eb-d907014e009f",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-06-005",
+      "url": "https://myhkw.cn",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-02-019",
+      "url": "https://github.zzp.moe/",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-07-001",
+      "url": "https://bandwagonhost.com",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-07-002",
+      "url": "https://www.dmit.io",
+      "status": 403,
+      "result": "认证 / 访问限制：人工验证"
+    },
+    {
+      "id": "sp-07-003",
+      "url": "https://cn.aliyun.com/",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-08-001",
+      "url": "https://flower.yt",
+      "status": 403,
+      "result": "认证 / 访问限制：人工验证"
+    },
+    {
+      "id": "sp-08-002",
+      "url": "https://naiixi.com",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-08-003",
+      "url": "https://stentvessel.shop",
+      "result": "网络 / TLS / 超时：不能据此判定失效"
+    },
+    {
+      "id": "sp-09-001",
+      "url": "https://community-scripts.github.io/ProxmoxVE/scripts",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-09-002",
+      "url": "https://www.speedtest.net/",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-09-003",
+      "url": "https://www.itdog.cn/",
+      "status": 403,
+      "result": "认证 / 访问限制：人工验证"
+    },
+    {
+      "id": "sp-09-004",
+      "url": "https://ipleak.net/",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-09-005",
+      "url": "https://www.geolocation.com/",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-09-006",
+      "url": "https://search.censys.io/",
+      "status": 403,
+      "result": "认证 / 访问限制：人工验证"
+    },
+    {
+      "id": "sp-09-007",
+      "url": "https://scamalytics.com/",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-10-001",
+      "url": "https://dash.cloudflare.com",
+      "status": 403,
+      "result": "认证 / 访问限制：人工验证"
+    },
+    {
+      "id": "sp-10-002",
+      "url": "https://www.namesilo.com/",
+      "status": 403,
+      "result": "认证 / 访问限制：人工验证"
+    },
+    {
+      "id": "sp-10-003",
+      "url": "https://www.gname.com/",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-10-004",
+      "url": "https://porkbun.com",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-01-009",
+      "url": "https://www.ibkr.com.cn/sso/Login?RL=1&locale=zh_CN",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-01-010",
+      "url": "https://client.schwab.com/Areas/Access/Login?lang=zh-cn",
+      "status": 302,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-11-001",
+      "url": "https://www.south-plus.net/index.php",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-11-002",
+      "url": "https://mox.live",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-11-003",
+      "url": "https://sehuatang.org/",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-11-004",
+      "url": "https://www.pixiv.net/",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-11-005",
+      "url": "https://t66y.com",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-11-006",
+      "url": "https://fhxy-a.top/",
+      "result": "网络 / TLS / 超时：不能据此判定失效"
+    },
+    {
+      "id": "sp-11-007",
+      "url": "https://www.cool18.com/bbs4/index.php",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-11-008",
+      "url": "https://www.xvideos.com",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-11-009",
+      "url": "https://www.pornhub.com/",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-11-010",
+      "url": "https://missav.ai",
+      "status": 403,
+      "result": "认证 / 访问限制：人工验证"
+    },
+    {
+      "id": "sp-11-010",
+      "url": "https://missav.ws",
+      "status": 403,
+      "result": "认证 / 访问限制：人工验证"
+    },
+    {
+      "id": "sp-11-011",
+      "url": "https://www.mxshm.top/",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-11-012",
+      "url": "https://laowang.vip",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-11-013",
+      "url": "https://cangku.moe/",
+      "status": 200,
+      "result": "HTTP 可响应（未验证登录后内容）"
+    },
+    {
+      "id": "sp-11-014",
+      "url": "https://18comic.vip",
+      "status": 403,
+      "result": "认证 / 访问限制：人工验证"
+    }
+  ],
+  "method": "HEAD; timeout 12s; no private network requests; redirects limited to 5"
+}

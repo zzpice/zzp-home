@@ -1,4 +1,4 @@
-name: Check and deploy ZZP project directory
+name: Check and deploy personal navigation
 
 on:
   push:
@@ -10,27 +10,37 @@ permissions:
   contents: read
 
 concurrency:
-  group: entry-${{ github.ref }}
+  group: navigation-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v7
         with:
           persist-credentials: false
+      - uses: actions/setup-go@v7
+        with:
+          go-version-file: go.mod
+          cache: false
+      - run: go test ./...
+      - run: go vet ./...
+      - run: go run ./cmd/zzp-home validate
+      - run: go run ./cmd/zzp-home build
       - uses: actions/setup-node@v7
         with:
           node-version: '24'
+      - run: node --test tests/*.test.js
       - run: npm install --no-save --package-lock=false playwright@1.62.1
-      - run: npx playwright install --with-deps chromium webkit
-      - name: Assemble public site
+      - name: Install headless browsers
         run: |
-          mkdir -p build/pages
-          cp -R index.html style.css theme.js icons manifest.webmanifest manifest-dark.webmanifest CNAME .nojekyll build/pages/
-      - run: SITE_ROOT=build/pages node scripts/browser-check.cjs
+          if [ -f /etc/apt/sources.list.d/ubuntu.sources ]; then
+            sudo sed -i 's|azure.archive.ubuntu.com|archive.ubuntu.com|g' /etc/apt/sources.list.d/ubuntu.sources
+          fi
+          npx playwright install --with-deps --only-shell chromium webkit
+      - run: node scripts/browser-check.cjs
       - uses: actions/upload-pages-artifact@v5
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         with:
@@ -47,6 +57,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy checked site
+      - name: Deploy checked navigation
         id: deployment
         uses: actions/deploy-pages@v5

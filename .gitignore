@@ -1,4 +1,6 @@
+/build/
+/.cache/
+/node_modules/
 .DS_Store
-__pycache__/
-node_modules/
-build/
+*.sun-panel.json
+/uploads.zip

@@ -1,54 +1,46 @@
-# ZZP · 项目入口
+# ZZP · 个人导航
 
-[打开入口](https://zzp.moe/) · [GitHub Pages 原始地址](https://zzpice.github.io/zzp-home/) · [项目架构](docs/architecture.md)
+[导航首页](https://zzp.moe/) · [我的项目](https://zzp.moe/projects/) · [架构](docs/architecture.md) · [维护与发布](docs/maintenance.md) · [迁移审查](docs/migration.md)
 
-个人网页工具、图片资源与公开网络规则的目录。纯 HTML / CSS 与少量原生 JavaScript，没有前端构建、运行依赖、后端或运行时 GitHub API。
+GitHub Pages 上的个人导航：分组、搜索、置顶、网格 / 列表、浅深色和共享外观。原生网页编辑器管理网站、分类与顺序，支持触摸拖动、撤销重做、草稿恢复、配置导入导出，以及提交 GitHub PR。7 个现有项目和有效链接保留在 `/projects/`。
 
-## 定位
+Go 标准库负责校验、SunPanel 迁移、图标索引与静态预渲染；浏览器使用 HTML、CSS 和原生 JavaScript，无前端框架、数据库或常驻后端。普通浏览不调用 GitHub API；首屏使用一张图标图集，完整版本缓存后可离线浏览与编辑。
 
-`zzp.moe` 只负责帮助人找到公开项目。网页工具直接打开应用，规则与设置先打开接入说明；各项目自己负责数据、安装、离线和维护。GitHub 保存源码、资源、规则与文档，Pages 托管适合公开的网页。
+## 数据与权限
 
-入口不聚合私人服务地址、仓库元数据、订阅或凭据。折叠区域、HTML 注释和浏览器存储都不是访问控制。
+`data/navigation.json` 是跨设备正式数据来源，包含稳定 ID、分类、网站数组与共享外观。数组顺序即自定义顺序。`data/projects.json` 维护项目介绍和链接；图标原图仅在 [zzpice/assets](https://github.com/zzpice/assets) 维护，`data/icons.json` 固定提交和校验值。
 
-## 维护
+网页修改首先保存在本机 IndexedDB 草稿中，不会改变公开配置。发布时临时输入仅授权 zzp-home 的 fine-grained PAT（Contents 与 Pull requests 写权限），GitHub API 检查实际仓库权限、比较文件 SHA、写入独立分支并创建 PR。Token 只留在本次操作内存中，输入框立即清空，不写入浏览器存储或配置。普通访客可尝试编辑本机草稿，但没有仓库权限便无法提交云端修改；隐藏按钮不承担权限控制。
 
-`index.html` 是项目名称、用途、顺序和链接的唯一维护位置：
+**PR 合并且 Actions 部署成功后，其他设备才能获取修改。** 编辑器始终走 PR，不绕过分支保护，不自动合并。纯 Pages 不能安全保存 OAuth client secret，本版采用临时限权 PAT，不提供伪装成 OAuth 的不安全代理。冲突、断网、权限和重试流程见[发布说明](docs/maintenance.md#网页发布)。
 
-- 网页工具放在 `#web`，主链接引用唯一标题和说明 ID；少量直达入口放在主链接外的 `.entry-footer`。
-- 规则与设置放在 `#network`，指向公开仓库 README，避免手机用户直接打开二进制文件。
-- 只收录确认适合公开的项目。不要同步私有仓库的名称、地址或说明；页脚仓库链接依靠 GitHub 本身的授权。
-- 顺序按实际用途维护，不同步提交时间、星数、状态面板或另一份项目清单。
+## 本地开发
 
-真实链接支持右键、复制、文字选择与浏览器原生打开方式；次要入口不嵌套在主链接中。桌面用三个任务入口和双列规则索引呈现，手机使用带小预览的短入口行，让三种工具在首屏内可见。顶栏「外观」可选择浅色、深色或跟随系统，键盘有跳转入口与焦点轮廓。
-
-主题偏好只保存在本机 `zzp-home-theme`；跟随系统时移除此键，并实时响应系统变化。同站其他标签页、刷新与重新打开也会恢复正确状态；存储被禁用时选择在当前页面仍有效。内联初始化在样式和控制脚本下载前设置背景、原生控件外观与浏览器主题色，`theme.js` 管理后续交互。配色仍在本项目 `style.css` 维护；修改静态界面资源时，同步更新 HTML 中受影响的资源版本，避免旧浏览器缓存混用。
-
-工具入口的三张图片缩略图来自本人 [图片资源库的现有生成图](https://github.com/zzpice/assets/blob/main/wallpapers/SOURCES.md)，来源说明沿用该清单；不引入第三方产品的品牌素材。
-
-本地预览：
+需要 Go 1.27 或更新版本；Node.js 24 和 Playwright 只用于开发测试。
 
 ```sh
-python3 -m http.server 4173 --bind 127.0.0.1
+go run ./cmd/zzp-home validate
+go run ./cmd/zzp-home build
+go run ./cmd/zzp-home serve
 ```
 
-检查 `http://127.0.0.1:4173/`。浏览器检查只需要开发依赖：
+打开 `http://127.0.0.1:4173/`。构建首次从 assets 的固定提交下载所需图标和来源记录，之后复用 `.cache/assets/`；也可加 `-assets ../assets` 使用对应的本地资源库。图标 SHA 不一致会停止构建。
 
 ```sh
+go test ./...
+go vet ./...
 npm install --no-save --package-lock=false playwright@1.62.1
-npx playwright install --with-deps chromium webkit
+npx playwright install --with-deps --only-shell chromium webkit
+node --test tests/*.test.js
 node scripts/browser-check.cjs
 ```
 
-检查两种引擎、桌面 / 手机 / 平板、浅深色、键盘、安装说明、资源路径及公开链接。CI 先组装 `build/pages`，再用 `SITE_ROOT=build/pages` 检查实际发布文件。界面文件不需要打包。
+浏览器检查服务实际 `build/pages` 产物，包含两引擎、四种宽度、CRUD、排序、恢复、离线和 Chromium 的缓存升级 / 多标签页检查。GitHub 发布测试使用模拟 API，不会向真实仓库写入测试内容。真机安装和生产 Token 发布仍需上线后确认；详见[验证记录](docs/verification.md)。
 
-## 安装与部署
+## 部署与恢复
 
-浅深两份 manifest 使用相同安装身份，按当前外观选择；`theme-color` 与页面实时同步。操作系统的启动画面可能沿用安装时缓存的 manifest，已有快捷入口不保证即时更新。manifest 的 `id` 固定为域名根路径 `/`，对应 `zzp.moe` 的安装身份；`scope`、`start_url` 使用相对路径，适配域名根路径与项目子路径。添加到主屏幕只提供快捷入口。这里需要联网，没有 Service Worker，不接管其他项目的缓存。
+保留 GitHub Actions → GitHub Pages 和 `CNAME: zzp.moe`。PR 运行检查，只有 main 检查成功后发布 `build/pages` 白名单产物；源码、迁移报告、原始导出、草稿和开发依赖不进入站点产物。失败时保留上次部署。
 
-Pages 使用 GitHub Actions：检查成功后，仅打包 `index.html`、`style.css`、`theme.js`、`icons/`、两份 manifest、`CNAME` 和 `.nojekyll`，再发布到同一地址。文档、维护脚本和开发依赖不进入部署产物；具体流程见 [.github/workflows/pages.yml](.github/workflows/pages.yml)。失败时保留上次成功页面，修复后重跑工作流或提交修复。
+Service Worker 按完整版本校验、缓存页面与资源。打开期间继续使用当前版，新版完整下载后提示更新；其他标签页有未发布编辑时拒绝强制切换。本机草稿独立于页面缓存。页脚「缓存恢复」仅清理本站导航缓存和对应 Worker，保留草稿。浏览器仍可能因配额或用户清理而移除本地数据，重要草稿可导出备份。
 
-`CNAME` 仍为 `zzp.moe`，不建立带自定义域名的 `zzpice.github.io` 用户站点，避免其他项目继承域名并改变浏览器数据来源。各应用继续使用 `https://zzpice.github.io/<项目>/`；原图和 raw 规则地址也保持不变。修改域名时必须一起检查 DNS、HTTPS、重定向和浏览器本地数据迁移。
-
-恢复页面时可撤销有问题的提交，再运行检查和部署。若工作流本身损坏，可修复工作流后重跑；紧急时可在 Pages 设置恢复 `main` 根目录发布，但它会绕过检查门槛。域名退役前先调整 DNS，避免失效的托管指向。
-
-[GitHub Pages 自定义工作流](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages) · [项目站点与域名继承](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains-and-github-pages)
+撤销问题提交并重新部署即可回滚。其他项目继续使用其原有 `zzpice.github.io/<项目>/` 地址与独立缓存，不迁入 zzp.moe 子路径。

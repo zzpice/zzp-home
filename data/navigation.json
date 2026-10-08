@@ -1,0 +1,1290 @@
+{
+  "schemaVersion": 1,
+  "settings": {
+    "title": "ZZP",
+    "subtitle": "常用网站、自己的服务，还有喜欢的互联网。",
+    "theme": "system",
+    "layout": "grid",
+    "density": "comfortable",
+    "showDescriptions": true
+  },
+  "groups": [
+    {
+      "id": "daily",
+      "title": "日常与学习",
+      "sites": [
+        {
+          "id": "sp-01-001",
+          "title": "YouTube",
+          "description": "油管",
+          "url": "https://www.youtube.com/",
+          "alternateUrls": [],
+          "icon": "icons/media/youtube.png",
+          "iconText": "",
+          "pinned": true,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-01-002",
+          "title": "bilibili",
+          "description": "哔站",
+          "url": "https://www.bilibili.com/",
+          "alternateUrls": [],
+          "icon": "icons/media/bilibili.png",
+          "iconText": "",
+          "pinned": true,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-01-003",
+          "title": "YouTube Music",
+          "description": "油管音乐",
+          "url": "https://music.youtube.com/",
+          "alternateUrls": [],
+          "icon": "icons/media/youtube-music.png",
+          "iconText": "",
+          "pinned": true,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-01-004",
+          "title": "‎Apple Music",
+          "description": "苹果音乐",
+          "url": "https://music.apple.com",
+          "alternateUrls": [],
+          "icon": "icons/media/apple-music.png",
+          "iconText": "",
+          "pinned": true,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-01-005",
+          "title": "X",
+          "description": "原Twitter",
+          "url": "https://x.com",
+          "alternateUrls": [],
+          "icon": "icons/social/x.png",
+          "iconText": "",
+          "pinned": true,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-01-006",
+          "title": "Spotify",
+          "description": "",
+          "url": "https://spotify.com/",
+          "alternateUrls": [],
+          "icon": "icons/media/spotify.png",
+          "iconText": "",
+          "pinned": true,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-01-007",
+          "title": "Notion",
+          "description": "",
+          "url": "https://www.notion.so",
+          "alternateUrls": [],
+          "icon": "icons/productivity/notion.png",
+          "iconText": "",
+          "pinned": true,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-01-008",
+          "title": "Pamir University",
+          "description": "",
+          "url": "https://mail.ryanvan.com",
+          "alternateUrls": [],
+          "icon": "icons/productivity/pamir-mail.png",
+          "iconText": "帕米尔",
+          "pinned": true,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-01-011",
+          "title": "AGSVPT公开图床",
+          "description": "",
+          "url": "https://img.seedvault.cn/dashboard",
+          "alternateUrls": [],
+          "icon": "icons/productivity/agsv-image.png",
+          "iconText": "",
+          "pinned": true,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-05-001",
+          "title": "Anki中文网",
+          "description": "Anki中文资源",
+          "url": "https://file.ankichinas.cn/",
+          "alternateUrls": [],
+          "icon": "icons/learning/anki.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-05-002",
+          "title": "PDF Guru Anki",
+          "description": "Anki制卡软件",
+          "url": "https://guru.kevin2li.top/",
+          "alternateUrls": [],
+          "icon": "icons/productivity/pdf-guru-anki.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-05-003",
+          "title": "云深考公",
+          "description": "云深卡组帮助",
+          "url": "https://www.wolai.com/6K1VeECU181Ey32svoX7Rq",
+          "alternateUrls": [],
+          "icon": "icons/productivity/wolai.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-05-004",
+          "title": "kikkua · 知识卡片",
+          "description": "",
+          "url": "https://kikkua.online/",
+          "alternateUrls": [],
+          "icon": "icons/productivity/knowledge-cards.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        }
+      ]
+    },
+    {
+      "id": "self-hosted",
+      "title": "设备与自托管",
+      "sites": [
+        {
+          "id": "sp-02-001",
+          "title": "RouterOS",
+          "description": "ros路由",
+          "url": "http://192.168.100.1/",
+          "alternateUrls": [],
+          "icon": "icons/network/routeros.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [
+            "内网"
+          ],
+          "notice": ""
+        },
+        {
+          "id": "sp-02-002",
+          "title": "PVE",
+          "description": "虚拟机",
+          "url": "https://192.168.100.51:8006",
+          "alternateUrls": [],
+          "icon": "icons/self-hosted/proxmox.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [
+            "内网"
+          ],
+          "notice": ""
+        },
+        {
+          "id": "sp-02-003",
+          "title": "飞牛 fnOS",
+          "description": "",
+          "url": "http://192.168.100.57:5666/",
+          "alternateUrls": [],
+          "icon": "icons/self-hosted/fnos.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [
+            "内网"
+          ],
+          "notice": ""
+        },
+        {
+          "id": "sp-02-004",
+          "title": "飞牛 fnOS",
+          "description": "流塘置地大厦",
+          "url": "https://icezzp.fnos.net/",
+          "alternateUrls": [],
+          "icon": "icons/self-hosted/fnos.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-02-005",
+          "title": "MoviePilot",
+          "description": "飞牛-瀑布流下载",
+          "url": "http://192.168.100.57:3000",
+          "alternateUrls": [],
+          "icon": "icons/media-players/movie-pilot.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [
+            "内网"
+          ],
+          "notice": ""
+        },
+        {
+          "id": "sp-02-006",
+          "title": "qBittorrent",
+          "description": "飞牛-种子下载器",
+          "url": "http://192.168.100.57:8085/",
+          "alternateUrls": [],
+          "icon": "icons/self-hosted/qbittorrent.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [
+            "内网"
+          ],
+          "notice": ""
+        },
+        {
+          "id": "sp-02-007",
+          "title": "Emby",
+          "description": "本地流媒体-飞牛",
+          "url": "http://192.168.100.57:8096",
+          "alternateUrls": [],
+          "icon": "icons/media-players/emby.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [
+            "内网"
+          ],
+          "notice": ""
+        },
+        {
+          "id": "sp-02-008",
+          "title": "Emby",
+          "description": "直链",
+          "url": "http://192.168.100.57:7001",
+          "alternateUrls": [],
+          "icon": "icons/media-players/emby.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [
+            "内网"
+          ],
+          "notice": ""
+        },
+        {
+          "id": "sp-02-009",
+          "title": "Emby Nginx",
+          "description": "内网",
+          "url": "http://192.168.100.57:9527",
+          "alternateUrls": [],
+          "icon": "icons/network/emby-nginx.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [
+            "内网"
+          ],
+          "notice": ""
+        },
+        {
+          "id": "sp-02-010",
+          "title": "SMBox",
+          "description": "翻墙软件-PVE",
+          "url": "http://192.168.100.53",
+          "alternateUrls": [],
+          "icon": "icons/self-hosted/smbox.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [
+            "内网"
+          ],
+          "notice": ""
+        },
+        {
+          "id": "sp-02-011",
+          "title": "SMBox",
+          "description": "翻墙软件-Router",
+          "url": "http://192.168.100.61",
+          "alternateUrls": [],
+          "icon": "icons/self-hosted/smbox.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [
+            "内网"
+          ],
+          "notice": ""
+        },
+        {
+          "id": "sp-02-012",
+          "title": "Huawei AP",
+          "description": "华为AP管理页面",
+          "url": "https://192.168.100.100",
+          "alternateUrls": [],
+          "icon": "icons/network/huawei.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [
+            "内网"
+          ],
+          "notice": ""
+        },
+        {
+          "id": "sp-02-013",
+          "title": "5G CPE 5s",
+          "description": "",
+          "url": "http://192.168.8.1",
+          "alternateUrls": [],
+          "icon": "icons/network/huawei.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [
+            "内网"
+          ],
+          "notice": ""
+        },
+        {
+          "id": "sp-02-014",
+          "title": "Sub Store",
+          "description": "",
+          "url": "http://192.168.100.57:3011?api=http://192.168.100.57:3011/T3B9dgzBzdRbBF8Aqzzp",
+          "alternateUrls": [],
+          "icon": "icons/network/sub-store.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [
+            "内网"
+          ],
+          "notice": ""
+        },
+        {
+          "id": "sp-02-015",
+          "title": "S-UI",
+          "description": "DMIT",
+          "url": "http://154.17.2.75:49520/zhouzhipeng/",
+          "alternateUrls": [],
+          "icon": "icons/self-hosted/private-service.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-02-016",
+          "title": "Sun-Panel-Helper",
+          "description": "",
+          "url": "http://192.168.100.57:33002",
+          "alternateUrls": [],
+          "icon": "icons/self-hosted/sun-panel-helper.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [
+            "内网"
+          ],
+          "notice": ""
+        },
+        {
+          "id": "sp-02-017",
+          "title": "Navidrome",
+          "description": "本地音乐流媒体",
+          "url": "http://192.168.100.57:4533/",
+          "alternateUrls": [],
+          "icon": "icons/media-players/navidrome.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [
+            "内网"
+          ],
+          "notice": ""
+        },
+        {
+          "id": "sp-02-018",
+          "title": "Music Tag Web",
+          "description": "音乐面板",
+          "url": "http://192.168.100.57:8002",
+          "alternateUrls": [],
+          "icon": "icons/media-players/navidrome.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [
+            "内网"
+          ],
+          "notice": ""
+        }
+      ]
+    },
+    {
+      "id": "community",
+      "title": "社区与开发",
+      "sites": [
+        {
+          "id": "sp-04-001",
+          "title": "V2EX",
+          "description": "程序员论坛",
+          "url": "https://www.v2ex.com/",
+          "alternateUrls": [],
+          "icon": "icons/social/v2ex.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-04-002",
+          "title": "恩山",
+          "description": "路由器论坛",
+          "url": "https://www.right.com.cn/forum/index.php",
+          "alternateUrls": [],
+          "icon": "icons/social/community.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-04-003",
+          "title": "HOSTLOC",
+          "description": "全球主机交流论坛",
+          "url": "https://hostloc.com/",
+          "alternateUrls": [],
+          "icon": "icons/social/hostloc.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-04-004",
+          "title": "LINUX DO",
+          "description": "新的理想型社区",
+          "url": "https://linux.do/",
+          "alternateUrls": [],
+          "icon": "icons/social/linuxdo.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-04-005",
+          "title": "Chiphell",
+          "description": "计算机硬件论坛",
+          "url": "https://www.chiphell.com/",
+          "alternateUrls": [],
+          "icon": "icons/social/chiphell.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-04-006",
+          "title": "NGA",
+          "description": "恩基爱",
+          "url": "https://bbs.nga.cn",
+          "alternateUrls": [],
+          "icon": "icons/social/nga.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-04-007",
+          "title": "Github",
+          "description": "全球最大开源平台",
+          "url": "https://github.com/",
+          "alternateUrls": [],
+          "icon": "icons/development/github.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-04-008",
+          "title": "NodeSeek",
+          "description": "中文云服务器社区",
+          "url": "https://www.nodeseek.com/",
+          "alternateUrls": [],
+          "icon": "icons/social/nodeseek.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-04-009",
+          "title": "爆棚小组",
+          "description": "FM论坛",
+          "url": "https://www.playgm.cc/",
+          "alternateUrls": [],
+          "icon": "icons/social/playgm.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-04-010",
+          "title": "MikroTik",
+          "description": "",
+          "url": "https://forum.mikrotik.com/",
+          "alternateUrls": [],
+          "icon": "icons/network/mikrotik.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-04-011",
+          "title": "Reddit",
+          "description": "欧美论坛",
+          "url": "https://www.reddit.com/",
+          "alternateUrls": [],
+          "icon": "icons/social/reddit.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-04-012",
+          "title": "巴哈姆特",
+          "description": "台湾游戏论坛",
+          "url": "https://www.gamer.com.tw/",
+          "alternateUrls": [],
+          "icon": "icons/social/bahamut.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-04-013",
+          "title": "吾爱破解",
+          "description": "",
+          "url": "https://www.52pojie.cn",
+          "alternateUrls": [],
+          "icon": "icons/social/52pojie.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        }
+      ]
+    },
+    {
+      "id": "media",
+      "title": "影音与资源",
+      "sites": [
+        {
+          "id": "sp-03-001",
+          "title": "M-Team",
+          "description": "5大站之一（资源全、9kg）",
+          "url": "https://kp.m-team.cc/index",
+          "alternateUrls": [],
+          "icon": "icons/media/m-team.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [
+            "PT"
+          ],
+          "notice": ""
+        },
+        {
+          "id": "sp-03-002",
+          "title": "CHDBits",
+          "description": "5大站之一（原盘、特效字幕）",
+          "url": "https://ptchdbits.co",
+          "alternateUrls": [],
+          "icon": "icons/media/media-library.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [
+            "PT"
+          ],
+          "notice": ""
+        },
+        {
+          "id": "sp-03-003",
+          "title": "Audiences",
+          "description": "流媒体PT站",
+          "url": "https://audiences.me",
+          "alternateUrls": [],
+          "icon": "icons/media/audiences.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [
+            "PT"
+          ],
+          "notice": ""
+        },
+        {
+          "id": "sp-03-004",
+          "title": "HDKylin",
+          "description": "短剧",
+          "url": "https://www.hdkyl.in",
+          "alternateUrls": [],
+          "icon": "icons/media/hd-kylin.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [
+            "PT"
+          ],
+          "notice": ""
+        },
+        {
+          "id": "sp-03-005",
+          "title": "AGSV",
+          "description": "短剧",
+          "url": "https://www.agsvpt.com",
+          "alternateUrls": [],
+          "icon": "icons/media/media-library.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [
+            "PT"
+          ],
+          "notice": ""
+        },
+        {
+          "id": "sp-03-006",
+          "title": "BTSCHOOL",
+          "description": "学习资料多的PT站",
+          "url": "https://pt.btschool.club",
+          "alternateUrls": [],
+          "icon": "icons/media/btschool.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [
+            "PT"
+          ],
+          "notice": ""
+        },
+        {
+          "id": "sp-03-007",
+          "title": "朱雀",
+          "description": "抽卡抽卡！！！",
+          "url": "https://zhuque.in",
+          "alternateUrls": [],
+          "icon": "icons/media/zhuque.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [
+            "PT"
+          ],
+          "notice": ""
+        },
+        {
+          "id": "sp-03-008",
+          "title": "CarPT",
+          "description": "音乐PT站",
+          "url": "https://carpt.net",
+          "alternateUrls": [],
+          "icon": "icons/media/media-library.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [
+            "PT"
+          ],
+          "notice": ""
+        },
+        {
+          "id": "sp-06-001",
+          "title": "瓜牛居士",
+          "description": "",
+          "url": "https://www.guaniumusic.com/",
+          "alternateUrls": [],
+          "icon": "icons/media/guaniu.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-06-002",
+          "title": "BTNULL",
+          "description": "",
+          "url": "https://www.gying.org",
+          "alternateUrls": [
+            "https://www.gying.net"
+          ],
+          "icon": "icons/media/btnull.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-06-003",
+          "title": "哲风壁纸",
+          "description": "",
+          "url": "https://haowallpaper.com",
+          "alternateUrls": [],
+          "icon": "icons/media/haowallpaper.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-06-004",
+          "title": "最全IPTV电视直播源及工具",
+          "description": "",
+          "url": "https://flowus.cn/wwkejishe/share/af6188ab-ce17-464b-b4eb-d907014e009f",
+          "alternateUrls": [],
+          "icon": "icons/media/flowus.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-06-005",
+          "title": "明月浩空网",
+          "description": "",
+          "url": "https://myhkw.cn",
+          "alternateUrls": [],
+          "icon": "icons/media/myhkw.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        }
+      ]
+    },
+    {
+      "id": "network",
+      "title": "网络与云服务",
+      "sites": [
+        {
+          "id": "sp-02-019",
+          "title": "GitHub 文件加速",
+          "description": "自己的加速站",
+          "url": "https://github.zzp.moe/",
+          "alternateUrls": [],
+          "icon": "icons/development/github.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-07-001",
+          "title": "bandwagonhost",
+          "description": "搬瓦工CN2GIA代表",
+          "url": "https://bandwagonhost.com",
+          "alternateUrls": [],
+          "icon": "icons/self-hosted/private-service.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-07-002",
+          "title": "DMIT",
+          "description": "优质VPS服务商",
+          "url": "https://www.dmit.io",
+          "alternateUrls": [],
+          "icon": "icons/self-hosted/private-service.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-07-003",
+          "title": "阿里云",
+          "description": "国内头部服务器运营商",
+          "url": "https://cn.aliyun.com/",
+          "alternateUrls": [],
+          "icon": "icons/cloud/aliyun.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-08-001",
+          "title": "FlowerCloud",
+          "description": "花云",
+          "url": "https://flower.yt",
+          "alternateUrls": [],
+          "icon": "icons/self-hosted/private-service.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-08-002",
+          "title": "Nexitally",
+          "description": "奶昔",
+          "url": "https://naiixi.com",
+          "alternateUrls": [],
+          "icon": "icons/network/nexitally.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-08-003",
+          "title": "YToo",
+          "description": "歪兔",
+          "url": "https://stentvessel.shop",
+          "alternateUrls": [],
+          "icon": "icons/cloud/ytoo.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-09-001",
+          "title": "Proxmox VE Helper",
+          "description": "PVE脚本",
+          "url": "https://community-scripts.github.io/ProxmoxVE/scripts",
+          "alternateUrls": [],
+          "icon": "icons/self-hosted/proxmox-helper-scripts.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-09-002",
+          "title": "Speedtest",
+          "description": "测速网站",
+          "url": "https://www.speedtest.net/",
+          "alternateUrls": [],
+          "icon": "icons/network/speedtest.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-09-003",
+          "title": "ITDOG",
+          "description": "网络测试工具",
+          "url": "https://www.itdog.cn/",
+          "alternateUrls": [],
+          "icon": "icons/network/itdog.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-09-004",
+          "title": "ipleak",
+          "description": "dns泄露检测",
+          "url": "https://ipleak.net/",
+          "alternateUrls": [],
+          "icon": "icons/network/ipleak.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-09-005",
+          "title": "ip位置查询",
+          "description": "Geolocation",
+          "url": "https://www.geolocation.com/",
+          "alternateUrls": [],
+          "icon": "icons/network/geolocation.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-09-006",
+          "title": "Censys",
+          "description": "源站ip泄露检查网站",
+          "url": "https://search.censys.io/",
+          "alternateUrls": [],
+          "icon": "icons/network/censys.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-09-007",
+          "title": "Scamalytics",
+          "description": "欺诈ip检测",
+          "url": "https://scamalytics.com/",
+          "alternateUrls": [],
+          "icon": "icons/network/scamalytics.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-10-001",
+          "title": "Cloudflare",
+          "description": "全球最大网络服务商",
+          "url": "https://dash.cloudflare.com",
+          "alternateUrls": [],
+          "icon": "icons/cloud/cloudflare.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-10-002",
+          "title": "NameSilo",
+          "description": "域名服务商",
+          "url": "https://www.namesilo.com/",
+          "alternateUrls": [],
+          "icon": "icons/cloud/namesilo.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-10-003",
+          "title": "GNAME",
+          "description": "新加坡域名服务商",
+          "url": "https://www.gname.com/",
+          "alternateUrls": [],
+          "icon": "icons/network/gname.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-10-004",
+          "title": "porkbun",
+          "description": "美国新兴域名服务商",
+          "url": "https://porkbun.com",
+          "alternateUrls": [],
+          "icon": "icons/cloud/porkbun.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        }
+      ]
+    },
+    {
+      "id": "finance",
+      "title": "金融服务",
+      "sites": [
+        {
+          "id": "sp-01-009",
+          "title": "InteractiveBrokers",
+          "description": "盈透证券",
+          "url": "https://www.ibkr.com.cn/sso/Login?RL=1\u0026locale=zh_CN",
+          "alternateUrls": [],
+          "icon": "icons/finance/interactive-brokers.png",
+          "iconText": "",
+          "pinned": true,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-01-010",
+          "title": "Charles Schwab",
+          "description": "嘉信理财",
+          "url": "https://client.schwab.com/Areas/Access/Login?lang=zh-cn",
+          "alternateUrls": [],
+          "icon": "icons/finance/charles-schwab.png",
+          "iconText": "",
+          "pinned": true,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        }
+      ]
+    },
+    {
+      "id": "adult",
+      "title": "成人内容",
+      "sites": [
+        {
+          "id": "sp-11-001",
+          "title": "南+ South Plus",
+          "description": "",
+          "url": "https://www.south-plus.net/index.php",
+          "alternateUrls": [],
+          "icon": "icons/adult/south-plus.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-11-002",
+          "title": "moxing",
+          "description": "魔性论坛",
+          "url": "https://mox.live",
+          "alternateUrls": [],
+          "icon": "icons/adult/moxing.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-11-003",
+          "title": "98堂",
+          "description": "色花堂",
+          "url": "https://sehuatang.org/",
+          "alternateUrls": [],
+          "icon": "icons/adult/sehuatang.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-11-004",
+          "title": "pixiv",
+          "description": "P站",
+          "url": "https://www.pixiv.net/",
+          "alternateUrls": [],
+          "icon": "icons/social/pixiv.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-11-005",
+          "title": "1024",
+          "description": "小草",
+          "url": "https://t66y.com",
+          "alternateUrls": [],
+          "icon": "icons/social/community.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-11-006",
+          "title": "风花雪月",
+          "description": "",
+          "url": "https://fhxy-a.top/",
+          "alternateUrls": [],
+          "icon": "icons/social/community.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-11-007",
+          "title": "禁忌书屋",
+          "description": "",
+          "url": "https://www.cool18.com/bbs4/index.php",
+          "alternateUrls": [],
+          "icon": "icons/productivity/knowledge-cards.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-11-008",
+          "title": "XVIDEOS",
+          "description": "",
+          "url": "https://www.xvideos.com",
+          "alternateUrls": [],
+          "icon": "icons/adult/xvideos.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-11-009",
+          "title": "Pornhub",
+          "description": "全球最大的porn站",
+          "url": "https://www.pornhub.com/",
+          "alternateUrls": [],
+          "icon": "icons/adult/pornhub.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-11-010",
+          "title": "MissAV",
+          "description": "",
+          "url": "https://missav.ai",
+          "alternateUrls": [
+            "https://missav.ws"
+          ],
+          "icon": "icons/media/media-library.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-11-011",
+          "title": "漫小肆韓漫",
+          "description": "",
+          "url": "https://www.mxshm.top/",
+          "alternateUrls": [],
+          "icon": "icons/media/media-library.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-11-012",
+          "title": "老王论坛",
+          "description": "",
+          "url": "https://laowang.vip",
+          "alternateUrls": [],
+          "icon": "icons/social/community.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-11-013",
+          "title": "绅士仓库",
+          "description": "",
+          "url": "https://cangku.moe/",
+          "alternateUrls": [],
+          "icon": "icons/media/media-library.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "sp-11-014",
+          "title": "禁漫天堂",
+          "description": "",
+          "url": "https://18comic.vip",
+          "alternateUrls": [],
+          "icon": "icons/media/media-library.png",
+          "iconText": "",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        }
+      ]
+    }
+  ]
+}
