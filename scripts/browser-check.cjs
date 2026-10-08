@@ -143,6 +143,8 @@ async function browse(browser, label) {
         1,
         "single shared atlas",
       );
+      // Page load does not wait for lazy images, especially in WebKit.
+      await page.locator(".site-icon img").first().evaluate((img) => img.decode());
       assert.equal(
         await page
           .locator(".site-icon img")
