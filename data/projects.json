@@ -1,9 +1,81 @@
 [
-  {"id":"anki","title":"Anki 模板","description":"安装复习模板，整理笔记与图片制卡。","url":"https://zzpice.github.io/anki-template/","kind":"tool","preview":"anki","icon":"anki.svg","links":[{"title":"网页制卡","url":"https://zzpice.github.io/anki-template/tools.html"},{"title":"示例预览","url":"https://zzpice.github.io/anki-template/preview.html"}]},
-  {"id":"fund","title":"基金再平衡","description":"输入四只固定基金的持仓与资金变动，生成调整方案。","url":"https://zzpice.github.io/fund-rebalance/","kind":"tool","preview":"fund","icon":"folio.svg","links":[]},
-  {"id":"assets","title":"图片资源库","description":"浏览壁纸、头像、图标与游戏封面。","url":"https://zzpice.github.io/assets/","kind":"tool","preview":"gallery","icon":"assets.svg","links":[]},
-  {"id":"routeros-adlist","title":"RouterOS Adlist","description":"由 anti-AD 转换的 DNS 广告过滤规则。","url":"https://github.com/zzpice/routeros-adlist#readme","kind":"resource","preview":"","icon":"","links":[]},
-  {"id":"sing-box-adblock","title":"sing-box 广告过滤","description":"由 AdGuard DNS Filter 生成的 SRS 规则。","url":"https://github.com/zzpice/sing-box-adblock#readme","kind":"resource","preview":"","icon":"","links":[]},
-  {"id":"sing-box-rules","title":"sing-box 例外分流","description":"个人维护的强制代理与强制直连覆盖项。","url":"https://github.com/zzpice/sing-box-rules#readme","kind":"resource","preview":"","icon":"","links":[]},
-  {"id":"zashboard-config","title":"Zashboard 界面设置","description":"个人面板外观与界面偏好，按需导入。","url":"https://github.com/zzpice/zashboard-config#readme","kind":"resource","preview":"","icon":"","links":[]}
+  {
+    "id": "anki",
+    "title": "Anki 模板",
+    "description": "安装复习模板，整理笔记与图片制卡。",
+    "url": "https://zzpice.github.io/anki-template/",
+    "kind": "tool",
+    "preview": "anki",
+    "icon": "anki.svg",
+    "links": [
+      {
+        "title": "网页制卡",
+        "url": "https://zzpice.github.io/anki-template/tools.html"
+      },
+      {
+        "title": "示例预览",
+        "url": "https://zzpice.github.io/anki-template/preview.html"
+      }
+    ]
+  },
+  {
+    "id": "fund",
+    "title": "基金再平衡",
+    "description": "输入四只固定基金的持仓与资金变动，生成调整方案。",
+    "url": "https://zzpice.github.io/fund-rebalance/",
+    "kind": "tool",
+    "preview": "fund",
+    "icon": "folio.svg",
+    "links": []
+  },
+  {
+    "id": "assets",
+    "title": "图片资源库",
+    "description": "浏览壁纸、头像、图标与游戏封面。",
+    "url": "https://zzpice.github.io/assets/",
+    "kind": "tool",
+    "preview": "gallery",
+    "icon": "assets.svg",
+    "links": []
+  },
+  {
+    "id": "routeros-adlist",
+    "title": "RouterOS Adlist",
+    "description": "由 anti-AD 转换的 DNS 广告过滤规则。",
+    "url": "https://github.com/zzpice/routeros-adlist#readme",
+    "kind": "resource",
+    "preview": "",
+    "icon": "routeros-adlist.svg",
+    "links": []
+  },
+  {
+    "id": "sing-box-adblock",
+    "title": "sing-box 广告过滤",
+    "description": "由 AdGuard DNS Filter 生成的 SRS 规则。",
+    "url": "https://github.com/zzpice/sing-box-adblock#readme",
+    "kind": "resource",
+    "preview": "",
+    "icon": "sing-box-adblock.svg",
+    "links": []
+  },
+  {
+    "id": "sing-box-rules",
+    "title": "sing-box 例外分流",
+    "description": "个人维护的强制代理与强制直连覆盖项。",
+    "url": "https://github.com/zzpice/sing-box-rules#readme",
+    "kind": "resource",
+    "preview": "",
+    "icon": "sing-box-rules.svg",
+    "links": []
+  },
+  {
+    "id": "zashboard-config",
+    "title": "Zashboard 界面设置",
+    "description": "个人面板外观与界面偏好，按需导入。",
+    "url": "https://github.com/zzpice/zashboard-config#readme",
+    "kind": "resource",
+    "preview": "",
+    "icon": "zashboard-config.svg",
+    "links": []
+  }
 ]

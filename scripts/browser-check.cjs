@@ -191,6 +191,21 @@ async function browse(browser, label) {
       await page.goto(origin + "/projects/");
       assert.equal(await page.locator(".project-card").count(), 3);
       assert.equal(await page.locator(".resource-card").count(), 4);
+      assert.equal(
+        await page.locator(".resource-card .resource-icon img").count(),
+        4,
+      );
+      assert.deepEqual(
+        await page.locator(".allocation-numbers b").allTextContents(),
+        ["50%", "33.33%", "12.5%", "4.17%"],
+      );
+      assert.equal(await page.locator(".preview-gallery img").count(), 3);
+      assert.ok(
+        await page
+          .locator(".allocation-numbers")
+          .evaluate((el) => el.scrollWidth <= el.clientWidth + 1),
+        "all four allocations fit the preview",
+      );
       const links = await page
         .locator("main a[href]")
         .evaluateAll((ns) => ns.map((el) => el.href));
@@ -409,7 +424,7 @@ async function edit(browser, label, width) {
     await page.locator("[data-action=add-group]").click();
     await page.locator(".form-dialog[open] [name=title]").fill("测试分类");
     await page.locator(".form-dialog[open] [type=submit]").click();
-    assert.equal(await page.locator(".editor-group").count(), 8);
+    assert.equal(await page.locator(".editor-group[data-group-id]").count(), 8);
     await page.locator(".editor-group.active [data-action=edit-group]").click();
     await page.locator(".form-dialog[open] [name=title]").fill("重命名分类");
     await page.locator(".form-dialog[open] [type=submit]").click();
@@ -420,7 +435,7 @@ async function edit(browser, label, width) {
     );
     await page.locator(".editor-group.active [data-action=edit-group]").click();
     await page.locator("#delete-group").click();
-    assert.equal(await page.locator(".editor-group").count(), 7);
+    assert.equal(await page.locator(".editor-group[data-group-id]").count(), 7);
     await page
       .locator(
         ".editor-group[data-group-id=community] [data-action=edit-group]",
@@ -443,7 +458,7 @@ async function edit(browser, label, width) {
       26,
     );
     await page.locator("[data-action=undo]").click();
-    assert.equal(await page.locator(".editor-group").count(), 7);
+    assert.equal(await page.locator(".editor-group[data-group-id]").count(), 7);
     await page.locator("[data-action=settings]").click();
     await page.locator(".settings-form [name=subtitle]").fill("共享外观测试");
     await page.locator(".settings-form [name=theme]").selectOption("dark");
@@ -508,17 +523,78 @@ async function edit(browser, label, width) {
       "px passed",
   );
 }
+async function pins(browser, label, width) {
+  const context = await browser.newContext({
+    viewport: { width, height: 950 },
+    serviceWorkers: "block",
+  });
+  const page = await context.newPage(),
+    errors = errorsOn(page);
+  try {
+    await page.goto(origin + "/");
+    await openEditor(page);
+    await page.locator("[data-action=select-group][data-id=pinned]").click();
+    const rows = page.locator(".pin-sort-list [data-pin-id]");
+    assert.equal(await rows.count(), 11);
+    const firstID = await rows.first().getAttribute("data-pin-id");
+    const a = await rows.first().locator("[data-drag=pin]").boundingBox();
+    const b = await rows.nth(1).boundingBox();
+    await page.mouse.move(a.x + a.width / 2, a.y + a.height / 2);
+    await page.mouse.down();
+    await page.mouse.move(b.x + b.width / 2, b.y + b.height * 0.8, {
+      steps: 8,
+    });
+    await page.mouse.up();
+    assert.equal(await rows.nth(1).getAttribute("data-pin-id"), firstID);
+    let draft = await exportDraft(page);
+    assert.deepEqual(
+      draft.groups.map((g) => g.sites.map((s) => s.id)),
+      config.groups.map((g) => g.sites.map((s) => s.id)),
+    );
+    await page
+      .locator(`[data-pin-id="${firstID}"] [data-action=unpin]`)
+      .click();
+    assert.equal(await rows.count(), 10);
+    await page.getByRole("searchbox", { name: "搜索已有网站" }).fill("youtube");
+    await page.locator(`[data-action=pin][data-id="${firstID}"]`).click();
+    assert.equal(await rows.count(), 11);
+    assert.equal(await rows.last().getAttribute("data-pin-id"), firstID);
+    draft = await exportDraft(page);
+    assert.equal(
+      draft.groups.flatMap((g) => g.sites).filter((s) => s.id === firstID)
+        .length,
+      1,
+    );
+    await noOverflow(page);
+    await page.locator("[data-action=preview]").click();
+    await page.locator(".editor-dialog[open]").waitFor({ state: "hidden" });
+    assert.equal(
+      await page
+        .locator("#pinned [data-site]")
+        .last()
+        .getAttribute("data-site"),
+      firstID,
+    );
+    await page.reload();
+    await openEditor(page, false);
+    await page.locator("#restore").click();
+    assert.equal(await rows.last().getAttribute("data-pin-id"), firstID);
+    assert.deepEqual(errors, []);
+  } finally {
+    await context.close();
+  }
+  console.log(
+    `${label} ${width}px: pin drag, search/add, unpin, category identity and draft restoration passed`,
+  );
+}
 async function publish(browser) {
   const context = await browser.newContext({ serviceWorkers: "block" }),
     page = await context.newPage(),
     errors = errorsOn(page);
   let mode = "denied",
-    branch = false,
-    submitted = false,
     original,
     edited;
   const writes = [],
-    head = "b".repeat(40),
     commit = "c".repeat(40);
   await context.route("https://api.github.com/**", async (route) => {
     const req = route.request(),
@@ -543,48 +619,21 @@ async function publish(browser) {
     if (mode === "unauthorized") return answer({}, 401);
     if (method !== "GET") writes.push({ endpoint, body });
     if (!endpoint) return answer({ permissions: { push: mode !== "denied" } });
-    if (endpoint === "/git/ref/heads/main")
-      return answer({ object: { sha: head } });
-    if (endpoint.startsWith("/git/ref/heads/nav/edit-"))
-      return answer(
-        branch ? { object: { sha: commit } } : {},
-        branch ? 200 : 404,
-      );
-    if (endpoint === "/git/refs") {
-      branch = true;
-      return answer({}, 201);
-    }
     if (endpoint === "/contents/data/navigation.json") {
       if (method === "PUT") {
-        assert.match(body.branch, /^nav\/edit-/);
-        assert.notEqual(body.branch, "main");
+        assert.equal(body.branch, "main");
+        assert.equal(body.sha, original.blobSha);
         edited = JSON.parse(Buffer.from(body.content, "base64").toString());
-        return answer({ commit: { sha: commit } });
+        return answer({ content: { sha: commit }, commit: { sha: commit } });
       }
       return answer({
         type: "file",
         encoding: "base64",
-        sha: original.blobSha,
+        sha: edited ? commit : original.blobSha,
         content: Buffer.from(
-          JSON.stringify(
-            url.searchParams.get("ref") === head || !edited
-              ? original.config
-              : edited,
-          ),
+          JSON.stringify(edited || original.config),
         ).toString("base64"),
       });
-    }
-    if (endpoint === "/pulls") {
-      const pr = {
-        html_url: "https://github.com/zzpice/zzp-home/pull/123",
-        number: 123,
-        state: "open",
-      };
-      if (method === "POST") {
-        submitted = true;
-        return answer(pr, 201);
-      }
-      return answer(submitted ? [pr] : []);
     }
     throw Error("unexpected endpoint " + endpoint);
   });
@@ -632,21 +681,44 @@ async function publish(browser) {
     await modal.locator("#publish-result a").waitFor();
     assert.equal(
       await modal.locator("#publish-result a").getAttribute("href"),
-      "https://github.com/zzpice/zzp-home/pull/123",
+      "https://github.com/zzpice/zzp-home/commit/" + commit,
     );
     assert.equal(
       writes.filter((x) => x.endpoint === "/contents/data/navigation.json")
         .length,
       1,
     );
-    assert.equal(writes.filter((x) => x.endpoint === "/pulls").length, 1);
+    assert.equal(
+      writes.filter((x) => x.endpoint !== "/contents/data/navigation.json")
+        .length,
+      0,
+    );
     assert.equal(JSON.stringify(await drafts(page)).includes(token), false);
+    await modal.locator("[data-close]").first().click();
+    const later = await addSite(page, "下一次编辑");
+    await later.locator("[type=submit]").click();
+    await page.locator("[data-action=preview]").click();
+    await page.locator(".editor-dialog[open]").waitFor({ state: "hidden" });
+    await page.locator("#preview-badge button").click();
+    assert.equal(
+      await page.locator("#g-daily .site-card").count(),
+      14,
+      "return to latest saved config",
+    );
+    // Successful saves do not reappear as unsynced drafts while deployment is pending.
+    await page.locator("#edit").click();
+    await page.locator("[data-action=undo]").click();
+    await page.locator("[data-action=close]").click();
+    await page.locator(".editor-dialog[open]").waitFor({ state: "hidden" });
+    await page.reload();
+    await openEditor(page, false);
+    assert.equal(await page.locator("#restore").count(), 0);
     assert.deepEqual(errors, []);
   } finally {
     await context.close();
   }
   console.log(
-    "Chromium: GitHub permissions, 401/403/network errors, memory-only credentials and branch/PR publication passed (simulated API)",
+    "Chromium: GitHub permissions, 401/403/network errors, memory-only credentials and direct main save passed (simulated API)",
   );
 }
 async function offline(browser) {
@@ -940,6 +1012,12 @@ async function updates(browser) {
         if (!only || only === "edit") {
           await edit(browser, name, 1440);
           await edit(browser, name, 390);
+          await pins(browser, name, 1440);
+          await pins(browser, name, 390);
+        }
+        if (only === "pins") {
+          await pins(browser, name, 1440);
+          await pins(browser, name, 390);
         }
         if (!only || only === "failures")
           await unavailableStorageAndIcon(browser, name);

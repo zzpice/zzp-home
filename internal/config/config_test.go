@@ -43,6 +43,42 @@ func TestMigratedInventory(t *testing.T) {
 		}
 	}
 }
+func TestPinnedOrder(t *testing.T) {
+	c := realConfig(t)
+	pins := c.PinnedSites()
+	first := pins[0].ID
+	last := 1999
+	next := 0
+	for gi := range c.Groups {
+		for si := range c.Groups[gi].Sites {
+			s := &c.Groups[gi].Sites[si]
+			if s.Pinned {
+				order := next
+				s.PinOrder = &order
+				next++
+			}
+			if s.ID == first {
+				s.PinOrder = &last
+			}
+		}
+	}
+	if c.PinnedSites()[len(pins)-1].ID != first {
+		t.Fatal("pin order ignored")
+	}
+	if c.Groups[0].Sites[0].ID != first {
+		t.Fatal("category order changed")
+	}
+	roundTrip, err := Decode(Encode(c))
+	if err != nil || roundTrip.PinnedSites()[len(pins)-1].ID != first {
+		t.Fatal("pin order lost in JSON")
+	}
+	for _, value := range []string{"null", "-1", "1.5", "2001", `"1"`} {
+		raw := strings.Replace(string(Encode(c)), `"pinOrder": 1999`, `"pinOrder": `+value, 1)
+		if _, err := Decode([]byte(raw)); err == nil {
+			t.Fatalf("accepted invalid pinOrder %s", value)
+		}
+	}
+}
 func TestCredentialURLValidation(t *testing.T) {
 	for _, s := range []string{"javascript:alert(1)", "https://u:p@example.com/", "https://example.com/?token=example", "https://example.com/?%61pi=https%3A%2F%2Fexample.com%2Fprivate", "https://example.com/#access_token=test", "https://example.com/sub/abcdefghijklmnop", "https://example.com/?api_key=test"} {
 		if URLProblem(s) == "" {

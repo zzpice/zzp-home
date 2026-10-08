@@ -70,8 +70,6 @@ export const saveDraft = (id, record) =>
   transaction("readwrite", (s) =>
     s.put({ ...record, id, savedAt: new Date().toISOString() }),
   );
-export const deleteDraft = (id) =>
-  transaction("readwrite", (s) => s.delete(id));
 export async function loadDrafts() {
   return (await transaction("readonly", (s) => s.getAll())).sort((a, b) =>
     b.savedAt.localeCompare(a.savedAt),

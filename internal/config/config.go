@@ -8,6 +8,7 @@ import (
 	"io"
 	"net/url"
 	"regexp"
+	"sort"
 	"strings"
 	"unicode/utf8"
 )
@@ -39,6 +40,7 @@ type Site struct {
 	Icon          string   `json:"icon"`
 	IconText      string   `json:"iconText"`
 	Pinned        bool     `json:"pinned"`
+	PinOrder      *int     `json:"pinOrder,omitempty"`
 	NewTab        bool     `json:"newTab"`
 	Tags          []string `json:"tags"`
 	Notice        string   `json:"notice"`
@@ -158,6 +160,9 @@ func (c Config) Validate() error {
 		}
 		for _, s := range g.Sites {
 			count++
+			if s.PinOrder != nil && (*s.PinOrder < 0 || *s.PinOrder > 2000) {
+				return fmt.Errorf("网站 %s 的置顶顺序无效", s.ID)
+			}
 			if !idPattern.MatchString(s.ID) || ids[s.ID] || !text(s.Title, 120, true) || !text(s.Description, 500, false) || !text(s.IconText, 20, false) || !text(s.Notice, 200, false) {
 				return fmt.Errorf("网站字段无效: %s", s.ID)
 			}
@@ -189,6 +194,25 @@ func (c Config) Validate() error {
 	return nil
 }
 func Encode(c Config) []byte { b, _ := json.MarshalIndent(c, "", "  "); return append(b, '\n') }
+
+func (c Config) PinnedSites() []Site {
+	pinned := []Site{}
+	for _, g := range c.Groups {
+		for _, s := range g.Sites {
+			if s.Pinned {
+				pinned = append(pinned, s)
+			}
+		}
+	}
+	order := func(s Site) int {
+		if s.PinOrder != nil {
+			return *s.PinOrder
+		}
+		return 2000
+	}
+	sort.SliceStable(pinned, func(i, j int) bool { return order(pinned[i]) < order(pinned[j]) })
+	return pinned
+}
 
 // Keep decoding strict and consistent with the browser: an omitted false or empty
 // field is not silently interpreted as an intentional choice.
@@ -227,8 +251,12 @@ func requiredFields(raw []byte) error {
 			return e
 		}
 		for _, site := range sites {
-			if _, e = require(site, "id", "title", "description", "url", "alternateUrls", "icon", "iconText", "pinned", "newTab", "tags", "notice"); e != nil {
+			fields, e := require(site, "id", "title", "description", "url", "alternateUrls", "icon", "iconText", "pinned", "newTab", "tags", "notice")
+			if e != nil {
 				return e
+			}
+			if value, ok := fields["pinOrder"]; ok && bytes.Equal(bytes.TrimSpace(value), []byte("null")) {
+				return errors.New("pinOrder 不能为 null")
 			}
 		}
 	}

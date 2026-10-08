@@ -167,6 +167,7 @@ export function validateConfig(c) {
             "icon",
             "iconText",
             "pinned",
+            "pinOrder",
             "newTab",
             "tags",
             "notice",
@@ -199,6 +200,11 @@ export function validateConfig(c) {
         errors.push("必须选择 assets 图标或文字回退");
       if (typeof s.pinned !== "boolean" || typeof s.newTab !== "boolean")
         errors.push("置顶 / 打开方式必须是布尔值");
+      if (
+        Object.hasOwn(s, "pinOrder") &&
+        (!Number.isInteger(s.pinOrder) || s.pinOrder < 0 || s.pinOrder > 2000)
+      )
+        errors.push("置顶顺序必须是 0–2000 的整数");
     }
   }
   if (count > 2000) errors.push("网站最多 2000 个");
@@ -210,6 +216,33 @@ export function assertValid(c) {
   return c;
 }
 export const allSites = (c) => c.groups.flatMap((g) => g.sites);
+export const pinnedSites = (c) =>
+  allSites(c)
+    .filter((s) => s.pinned)
+    .sort((a, b) => (a.pinOrder ?? 2000) - (b.pinOrder ?? 2000));
+export function setPinned(c, id, pinned) {
+  const result = clone(c);
+  const site = allSites(result).find((s) => s.id === id);
+  if (!site) throw Error("网站不存在");
+  if (pinned && !site.pinned) {
+    const order = pinnedSites(result);
+    order.forEach((s, i) => (s.pinOrder = i));
+    site.pinOrder = order.length;
+  }
+  site.pinned = pinned;
+  if (!pinned) delete site.pinOrder;
+  return result;
+}
+export function movePinned(c, id, index) {
+  const result = clone(c),
+    order = pinnedSites(result);
+  const from = order.findIndex((s) => s.id === id);
+  if (from < 0) throw Error("置顶网站不存在");
+  const [site] = order.splice(from, 1);
+  order.splice(Math.max(0, Math.min(index, order.length)), 0, site);
+  order.forEach((s, i) => (s.pinOrder = i));
+  return result;
+}
 export function matches(site, query) {
   const hay = [
     site.title,

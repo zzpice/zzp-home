@@ -8,6 +8,9 @@ import {
   clone,
   moveSite,
   moveGroup,
+  pinnedSites,
+  movePinned,
+  setPinned,
   History,
   mergeConfig,
   matches,
@@ -16,6 +19,42 @@ import {
 const baseline = JSON.parse(
   fs.readFileSync(new URL("../data/navigation.json", import.meta.url)),
 );
+test("pin order survives category moves; add/unpin/undo retain one site record", () => {
+  const pins = pinnedSites(baseline),
+    id = pins[0].id;
+  const reordered = movePinned(baseline, id, 3);
+  assert.equal(pinnedSites(reordered)[3].id, id);
+  assert.deepEqual(
+    reordered.groups.map((g) => g.sites.map((s) => s.id)),
+    baseline.groups.map((g) => g.sites.map((s) => s.id)),
+  );
+  const moved = moveSite(reordered, id, reordered.groups.at(-1).id, 0);
+  assert.deepEqual(
+    pinnedSites(moved).map((s) => s.id),
+    pinnedSites(reordered).map((s) => s.id),
+  );
+  const removed = setPinned(moved, id, false);
+  assert.equal(
+    pinnedSites(removed).some((s) => s.id === id),
+    false,
+  );
+  const added = setPinned(removed, id, true);
+  assert.equal(pinnedSites(added).at(-1).id, id);
+  assert.equal(
+    added.groups.flatMap((g) => g.sites).filter((s) => s.id === id).length,
+    1,
+  );
+  const history = new History(moved);
+  history.commit(removed);
+  history.undo();
+  assert.deepEqual(history.value, moved);
+  assert.deepEqual(assertValid(JSON.parse(JSON.stringify(added))), added);
+  for (const pinOrder of [-1, 1.5, 2001, null, "1"]) {
+    const invalid = clone(baseline);
+    invalid.groups[0].sites[0].pinOrder = pinOrder;
+    assert.throws(() => assertValid(invalid));
+  }
+});
 test("migration inventory, same-name endpoints, alternate links and pins", () => {
   assert.deepEqual(validateConfig(baseline), []);
   const sites = baseline.groups.flatMap((g) => g.sites);

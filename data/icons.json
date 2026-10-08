@@ -1,8 +1,22 @@
 {
   "repository": "zzpice/assets",
-  "revision": "2c7819af7f25abad310c25f62eeb5bf23222c344",
+  "revision": "976b3e8dc8922a6bae810419a2f05725101bdfbe",
   "source": "icons/SOURCES.md",
   "icons": [
+    {
+      "path": "icons/adult/jinji-books.png",
+      "title": "禁忌书屋",
+      "category": "adult",
+      "sha256": "fa4dd80e42ab041cc6d46f099c8b8cb79f76f1d834fd10a7e600f1cdd17b02d9",
+      "size": 15056
+    },
+    {
+      "path": "icons/adult/missav.png",
+      "title": "MissAV",
+      "category": "adult",
+      "sha256": "1d880bf84388363d034cfa94b3b22fab52a6b1e3455e5b2207068d6db0992b70",
+      "size": 23684
+    },
     {
       "path": "icons/adult/moxing.png",
       "title": "moxing",
@@ -95,11 +109,25 @@
       "size": 13699
     },
     {
+      "path": "icons/cloud/bandwagonhost.png",
+      "title": "bandwagonhost",
+      "category": "cloud",
+      "sha256": "71690238e2d13fc383edd3bff61698549705a0e3e43cd56802f5489ca2ebbc96",
+      "size": 26678
+    },
+    {
       "path": "icons/cloud/cloudflare.png",
       "title": "Cloudflare",
       "category": "cloud",
       "sha256": "143a4bab17211d56f8e609deccb53661d93b6e7de92c3bfd88fbe5e583c2e6cb",
       "size": 15747
+    },
+    {
+      "path": "icons/cloud/dmit.png",
+      "title": "DMIT",
+      "category": "cloud",
+      "sha256": "95a8ee0ae0eab72b7aa8e207d72e70c5062b37b5103681bf47abea969fb25e9c",
+      "size": 23651
     },
     {
       "path": "icons/cloud/namesilo.png",
@@ -354,6 +382,13 @@
       "size": 47492
     },
     {
+      "path": "icons/media/agsv.png",
+      "title": "AGSV",
+      "category": "media",
+      "sha256": "ba2288a1af36c76680e6753dbb5361877f1e0ceec520051348b99681fdfa81f3",
+      "size": 233504
+    },
+    {
       "path": "icons/media/apple-music.png",
       "title": "‎Apple Music",
       "category": "media",
@@ -387,6 +422,13 @@
       "category": "media",
       "sha256": "e9661ba8526be957010e596896d9c9bf6d8e14c12d9eb195720841aa615ec46e",
       "size": 67226
+    },
+    {
+      "path": "icons/media/chdbits.png",
+      "title": "CHDBits",
+      "category": "media",
+      "sha256": "4b300d652a0f9210bc1ef148472bce0cf1840644c9c1b0755164f7818b86f60a",
+      "size": 62551
     },
     {
       "path": "icons/media/flowus.png",
@@ -606,6 +648,13 @@
       "size": 94635
     },
     {
+      "path": "icons/productivity/kikkua.png",
+      "title": "kikkua · 知识卡片",
+      "category": "productivity",
+      "sha256": "94f62a1b4990d002d287ab05b0a6154cf804a43bdf6ca7a91367fa7e3e09e245",
+      "size": 104795
+    },
+    {
       "path": "icons/productivity/knowledge-cards.png",
       "title": "知识卡片",
       "category": "productivity",
@@ -800,6 +849,13 @@
       "category": "self-hosted",
       "sha256": "631d3307ce7e2fa44df65ca8c6a567ca2350ac039913770fc93348960a4c593e",
       "size": 81324
+    },
+    {
+      "path": "icons/self-hosted/s-ui.png",
+      "title": "S-UI",
+      "category": "self-hosted",
+      "sha256": "362508fa66487c7b02d1ca27dc8a106716332a161787f41906e056e11f4408b1",
+      "size": 27443
     },
     {
       "path": "icons/self-hosted/smbox.png",

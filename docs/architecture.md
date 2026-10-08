@@ -1,6 +1,6 @@
 # 架构与边界
 
-本项目是静态发布的个人导航。Go 在构建时解决数据和资源一致性，浏览器承担交互和本机草稿，GitHub 承担权限、版本历史、审查与发布。
+本项目是静态发布的个人导航。Go 在构建时解决数据和资源一致性，浏览器承担交互和本机草稿，GitHub 承担权限、版本历史与发布。
 
 ```mermaid
 flowchart LR
@@ -10,9 +10,8 @@ flowchart LR
   P --> V[导航与项目页]
   P --> E[原生网页编辑器]
   E --> D[IndexedDB 本机草稿]
-  E --> R[限权 PAT · 独立分支与 PR]
-  R --> C[自动检查 · 人工合并]
-  C --> G
+  E --> R[限权 PAT · 文件 SHA 检查]
+  R --> G
 ```
 
 ## 模块职责
@@ -31,7 +30,7 @@ flowchart LR
 | `web/app.js` | 浏览增强、主题、草稿预览、编辑器按需加载与版本提示 |
 | `web/editor.js` | 网站 / 分类 / 外观表单、图标选择、Pointer Events 排序与发布界面 |
 | `web/storage.js` | 按标签页隔离的 IndexedDB 草稿，序列化事务与存储失败提示 |
-| `web/github.js` | 固定仓库 / 固定文件的发布状态机，Token 内存生命周期、文件 SHA 冲突与幂等重试 |
+| `web/github.js` | 固定仓库 / 固定文件的保存，Token 内存生命周期、文件 SHA 冲突与幂等重试 |
 | `web/worker.template` / `recovery.*` | 完整离线版本、完整性修复、安全切换和限定范围的缓存恢复 |
 | `tests/` / `scripts/browser-check.cjs` | 纯模型 / API 模拟与实际产物浏览器验证 |
 
@@ -39,7 +38,7 @@ flowchart LR
 
 ## 配置与一致性
 
-schemaVersion 1 的所有字段明确存在。Go 解码拒绝未知字段、null、缺失字段和多余 JSON；浏览器校验同一结构与限制。分类、网站 ID 在整个配置内唯一；分类 ID 不能使用 pinned / settings 保留视图名称；顺序由数组表示，没有另一套 sort 数字或关系表。置顶为网站属性，首页置顶视图引用同一记录，不复制数据。
+schemaVersion 1 的基础字段明确存在；pinOrder 为可选的 0–2000 整数。Go 解码拒绝未知字段、null、缺失字段和多余 JSON；浏览器校验同一结构与限制。分类、网站 ID 在整个配置内唯一；分类 ID 不能使用 pinned / settings 保留视图名称；分类与组内顺序由数组表示；置顶为网站属性，可选 pinOrder 只控制独立置顶顺序，无值时按现有顺序。首页和管理页引用同一网站记录，不复制数据。
 
 URL 支持 HTTP / HTTPS、普通查询参数和内网 IP；拒绝 userinfo、常见认证参数 / fragment、已知 Token 形态及明显订阅凭据。任意随机路径无法自动证明不是凭据，维护者仍需审查新增链接。导入不会执行数据中的 HTML 或脚本，名称和描述按文本展示。
 
@@ -47,11 +46,11 @@ URL 支持 HTTP / HTTPS、普通查询参数和内网 IP；拒绝 userinfo、常
 
 ## GitHub 发布
 
-纯 Pages 无法保密 OAuth client secret；GitHub Web OAuth 换取 Token 的步骤也有 CORS 限制。本版不虚构无需后端的 OAuth 回调。用户每次临时提供 fine-grained PAT，浏览器只向固定 api.github.com 仓库端点发送；先验证实际 push 权限，再读取 main 精确提交上的配置。
+纯 Pages 无法保密 OAuth client secret；GitHub Web OAuth 换取 Token 的步骤也有 CORS 限制。本版不虚构无需后端的 OAuth 回调。用户每次临时提供 fine-grained PAT，浏览器只向固定 api.github.com 仓库端点发送；先验证实际 push 权限，再读取 main 的配置与文件 SHA。
 
-文件 SHA 是编辑基线。云端变化时停止写入，按稳定 ID 合并不冲突字段，重叠修改 / 删除与编辑 / 竞争排序明确列出，不采用最后写入覆盖。写入始终在 `nav/edit-<UUID>`，仅修改 data/navigation.json 并创建 PR；main 的规则、必需检查、审批与最终合并全部由 GitHub 执行。
+文件 SHA 是编辑基线。云端变化时停止写入，按稳定 ID 合并不冲突字段，重叠修改 / 删除与编辑 / 竞争排序明确列出，不采用最后写入覆盖。写入通过 Contents API 直接更新 main 的 data/navigation.json，并附带基线文件 SHA；预检之后发生的并发修改也会被 GitHub 拒绝，409 会重新读取配置提供合并。仓库分支规则仍由 GitHub 强制执行。
 
-发布进度（无凭据）先持久化再执行远端操作。丢失提交或 PR 响应后，重试读取同一分支内容和已有 PR，不重复生成分支与提交。错误不回显 GitHub 原始响应，以免泄露凭据。
+不保存发布状态或创建分支 / PR。丢失响应后重试先比较 main 的正式内容，相同内容视为已保存。成功后更新本机基线，草稿、撤销历史和 Token 生命周期与远端提交分开管理。错误不回显 GitHub 原始响应。
 
 ## 缓存与更新
 

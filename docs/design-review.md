@@ -34,13 +34,13 @@ assets 是唯一图标维护位置：`icons/<用途>/<小写短横线名称>.png
 
 ## GitHub 发布
 
-只向固定仓库 `zzpice/zzp-home` 写 `data/navigation.json`。Token 由维护者输入，限定仓库的 fine-grained PAT 最小权限为 Contents 与 Pull requests 写；元数据读。Token 不进入任何持久存储、配置、URL、日志、缓存或工作流 secrets。
+只向固定仓库 `zzpice/zzp-home` 写 `data/navigation.json`。Token 由维护者输入，限定仓库的 fine-grained PAT 最小权限为 Contents 读写；元数据读。Token 不进入任何持久存储、配置、URL、日志、缓存或工作流 secrets。
 
-授权通过 GitHub 返回的仓库 push 权限和每次 REST 写请求强制执行。先读 main 的一致提交和配置 blob SHA；基线变化即停止覆盖，提供稳定 ID 的三方合并，重叠字段 / 排序冲突要求人工处理或从云端重新开始，旧草稿仍可导出。
+授权通过 GitHub 返回的仓库 push 权限和每次 REST 写请求强制执行。先读 main 的配置及文件 blob SHA；基线变化即停止覆盖，提供稳定 ID 的三方合并，重叠字段 / 排序冲突要求人工处理或从云端重新开始，旧草稿仍可导出。
 
-创建唯一编辑分支、写配置、创建 PR。保存无凭据的发布进度，重试前读取分支内容和已有 PR，防止响应丢失造成重复提交。PR 合并后 Actions 校验、构建、浏览器检查再部署；不能把 PR 创建成功当作已经上线。保护分支、审批要求和部署失败均遵循 GitHub 的实际结果。访客可本机试编，无法修改正式来源。
+直接以文件 SHA 更新 main 的导航配置，由 Actions 校验、构建并部署；保存成功不代表部署完成。断网保留草稿，响应丢失后重读 main 判断是否已保存，不保存发布进度或创建 PR。访客可以编辑本机草稿，正式写入仍需 GitHub 权限。
 
-标准 OAuth web flow 的 code 交换需要 client_secret，GitHub 授权端点不提供可直接依赖的浏览器 CORS 流程，因此本版不提供虚假的“一键 GitHub 登录”。不增加独立认证代理。PAT 创建、PR 合并在 GitHub 自身界面完成。
+标准 OAuth web flow 的 code 交换需要 client_secret，GitHub 授权端点不提供可直接依赖的浏览器 CORS 流程，因此本版不提供虚假的“一键 GitHub 登录”。不增加独立认证代理。PAT 在 GitHub 自身界面创建，仅需 Contents 读写权限。
 
 ## 缓存
 
@@ -54,6 +54,6 @@ Service Worker 只处理本站明确白名单，不拦截其他项目。安装�
 
 Go 测试覆盖迁移计数、备用链接、脱敏、严格校验和确定性构建；JS 测试覆盖排序、历史、三方合并、发布错误与幂等恢复；浏览器检查覆盖两引擎、桌面 / 手机 / 平板、搜索、主题、编辑、草稿、键盘和发布模拟。Chromium 检查离线与版本升级、多标签页及缓存修复。
 
-实际 GitHub 分支 / PR / Actions 检查用于交付；无权限凭据、真实 PAT 网页发布、Safari 真机安装、内网服务可达性与人工合并部署的未执行部分必须明确报告。
+提交并推送 main 后验证 Actions 与生产站点。模拟 API 不代替真实网页保存；真机安装和内网服务可达性仍需对应设备 / 网络确认。
 
 官方依据：[REST CORS](https://docs.github.com/en/rest/using-the-rest-api/using-cors-and-jsonp-to-make-cross-origin-requests)、[OAuth 限制](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps)、[PAT 权限](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)、[Contents API](https://docs.github.com/en/rest/repos/contents#create-or-update-file-contents)、[Pages 工作流](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)。

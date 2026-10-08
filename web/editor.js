@@ -5,12 +5,17 @@ import {
   assertValid,
   moveSite,
   moveGroup,
+  allSites,
+  pinnedSites,
+  setPinned,
+  movePinned,
+  matches,
   mergeConfig,
   newID,
   containsCredential,
   urlProblem,
 } from "./model.js";
-import { saveDraft, loadDrafts, deleteDraft, tabID } from "./storage.js";
+import { saveDraft, loadDrafts, tabID } from "./storage.js";
 import { GitHubPublisher, ConflictError } from "./github.js";
 const escape = (value) =>
   String(value ?? "").replace(
@@ -67,7 +72,7 @@ export async function createEditor({ boot, releaseURL, toast, onPreview }) {
     selected = base.groups[0]?.id || "";
   let draftId = tabID(),
     working = null,
-    pending = null,
+    pinQuery = "",
     initialized = false,
     iconIndex = null,
     storageError = "",
@@ -76,7 +81,7 @@ export async function createEditor({ boot, releaseURL, toast, onPreview }) {
     lastSaved = "";
   const main = dialog(
     "editor-dialog",
-    `<div class="editor-shell"><header class="editor-header"><h2>管理导航</h2><span class="draft-status" role="status"></span><span class="spacer"></span><button data-action="preview">预览</button><button class="primary" data-action="publish">提交到 GitHub</button><button class="quiet" data-action="close" aria-label="关闭编辑器">✕</button></header><div class="storage-warning" hidden></div><div class="editor-tools"><button data-action="undo" title="撤销（Ctrl / ⌘ Z）">↶ 撤销</button><button data-action="redo" title="重做（Ctrl / ⌘ Shift Z）">↷ 重做</button><button data-action="add-group">＋ 分类</button><button data-action="settings">共享外观</button><button data-action="import">导入</button><button data-action="export">导出</button><span class="help">拖动手柄排序，或使用上下移动按钮</span></div><div class="editor-body"><nav class="editor-groups" aria-label="编辑分类"></nav><div class="editor-list"></div></div><footer class="editor-footer"><span>草稿保存在本机。GitHub PR 合并并部署后，所有设备使用同一正式配置。</span><button class="text-button" data-action="drafts">其他草稿</button></footer><input type="file" id="import-file" accept="application/json,.json" hidden></div>`,
+    `<div class="editor-shell"><header class="editor-header"><h2>管理导航</h2><span class="draft-status" role="status"></span><span class="spacer"></span><button data-action="preview">预览</button><button class="primary" data-action="publish">保存到 GitHub</button><button class="quiet" data-action="close" aria-label="关闭编辑器">✕</button></header><div class="storage-warning" hidden></div><div class="editor-tools"><button data-action="undo" title="撤销（Ctrl / ⌘ Z）">↶ 撤销</button><button data-action="redo" title="重做（Ctrl / ⌘ Shift Z）">↷ 重做</button><button data-action="add-group">＋ 分类</button><button data-action="settings">共享外观</button><button data-action="import">导入</button><button data-action="export">导出</button><span class="help">拖动手柄排序，或使用上下移动按钮</span></div><div class="editor-body"><nav class="editor-groups" aria-label="编辑分类"></nav><div class="editor-list"></div></div><footer class="editor-footer"><span>草稿保存在本机。GitHub 保存并自动部署后，所有设备使用同一正式配置。</span><button class="text-button" data-action="drafts">其他草稿</button></footer><input type="file" id="import-file" accept="application/json,.json" hidden></div>`,
   );
   const dirty = () =>
     !equal(history.value, base) ||
@@ -86,8 +91,8 @@ export async function createEditor({ boot, releaseURL, toast, onPreview }) {
       ? "草稿未保存 · 请导出"
       : dirty()
         ? lastSaved
-          ? "未发布 · 草稿已保存 " + lastSaved
-          : "未发布 · 正在保存草稿"
+          ? "未同步 · 草稿已保存 " + lastSaved
+          : "未同步 · 正在保存草稿"
         : "与编辑基线一致";
     $(main, ".draft-status").textContent = text;
     $(main, ".storage-warning").hidden = !storageError;
@@ -109,24 +114,6 @@ export async function createEditor({ boot, releaseURL, toast, onPreview }) {
       );
     return clone(working);
   }
-  function safePublication(value) {
-    if (!value) return null;
-    return Object.fromEntries(
-      [
-        "branch",
-        "baseHead",
-        "baseSha",
-        "fingerprint",
-        "phase",
-        "commit",
-        "prUrl",
-        "number",
-        "state",
-      ]
-        .filter((key) => Object.hasOwn(value, key))
-        .map((key) => [key, value[key]]),
-    );
-  }
   function snapshot() {
     return {
       schemaVersion: 1,
@@ -136,7 +123,6 @@ export async function createEditor({ boot, releaseURL, toast, onPreview }) {
       history: history.serialize(),
       selected,
       working: safeWorking(),
-      publication: safePublication(pending),
     };
   }
   async function persist() {
@@ -175,7 +161,6 @@ export async function createEditor({ boot, releaseURL, toast, onPreview }) {
   }
   function commit(value) {
     if (history.commit(value)) {
-      pending = null;
       render();
       schedule();
     }
@@ -206,16 +191,24 @@ export async function createEditor({ boot, releaseURL, toast, onPreview }) {
   function render() {
     if (
       selected !== "settings" &&
+      selected !== "pinned" &&
       !history.value.groups.some((g) => g.id === selected)
     )
       selected = history.value.groups[0]?.id || "";
-    $(main, ".editor-groups").innerHTML = history.value.groups
-      .map(
-        (g) =>
-          `<div class="editor-group ${selected === g.id ? "active" : ""}" data-group-id="${g.id}"><button class="drag-handle" data-drag="group" data-id="${g.id}" aria-label="拖动 ${escape(g.title)} 分类">⠿</button><button data-action="select-group" data-id="${g.id}">${escape(g.title)} <small>${g.sites.length}</small></button><button class="mini" data-action="edit-group" data-id="${g.id}" aria-label="编辑 ${escape(g.title)} 分类">⋯</button></div>`,
-      )
-      .join("");
+    $(main, ".editor-groups").innerHTML =
+      `<div class="editor-group ${selected === "pinned" ? "active" : ""}"><button data-action="select-group" data-id="pinned">☆ 全部置顶 <small>${pinnedSites(history.value).length}</small></button></div>` +
+      history.value.groups
+        .map(
+          (g) =>
+            `<div class="editor-group ${selected === g.id ? "active" : ""}" data-group-id="${g.id}"><button class="drag-handle" data-drag="group" data-id="${g.id}" aria-label="拖动 ${escape(g.title)} 分类">⠿</button><button data-action="select-group" data-id="${g.id}">${escape(g.title)} <small>${g.sites.length}</small></button><button class="mini" data-action="edit-group" data-id="${g.id}" aria-label="编辑 ${escape(g.title)} 分类">⋯</button></div>`,
+        )
+        .join("");
     const panel = $(main, ".editor-list");
+    if (selected === "pinned") {
+      renderPinned(panel);
+      status();
+      return;
+    }
     if (selected === "settings") {
       renderSettings(panel);
       status();
@@ -231,6 +224,34 @@ export async function createEditor({ boot, releaseURL, toast, onPreview }) {
     panel.innerHTML = `<div class="editor-list-heading"><h3>${escape(group.title)} <small>· ${group.sites.length}</small></h3><button class="primary" data-action="add-site">＋ 网站</button></div><div class="site-sort-list" data-target-group="${group.id}">${group.sites.map((s, i) => `<div class="edit-site-row" data-site-id="${s.id}" data-target-group="${group.id}"><button class="drag-handle" data-drag="site" data-id="${s.id}" aria-label="拖动 ${escape(s.title)}">⠿</button><span class="site-icon ${boot.iconPaths[s.icon] ? "sprite" : ""}" data-icon="${escape(s.icon)}">${image(s)}</span><div class="edit-site-copy"><strong>${s.pinned ? "☆ " : ""}${escape(s.title)}</strong><small>${escape(s.description || s.url)}</small></div><div class="row-actions"><button data-action="site-up" data-id="${s.id}" aria-label="上移 ${escape(s.title)}" ${i === 0 ? "disabled" : ""}>↑</button><button data-action="site-down" data-id="${s.id}" aria-label="下移 ${escape(s.title)}" ${i === group.sites.length - 1 ? "disabled" : ""}>↓</button><button data-action="edit-site" data-id="${s.id}">编辑</button></div></div>`).join("") || '<p class="no-sites">这个分类还没有网站。添加一个，或从其他分类拖入。</p>'}</div>`;
     imageFallback(panel);
     status();
+  }
+  function renderPinned(panel) {
+    const pins = pinnedSites(history.value);
+    const groups = new Map(
+      history.value.groups.flatMap((g) => g.sites.map((s) => [s.id, g.title])),
+    );
+    panel.innerHTML = `<div class="editor-list-heading"><h3>全部置顶 <small>· ${pins.length}</small></h3></div><p class="help-text">拖动调整置顶顺序；网站仍保留在原分类。</p><label class="field"><span>搜索已有网站并加入置顶</span><input type="search" aria-label="搜索已有网站" placeholder="搜索名称、描述或网址"></label><div class="pin-search-results"></div><div class="pin-sort-list">${pins.map((s, i) => `<div class="edit-site-row" data-site-id="${s.id}" data-pin-id="${s.id}"><button class="drag-handle" data-drag="pin" data-id="${s.id}" aria-label="拖动 ${escape(s.title)} 置顶">⠿</button><span class="site-icon ${boot.iconPaths[s.icon] ? "sprite" : ""}" data-icon="${escape(s.icon)}">${image(s)}</span><div class="edit-site-copy"><strong>${escape(s.title)}</strong><small>${escape(groups.get(s.id))}</small></div><div class="row-actions"><button data-action="pin-up" data-id="${s.id}" aria-label="上移 ${escape(s.title)} 置顶" ${i === 0 ? "disabled" : ""}>↑</button><button data-action="pin-down" data-id="${s.id}" aria-label="下移 ${escape(s.title)} 置顶" ${i === pins.length - 1 ? "disabled" : ""}>↓</button><button data-action="unpin" data-id="${s.id}">取消置顶</button></div></div>`).join("") || '<p class="no-sites">还没有置顶网站，可在上方搜索添加。</p>'}</div>`;
+    const input = $(panel, "input"),
+      results = $(panel, ".pin-search-results");
+    input.value = pinQuery;
+    const draw = () => {
+      const query = (pinQuery = input.value.trim());
+      const sites = query
+        ? allSites(history.value).filter((s) => !s.pinned && matches(s, query))
+        : [];
+      results.innerHTML =
+        sites
+          .map(
+            (s) =>
+              `<div class="edit-site-row"><span class="site-icon ${boot.iconPaths[s.icon] ? "sprite" : ""}" data-icon="${escape(s.icon)}">${image(s)}</span><div class="edit-site-copy"><strong>${escape(s.title)}</strong><small>${escape(groups.get(s.id))}</small></div><button data-action="pin" data-id="${s.id}">加入置顶</button></div>`,
+          )
+          .join("") ||
+        (query ? '<p class="help-text">没有匹配的未置顶网站。</p>' : "");
+      imageFallback(results);
+    };
+    input.addEventListener("input", draw);
+    draw();
+    imageFallback(panel);
   }
   function currentGroupOptions(value, exclude = "") {
     return history.value.groups
@@ -419,7 +440,8 @@ export async function createEditor({ boot, releaseURL, toast, onPreview }) {
           newTab: true,
           tags: "",
           notice: "",
-          groupId: selected,
+          groupId:
+            selected === "pinned" ? history.value.groups[0]?.id : selected,
         };
     const value = restored?.values || original;
     let iconValue = value.icon;
@@ -430,6 +452,9 @@ export async function createEditor({ boot, releaseURL, toast, onPreview }) {
     const form = $(d, "form");
     const values = () => ({
       id: original.id,
+      ...(existing?.pinOrder !== undefined
+        ? { pinOrder: existing.pinOrder }
+        : {}),
       title: form.elements.title.value,
       description: form.elements.description.value,
       url: form.elements.url.value,
@@ -524,7 +549,10 @@ export async function createEditor({ boot, releaseURL, toast, onPreview }) {
               .filter(Boolean),
             icon: v.icon,
             iconText: v.iconText.trim(),
-            pinned: v.pinned,
+            pinned: existing?.pinned || false,
+            ...(existing?.pinOrder !== undefined
+              ? { pinOrder: existing.pinOrder }
+              : {}),
             newTab: v.newTab,
             tags: v.tags
               .split(/[,，]/)
@@ -542,11 +570,12 @@ export async function createEditor({ boot, releaseURL, toast, onPreview }) {
           if (old) old.sites = old.sites.filter((s) => s.id !== id);
           target.sites.push(site);
         }
-        assertValid(next);
-        await checkIcons(next);
+        const updated = setPinned(next, site.id, v.pinned);
+        assertValid(updated);
+        await checkIcons(updated);
         selected = target.id;
         working = null;
-        commit(next);
+        commit(updated);
         d.close();
       } catch (error) {
         $(d, ".form-error").textContent = error.message;
@@ -665,17 +694,19 @@ export async function createEditor({ boot, releaseURL, toast, onPreview }) {
     }
     drafts = drafts.filter(
       (d) =>
-        d.schemaVersion === 1 && (d.working || !equal(d.config, boot.config)),
+        d.schemaVersion === 1 &&
+        ((d.working && !equal(d.working.values, d.working.initial)) ||
+          !equal(d.config, d.baseConfig)),
     );
     if (!drafts.length) {
-      if (force) toast("没有其他未发布草稿。");
+      if (force) toast("没有其他未同步草稿。");
       return;
     }
     const own = drafts.find((d) => d.id === draftId);
     if (own) drafts = [own, ...drafts.filter((d) => d !== own)];
     const d = dialog(
       "form-dialog",
-      `<div class="dialog-heading"><h3>恢复未发布草稿</h3></div><div class="dialog-content"><p>草稿可能来自其他标签页或旧版本。恢复后仍会检查 GitHub 冲突。</p><label class="field"><span>选择草稿</span><select>${drafts.map((record, i) => `<option value="${i}">${escape(new Date(record.savedAt).toLocaleString())} · ${escape(record.config.settings.title)}</option>`).join("")}</select></label><p class="form-error" role="alert"></p></div><div class="dialog-actions"><button id="fresh">${force ? "取消" : "使用正式配置"}</button><button id="restore" class="primary">恢复草稿</button></div>`,
+      `<div class="dialog-heading"><h3>恢复未同步草稿</h3></div><div class="dialog-content"><p>草稿可能来自其他标签页或旧版本。恢复后仍会检查 GitHub 冲突。</p><label class="field"><span>选择草稿</span><select>${drafts.map((record, i) => `<option value="${i}">${escape(new Date(record.savedAt).toLocaleString())} · ${escape(record.config.settings.title)}</option>`).join("")}</select></label><p class="form-error" role="alert"></p></div><div class="dialog-actions"><button id="fresh">${force ? "取消" : "使用正式配置"}</button><button id="restore" class="primary">恢复草稿</button></div>`,
     );
     await new Promise((resolve) => {
       const fresh = () => {
@@ -707,7 +738,6 @@ export async function createEditor({ boot, releaseURL, toast, onPreview }) {
           history = new History(record.config, record.history);
           selected = record.selected;
           working = clone(record.working);
-          pending = record.publication;
           render();
           await persist();
           d.close();
@@ -741,22 +771,9 @@ export async function createEditor({ boot, releaseURL, toast, onPreview }) {
       busy = false;
     const d = dialog(
       "form-dialog",
-      `<form><div class="dialog-heading"><h3>提交到 GitHub</h3><button type="button" class="quiet" data-close aria-label="关闭发布">✕</button></div><div class="dialog-content"><p class="publish-note">配置将提交到独立分支并创建 PR。你在 GitHub 合并、Actions 成功部署后，其他设备才能获取正式修改。不会绕过分支保护。</p><label class="field"><span>GitHub Token</span><input type="password" name="credential" autocomplete="off" autocapitalize="off" spellcheck="false" required placeholder="仅本次操作使用"><small>推荐 fine-grained PAT：仅 zzp-home 仓库，Contents 和 Pull requests 写权限。Token 不保存到草稿或浏览器存储。</small></label><div class="publish-links"><a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener noreferrer">创建限权 Token ↗</a><a href="https://github.com/zzpice/zzp-home/actions" target="_blank" rel="noopener noreferrer">检查部署 ↗</a></div><p class="publish-status" role="status">${pending?.prUrl ? "已有发布申请：" : ""}</p><p class="form-error" role="alert"></p><div id="publish-result"></div><div id="conflict" hidden><p class="help-text">可以合并不重叠的字段。重叠修改会列出路径，请导出备份并在 GitHub 核对。</p><div class="row-actions"><button type="button" id="merge">合并云端修改</button><button type="button" id="remote">从云端重新开始</button></div><ul class="conflict-list"></ul><button type="button" id="conflict-export" class="text-button">导出当前草稿</button></div></div><div class="dialog-actions"><button type="button" data-close>关闭</button><button type="submit" class="primary">提交发布申请</button></div></form>`,
+      `<form><div class="dialog-heading"><h3>保存到 GitHub</h3><button type="button" class="quiet" data-close aria-label="关闭发布">✕</button></div><div class="dialog-content"><p class="publish-note">配置直接保存到 GitHub 正式配置，随后自动部署。其他设备在部署完成并更新页面后获取修改。</p><label class="field"><span>GitHub Token</span><input type="password" name="credential" autocomplete="off" autocapitalize="off" spellcheck="false" required placeholder="仅本次操作使用"><small>推荐 fine-grained PAT：仅 zzp-home 仓库，Contents 读写权限。Token 不保存到草稿或浏览器存储。</small></label><div class="publish-links"><a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener noreferrer">创建限权 Token ↗</a><a href="https://github.com/zzpice/zzp-home/actions" target="_blank" rel="noopener noreferrer">检查部署 ↗</a></div><p class="publish-status" role="status"></p><p class="form-error" role="alert"></p><div id="publish-result"></div><div id="conflict" hidden><p class="help-text">可以合并不重叠的字段。重叠修改会列出路径，请导出备份并在 GitHub 核对。</p><div class="row-actions"><button type="button" id="merge">合并云端修改</button><button type="button" id="remote">从云端重新开始</button></div><ul class="conflict-list"></ul><button type="button" id="conflict-export" class="text-button">导出当前草稿</button></div></div><div class="dialog-actions"><button type="button" data-close>关闭</button><button type="submit" class="primary">保存正式配置</button></div></form>`,
     );
     const form = $(d, "form");
-    const resultLink = (url) => {
-      const a = document.createElement("a");
-      a.href = url;
-      a.target = "_blank";
-      a.rel = "noopener noreferrer";
-      a.textContent = "打开 GitHub 发布申请 ↗";
-      $(d, "#publish-result").replaceChildren(a);
-    };
-    if (
-      pending?.prUrl &&
-      /^https:\/\/github\.com\/zzpice\/zzp-home\/pull\/\d+$/.test(pending.prUrl)
-    )
-      resultLink(pending.prUrl);
     const close = () => {
       if (busy) return;
       form.elements.credential.value = "";
@@ -779,37 +796,26 @@ export async function createEditor({ boot, releaseURL, toast, onPreview }) {
         form.elements.credential.value = "";
         for (const b of form.querySelectorAll("button,input"))
           b.disabled = true;
-        const result = await publisher.publish(
-          clone(history.value),
-          baseSha,
-          pending,
-          async (progress) => {
-            pending = progress;
-            $(d, ".publish-status").textContent = {
-              branch: "正在准备编辑分支…",
-              commit: "正在写入配置…",
-              "pull-request": "正在创建发布申请…",
-              submitted: "发布申请已提交。",
-            }[progress.phase];
-            await persist();
-          },
-        );
-        if (result.alreadyInMain) {
-          base = clone(result.remote.config);
-          baseSha = result.remote.sha;
-          pending = null;
-          await persist();
-          $(d, ".publish-status").textContent =
-            "配置已在 main。请检查 Actions 部署结果，再更新本站缓存。";
-        } else {
-          pending = result;
-          await persist();
-          resultLink(result.prUrl);
-          $(d, ".publish-status").textContent =
-            result.state === "closed"
-              ? "这个 PR 已关闭。请在 GitHub 确认合并与部署状态。"
-              : "发布申请已提交。请打开 GitHub 合并并等待 Actions 部署；本机草稿继续保留。";
-        }
+        $(d, ".publish-status").textContent = "正在保存正式配置…";
+        const result = await publisher.publish(clone(history.value), baseSha);
+        base = clone(result.remote.config);
+        baseSha = result.remote.sha;
+        history = new History(base);
+        render();
+        onPreview(clone(base), false);
+        await persist();
+        $(d, "#conflict").hidden = true;
+        $(d, ".publish-status").textContent = result.alreadyInMain
+          ? "配置已在 GitHub。部署完成后可检查更新。"
+          : "已保存到 GitHub，正在自动部署。本机草稿已同步。";
+        const link = document.createElement("a");
+        link.href = result.commit
+          ? "https://github.com/zzpice/zzp-home/commit/" + result.commit
+          : "https://github.com/zzpice/zzp-home/actions";
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.textContent = result.commit ? "查看保存记录 ↗" : "查看部署 ↗";
+        $(d, "#publish-result").replaceChildren(link);
       } catch (error) {
         $(d, ".form-error").textContent = error.message;
         if (error instanceof ConflictError) {
@@ -844,13 +850,12 @@ export async function createEditor({ boot, releaseURL, toast, onPreview }) {
         base = clone(remoteConflict.config);
         baseSha = remoteConflict.sha;
         history = new History(merged.value);
-        pending = null;
         render();
         await persist();
         $(d, "#conflict").hidden = true;
         $(d, ".form-error").textContent = "";
         $(d, ".publish-status").textContent =
-          "已合并不冲突的修改。重新输入 Token 可提交新申请。";
+          "已合并不冲突的修改。重新输入 Token 可保存正式配置。";
         remoteConflict = null;
       } catch (error) {
         $(d, ".form-error").textContent = error.message;
@@ -863,7 +868,6 @@ export async function createEditor({ boot, releaseURL, toast, onPreview }) {
         base = clone(remoteConflict.config);
         baseSha = remoteConflict.sha;
         history = new History(base);
-        pending = null;
         working = null;
         render();
         await persist();
@@ -910,14 +914,12 @@ export async function createEditor({ boot, releaseURL, toast, onPreview }) {
           break;
         case "undo":
           working = null;
-          pending = null;
           history.undo();
           render();
           schedule();
           break;
         case "redo":
           working = null;
-          pending = null;
           history.redo();
           render();
           schedule();
@@ -932,6 +934,25 @@ export async function createEditor({ boot, releaseURL, toast, onPreview }) {
           selected = id;
           render();
           break;
+        case "pin":
+        case "unpin":
+          commit(setPinned(history.value, id, action === "pin"));
+          break;
+        case "pin-up":
+        case "pin-down": {
+          const index = pinnedSites(history.value).findIndex(
+            (s) => s.id === id,
+          );
+          commit(
+            movePinned(
+              history.value,
+              id,
+              index + (action === "pin-up" ? -1 : 1),
+            ),
+          );
+          $(main, `[data-pin-id="${id}"] [data-action="${action}"]`)?.focus();
+          break;
+        }
         case "add-site":
           openSite();
           break;
@@ -994,7 +1015,6 @@ export async function createEditor({ boot, releaseURL, toast, onPreview }) {
     ) {
       event.preventDefault();
       if (!leaveSettings()) return;
-      pending = null;
       working = null;
       if (event.shiftKey) history.redo();
       else history.undo();
@@ -1020,7 +1040,7 @@ export async function createEditor({ boot, releaseURL, toast, onPreview }) {
       assertValid(config);
       await checkIcons(config);
       commit(config);
-      toast("配置已导入本机草稿，尚未发布。");
+      toast("配置已导入本机草稿，尚未同步。");
     } catch (error) {
       toast(error.message);
     } finally {
@@ -1067,9 +1087,11 @@ export async function createEditor({ boot, releaseURL, toast, onPreview }) {
     const target = document
       .elementFromPoint(event.clientX, event.clientY)
       ?.closest(
-        drag.type === "site"
-          ? "[data-site-id],[data-group-id],[data-target-group]"
-          : "[data-group-id]",
+        drag.type === "pin"
+          ? "[data-pin-id]"
+          : drag.type === "site"
+            ? "[data-site-id],[data-group-id],[data-target-group]"
+            : "[data-group-id]",
       );
     target?.classList.add("drop-target");
     if (!scrollFrame) {
@@ -1110,6 +1132,16 @@ export async function createEditor({ boot, releaseURL, toast, onPreview }) {
               i++;
             if (from < i) i--;
             commit(moveGroup(history.value, state.id, i));
+          }
+        } else if (state.type === "pin") {
+          const row = target?.closest("[data-pin-id]");
+          if (row && row.dataset.pinId !== state.id) {
+            const pins = pinnedSites(history.value);
+            let index = pins.findIndex((s) => s.id === row.dataset.pinId);
+            const rect = row.getBoundingClientRect();
+            if (event.clientY > rect.top + rect.height / 2) index++;
+            if (pins.findIndex((s) => s.id === state.id) < index) index--;
+            commit(movePinned(history.value, state.id, index));
           }
         } else {
           const row = target?.closest("[data-site-id]"),

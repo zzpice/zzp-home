@@ -12,7 +12,6 @@ const config = JSON.parse(
   fs.readFileSync(new URL("../data/navigation.json", import.meta.url)),
 );
 const SHA = "a".repeat(40),
-  HEAD = "b".repeat(40),
   COMMIT = "c".repeat(40);
 const response = (value, status = 200) =>
   new Response(JSON.stringify(value), {
@@ -24,75 +23,65 @@ function fake({
   changed = false,
   fail = "",
   lose = false,
+  race = false,
+  reject = 0,
 } = {}) {
   const calls = [];
-  let branch = false,
-    branchConfig = clone(config),
-    pr = null,
-    failed = false;
+  let remoteConfig = clone(config),
+    sha = changed ? "d".repeat(40) : SHA;
   const fetcher = async (url, options) => {
     const u = new URL(url),
       path = u.pathname.replace("/repos/zzpice/zzp-home", "");
     calls.push({ path, method: options.method, body: options.body });
     assert.ok(options.headers.Authorization.startsWith("Bearer "));
     assert.equal(u.origin, "https://api.github.com");
+    assert.equal(options.redirect, "error");
     if (fail && path === fail) return response({}, 401);
     if (path === "") return response({ permissions: { push: permission } });
-    if (path === "/git/ref/heads/main")
-      return response({ object: { sha: HEAD } });
-    if (path.startsWith("/git/ref/heads/nav/edit-"))
-      return branch ? response({ object: { sha: COMMIT } }) : response({}, 404);
-    if (path === "/git/refs") {
-      branch = true;
-      return response({ object: { sha: HEAD } }, 201);
-    }
     if (path === "/contents/data/navigation.json") {
       if (options.method === "PUT") {
-        branchConfig = JSON.parse(
-          Buffer.from(JSON.parse(options.body).content, "base64").toString(),
-        );
-        if (lose && !failed) {
-          failed = true;
-          throw Error("lost response");
+        if (reject) return response({}, reject);
+        if (race) {
+          remoteConfig.settings.title = "Other device";
+          sha = "d".repeat(40);
+          return response({}, 409);
         }
-        return response({ commit: { sha: COMMIT } });
+        const body = JSON.parse(options.body);
+        assert.equal(body.branch, "main");
+        assert.equal(body.sha, sha);
+        remoteConfig = JSON.parse(
+          Buffer.from(body.content, "base64").toString(),
+        );
+        sha = COMMIT;
+        if (lose) throw Error("lost response");
+        return response({ content: { sha }, commit: { sha: COMMIT } });
       }
-      const ref = u.searchParams.get("ref");
+      assert.equal(u.searchParams.get("ref"), "main");
       return response({
         type: "file",
         encoding: "base64",
-        sha: changed && ref === HEAD ? "d".repeat(40) : SHA,
-        content: toBase64(JSON.stringify(ref === HEAD ? config : branchConfig)),
+        sha,
+        content: toBase64(JSON.stringify(remoteConfig)),
       });
-    }
-    if (path === "/pulls") {
-      if (options.method === "GET") return response(pr ? [pr] : []);
-      pr = {
-        html_url: "https://github.com/zzpice/zzp-home/pull/123",
-        number: 123,
-        state: "open",
-      };
-      return response(pr, 201);
     }
     throw Error("unexpected path " + path);
   };
   return { fetcher, calls };
 }
-test("publish only writes config on an isolated branch and creates PR", async () => {
+test("save writes only navigation to main with expected file SHA", async () => {
   const api = fake(),
     client = new GitHubPublisher("example_test_credential", api.fetcher);
   const draft = clone(config);
   draft.settings.subtitle = "Updated";
-  let pending;
-  const result = await client.publish(draft, SHA, null, async (p) => {
-    pending = p;
-  });
-  assert.equal(result.prUrl, "https://github.com/zzpice/zzp-home/pull/123");
-  const write = api.calls.find((c) => c.method === "PUT");
-  assert.ok(JSON.parse(write.body).branch.startsWith("nav/edit-"));
-  assert.notEqual(JSON.parse(write.body).branch, "main");
-  assert.equal(pending.phase, "submitted");
-  assert.equal(JSON.stringify(pending).includes("credential"), false);
+  const result = await client.publish(draft, SHA);
+  assert.equal(result.commit, COMMIT);
+  assert.deepEqual(result.remote.config, draft);
+  assert.equal(result.remote.sha, COMMIT);
+  assert.equal(api.calls.filter((c) => c.method === "PUT").length, 1);
+  assert.equal(
+    api.calls.some((c) => /pulls|git\//.test(c.path)),
+    false,
+  );
   client.dispose();
   assert.equal(client.token, "");
 });
@@ -113,33 +102,18 @@ test("changed main config surfaces conflict without any write", async () => {
   await assert.rejects(() => client.publish(draft, SHA), ConflictError);
   assert.equal(api.calls.filter((c) => c.method !== "GET").length, 0);
 });
-test("lost commit response resumes idempotently without duplicate commits or PRs", async () => {
+test("lost save response retries without a duplicate commit or persisted progress", async () => {
   const api = fake({ lose: true }),
     client = new GitHubPublisher("example", api.fetcher);
   const draft = clone(config);
   draft.settings.subtitle = "New";
-  let saved;
-  await assert.rejects(
-    () =>
-      client.publish(draft, SHA, null, async (p) => {
-        saved = p;
-      }),
-    /网络/,
-  );
-  const result = await client.publish(draft, SHA, saved, async (p) => {
-    saved = p;
-  });
-  assert.equal(result.phase, "submitted");
-  await client.publish(draft, SHA, saved);
+  await assert.rejects(() => client.publish(draft, SHA), /网络/);
+  const result = await client.publish(draft, SHA);
+  assert.equal(result.alreadyInMain, true);
   assert.equal(api.calls.filter((c) => c.method === "PUT").length, 1);
-  assert.equal(
-    api.calls.filter((c) => c.path === "/pulls" && c.method === "POST").length,
-    1,
-  );
-  assert.equal(api.calls.filter((c) => c.path === "/git/refs").length, 1);
 });
 test("401 and network interruption are clear, safe errors", async () => {
-  const api = fake({ fail: "/git/ref/heads/main" }),
+  const api = fake({ fail: "/contents/data/navigation.json" }),
     client = new GitHubPublisher("example", api.fetcher);
   await assert.rejects(
     () => client.publish(config, SHA),
@@ -151,7 +125,7 @@ test("401 and network interruption are clear, safe errors", async () => {
   await assert.rejects(() => disconnected.remote(), /网络中断/);
 });
 
-test("unchanged configuration is already in main and never creates an empty PR", async () => {
+test("unchanged configuration is already in main and never creates an empty commit", async () => {
   const api = fake(),
     client = new GitHubPublisher("example", api.fetcher);
   const result = await client.publish(config, SHA);
@@ -159,23 +133,29 @@ test("unchanged configuration is already in main and never creates an empty PR",
   assert.equal(api.calls.filter((c) => c.method !== "GET").length, 0);
 });
 
-test("repository rule rejection preserves branch progress and never falls back to main", async () => {
-  const api = fake(),
-    client = new GitHubPublisher("example", (url, options) => {
-      if (new URL(url).pathname.endsWith("/git/refs")) return response({}, 422);
-      return api.fetcher(url, options);
-    }),
-    draft = clone(config);
-  draft.settings.subtitle = "Needs approval";
-  let progress;
+test("concurrent save after preflight surfaces newest config without overwriting it", async () => {
+  const api = fake({ race: true }),
+    client = new GitHubPublisher("example", api.fetcher);
+  const draft = clone(config);
+  draft.settings.subtitle = "Local edit";
   await assert.rejects(
-    () =>
-      client.publish(draft, SHA, null, async (p) => {
-        progress = p;
-      }),
-    (e) => e instanceof APIError && e.status === 422,
+    () => client.publish(draft, SHA),
+    (e) =>
+      e instanceof ConflictError &&
+      e.remote.config.settings.title === "Other device",
   );
-  assert.match(progress.branch, /^nav\/edit-/);
-  assert.equal(progress.phase, "branch");
-  assert.equal(api.calls.filter((c) => c.method === "PUT").length, 0);
+  assert.equal(api.calls.filter((c) => c.method === "PUT").length, 1);
+});
+test("repository rules reject the write without branch creation or fallback", async () => {
+  for (const code of [403, 422]) {
+    const api = fake({ reject: code }),
+      client = new GitHubPublisher("example", api.fetcher);
+    const draft = clone(config);
+    draft.settings.subtitle = "Needs permission";
+    await assert.rejects(
+      () => client.publish(draft, SHA),
+      (e) => e instanceof APIError && e.status === code,
+    );
+    assert.equal(api.calls.filter((c) => c.method !== "GET").length, 1);
+  }
 });

@@ -187,7 +187,7 @@ func Build(root, out, assets string) (BuildResult, error) {
 	}
 	files["icons.json"] = idxRaw
 	// Preserve upstream source records and license notices with derived deployment copies.
-	for _, name := range []string{"icons/README.md", "icons/SOURCES.md", "icons/navigation-sources.json", "icons/licenses/oasisic-mit.txt", "icons/licenses/dashboard-icons-apache-2.0.txt", "icons/licenses/icongo-mit.txt", "icons/licenses/global-bank-logos-mit.txt", "icons/licenses/selfhst-cc-by-4.0.txt", "icons/licenses/simple-icons-cc0.txt"} {
+	for _, name := range []string{"icons/README.md", "icons/SOURCES.md", "icons/navigation-sources.json", "icons/licenses/oasisic-mit.txt", "icons/licenses/dashboard-icons-apache-2.0.txt", "icons/licenses/icongo-mit.txt", "icons/licenses/global-bank-logos-mit.txt", "icons/licenses/selfhst-cc-by-4.0.txt", "icons/licenses/simple-icons-cc0.txt", "icons/licenses/s-ui-frontend-gpl-3.0.txt"} {
 		b, e := assetBytes(root, assets, idx, name, "")
 		if e != nil {
 			return result, e
@@ -261,15 +261,10 @@ func Build(root, out, assets string) (BuildResult, error) {
 		if e != nil {
 			return result, e
 		}
-		pinned := []config.Site{}
+		pinned := c.PinnedSites()
 		total := 0
 		for _, g := range c.Groups {
 			total += len(g.Sites)
-			for _, s := range g.Sites {
-				if s.Pinned {
-					pinned = append(pinned, s)
-				}
-			}
 		}
 		var rendered strings.Builder
 		data := map[string]any{"Config": c, "Projects": projects, "Page": page, "Prefix": prefix, "Version": version, "Canonical": canonical, "Bootstrap": template.JS(boot), "ThemeScript": template.JS(themeScript), "CSPHash": cspHash, "Pinned": pinned, "Total": total}

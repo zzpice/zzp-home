@@ -2,14 +2,16 @@
   "archiveSHA256": "ec20792505e8d5801b909f749dbe441d913af82843cb0ecae465f6bb08f68513",
   "matchedLocalReferences": 89,
   "matchedUniqueFiles": 84,
-  "sourceFileCount": 68,
+  "sourceFileCount": 76,
   "sourceKinds": {
-    "library": 19,
-    "uploaded": 30,
-    "official-favicon": 15,
-    "generated": 4
+    "library": 20,
+    "uploaded": 31,
+    "official-favicon": 19,
+    "generated": 4,
+    "reconstructed": 1,
+    "inline-svg": 1
   },
-  "genericEntries": 17,
+  "genericEntries": 9,
   "entries": [
     {
       "id": "sp-01-001",
@@ -368,9 +370,9 @@
         47
       ],
       "originalSHA256": "ae7bd84e0d50077ebb0030dd9aa04a0c623b56b7b7d6ae2186842ae2c0266c45",
-      "selectedIcon": "icons/self-hosted/private-service.png",
-      "selectedSource": "OpenAI ImageGen / exec-fe90524f-8267-421e-99bd-6daf911337ea",
-      "decision": "采用清晰通用图案；原图过小、模糊、为截图或缺乏可靠品牌素材"
+      "selectedIcon": "icons/self-hosted/s-ui.png",
+      "selectedSource": "https://raw.githubusercontent.com/alireza0/s-ui-frontend/e4525297b002c1c3be234cc1c9695ef84be741a0/public/assets/icon-512.png",
+      "decision": "恢复原品牌图形，采用更清晰的原站素材"
     },
     {
       "id": "sp-02-016",
@@ -449,9 +451,9 @@
         48
       ],
       "originalSHA256": "61875b9f18310c24550ccb4f4379998a77fd372491a7e99000d6edbb25498a2e",
-      "selectedIcon": "icons/media/media-library.png",
-      "selectedSource": "OpenAI ImageGen / exec-861a1412-7397-45d7-8c62-e5a86fe64f73",
-      "decision": "采用清晰通用图案；原图过小、模糊、为截图或缺乏可靠品牌素材"
+      "selectedIcon": "icons/media/chdbits.png",
+      "selectedSource": "https://ptchdbits.co/chdbits.png",
+      "decision": "保留官网红黑品牌字样；原始尺寸为 245×110，标准化放大不宣称恢复新细节。"
     },
     {
       "id": "sp-03-003",
@@ -491,9 +493,9 @@
         48
       ],
       "originalSHA256": "cc005065c325c60347816a6bfac7993fdef881e88e93d198331370a0a759296f",
-      "selectedIcon": "icons/media/media-library.png",
-      "selectedSource": "OpenAI ImageGen / exec-861a1412-7397-45d7-8c62-e5a86fe64f73",
-      "decision": "采用清晰通用图案；原图过小、模糊、为截图或缺乏可靠品牌素材"
+      "selectedIcon": "icons/media/agsv.png",
+      "selectedSource": "https://www.agsvpt.com/pic/login_left.png",
+      "decision": "官网登录页所用高清徽章，与归档 favicon 核对相同山形、字母和圆框。"
     },
     {
       "id": "sp-03-006",
@@ -768,9 +770,9 @@
       "originalAvailable": false,
       "originalSize": null,
       "originalSHA256": null,
-      "selectedIcon": "icons/productivity/knowledge-cards.png",
-      "selectedSource": "OpenAI ImageGen / exec-4e438255-2910-4a78-afea-07e69971064a",
-      "decision": "采用清晰通用图案；原图过小、模糊、为截图或缺乏可靠品牌素材"
+      "selectedIcon": "icons/productivity/kikkua.png",
+      "selectedSource": "https://kikkua.online/ (inline favicon SVG)",
+      "decision": "正确解析原站 data:image/svg+xml favicon，在 Chromium 按原 SVG 和系统 emoji 字形渲染；不推测或生成品牌。"
     },
     {
       "id": "sp-06-001",
@@ -852,9 +854,9 @@
         325
       ],
       "originalSHA256": "359e7f6cf8b0a12f7f739e23107892e79f906d0a71dd81529f729329871d8adf",
-      "selectedIcon": "icons/self-hosted/private-service.png",
-      "selectedSource": "OpenAI ImageGen / exec-fe90524f-8267-421e-99bd-6daf911337ea",
-      "decision": "采用清晰通用图案；原图过小、模糊、为截图或缺乏可靠品牌素材"
+      "selectedIcon": "icons/cloud/bandwagonhost.png",
+      "selectedSource": "https://bandwagonhost.com/templates/organicbandwagon/images/logo4.png",
+      "decision": "保留官网完整横向品牌字样，不采用归档中的网页截图。"
     },
     {
       "id": "sp-07-002",
@@ -866,9 +868,9 @@
         148
       ],
       "originalSHA256": "903b1912296538ad5e198bd305296685ab713db3778bfe5ebad90f7f67b6ad95",
-      "selectedIcon": "icons/self-hosted/private-service.png",
-      "selectedSource": "OpenAI ImageGen / exec-fe90524f-8267-421e-99bd-6daf911337ea",
-      "decision": "采用清晰通用图案；原图过小、模糊、为截图或缺乏可靠品牌素材"
+      "selectedIcon": "icons/cloud/dmit.png",
+      "selectedSource": "https://www.dmit.io/templates/dmit_theme_2020/dmit/assets/images/dmit_logo_with_text.svg",
+      "decision": "从官网 SVG 的原始 viewBox 提取左侧方形标识，保留原路径、底色和内嵌图形；Sharp 光栅化，无重绘。"
     },
     {
       "id": "sp-07-003",
@@ -1174,9 +1176,9 @@
         474
       ],
       "originalSHA256": "e67283ff4579242f3902a2e89ad4f4f3b8257a6063671756db802782eca5cddb",
-      "selectedIcon": "icons/productivity/knowledge-cards.png",
-      "selectedSource": "OpenAI ImageGen / exec-4e438255-2910-4a78-afea-07e69971064a",
-      "decision": "采用清晰通用图案；原图过小、模糊、为截图或缺乏可靠品牌素材"
+      "selectedIcon": "icons/adult/jinji-books.png",
+      "selectedSource": "uploads.zip!2025/8/2/2bb46adf380535e94f49a18032b947d7.jpg",
+      "decision": "恢复用户归档中的橙底白色 j，仅标准化尺寸与圆角。来源不标称为网站官方品牌。"
     },
     {
       "id": "sp-11-008",
@@ -1216,9 +1218,9 @@
         48
       ],
       "originalSHA256": "77ba87f988860da018e51fa65f02b422a6cd03a42c6156e412ad7f4ebcffc751",
-      "selectedIcon": "icons/media/media-library.png",
-      "selectedSource": "OpenAI ImageGen / exec-861a1412-7397-45d7-8c62-e5a86fe64f73",
-      "decision": "采用清晰通用图案；原图过小、模糊、为截图或缺乏可靠品牌素材"
+      "selectedIcon": "icons/adult/missav.png",
+      "selectedSource": "uploads.zip!2025/8/2/0cdfcfcd63e01651c0e51b6456f499ab.ico",
+      "decision": "原图为确定的粉色圆形与白色播放三角；取样主色 #fe628e，按原轮廓位置确定性矢量重建、光栅化，未生成其他细节。"
     },
     {
       "id": "sp-11-011",
@@ -1276,5 +1278,11 @@
       "selectedSource": "OpenAI ImageGen / exec-861a1412-7397-45d7-8c62-e5a86fe64f73",
       "decision": "采用清晰通用图案；原图过小、模糊、为截图或缺乏可靠品牌素材"
     }
-  ]
+  ],
+  "secondPass": {
+    "date": "2026-10-08",
+    "replacedEntries": 8,
+    "retainedGenericEntries": 9,
+    "decisions": "低清复杂图案、截图、带图库水印的非品牌素材或无法核实的标识继续保留现状；不移除水印，不推测品牌。"
+  }
 }

@@ -1,6 +1,6 @@
-import { allSites, matches, assertValid } from "./model.js";
+import { allSites, pinnedSites, matches, assertValid } from "./model.js";
 const boot = JSON.parse(document.querySelector("#bootstrap").textContent);
-const official = assertValid(boot.config);
+let official = assertValid(boot.config);
 const baseURL = new URL("../../", import.meta.url);
 const releaseURL = new URL("./", import.meta.url);
 const $ = (selector) => document.querySelector(selector);
@@ -161,7 +161,7 @@ function renderConfig(config, isPreview = false) {
   $(".brand strong").textContent = current.settings.title;
   $(".introduction>p:last-child").textContent = current.settings.subtitle;
   const sites = allSites(current),
-    pinned = sites.filter((s) => s.pinned);
+    pinned = pinnedSites(current);
   const content = $("#navigation-content");
   content.replaceChildren();
   if (pinned.length)
@@ -209,7 +209,8 @@ function filter(updateURL = false) {
     group = "";
   const sites = allSites(current),
     lookup = new Map(sites.map((s) => [s.id, s])),
-    order = new Map(sites.map((s, i) => [s.id, i]));
+    order = new Map(sites.map((s, i) => [s.id, i])),
+    pinOrder = new Map(pinnedSites(current).map((s, i) => [s.id, i]));
   let total = 0;
   for (const el of document.querySelectorAll(
     "#navigation-content .site-section",
@@ -232,7 +233,8 @@ function filter(updateURL = false) {
           ? lookup
               .get(a.dataset.site)
               .title.localeCompare(lookup.get(b.dataset.site).title, "zh-CN")
-          : order.get(a.dataset.site) - order.get(b.dataset.site),
+          : (pinned ? pinOrder : order).get(a.dataset.site) -
+            (pinned ? pinOrder : order).get(b.dataset.site),
       )
       .forEach((card) => grid.append(card));
     el.hidden = !eligible || count === 0;
@@ -318,7 +320,10 @@ if (boot.page === "home") {
           baseURL,
           releaseURL,
           toast,
-          onPreview: (c) => renderConfig(c, true),
+          onPreview: (c, isPreview = true) => {
+            if (!isPreview) official = c;
+            renderConfig(c, isPreview);
+          },
         });
       }
       await editor.open();
