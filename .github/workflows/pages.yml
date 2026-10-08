@@ -29,7 +29,7 @@ jobs:
       - name: Assemble public site
         run: |
           mkdir -p build/pages
-          cp -R index.html style.css icons manifest.webmanifest CNAME .nojekyll build/pages/
+          cp -R index.html style.css theme.js icons manifest.webmanifest manifest-dark.webmanifest CNAME .nojekyll build/pages/
       - run: SITE_ROOT=build/pages node scripts/browser-check.cjs
       - uses: actions/upload-pages-artifact@v5
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'

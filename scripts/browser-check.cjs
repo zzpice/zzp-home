@@ -4,7 +4,7 @@ const http = require('node:http');
 const fs = require('node:fs');
 const path = require('node:path');
 const root = path.resolve(process.env.SITE_ROOT || path.join(__dirname, '..'));
-const types = {'.html':'text/html', '.css':'text/css', '.svg':'image/svg+xml', '.png':'image/png', '.webp':'image/webp', '.webmanifest':'application/manifest+json'};
+const types = {'.html':'text/html', '.js':'text/javascript', '.css':'text/css', '.svg':'image/svg+xml', '.png':'image/png', '.webp':'image/webp', '.webmanifest':'application/manifest+json'};
 const server = http.createServer((req, res) => {
   const url = new URL(req.url, 'http://localhost');
   const name = decodeURIComponent(url.pathname).replace(/^\/zzp-home\//, '/');
@@ -15,6 +15,37 @@ const server = http.createServer((req, res) => {
   res.setHeader('Content-Type', types[path.extname(file)] || 'application/octet-stream');
   res.end(fs.readFileSync(file));
 });
+
+async function checkThemes(page, url, initial) {
+  const select = page.locator('#appearance');
+  const expectTheme = async (mode, theme) => {
+    await page.waitForFunction(({mode,theme}) => document.documentElement.dataset.themeMode === mode && document.documentElement.dataset.theme === theme, {mode,theme});
+    assert.equal(await page.locator('meta[name="theme-color"]').getAttribute('content'), theme === 'dark' ? '#17191b' : '#faf9f6');
+    assert.equal(await page.locator('html').evaluate(el => getComputedStyle(el).colorScheme), theme);
+  };
+  for (const colorScheme of ['dark','light']) {
+    await page.emulateMedia({colorScheme});
+    await expectTheme('system', colorScheme);
+  }
+  await select.selectOption('dark');
+  await expectTheme('dark', 'dark');
+  await page.reload();
+  await expectTheme('dark', 'dark');
+  const dark = await page.evaluate(async () => await (await fetch(document.querySelector('link[rel="manifest"]').href)).json());
+  const tab = await page.context().newPage();
+  await tab.goto(url);
+  assert.equal(await tab.locator('#appearance').inputValue(), 'dark');
+  await tab.locator('#appearance').selectOption('light');
+  await expectTheme('light', 'light');
+  await tab.close();
+  const light = await page.evaluate(async () => await (await fetch(document.querySelector('link[rel="manifest"]').href)).json());
+  for (const key of ['id','scope','start_url','icons']) assert.deepEqual(dark[key], light[key]);
+  assert.equal(dark.background_color, '#17191b');
+  await select.selectOption('system');
+  assert.equal(await page.evaluate(() => localStorage.getItem('zzp-home-theme')), null);
+  await page.emulateMedia({colorScheme:initial});
+  await expectTheme('system', initial);
+}
 
 (async () => {
   await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
@@ -40,6 +71,7 @@ const server = http.createServer((req, res) => {
           assert.equal(labels, true);
           const hrefs = await page.locator('main a').evaluateAll(links => links.map(link => link.href));
           assert.equal(hrefs.every(href => /^https:\/\/(?:zzpice\.github\.io|github\.com)\//.test(href)), true);
+          if (width === 1440) await checkThemes(page, url, colorScheme);
           await page.keyboard.press('Tab');
           // WebKit follows the host's full-keyboard-access preference for links.
           if (name === 'WebKit') await page.locator('.skip-link').focus();

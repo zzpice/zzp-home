@@ -10,21 +10,33 @@
       name="description"
       content="zzpice 的项目入口：Anki 模板与制卡、基金再平衡、图片资源，以及公开的网络规则与配置。"
     />
-    <meta
-      name="theme-color"
-      content="#faf9f6"
-      media="(prefers-color-scheme: light)"
-    />
-    <meta
-      name="theme-color"
-      content="#17191b"
-      media="(prefers-color-scheme: dark)"
-    />
+    <meta name="theme-color" content="#faf9f6" />
+    <meta name="color-scheme" content="light dark" />
+    <script>
+      // Paint the saved appearance even while the theme controller is downloading.
+      (() => {
+        let mode = 'system';
+        try {
+          const saved = localStorage.getItem('zzp-home-theme');
+          if (saved === 'light' || saved === 'dark') mode = saved;
+        } catch {}
+        const theme = mode === 'system' ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : mode;
+        const root = document.documentElement;
+        const color = theme === 'dark' ? '#17191b' : '#faf9f6';
+        root.dataset.themeMode = mode;
+        root.dataset.theme = theme;
+        root.style.colorScheme = theme;
+        root.style.backgroundColor = color;
+        document.querySelector('meta[name="theme-color"]').content = color;
+        document.querySelector('meta[name="color-scheme"]').content = theme;
+      })();
+    </script>
     <meta name="apple-mobile-web-app-title" content="ZZP 项目" />
     <title>ZZP · 项目入口</title>
     <link rel="icon" href="./icons/icon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="./icons/icon-180.png" />
     <link rel="manifest" href="./manifest.webmanifest" />
+    <script src="./theme.js"></script>
     <link rel="stylesheet" href="./style.css?v=20261008visual" />
     <link rel="canonical" href="https://zzp.moe/" />
     <meta property="og:type" content="website" />
@@ -65,13 +77,20 @@
             <p>工具与资源</p>
           </div>
         </div>
-        <a
-          class="github-link"
-          href="https://github.com/zzpice"
-          target="_blank"
-          rel="noopener noreferrer"
-          >GitHub<span class="sr-only">（新标签页）</span></a
-        >
+        <div class="header-actions">
+          <select id="appearance" aria-label="外观" hidden>
+            <option value="system">跟随系统</option>
+            <option value="light">浅色</option>
+            <option value="dark">深色</option>
+          </select>
+          <a
+            class="github-link"
+            href="https://github.com/zzpice"
+            target="_blank"
+            rel="noopener noreferrer"
+            >GitHub<span class="sr-only">（新标签页）</span></a
+          >
+        </div>
       </header>
 
       <main id="main" tabindex="-1">
