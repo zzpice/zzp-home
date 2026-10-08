@@ -15,7 +15,7 @@ const config = JSON.parse(
 const groupCount = config.groups.length;
 const dailyCount = config.groups[0].sites.length;
 const pinCount = config.groups.flatMap((g) => g.sites).filter((s) => s.pinned).length;
-const embyCount = config.groups.flatMap((g) => g.sites).filter((s) => s.title === "Emby").reduce((n, s) => n + 1 + Number(s.pinned), 0);
+const embyCount = config.groups.flatMap((g) => g.sites).filter((s) => s.title === "Emby").length;
 const networkCount = config.groups.find((g) => g.id === "network").sites.length;
 const transferCount = config.groups.filter((g) => ["media", "community"].includes(g.id)).reduce((n, g) => n + g.sites.length, 0);
 const count = config.groups.reduce((n, g) => n + g.sites.length, 0);
