@@ -824,6 +824,18 @@ async function updates(browser) {
           messages: window.updateMessages,
           buttonDisabled: document.querySelector("#apply-update").disabled,
           waiting: !!(await navigator.serviceWorker.getRegistration()).waiting,
+          registrations: await Promise.all(
+            (await navigator.serviceWorker.getRegistrations()).map(
+              async (r) => ({
+                scope: r.scope,
+                waiting: r.waiting?.state,
+                script: r.waiting?.scriptURL,
+              }),
+            ),
+          ),
+          appURL: performance
+            .getEntriesByType("resource")
+            .find((r) => r.name.endsWith("/app.js"))?.name,
           release: JSON.parse(document.querySelector("#bootstrap").textContent)
             .release,
         })),

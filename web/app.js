@@ -426,7 +426,8 @@ $("#apply-update").addEventListener("click", async (event) => {
   button.disabled = true;
   try {
     if (editor) await editor.prepareUpdate();
-    const latest = await navigator.serviceWorker.getRegistration(baseURL.href);
+    // Select the registration for this document, including subpath deployments.
+    const latest = await navigator.serviceWorker.getRegistration();
     const waiting = latest?.waiting;
     if (!waiting) throw Error("候选版本已变化，请检查更新后重试。");
     registration = latest;
