@@ -28,7 +28,7 @@ func TestBuildDeterminismAndWhitelist(t *testing.T) {
 	if e != nil {
 		t.Fatal(e)
 	}
-	if !bytes.Contains(html, []byte(`id="bootstrap"`)) || !bytes.Contains(html, []byte(`data-site="`)) {
+	if !bytes.Contains(html, []byte(`id="bootstrap"`)) {
 		t.Fatal("missing prerender / data snapshot")
 	}
 	match := regexp.MustCompile(`<script[^>]*id="bootstrap"[^>]*>([^<]*)</script>`).FindSubmatch(html)
@@ -49,6 +49,13 @@ func TestBuildDeterminismAndWhitelist(t *testing.T) {
 	source, e := config.Decode(sourceBytes)
 	if e != nil || !bytes.Equal(config.Encode(source), config.Encode(snapshot)) {
 		t.Fatal("prerender must preserve complete approved URLs and configuration")
+	}
+	for _, group := range source.Groups {
+		for _, site := range group.Sites {
+			if !bytes.Contains(html, []byte(`data-site="`+site.ID+`"`)) {
+				t.Fatalf("missing prerendered site %s", site.ID)
+			}
+		}
 	}
 	second, e := Build(root, out, os.Getenv("ASSETS_DIR"))
 	if e != nil {

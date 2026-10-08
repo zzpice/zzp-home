@@ -20,31 +20,52 @@ func realConfig(t *testing.T) Config {
 	}
 	return c
 }
-func TestMigratedInventory(t *testing.T) {
+
+// The published inventory is editable; only the configuration contract is fixed.
+func TestNavigationConfig(t *testing.T) {
 	c := realConfig(t)
-	count, alternates, pinned := 0, 0, 0
-	names := map[string]int{}
-	for _, g := range c.Groups {
-		for _, s := range g.Sites {
-			count++
-			alternates += len(s.AlternateURLs)
-			if s.Pinned {
-				pinned++
-			}
-			names[s.Title]++
+	if _, err := Decode(Encode(c)); err != nil {
+		t.Fatal(err)
+	}
+}
+
+func fixtureConfig(t *testing.T) Config {
+	t.Helper()
+	b, err := os.ReadFile("../../tests/fixtures/navigation.json")
+	if err != nil {
+		t.Fatal(err)
+	}
+	c, err := Decode(b)
+	if err != nil {
+		t.Fatal(err)
+	}
+	return c
+}
+
+func TestEditableInventory(t *testing.T) {
+	c := fixtureConfig(t)
+	for gi := range c.Groups {
+		for si := range c.Groups[gi].Sites {
+			c.Groups[gi].Sites[si].AlternateURLs = []string{}
+			c.Groups[gi].Sites[si].Pinned = false
 		}
 	}
-	if count != 91 || len(c.Groups) != 7 || alternates != 2 || pinned != 11 {
-		t.Fatalf("inventory: %d sites, %d groups, %d alternate links, %d pinned", count, len(c.Groups), alternates, pinned)
+	c.Groups = c.Groups[:1]
+	c.Groups[0].Sites = c.Groups[0].Sites[:1]
+	if _, err := Decode(Encode(c)); err != nil {
+		t.Fatal(err)
 	}
-	for _, name := range []string{"飞牛 fnOS", "Emby", "SMBox"} {
-		if names[name] != 2 {
-			t.Fatalf("lost same-name endpoints: %s", name)
-		}
+	c.Groups[0].Sites = []Site{}
+	if _, err := Decode(Encode(c)); err != nil {
+		t.Fatal(err)
+	}
+	c.Groups = []Group{}
+	if _, err := Decode(Encode(c)); err != nil {
+		t.Fatal(err)
 	}
 }
 func TestPinnedOrder(t *testing.T) {
-	c := realConfig(t)
+	c := fixtureConfig(t)
 	pins := c.PinnedSites()
 	first := pins[0].ID
 	last := 1999
@@ -118,7 +139,7 @@ func TestApprovedSubStoreRouteRemainsPublic(t *testing.T) {
 	}
 }
 func TestStrictConfig(t *testing.T) {
-	c := realConfig(t)
+	c := fixtureConfig(t)
 	b := Encode(c)
 	if _, e := Decode(append(b, []byte(" {}")...)); e == nil {
 		t.Fatal("accepted trailing JSON")
@@ -135,7 +156,7 @@ func TestStrictConfig(t *testing.T) {
 		t.Fatal("accepted duplicate ID")
 	}
 	for _, reserved := range []string{"pinned", "settings"} {
-		c := realConfig(t)
+		c := fixtureConfig(t)
 		c.Groups[0].ID = reserved
 		if c.Validate() == nil {
 			t.Fatal("accepted reserved view as group ID")
@@ -148,7 +169,7 @@ func TestStrictConfig(t *testing.T) {
 func TestRequiredFieldsDoNotBecomeSilentDefaults(t *testing.T) {
 	for _, value := range []string{"missing", "null"} {
 		var document map[string]any
-		json.Unmarshal(Encode(realConfig(t)), &document)
+		json.Unmarshal(Encode(fixtureConfig(t)), &document)
 		site := document["groups"].([]any)[0].(map[string]any)["sites"].([]any)[0].(map[string]any)
 		if value == "missing" {
 			delete(site, "newTab")

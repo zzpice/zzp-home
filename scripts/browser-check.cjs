@@ -8,9 +8,16 @@ const { execFileSync } = require("node:child_process");
 const repo = path.resolve(__dirname, ".."),
   root = path.resolve(process.env.SITE_ROOT || path.join(repo, "build/pages"));
 const config = JSON.parse(
-    fs.readFileSync(path.join(repo, "data/navigation.json")),
+    fs.readFileSync(path.join(repo, "tests/fixtures/navigation.json")),
   ),
   projects = JSON.parse(fs.readFileSync(path.join(repo, "data/projects.json")));
+// Exercise editing with controlled data so owner edits cannot break test assumptions.
+const groupCount = config.groups.length;
+const dailyCount = config.groups[0].sites.length;
+const pinCount = config.groups.flatMap((g) => g.sites).filter((s) => s.pinned).length;
+const embyCount = config.groups.flatMap((g) => g.sites).filter((s) => s.title === "Emby").reduce((n, s) => n + 1 + Number(s.pinned), 0);
+const networkCount = config.groups.find((g) => g.id === "network").sites.length;
+const transferCount = config.groups.filter((g) => ["media", "community"].includes(g.id)).reduce((n, g) => n + g.sites.length, 0);
 const count = config.groups.reduce((n, g) => n + g.sites.length, 0);
 let serving = root,
   broken = "",
@@ -151,18 +158,18 @@ async function browse(browser, label) {
       });
       await noOverflow(page);
       await page.locator("#search").fill("Emby");
-      assert.equal(await page.locator(".site-card:visible").count(), 3);
+      assert.equal(await page.locator(".site-card:visible").count(), embyCount);
       await page.locator("#search").fill("this-has-no-match");
       assert.equal(await page.locator("#empty").isVisible(), true);
       await page.locator("#clear-filter").click();
       await page.locator("#groups a[data-group=network]").click();
-      assert.equal(await page.locator(".site-card:visible").count(), 18);
+      assert.equal(await page.locator(".site-card:visible").count(), networkCount);
       await page.locator("#sort").selectOption("name");
       const route = page.url();
       await page.reload();
       assert.equal(page.url(), route);
       assert.equal(await page.locator("#sort").inputValue(), "name");
-      assert.equal(await page.locator(".site-card:visible").count(), 18);
+      assert.equal(await page.locator(".site-card:visible").count(), networkCount);
       await page.locator("#appearance").selectOption("dark");
       assert.equal(
         await page.locator("html").getAttribute("data-theme"),
@@ -246,7 +253,7 @@ async function edit(browser, label, width) {
   try {
     await page.goto(origin + "/");
     await openEditor(page);
-    assert.equal(await page.locator(".edit-site-row").count(), 13);
+    assert.equal(await page.locator(".edit-site-row").count(), dailyCount);
     await page
       .locator(
         ".editor-group[data-group-id=self-hosted] [data-action=select-group]",
@@ -311,16 +318,17 @@ async function edit(browser, label, width) {
     await noOverflow(page);
     await f.locator("[type=submit]").click();
     await page.waitForFunction(
-      () => document.querySelectorAll(".edit-site-row").length === 14,
+      (expected) => document.querySelectorAll(".edit-site-row").length === expected,
+      dailyCount + 1,
     );
     const addedID = await page
       .locator(".edit-site-row")
       .last()
       .getAttribute("data-site-id");
     await page.locator("[data-action=undo]").click();
-    assert.equal(await page.locator(".edit-site-row").count(), 13);
+    assert.equal(await page.locator(".edit-site-row").count(), dailyCount);
     await page.locator("[data-action=redo]").click();
-    assert.equal(await page.locator(".edit-site-row").count(), 14);
+    assert.equal(await page.locator(".edit-site-row").count(), dailyCount + 1);
     await page
       .locator(`[data-site-id="${addedID}"] [data-action=edit-site]`)
       .click();
@@ -424,7 +432,7 @@ async function edit(browser, label, width) {
     await page.locator("[data-action=add-group]").click();
     await page.locator(".form-dialog[open] [name=title]").fill("测试分类");
     await page.locator(".form-dialog[open] [type=submit]").click();
-    assert.equal(await page.locator(".editor-group[data-group-id]").count(), 8);
+    assert.equal(await page.locator(".editor-group[data-group-id]").count(), groupCount + 1);
     await page.locator(".editor-group.active [data-action=edit-group]").click();
     await page.locator(".form-dialog[open] [name=title]").fill("重命名分类");
     await page.locator(".form-dialog[open] [type=submit]").click();
@@ -435,7 +443,7 @@ async function edit(browser, label, width) {
     );
     await page.locator(".editor-group.active [data-action=edit-group]").click();
     await page.locator("#delete-group").click();
-    assert.equal(await page.locator(".editor-group[data-group-id]").count(), 7);
+    assert.equal(await page.locator(".editor-group[data-group-id]").count(), groupCount);
     await page
       .locator(
         ".editor-group[data-group-id=community] [data-action=edit-group]",
@@ -451,14 +459,14 @@ async function edit(browser, label, width) {
       .selectOption("media");
     await page.locator("#delete-group").click();
     const transferred = await exportDraft(page);
-    assert.equal(transferred.groups.length, 6);
+    assert.equal(transferred.groups.length, groupCount - 1);
     assert.equal(transferred.groups.flatMap((g) => g.sites).length, count + 1);
     assert.equal(
       transferred.groups.find((g) => g.id === "media").sites.length,
-      26,
+      transferCount,
     );
     await page.locator("[data-action=undo]").click();
-    assert.equal(await page.locator(".editor-group[data-group-id]").count(), 7);
+    assert.equal(await page.locator(".editor-group[data-group-id]").count(), groupCount);
     await page.locator("[data-action=settings]").click();
     await page.locator(".settings-form [name=subtitle]").fill("共享外观测试");
     await page.locator(".settings-form [name=theme]").selectOption("dark");
@@ -535,7 +543,7 @@ async function pins(browser, label, width) {
     await openEditor(page);
     await page.locator("[data-action=select-group][data-id=pinned]").click();
     const rows = page.locator(".pin-sort-list [data-pin-id]");
-    assert.equal(await rows.count(), 11);
+    assert.equal(await rows.count(), pinCount);
     const firstID = await rows.first().getAttribute("data-pin-id");
     const a = await rows.first().locator("[data-drag=pin]").boundingBox();
     const b = await rows.nth(1).boundingBox();
@@ -554,10 +562,10 @@ async function pins(browser, label, width) {
     await page
       .locator(`[data-pin-id="${firstID}"] [data-action=unpin]`)
       .click();
-    assert.equal(await rows.count(), 10);
+    assert.equal(await rows.count(), pinCount - 1);
     await page.getByRole("searchbox", { name: "搜索已有网站" }).fill("youtube");
     await page.locator(`[data-action=pin][data-id="${firstID}"]`).click();
-    assert.equal(await rows.count(), 11);
+    assert.equal(await rows.count(), pinCount);
     assert.equal(await rows.last().getAttribute("data-pin-id"), firstID);
     draft = await exportDraft(page);
     assert.equal(
@@ -740,7 +748,7 @@ async function offline(browser) {
     await page.reload();
     assert.equal(await page.locator(".group .site-card").count(), count);
     await page.locator("#search").fill("Emby");
-    assert.equal(await page.locator(".site-card:visible").count(), 3);
+    assert.equal(await page.locator(".site-card:visible").count(), embyCount);
     await page.goto(origin + "/preview/projects/");
     assert.equal(await page.locator(".project-card").count(), 3);
     await page.goto(origin + "/preview/");
@@ -806,7 +814,7 @@ async function unavailableStorageAndIcon(browser, label) {
       ": icon text fallback, unavailable draft storage, retained memory and export passed",
   );
 }
-function nextRelease() {
+function nextRelease(initial = false) {
   const scratch = fs.mkdtempSync(path.join(repo, "build/update-check-")),
     source = path.join(scratch, "source"),
     output = path.join(scratch, "pages");
@@ -817,7 +825,7 @@ function nextRelease() {
       fs.cpSync(file, path.join(source, name), { recursive: true });
   }
   const next = structuredClone(config);
-  next.settings.subtitle = "缓存升级检查 · 新的正式配置";
+  if (!initial) next.settings.subtitle = "缓存升级检查 · 新的正式配置";
   fs.writeFileSync(
     path.join(source, "data/navigation.json"),
     JSON.stringify(next, null, 2) + "\n",
@@ -838,6 +846,7 @@ function nextRelease() {
   return { scratch, output };
 }
 async function updates(browser) {
+  const previousServing = serving;
   const fixture = nextRelease(),
     context = await browser.newContext(),
     page = await context.newPage(),
@@ -988,7 +997,7 @@ async function updates(browser) {
     assert.ok(await page.evaluate(() => caches.has("unrelated-cache")));
     assert.deepEqual(errors, []);
   } finally {
-    serving = root;
+    serving = previousServing;
     broken = "";
     await context.close();
     fs.rmSync(fixture.scratch, { recursive: true, force: true });
@@ -998,6 +1007,8 @@ async function updates(browser) {
   );
 }
 (async () => {
+  const fixture = nextRelease(true);
+  serving = fixture.output;
   await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
   origin = "http://127.0.0.1:" + server.address().port;
   try {
@@ -1032,6 +1043,7 @@ async function updates(browser) {
     }
   } finally {
     server.close();
+    fs.rmSync(fixture.scratch, { recursive: true, force: true });
   }
 })().catch((e) => {
   console.error(e);

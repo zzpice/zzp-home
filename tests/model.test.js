@@ -17,7 +17,7 @@ import {
   urlProblem,
 } from "../web/model.js";
 const baseline = JSON.parse(
-  fs.readFileSync(new URL("../data/navigation.json", import.meta.url)),
+  fs.readFileSync(new URL("./fixtures/navigation.json", import.meta.url)),
 );
 test("pin order survives category moves; add/unpin/undo retain one site record", () => {
   const pins = pinnedSites(baseline),
@@ -55,16 +55,23 @@ test("pin order survives category moves; add/unpin/undo retain one site record",
     assert.throws(() => assertValid(invalid));
   }
 });
-test("migration inventory, same-name endpoints, alternate links and pins", () => {
-  assert.deepEqual(validateConfig(baseline), []);
-  const sites = baseline.groups.flatMap((g) => g.sites);
-  assert.equal(sites.length, 91);
-  assert.equal(sites.filter((s) => s.pinned).length, 11);
-  assert.equal(
-    sites.reduce((n, s) => n + s.alternateUrls.length, 0),
-    2,
-  );
-  assert.equal(sites.filter((s) => s.title === "Emby").length, 2);
+test("published navigation satisfies the configuration contract", () => {
+  const published = JSON.parse(fs.readFileSync(new URL("../data/navigation.json", import.meta.url)));
+  assert.deepEqual(validateConfig(published), []);
+});
+test("inventory can be reduced, unpinned and have all alternate links removed", () => {
+  const edited = clone(baseline);
+  for (const group of edited.groups) for (const site of group.sites) {
+    site.alternateUrls = [];
+    site.pinned = false;
+  }
+  edited.groups = edited.groups.slice(0, 1);
+  edited.groups[0].sites = edited.groups[0].sites.slice(0, 1);
+  assert.deepEqual(validateConfig(edited), []);
+  edited.groups[0].sites = [];
+  assert.deepEqual(validateConfig(edited), []);
+  edited.groups = [];
+  assert.deepEqual(validateConfig(edited), []);
 });
 test("credential parameters, encoded credentials and unsafe protocols are blocked", () => {
   for (const url of [

@@ -9,7 +9,7 @@ import {
   toBase64,
 } from "../web/github.js";
 const config = JSON.parse(
-  fs.readFileSync(new URL("../data/navigation.json", import.meta.url)),
+  fs.readFileSync(new URL("./fixtures/navigation.json", import.meta.url)),
 );
 const SHA = "a".repeat(40),
   COMMIT = "c".repeat(40);

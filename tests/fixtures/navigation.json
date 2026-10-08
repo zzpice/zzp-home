@@ -1,0 +1,188 @@
+{
+  "schemaVersion": 1,
+  "settings": {
+    "title": "Test navigation",
+    "subtitle": "",
+    "theme": "system",
+    "layout": "grid",
+    "density": "comfortable",
+    "showDescriptions": true
+  },
+  "groups": [
+    {
+      "id": "daily",
+      "title": "daily",
+      "sites": [
+        {
+          "id": "daily-0",
+          "title": "YouTube",
+          "description": "",
+          "url": "https://example.com/daily-0",
+          "alternateUrls": [],
+          "icon": "icons/media/youtube.png",
+          "iconText": "测",
+          "pinned": true,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "daily-1",
+          "title": "Example A",
+          "description": "",
+          "url": "https://example.com/daily-1",
+          "alternateUrls": [],
+          "icon": "icons/media/youtube.png",
+          "iconText": "测",
+          "pinned": true,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "daily-2",
+          "title": "Example B",
+          "description": "",
+          "url": "https://example.com/daily-2",
+          "alternateUrls": [],
+          "icon": "icons/media/youtube.png",
+          "iconText": "测",
+          "pinned": true,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "daily-3",
+          "title": "Example C",
+          "description": "",
+          "url": "https://example.com/daily-3",
+          "alternateUrls": [],
+          "icon": "icons/media/youtube.png",
+          "iconText": "测",
+          "pinned": true,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        }
+      ]
+    },
+    {
+      "id": "self-hosted",
+      "title": "self-hosted",
+      "sites": [
+        {
+          "id": "self-hosted-0",
+          "title": "Sub Store",
+          "description": "",
+          "url": "http://192.168.100.57:3011?api=http%3A%2F%2F192.168.100.57%3A3011%2Fabcdefghijklmnopqrst",
+          "alternateUrls": [],
+          "icon": "icons/media/youtube.png",
+          "iconText": "测",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "self-hosted-1",
+          "title": "S-UI",
+          "description": "",
+          "url": "http://203.0.113.1:8080/owner-approved-panel",
+          "alternateUrls": [],
+          "icon": "icons/media/youtube.png",
+          "iconText": "测",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "self-hosted-2",
+          "title": "Emby",
+          "description": "",
+          "url": "https://example.com/self-hosted-2",
+          "alternateUrls": [
+            "https://alternate.example.com/"
+          ],
+          "icon": "icons/media/youtube.png",
+          "iconText": "测",
+          "pinned": true,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        },
+        {
+          "id": "self-hosted-3",
+          "title": "Emby",
+          "description": "",
+          "url": "https://example.com/self-hosted-3",
+          "alternateUrls": [],
+          "icon": "icons/media/youtube.png",
+          "iconText": "测",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        }
+      ]
+    },
+    {
+      "id": "network",
+      "title": "network",
+      "sites": [
+        {
+          "id": "network-0",
+          "title": "Network",
+          "description": "",
+          "url": "https://example.com/network-0",
+          "alternateUrls": [],
+          "icon": "icons/media/youtube.png",
+          "iconText": "测",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        }
+      ]
+    },
+    {
+      "id": "media",
+      "title": "media",
+      "sites": [
+        {
+          "id": "media-0",
+          "title": "Media",
+          "description": "",
+          "url": "https://example.com/media-0",
+          "alternateUrls": [],
+          "icon": "icons/media/youtube.png",
+          "iconText": "测",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        }
+      ]
+    },
+    {
+      "id": "community",
+      "title": "community",
+      "sites": [
+        {
+          "id": "community-0",
+          "title": "Community",
+          "description": "",
+          "url": "https://example.com/community-0",
+          "alternateUrls": [],
+          "icon": "icons/media/youtube.png",
+          "iconText": "测",
+          "pinned": false,
+          "newTab": true,
+          "tags": [],
+          "notice": ""
+        }
+      ]
+    }
+  ]
+}
