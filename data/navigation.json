@@ -24,7 +24,8 @@
           "pinned": true,
           "newTab": true,
           "tags": [],
-          "notice": ""
+          "notice": "",
+          "pinOrder": 0
         },
         {
           "id": "sp-01-002",
@@ -37,7 +38,8 @@
           "pinned": true,
           "newTab": true,
           "tags": [],
-          "notice": ""
+          "notice": "",
+          "pinOrder": 1
         },
         {
           "id": "sp-01-003",
@@ -50,7 +52,8 @@
           "pinned": true,
           "newTab": true,
           "tags": [],
-          "notice": ""
+          "notice": "",
+          "pinOrder": 2
         },
         {
           "id": "sp-01-004",
@@ -63,7 +66,8 @@
           "pinned": true,
           "newTab": true,
           "tags": [],
-          "notice": ""
+          "notice": "",
+          "pinOrder": 3
         },
         {
           "id": "sp-01-005",
@@ -76,7 +80,8 @@
           "pinned": true,
           "newTab": true,
           "tags": [],
-          "notice": ""
+          "notice": "",
+          "pinOrder": 4
         },
         {
           "id": "sp-01-006",
@@ -89,7 +94,8 @@
           "pinned": true,
           "newTab": true,
           "tags": [],
-          "notice": ""
+          "notice": "",
+          "pinOrder": 5
         },
         {
           "id": "sp-01-007",
@@ -102,7 +108,8 @@
           "pinned": true,
           "newTab": true,
           "tags": [],
-          "notice": ""
+          "notice": "",
+          "pinOrder": 6
         },
         {
           "id": "sp-01-008",
@@ -115,7 +122,8 @@
           "pinned": true,
           "newTab": true,
           "tags": [],
-          "notice": ""
+          "notice": "",
+          "pinOrder": 7
         },
         {
           "id": "sp-01-011",
@@ -128,7 +136,8 @@
           "pinned": true,
           "newTab": true,
           "tags": [],
-          "notice": ""
+          "notice": "",
+          "pinOrder": 8
         },
         {
           "id": "sp-05-001",
@@ -1079,7 +1088,8 @@
           "pinned": true,
           "newTab": true,
           "tags": [],
-          "notice": ""
+          "notice": "",
+          "pinOrder": 9
         },
         {
           "id": "sp-01-010",
@@ -1092,7 +1102,8 @@
           "pinned": true,
           "newTab": true,
           "tags": [],
-          "notice": ""
+          "notice": "",
+          "pinOrder": 10
         }
       ]
     },
