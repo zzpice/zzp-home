@@ -1,0 +1,2701 @@
+{
+  "recoveredLocalOriginals": 89,
+  "sourceSHA256": "7199bb3a31bf95f90ca23a89f9caa523f3979ef3c62ef70783d691e207b429be",
+  "sourceVersion": "1.8.1",
+  "exportTime": "2026-10-08 19:38:09",
+  "beforeSites": 91,
+  "afterSites": 91,
+  "beforeGroups": 11,
+  "afterGroups": 7,
+  "alternateLinks": 2,
+  "redactedSites": 2,
+  "reusedIcons": 91,
+  "unresolvedIcons": 0,
+  "missingLocalOriginals": 0,
+  "unrestoredRemoteOriginals": 1,
+  "originalTextIcons": 1,
+  "sourceGroups": [
+    {
+      "title": "常用",
+      "sort": 1,
+      "children": [
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/2e3bffdfd5f17e1678e369bc37b880b0.png",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 1,
+          "title": "YouTube",
+          "url": "https://www.youtube.com/",
+          "lanUrl": "",
+          "description": "油管",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/3/fc6f4e349e0347956396e39680111e2c.png",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 2,
+          "title": "bilibili",
+          "url": "https://www.bilibili.com/",
+          "lanUrl": "",
+          "description": "哔站",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/b84ee9af917ea2e3ba96ba3a3c9f1fe9.png",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 6,
+          "title": "YouTube Music",
+          "url": "https://music.youtube.com/",
+          "lanUrl": "",
+          "description": "油管音乐",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/dd466d96aa536072bc2c2c487eb97d83.png",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 7,
+          "title": "‎Apple Music",
+          "url": "https://music.apple.com",
+          "lanUrl": "",
+          "description": "苹果音乐",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/d275b56866ea33edab98ce4c21f0793c.png",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 8,
+          "title": "X",
+          "url": "https://x.com",
+          "lanUrl": "",
+          "description": "原Twitter",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2026/2/28/e68a28750ab1b70101c03808b16083ab.ico",
+            "text": "",
+            "backgroundColor": ""
+          },
+          "sort": 12,
+          "title": "Spotify",
+          "url": "https://spotify.com/",
+          "lanUrl": "",
+          "description": "",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/11/3/73ced378adbc7fb5b934e058f436c892.ico",
+            "text": "",
+            "backgroundColor": ""
+          },
+          "sort": 15,
+          "title": "Notion",
+          "url": "https://www.notion.so",
+          "lanUrl": "",
+          "description": "",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 1,
+            "src": "",
+            "text": "帕米尔",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 16,
+          "title": "Pamir University",
+          "url": "https://mail.ryanvan.com",
+          "lanUrl": "",
+          "description": "",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2026/6/9/91ec7d85407cff83d9b35af91233b78f.png",
+            "text": "",
+            "backgroundColor": ""
+          },
+          "sort": 9999,
+          "title": "InteractiveBrokers",
+          "url": "https://www.ibkr.com.cn/sso/Login?RL=1\u0026locale=zh_CN",
+          "lanUrl": "",
+          "description": "盈透证券",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2026/6/9/f60f9c0cd7d7f8dec88808805fe3da2f.ico",
+            "text": "",
+            "backgroundColor": ""
+          },
+          "sort": 9999,
+          "title": "Charles Schwab",
+          "url": "https://client.schwab.com/Areas/Access/Login?lang=zh-cn",
+          "lanUrl": "",
+          "description": "嘉信理财",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2026/10/4/4fbd19e4998b3f7a0e89e5606a5d2c3f.ico",
+            "text": "",
+            "backgroundColor": ""
+          },
+          "sort": 9999,
+          "title": "AGSVPT公开图床",
+          "url": "https://img.seedvault.cn/dashboard",
+          "lanUrl": "",
+          "description": "",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        }
+      ],
+      "cardStyle": {
+        "style": 0,
+        "textColor": "#ffffff",
+        "textInfoHideDescription": false,
+        "textIconHideTitle": true
+      }
+    },
+    {
+      "title": "服务",
+      "sort": 2,
+      "children": [
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/538390352d48e021a376b5f1998ef4de.png",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 1,
+          "title": "RouterOS",
+          "url": "http://192.168.100.1/",
+          "lanUrl": "",
+          "description": "ros路由",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/a88f3303df1479e8b06cd9ea08ddbeda.png",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 2,
+          "title": "PVE",
+          "url": "https://192.168.100.51:8006",
+          "lanUrl": "",
+          "description": "虚拟机",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/10/5/742062dcfd3329a46eae48b437b178eb.webp",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 3,
+          "title": "飞牛 fnOS",
+          "url": "http://192.168.100.57:5666/",
+          "lanUrl": "",
+          "description": "",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/10/5/742062dcfd3329a46eae48b437b178eb.webp",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 4,
+          "title": "飞牛 fnOS",
+          "url": "https://icezzp.fnos.net/",
+          "lanUrl": "",
+          "description": "流塘置地大厦",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/0a4371c57c30126fc8128cdbe0f4f6cf.webp",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 5,
+          "title": "MoviePilot",
+          "url": "http://192.168.100.57:3000",
+          "lanUrl": "",
+          "description": "飞牛-瀑布流下载",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/0069b64e2f920b339bc8906c132cc5cd.png",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 6,
+          "title": "qBittorrent",
+          "url": "http://192.168.100.57:8085/",
+          "lanUrl": "",
+          "description": "飞牛-种子下载器",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/068e26eaf482fb980d8273311e186b9c.png",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 7,
+          "title": "Emby",
+          "url": "http://192.168.100.57:8096",
+          "lanUrl": "",
+          "description": "本地流媒体-飞牛",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/068e26eaf482fb980d8273311e186b9c.png",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 8,
+          "title": "Emby",
+          "url": "http://192.168.100.57:7001",
+          "lanUrl": "",
+          "description": "直链",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/29/d64a9189dccbc0d187ca2c306acc4cc4.ico",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 9,
+          "title": "Emby Nginx",
+          "url": "http://192.168.100.57:9527",
+          "lanUrl": "",
+          "description": "内网",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/510e0166260c755a4656b9386d5a805c.webp",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 10,
+          "title": "SMBox",
+          "url": "http://192.168.100.53",
+          "lanUrl": "",
+          "description": "翻墙软件-PVE",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/510e0166260c755a4656b9386d5a805c.webp",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 11,
+          "title": "SMBox",
+          "url": "http://192.168.100.61",
+          "lanUrl": "",
+          "description": "翻墙软件-Router",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/36ebe5d98cf2159e1c2033f197238773.jpg",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 12,
+          "title": "Huawei AP",
+          "url": "https://192.168.100.100",
+          "lanUrl": "",
+          "description": "华为AP管理页面",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/36ebe5d98cf2159e1c2033f197238773.jpg",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 13,
+          "title": "5G CPE 5s",
+          "url": "http://192.168.8.1",
+          "lanUrl": "",
+          "description": "",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/19acd52f9dd57a4f12e7bae39eccaacf.webp",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 14,
+          "title": "Sub Store",
+          "url": "http://192.168.100.57:3011",
+          "lanUrl": "",
+          "description": "",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/e7459fc5242a72b19257e42c5e39b43c.ico",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 15,
+          "title": "S-UI",
+          "url": "http://154.17.2.75:49520/",
+          "lanUrl": "",
+          "description": "DMIT",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/9/21/a526061d89f242f185af79c59881c538.svg",
+            "text": "",
+            "backgroundColor": ""
+          },
+          "sort": 16,
+          "title": "Sun-Panel-Helper",
+          "url": "http://192.168.100.57:33002",
+          "lanUrl": "",
+          "description": "",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/10/8/47f1e7bfab034a83ceb744ed89085b12.png",
+            "text": "",
+            "backgroundColor": ""
+          },
+          "sort": 17,
+          "title": "Navidrome",
+          "url": "http://192.168.100.57:4533/",
+          "lanUrl": "",
+          "description": "本地音乐流媒体",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/21/3a6768370037fe2d0e1a252415b58493.webp",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 18,
+          "title": "Music Tag Web",
+          "url": "http://192.168.100.57:8002",
+          "lanUrl": "",
+          "description": "音乐面板",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/bd0b5cf2e15491977eb23ceba98a00b8.png",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 19,
+          "title": "GitHub 文件加速",
+          "url": "https://github.zzp.moe/",
+          "lanUrl": "",
+          "description": "自己的加速站",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        }
+      ],
+      "cardStyle": {
+        "style": 0,
+        "textColor": "#ffffff",
+        "textInfoHideDescription": false,
+        "textIconHideTitle": false
+      }
+    },
+    {
+      "title": "PT站",
+      "sort": 3,
+      "children": [
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/56074ee5acb824c6347818303289b768.png",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 2,
+          "title": "M-Team",
+          "url": "https://kp.m-team.cc/index",
+          "lanUrl": "",
+          "description": "5大站之一（资源全、9kg）",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/5acb784cb784d11188430971a917ab66.ico",
+            "text": "",
+            "backgroundColor": ""
+          },
+          "sort": 3,
+          "title": "CHDBits",
+          "url": "https://ptchdbits.co",
+          "lanUrl": "",
+          "description": "5大站之一（原盘、特效字幕）",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/beebdf7a3c2f26c5156f0d5ebfc86a25.jpg",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 4,
+          "title": "Audiences",
+          "url": "https://audiences.me",
+          "lanUrl": "",
+          "description": "流媒体PT站",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/a1fea89e3de75f137e4a8ef07a566396.png",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 5,
+          "title": "HDKylin",
+          "url": "https://www.hdkyl.in",
+          "lanUrl": "",
+          "description": "短剧",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/3bce40dfeba0d7fbba9e1ae195d2d0fe.ico",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 6,
+          "title": "AGSV",
+          "url": "https://www.agsvpt.com",
+          "lanUrl": "",
+          "description": "短剧",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/61325ce1fd4c2f6a0f316faba356a387.jpg",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 8,
+          "title": "BTSCHOOL",
+          "url": "https://pt.btschool.club",
+          "lanUrl": "",
+          "description": "学习资料多的PT站",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/ec269af655a0b815e4b0836757256c81.png",
+            "text": "",
+            "backgroundColor": ""
+          },
+          "sort": 9,
+          "title": "朱雀",
+          "url": "https://zhuque.in",
+          "lanUrl": "",
+          "description": "抽卡抽卡！！！",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/3938cb6680570d111b1e3516cffff87f.ico",
+            "text": "",
+            "backgroundColor": ""
+          },
+          "sort": 11,
+          "title": "CarPT",
+          "url": "https://carpt.net",
+          "lanUrl": "",
+          "description": "音乐PT站",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        }
+      ],
+      "cardStyle": {
+        "style": 0,
+        "textColor": "#ffffff",
+        "textInfoHideDescription": false,
+        "textIconHideTitle": false
+      }
+    },
+    {
+      "title": "论坛",
+      "sort": 4,
+      "children": [
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/394c668491151f2c29ecae89e8a1140c.png",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 3,
+          "title": "V2EX",
+          "url": "https://www.v2ex.com/",
+          "lanUrl": "",
+          "description": "程序员论坛",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/909575097b7735c8c6fc803732fb92e3.ico",
+            "text": "",
+            "backgroundColor": ""
+          },
+          "sort": 4,
+          "title": "恩山",
+          "url": "https://www.right.com.cn/forum/index.php",
+          "lanUrl": "",
+          "description": "路由器论坛",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/e4541549a99c2812fc5475b08d375f09.png",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 4,
+          "title": "HOSTLOC",
+          "url": "https://hostloc.com/",
+          "lanUrl": "",
+          "description": "全球主机交流论坛",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/3f960dab58095f53518f8ef4cca42c54.png",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 5,
+          "title": "LINUX DO",
+          "url": "https://linux.do/",
+          "lanUrl": "",
+          "description": "新的理想型社区",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/e397032de0f8326d031a001a2b095bd8.png",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 7,
+          "title": "Chiphell",
+          "url": "https://www.chiphell.com/",
+          "lanUrl": "",
+          "description": "计算机硬件论坛",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/8aa4783db3c1c6f9ac3de51192257a52.png",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 11,
+          "title": "NGA",
+          "url": "https://bbs.nga.cn",
+          "lanUrl": "",
+          "description": "恩基爱",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/bd0b5cf2e15491977eb23ceba98a00b8.png",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 14,
+          "title": "Github",
+          "url": "https://github.com/",
+          "lanUrl": "",
+          "description": "全球最大开源平台",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/3afb7f7a27ff9cf2abdd34756a01cecd.png",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 9999,
+          "title": "NodeSeek",
+          "url": "https://www.nodeseek.com/",
+          "lanUrl": "",
+          "description": "中文云服务器社区",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/107c2c1ba050600d0d35b1200dff92ba.jpg",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 9999,
+          "title": "爆棚小组",
+          "url": "https://www.playgm.cc/",
+          "lanUrl": "",
+          "description": "FM论坛",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/c88619b68d11666d8e462f844b03fd2d.png",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 9999,
+          "title": "MikroTik",
+          "url": "https://forum.mikrotik.com/",
+          "lanUrl": "",
+          "description": "",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/33174f15b72a08a680befb80ae75c9da.png",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 9999,
+          "title": "Reddit",
+          "url": "https://www.reddit.com/",
+          "lanUrl": "",
+          "description": "欧美论坛",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/29d9fca068dda039deda464e53850e62.png",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 9999,
+          "title": "巴哈姆特",
+          "url": "https://www.gamer.com.tw/",
+          "lanUrl": "",
+          "description": "台湾游戏论坛",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2026/8/8/30184d7c158a6df8fa879e17713bf92e.ico",
+            "text": "",
+            "backgroundColor": ""
+          },
+          "sort": 9999,
+          "title": "吾爱破解",
+          "url": "https://www.52pojie.cn",
+          "lanUrl": "",
+          "description": "",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        }
+      ],
+      "cardStyle": {
+        "style": 0,
+        "textColor": "#ffffff",
+        "textInfoHideDescription": false,
+        "textIconHideTitle": false
+      }
+    },
+    {
+      "title": "学习",
+      "sort": 5,
+      "children": [
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/2aa04997e7a104d88d34fc710daf15a6.png",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 6,
+          "title": "Anki中文网",
+          "url": "https://file.ankichinas.cn/",
+          "lanUrl": "",
+          "description": "Anki中文资源",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/42581a9594a76ec73244be9adf0b0416.ico",
+            "text": "",
+            "backgroundColor": ""
+          },
+          "sort": 10,
+          "title": "PDF Guru Anki",
+          "url": "https://guru.kevin2li.top/",
+          "lanUrl": "",
+          "description": "Anki制卡软件",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2026/6/10/09f3ff959a53db756d4522d0c8cba031.png",
+            "text": "",
+            "backgroundColor": ""
+          },
+          "sort": 11,
+          "title": "云深考公",
+          "url": "https://www.wolai.com/6K1VeECU181Ey32svoX7Rq",
+          "lanUrl": "",
+          "description": "云深卡组帮助",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "https://kikkua.online/data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📕%3C/text%3E%3C/svg%3E",
+            "text": "",
+            "backgroundColor": ""
+          },
+          "sort": 9999,
+          "title": "kikkua · 知识卡片",
+          "url": "https://kikkua.online/",
+          "lanUrl": "",
+          "description": "",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        }
+      ],
+      "cardStyle": {
+        "style": 0,
+        "textColor": "#ffffff",
+        "textInfoHideDescription": false,
+        "textIconHideTitle": false
+      }
+    },
+    {
+      "title": "多媒体下载",
+      "sort": 6,
+      "children": [
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/35cc993523ef54a4928bf1aefabddba0.png",
+            "text": "",
+            "backgroundColor": ""
+          },
+          "sort": 9999,
+          "title": "瓜牛居士",
+          "url": "https://www.guaniumusic.com/",
+          "lanUrl": "",
+          "description": "",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/b51e5260a736dfab11ef03eafee349a4.jpg",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 9999,
+          "title": "BTNULL",
+          "url": "https://www.gying.org",
+          "lanUrl": "https://www.gying.net",
+          "description": "",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/aed9289cecc69c6acf4e72b21edea9e5.ico",
+            "text": "",
+            "backgroundColor": ""
+          },
+          "sort": 9999,
+          "title": "哲风壁纸",
+          "url": "https://haowallpaper.com",
+          "lanUrl": "",
+          "description": "",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/9/14/30e91c58a40fa89f24ba1e0fec8faa95.png",
+            "text": "",
+            "backgroundColor": ""
+          },
+          "sort": 9999,
+          "title": "最全IPTV电视直播源及工具",
+          "url": "https://flowus.cn/wwkejishe/share/af6188ab-ce17-464b-b4eb-d907014e009f",
+          "lanUrl": "",
+          "description": "",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/9/21/b4d7667076b9caa9ed4bb92642be7ee1.ico",
+            "text": "",
+            "backgroundColor": ""
+          },
+          "sort": 9999,
+          "title": "明月浩空网",
+          "url": "https://myhkw.cn",
+          "lanUrl": "",
+          "description": "",
+          "openMethod": 2,
+          "cardType": 0,
+          "backgroundColor": "",
+          "expandParam": {}
+        }
+      ],
+      "cardStyle": {
+        "style": 0,
+        "textColor": "#ffffff",
+        "textInfoHideDescription": false,
+        "textIconHideTitle": false
+      }
+    },
+    {
+      "title": "云服务器",
+      "sort": 7,
+      "children": [
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/ec50f5dee0254782c51fe01bf4f2e59a.webp",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 7,
+          "title": "bandwagonhost",
+          "url": "https://bandwagonhost.com",
+          "lanUrl": "",
+          "description": "搬瓦工CN2GIA代表",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/5f32a774bc72edf937cdbc2e2fb1a027.png",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 8,
+          "title": "DMIT",
+          "url": "https://www.dmit.io",
+          "lanUrl": "",
+          "description": "优质VPS服务商",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/9c00b249967c5c9a5325f5e58bfbd404.webp",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 9,
+          "title": "阿里云",
+          "url": "https://cn.aliyun.com/",
+          "lanUrl": "",
+          "description": "国内头部服务器运营商",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        }
+      ],
+      "cardStyle": {
+        "style": 0,
+        "textColor": "#ffffff",
+        "textInfoHideDescription": false,
+        "textIconHideTitle": false
+      }
+    },
+    {
+      "title": "机场",
+      "sort": 8,
+      "children": [
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/355cef82913e005956bab6f370568b2a.ico",
+            "text": "",
+            "backgroundColor": ""
+          },
+          "sort": 9999,
+          "title": "FlowerCloud",
+          "url": "https://flower.yt",
+          "lanUrl": "",
+          "description": "花云",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/a006f311163b78c7f79bbca660b3bdc9.png",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 9999,
+          "title": "Nexitally",
+          "url": "https://naiixi.com",
+          "lanUrl": "",
+          "description": "奶昔",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/9c9e642bd64196f7e2dc1e5549eba6de.jpg",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 9999,
+          "title": "YToo",
+          "url": "https://stentvessel.shop",
+          "lanUrl": "",
+          "description": "歪兔",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        }
+      ],
+      "cardStyle": {
+        "style": 0,
+        "textColor": "#ffffff",
+        "textInfoHideDescription": false,
+        "textIconHideTitle": false
+      }
+    },
+    {
+      "title": "网络工具",
+      "sort": 9,
+      "children": [
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/18/291135b2b9738b691dae9fe77f01540a.ico",
+            "text": "",
+            "backgroundColor": ""
+          },
+          "sort": 10,
+          "title": "Proxmox VE Helper",
+          "url": "https://community-scripts.github.io/ProxmoxVE/scripts",
+          "lanUrl": "",
+          "description": "PVE脚本",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/ed04095f217f7cd65c29617062c48c14.png",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 9999,
+          "title": "Speedtest",
+          "url": "https://www.speedtest.net/",
+          "lanUrl": "",
+          "description": "测速网站",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/f2290234fa87a2b789733af81ca9e18c.jpg",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 9999,
+          "title": "ITDOG",
+          "url": "https://www.itdog.cn/",
+          "lanUrl": "",
+          "description": "网络测试工具",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/2fddd1ff3eb51db9f2b909e0065f43f6.png",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 9999,
+          "title": "ipleak",
+          "url": "https://ipleak.net/",
+          "lanUrl": "",
+          "description": "dns泄露检测",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/3bf3d4ed85d239ad622db206575dbd5e.png",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 9999,
+          "title": "ip位置查询",
+          "url": "https://www.geolocation.com/",
+          "lanUrl": "",
+          "description": "Geolocation",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/903004a102077fada049cca95b3fcea8.jpg",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 9999,
+          "title": "Censys",
+          "url": "https://search.censys.io/",
+          "lanUrl": "",
+          "description": "源站ip泄露检查网站",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/2c35f6af1730bf7d12e8a97f80bad43d.png",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 9999,
+          "title": "Scamalytics",
+          "url": "https://scamalytics.com/",
+          "lanUrl": "",
+          "description": "欺诈ip检测",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        }
+      ],
+      "cardStyle": {
+        "style": 0,
+        "textColor": "#ffffff",
+        "textInfoHideDescription": false,
+        "textIconHideTitle": false
+      }
+    },
+    {
+      "title": "域名服务商",
+      "sort": 10,
+      "children": [
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/bb5778b4efa9f6c4937f8759c8fb28a6.png",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 9999,
+          "title": "Cloudflare",
+          "url": "https://dash.cloudflare.com",
+          "lanUrl": "",
+          "description": "全球最大网络服务商",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/54007765ef981db750302f45795ef5ee.png",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 9999,
+          "title": "NameSilo",
+          "url": "https://www.namesilo.com/",
+          "lanUrl": "",
+          "description": "域名服务商",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/d72d08cbbe4e5a4c6907877a7c05167c.jpg",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 9999,
+          "title": "GNAME",
+          "url": "https://www.gname.com/",
+          "lanUrl": "",
+          "description": "新加坡域名服务商",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/681c5938e452c82723e99a155d3edac2.png",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 9999,
+          "title": "porkbun",
+          "url": "https://porkbun.com",
+          "lanUrl": "",
+          "description": "美国新兴域名服务商",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        }
+      ],
+      "cardStyle": {
+        "style": 0,
+        "textColor": "#ffffff",
+        "textInfoHideDescription": false,
+        "textIconHideTitle": false
+      }
+    },
+    {
+      "title": "不可描述",
+      "sort": 11,
+      "children": [
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/cd3fef69710b9dea8dd0b4ec0b57577b.png",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 1,
+          "title": "南+ South Plus",
+          "url": "https://www.south-plus.net/index.php",
+          "lanUrl": "",
+          "description": "",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/8e264bc2c63e4694253d7c560a0d52ee.jpeg",
+            "text": "",
+            "backgroundColor": ""
+          },
+          "sort": 2,
+          "title": "moxing",
+          "url": "https://mox.live",
+          "lanUrl": "",
+          "description": "魔性论坛",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/f1698bccb6185ae9c5fded33a55794d7.jpg",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 3,
+          "title": "98堂",
+          "url": "https://sehuatang.org/",
+          "lanUrl": "",
+          "description": "色花堂",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/ad71271a2dd2762d3b6c3b547f1fde24.png",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 4,
+          "title": "pixiv",
+          "url": "https://www.pixiv.net/",
+          "lanUrl": "",
+          "description": "P站",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/0cfa0aaaa3a0e6ea68850b2599bc4fbb.jpg",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 5,
+          "title": "1024",
+          "url": "https://t66y.com",
+          "lanUrl": "",
+          "description": "小草",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/ef02bcb6458fbe438167d3e85a1a0dc4.png",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 6,
+          "title": "风花雪月",
+          "url": "https://fhxy-a.top/",
+          "lanUrl": "",
+          "description": "",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/2bb46adf380535e94f49a18032b947d7.jpg",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 7,
+          "title": "禁忌书屋",
+          "url": "https://www.cool18.com/bbs4/index.php",
+          "lanUrl": "",
+          "description": "",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/f0102f85733c6d26184a35fa53ae554d.png",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 11,
+          "title": "XVIDEOS",
+          "url": "https://www.xvideos.com",
+          "lanUrl": "",
+          "description": "",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/0fdc70cd6143692e9ba09d8cc242037e.png",
+            "text": "",
+            "backgroundColor": "#2a2a2a6b"
+          },
+          "sort": 12,
+          "title": "Pornhub",
+          "url": "https://www.pornhub.com/",
+          "lanUrl": "",
+          "description": "全球最大的porn站",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/0cdfcfcd63e01651c0e51b6456f499ab.ico",
+            "text": "",
+            "backgroundColor": ""
+          },
+          "sort": 13,
+          "title": "MissAV",
+          "url": "https://missav.ai",
+          "lanUrl": "https://missav.ws",
+          "description": "",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/8/2/6192e29ba1360d6bd5e089e887baa103.ico",
+            "text": "",
+            "backgroundColor": ""
+          },
+          "sort": 9999,
+          "title": "漫小肆韓漫",
+          "url": "https://www.mxshm.top/",
+          "lanUrl": "",
+          "description": "",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/9/2/f790c6d9f7d7af44ffb1f83cb0a9822b.ico",
+            "text": "",
+            "backgroundColor": ""
+          },
+          "sort": 9999,
+          "title": "老王论坛",
+          "url": "https://laowang.vip",
+          "lanUrl": "",
+          "description": "",
+          "openMethod": 2,
+          "cardType": 0,
+          "backgroundColor": "",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2025/12/31/ae8b29882ec36b287641c3ef47764f65.ico",
+            "text": "",
+            "backgroundColor": ""
+          },
+          "sort": 9999,
+          "title": "绅士仓库",
+          "url": "https://cangku.moe/",
+          "lanUrl": "",
+          "description": "",
+          "openMethod": 2,
+          "cardType": 0,
+          "backgroundColor": "",
+          "expandParam": {}
+        },
+        {
+          "icon": {
+            "itemType": 2,
+            "src": "/uploads/2026/4/25/e57a785bf8de042612ae6bdc2b7f3908.ico",
+            "text": "",
+            "backgroundColor": ""
+          },
+          "sort": 9999,
+          "title": "禁漫天堂",
+          "url": "https://18comic.vip",
+          "lanUrl": "",
+          "description": "",
+          "openMethod": 2,
+          "cardType": 1,
+          "backgroundColor": "#2a2a2a6b",
+          "expandParam": {}
+        }
+      ],
+      "cardStyle": {
+        "style": 0,
+        "textColor": "#ffffff",
+        "textInfoHideDescription": false,
+        "textIconHideTitle": false
+      }
+    }
+  ],
+  "entries": [
+    {
+      "id": "sp-01-001",
+      "sourceGroup": "常用",
+      "destination": "日常与学习",
+      "originalSort": 1,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-01-002",
+      "sourceGroup": "常用",
+      "destination": "日常与学习",
+      "originalSort": 2,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-01-003",
+      "sourceGroup": "常用",
+      "destination": "日常与学习",
+      "originalSort": 6,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-01-004",
+      "sourceGroup": "常用",
+      "destination": "日常与学习",
+      "originalSort": 7,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-01-005",
+      "sourceGroup": "常用",
+      "destination": "日常与学习",
+      "originalSort": 8,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-01-006",
+      "sourceGroup": "常用",
+      "destination": "日常与学习",
+      "originalSort": 12,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-01-007",
+      "sourceGroup": "常用",
+      "destination": "日常与学习",
+      "originalSort": 15,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-01-008",
+      "sourceGroup": "常用",
+      "destination": "日常与学习",
+      "originalSort": 16,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-text",
+      "notes": []
+    },
+    {
+      "id": "sp-01-009",
+      "sourceGroup": "常用",
+      "destination": "金融服务",
+      "originalSort": 9999,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-01-010",
+      "sourceGroup": "常用",
+      "destination": "金融服务",
+      "originalSort": 9999,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-01-011",
+      "sourceGroup": "常用",
+      "destination": "日常与学习",
+      "originalSort": 9999,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-02-001",
+      "sourceGroup": "服务",
+      "destination": "设备与自托管",
+      "originalSort": 1,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-02-002",
+      "sourceGroup": "服务",
+      "destination": "设备与自托管",
+      "originalSort": 2,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-02-003",
+      "sourceGroup": "服务",
+      "destination": "设备与自托管",
+      "originalSort": 3,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-02-004",
+      "sourceGroup": "服务",
+      "destination": "设备与自托管",
+      "originalSort": 4,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-02-005",
+      "sourceGroup": "服务",
+      "destination": "设备与自托管",
+      "originalSort": 5,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-02-006",
+      "sourceGroup": "服务",
+      "destination": "设备与自托管",
+      "originalSort": 6,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-02-007",
+      "sourceGroup": "服务",
+      "destination": "设备与自托管",
+      "originalSort": 7,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-02-008",
+      "sourceGroup": "服务",
+      "destination": "设备与自托管",
+      "originalSort": 8,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-02-009",
+      "sourceGroup": "服务",
+      "destination": "设备与自托管",
+      "originalSort": 9,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-02-010",
+      "sourceGroup": "服务",
+      "destination": "设备与自托管",
+      "originalSort": 10,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-02-011",
+      "sourceGroup": "服务",
+      "destination": "设备与自托管",
+      "originalSort": 11,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-02-012",
+      "sourceGroup": "服务",
+      "destination": "设备与自托管",
+      "originalSort": 12,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-02-013",
+      "sourceGroup": "服务",
+      "destination": "设备与自托管",
+      "originalSort": 13,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-02-014",
+      "sourceGroup": "服务",
+      "destination": "设备与自托管",
+      "originalSort": 14,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "移除认证参数 api",
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-02-015",
+      "sourceGroup": "服务",
+      "destination": "设备与自托管",
+      "originalSort": 15,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "移除不透明的管理面板路径",
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-02-016",
+      "sourceGroup": "服务",
+      "destination": "设备与自托管",
+      "originalSort": 16,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-02-017",
+      "sourceGroup": "服务",
+      "destination": "设备与自托管",
+      "originalSort": 17,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-02-018",
+      "sourceGroup": "服务",
+      "destination": "设备与自托管",
+      "originalSort": 18,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-02-019",
+      "sourceGroup": "服务",
+      "destination": "网络与云服务",
+      "originalSort": 19,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-03-001",
+      "sourceGroup": "PT站",
+      "destination": "影音与资源",
+      "originalSort": 2,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-03-002",
+      "sourceGroup": "PT站",
+      "destination": "影音与资源",
+      "originalSort": 3,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-03-003",
+      "sourceGroup": "PT站",
+      "destination": "影音与资源",
+      "originalSort": 4,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-03-004",
+      "sourceGroup": "PT站",
+      "destination": "影音与资源",
+      "originalSort": 5,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-03-005",
+      "sourceGroup": "PT站",
+      "destination": "影音与资源",
+      "originalSort": 6,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-03-006",
+      "sourceGroup": "PT站",
+      "destination": "影音与资源",
+      "originalSort": 8,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-03-007",
+      "sourceGroup": "PT站",
+      "destination": "影音与资源",
+      "originalSort": 9,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-03-008",
+      "sourceGroup": "PT站",
+      "destination": "影音与资源",
+      "originalSort": 11,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-04-001",
+      "sourceGroup": "论坛",
+      "destination": "社区与开发",
+      "originalSort": 3,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-04-002",
+      "sourceGroup": "论坛",
+      "destination": "社区与开发",
+      "originalSort": 4,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-04-003",
+      "sourceGroup": "论坛",
+      "destination": "社区与开发",
+      "originalSort": 4,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-04-004",
+      "sourceGroup": "论坛",
+      "destination": "社区与开发",
+      "originalSort": 5,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-04-005",
+      "sourceGroup": "论坛",
+      "destination": "社区与开发",
+      "originalSort": 7,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-04-006",
+      "sourceGroup": "论坛",
+      "destination": "社区与开发",
+      "originalSort": 11,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-04-007",
+      "sourceGroup": "论坛",
+      "destination": "社区与开发",
+      "originalSort": 14,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-04-008",
+      "sourceGroup": "论坛",
+      "destination": "社区与开发",
+      "originalSort": 9999,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-04-009",
+      "sourceGroup": "论坛",
+      "destination": "社区与开发",
+      "originalSort": 9999,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-04-010",
+      "sourceGroup": "论坛",
+      "destination": "社区与开发",
+      "originalSort": 9999,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-04-011",
+      "sourceGroup": "论坛",
+      "destination": "社区与开发",
+      "originalSort": 9999,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-04-012",
+      "sourceGroup": "论坛",
+      "destination": "社区与开发",
+      "originalSort": 9999,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-04-013",
+      "sourceGroup": "论坛",
+      "destination": "社区与开发",
+      "originalSort": 9999,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-05-001",
+      "sourceGroup": "学习",
+      "destination": "日常与学习",
+      "originalSort": 6,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-05-002",
+      "sourceGroup": "学习",
+      "destination": "日常与学习",
+      "originalSort": 10,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-05-003",
+      "sourceGroup": "学习",
+      "destination": "日常与学习",
+      "originalSort": 11,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-05-004",
+      "sourceGroup": "学习",
+      "destination": "日常与学习",
+      "originalSort": 9999,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "unrestored-remote-original",
+      "notes": [
+        "原远程图标未恢复；替代素材另有来源记录"
+      ]
+    },
+    {
+      "id": "sp-06-001",
+      "sourceGroup": "多媒体下载",
+      "destination": "影音与资源",
+      "originalSort": 9999,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-06-002",
+      "sourceGroup": "多媒体下载",
+      "destination": "影音与资源",
+      "originalSort": 9999,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-06-003",
+      "sourceGroup": "多媒体下载",
+      "destination": "影音与资源",
+      "originalSort": 9999,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-06-004",
+      "sourceGroup": "多媒体下载",
+      "destination": "影音与资源",
+      "originalSort": 9999,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-06-005",
+      "sourceGroup": "多媒体下载",
+      "destination": "影音与资源",
+      "originalSort": 9999,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-07-001",
+      "sourceGroup": "云服务器",
+      "destination": "网络与云服务",
+      "originalSort": 7,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-07-002",
+      "sourceGroup": "云服务器",
+      "destination": "网络与云服务",
+      "originalSort": 8,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-07-003",
+      "sourceGroup": "云服务器",
+      "destination": "网络与云服务",
+      "originalSort": 9,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-08-001",
+      "sourceGroup": "机场",
+      "destination": "网络与云服务",
+      "originalSort": 9999,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-08-002",
+      "sourceGroup": "机场",
+      "destination": "网络与云服务",
+      "originalSort": 9999,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-08-003",
+      "sourceGroup": "机场",
+      "destination": "网络与云服务",
+      "originalSort": 9999,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-09-001",
+      "sourceGroup": "网络工具",
+      "destination": "网络与云服务",
+      "originalSort": 10,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-09-002",
+      "sourceGroup": "网络工具",
+      "destination": "网络与云服务",
+      "originalSort": 9999,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-09-003",
+      "sourceGroup": "网络工具",
+      "destination": "网络与云服务",
+      "originalSort": 9999,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-09-004",
+      "sourceGroup": "网络工具",
+      "destination": "网络与云服务",
+      "originalSort": 9999,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-09-005",
+      "sourceGroup": "网络工具",
+      "destination": "网络与云服务",
+      "originalSort": 9999,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-09-006",
+      "sourceGroup": "网络工具",
+      "destination": "网络与云服务",
+      "originalSort": 9999,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-09-007",
+      "sourceGroup": "网络工具",
+      "destination": "网络与云服务",
+      "originalSort": 9999,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-10-001",
+      "sourceGroup": "域名服务商",
+      "destination": "网络与云服务",
+      "originalSort": 9999,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-10-002",
+      "sourceGroup": "域名服务商",
+      "destination": "网络与云服务",
+      "originalSort": 9999,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-10-003",
+      "sourceGroup": "域名服务商",
+      "destination": "网络与云服务",
+      "originalSort": 9999,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-10-004",
+      "sourceGroup": "域名服务商",
+      "destination": "网络与云服务",
+      "originalSort": 9999,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-11-001",
+      "sourceGroup": "不可描述",
+      "destination": "成人内容",
+      "originalSort": 1,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-11-002",
+      "sourceGroup": "不可描述",
+      "destination": "成人内容",
+      "originalSort": 2,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-11-003",
+      "sourceGroup": "不可描述",
+      "destination": "成人内容",
+      "originalSort": 3,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-11-004",
+      "sourceGroup": "不可描述",
+      "destination": "成人内容",
+      "originalSort": 4,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-11-005",
+      "sourceGroup": "不可描述",
+      "destination": "成人内容",
+      "originalSort": 5,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-11-006",
+      "sourceGroup": "不可描述",
+      "destination": "成人内容",
+      "originalSort": 6,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-11-007",
+      "sourceGroup": "不可描述",
+      "destination": "成人内容",
+      "originalSort": 7,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-11-008",
+      "sourceGroup": "不可描述",
+      "destination": "成人内容",
+      "originalSort": 11,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-11-009",
+      "sourceGroup": "不可描述",
+      "destination": "成人内容",
+      "originalSort": 12,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-11-010",
+      "sourceGroup": "不可描述",
+      "destination": "成人内容",
+      "originalSort": 13,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-11-011",
+      "sourceGroup": "不可描述",
+      "destination": "成人内容",
+      "originalSort": 9999,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-11-012",
+      "sourceGroup": "不可描述",
+      "destination": "成人内容",
+      "originalSort": 9999,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-11-013",
+      "sourceGroup": "不可描述",
+      "destination": "成人内容",
+      "originalSort": 9999,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    },
+    {
+      "id": "sp-11-014",
+      "sourceGroup": "不可描述",
+      "destination": "成人内容",
+      "originalSort": 9999,
+      "iconStatus": "replaced-with-assets",
+      "originalIconStatus": "original-file-available",
+      "notes": [
+        "原始归档文件已匹配；是否采用由图标质量审查决定"
+      ]
+    }
+  ]
+}

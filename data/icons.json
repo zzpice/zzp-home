@@ -1,0 +1,910 @@
+{
+  "repository": "zzpice/assets",
+  "revision": "2c7819af7f25abad310c25f62eeb5bf23222c344",
+  "source": "icons/SOURCES.md",
+  "icons": [
+    {
+      "path": "icons/adult/moxing.png",
+      "title": "moxing",
+      "category": "adult",
+      "sha256": "2d92e8bb58344596f02abde23f7d2bc4a29ec3232abd553d3b08d91c65c90244",
+      "size": 249091
+    },
+    {
+      "path": "icons/adult/pornhub.png",
+      "title": "Pornhub",
+      "category": "adult",
+      "sha256": "2702dbbe78dd62fe5b6360e5a506d78bc81f1cd2f937a3465ae6b7f0671aa125",
+      "size": 44271
+    },
+    {
+      "path": "icons/adult/sehuatang.png",
+      "title": "98堂",
+      "category": "adult",
+      "sha256": "57cc3e5090a07ef78c1a916ea48a1600e5bf6817e6864a57ce10d7915b194d97",
+      "size": 97508
+    },
+    {
+      "path": "icons/adult/south-plus.png",
+      "title": "南+ South Plus",
+      "category": "adult",
+      "sha256": "2de81394ed143a26841665c9b51f9e059edd0fabe4fb4c3f53c9b0e542311023",
+      "size": 64899
+    },
+    {
+      "path": "icons/adult/xvideos.png",
+      "title": "XVIDEOS",
+      "category": "adult",
+      "sha256": "4de4f9c1c1c03313ede62cf076484b0016040482e96a7257f5e3d0a44969b45f",
+      "size": 25018
+    },
+    {
+      "path": "icons/ai/claude.png",
+      "title": "Claude",
+      "category": "ai",
+      "sha256": "b4d0ad850888b0298ef37de633ec279b4baf365066de716e5abef3e4ef0e68df",
+      "size": 44133
+    },
+    {
+      "path": "icons/ai/deepseek.png",
+      "title": "DeepSeek",
+      "category": "ai",
+      "sha256": "8f16b5f261681738946ce00fde8f43d08c8e99ff0c0ae1208a8748372f146395",
+      "size": 29829
+    },
+    {
+      "path": "icons/ai/gemini.png",
+      "title": "Gemini",
+      "category": "ai",
+      "sha256": "2cc02cfd38770e6f9751bdaf32f5bd44cfe6a4e186a2636b543538ba572d3526",
+      "size": 60298
+    },
+    {
+      "path": "icons/ai/grok.png",
+      "title": "Grok",
+      "category": "ai",
+      "sha256": "aea707f838d8aff72ab52a87f27afa6572fe2c144877b4fe26dc7caf353abb92",
+      "size": 42806
+    },
+    {
+      "path": "icons/ai/kimi.png",
+      "title": "Kimi",
+      "category": "ai",
+      "sha256": "6fa35468537c2ab0f5a09a7224bf219ec9bf5f72366cd4239f22788bc1e84d9e",
+      "size": 257777
+    },
+    {
+      "path": "icons/ai/openai.png",
+      "title": "ChatGPT",
+      "category": "ai",
+      "sha256": "844632854b355b117df7d9b11e924aa735b8d48d1f249ed1fa863b51facd19e9",
+      "size": 17312
+    },
+    {
+      "path": "icons/ai/perplexity.png",
+      "title": "Perplexity",
+      "category": "ai",
+      "sha256": "602ffd71107ca6c007d0f7cfba345b508e83e6606a2730f43f3c724f313062db",
+      "size": 129971
+    },
+    {
+      "path": "icons/cloud/aliyun.png",
+      "title": "阿里云",
+      "category": "cloud",
+      "sha256": "77d5c87f905f4507068dd1d9ba201ef0f55c04b3d90e32a5f4a24ab7e53cf5ab",
+      "size": 13699
+    },
+    {
+      "path": "icons/cloud/cloudflare.png",
+      "title": "Cloudflare",
+      "category": "cloud",
+      "sha256": "143a4bab17211d56f8e609deccb53661d93b6e7de92c3bfd88fbe5e583c2e6cb",
+      "size": 15747
+    },
+    {
+      "path": "icons/cloud/namesilo.png",
+      "title": "NameSilo",
+      "category": "cloud",
+      "sha256": "9dc2e2f8ec6161b698f9dd80d2267823d0e7d284184814015780ce7e25f19cbe",
+      "size": 24213
+    },
+    {
+      "path": "icons/cloud/porkbun.png",
+      "title": "porkbun",
+      "category": "cloud",
+      "sha256": "67a5851bb4b5d6a675b58f8f5ab434ade983ccdfb4e782c7689e001d0477a3a9",
+      "size": 28222
+    },
+    {
+      "path": "icons/cloud/ytoo.png",
+      "title": "YToo",
+      "category": "cloud",
+      "sha256": "2c12c66f78bdfcd2567ab700c454f7b9602abe1f8f5f54cc1ade2b6eafb8baec",
+      "size": 77507
+    },
+    {
+      "path": "icons/development/cursor.png",
+      "title": "Cursor",
+      "category": "development",
+      "sha256": "93bc9e9c47c82c777745f02ef54fc30f498a8764135054bf42724eb9b749706d",
+      "size": 21684
+    },
+    {
+      "path": "icons/development/docker.png",
+      "title": "Docker",
+      "category": "development",
+      "sha256": "967e9621493ef5d5b671140bed1492068e5905d577b1c93cc078730567f007b1",
+      "size": 6888
+    },
+    {
+      "path": "icons/development/github.png",
+      "title": "GitHub",
+      "category": "development",
+      "sha256": "f64a8feb31bd089e1d7afe2f3e7ed7edb41e8398df53ba3274dbe3c50497fcd2",
+      "size": 35098
+    },
+    {
+      "path": "icons/development/gitlab.png",
+      "title": "GitLab",
+      "category": "development",
+      "sha256": "7a85efa4c871e1f73b7dcff1669c41e3359f35caa4af42ab8f869dd95e2de486",
+      "size": 31042
+    },
+    {
+      "path": "icons/development/vscode.png",
+      "title": "Visual Studio Code",
+      "category": "development",
+      "sha256": "85a87e2744baaab7519199bb0e78b7b159fe3a37439aeaadd9326f709b634564",
+      "size": 32243
+    },
+    {
+      "path": "icons/finance/abc.png",
+      "title": "中国农业银行",
+      "category": "finance",
+      "sha256": "fe858d6da9eaccaa622101ae48351bb02659ee916459d0fe3a6f003d0d5968ff",
+      "size": 26673
+    },
+    {
+      "path": "icons/finance/bank-of-america.png",
+      "title": "Bank of America",
+      "category": "finance",
+      "sha256": "ba3fcd6ed1bfe226612738074e33148fd6861bd35530880bc66ed03ea74a44ff",
+      "size": 21856
+    },
+    {
+      "path": "icons/finance/bank-of-china.png",
+      "title": "中国银行",
+      "category": "finance",
+      "sha256": "9e79622b873d5893bd7d44112cdfa7671e952de34f14baf20283da1f0fffe7f7",
+      "size": 23605
+    },
+    {
+      "path": "icons/finance/bank-of-communications.png",
+      "title": "交通银行",
+      "category": "finance",
+      "sha256": "659be67a6123b63aef7875877ebb79ef768f92040c900b468475c9beba685eb8",
+      "size": 19331
+    },
+    {
+      "path": "icons/finance/ccb.png",
+      "title": "中国建设银行",
+      "category": "finance",
+      "sha256": "2a499359722fff5af5743d896458e085a0bafa697fde12259748ad04bb037c85",
+      "size": 22018
+    },
+    {
+      "path": "icons/finance/charles-schwab.png",
+      "title": "Charles Schwab",
+      "category": "finance",
+      "sha256": "40e93b13d546e9a140226f9c8235cf8ec323299386711807d47194895e60b8fb",
+      "size": 39020
+    },
+    {
+      "path": "icons/finance/chase.png",
+      "title": "Chase",
+      "category": "finance",
+      "sha256": "7cc7affc4e4be7ec34956fc8d63abd0c28f64e9478c440f307c442424cfb6bbf",
+      "size": 11833
+    },
+    {
+      "path": "icons/finance/cib.png",
+      "title": "兴业银行",
+      "category": "finance",
+      "sha256": "e95c587fea53c70d50fa63a29fb99de0e6a9606eb95acd7f2f7e7f2ce7685e55",
+      "size": 23475
+    },
+    {
+      "path": "icons/finance/citi.png",
+      "title": "Citi",
+      "category": "finance",
+      "sha256": "c05dc678092c97fc4b37108537e9b6d0ac0ed8ef2919091194c7bf6761e7ac51",
+      "size": 18958
+    },
+    {
+      "path": "icons/finance/cmb.png",
+      "title": "招商银行",
+      "category": "finance",
+      "sha256": "62c87d9f99a39a96d852bde774d14d406cdfa45b64325b33eaa9308374cd4184",
+      "size": 24749
+    },
+    {
+      "path": "icons/finance/dbs.png",
+      "title": "DBS",
+      "category": "finance",
+      "sha256": "3b42e15edd22c61f89f953a176d2fca77515d3df7f1229b1c1df12b3fa1bdce7",
+      "size": 25098
+    },
+    {
+      "path": "icons/finance/deutsche-bank.png",
+      "title": "Deutsche Bank",
+      "category": "finance",
+      "sha256": "d41a9e9c72707cd792d05d0d7373da3a0b10812e5a87f5805bc2de6003d2837c",
+      "size": 8871
+    },
+    {
+      "path": "icons/finance/fidelity.png",
+      "title": "Fidelity Investments",
+      "category": "finance",
+      "sha256": "e0a70f98a494e7f8178f57a6f52c59a2659d92bdfcf5a2a4505fe9263d709551",
+      "size": 38515
+    },
+    {
+      "path": "icons/finance/goldman-sachs.png",
+      "title": "Goldman Sachs",
+      "category": "finance",
+      "sha256": "af4268618aa5038cecbc80d0713c93fb3b5b25d943a48deeb9dc5b9e426f2bed",
+      "size": 28417
+    },
+    {
+      "path": "icons/finance/hang-seng-bank.png",
+      "title": "恒生银行",
+      "category": "finance",
+      "sha256": "bbe9d280ec3232ed8e18a6f5142babed677c4ebb5c376f84018695df764aeaf1",
+      "size": 31809
+    },
+    {
+      "path": "icons/finance/hsbc.png",
+      "title": "HSBC",
+      "category": "finance",
+      "sha256": "ff6f8ef0ae4220d56d700661671c5800c83c43496430cf2470d97b6d15d21ad7",
+      "size": 7778
+    },
+    {
+      "path": "icons/finance/icbc.png",
+      "title": "中国工商银行",
+      "category": "finance",
+      "sha256": "63d89a37fceb2bf80fe5fd1a857eff21caf572c9eecb1fb0591b281ebcaca59a",
+      "size": 22938
+    },
+    {
+      "path": "icons/finance/interactive-brokers.png",
+      "title": "Interactive Brokers",
+      "category": "finance",
+      "sha256": "f6e6d5be4e86ddf5ef76fe211a312280c43ef88edc3f939522b4eed1987d2657",
+      "size": 15457
+    },
+    {
+      "path": "icons/finance/ocbc.png",
+      "title": "OCBC",
+      "category": "finance",
+      "sha256": "3913b3c42a01732ae47ec64938f97242a41fe232a71156f991c823baac4d9479",
+      "size": 26300
+    },
+    {
+      "path": "icons/finance/standard-chartered.png",
+      "title": "Standard Chartered",
+      "category": "finance",
+      "sha256": "dcf4a96c129db436d851cb883cafd1fe102748b9885b6eee78b7ce88a46fd27d",
+      "size": 23176
+    },
+    {
+      "path": "icons/finance/ubs.png",
+      "title": "UBS",
+      "category": "finance",
+      "sha256": "e346e3edc0e8c2e699f6e1a45b5866628b7e6b3780d6bad7a77b9dddc74c8f5b",
+      "size": 29772
+    },
+    {
+      "path": "icons/finance/uob.png",
+      "title": "UOB",
+      "category": "finance",
+      "sha256": "d0e3482d319e14eadd1417f3a4a1d852dbf987917019b6cbffb715227f47abc3",
+      "size": 8913
+    },
+    {
+      "path": "icons/finance/wells-fargo.png",
+      "title": "Wells Fargo",
+      "category": "finance",
+      "sha256": "519d33b6c53a3b97502041933e0d31b1a290a0b7bdfe15395be74bfac7b3c3e6",
+      "size": 32104
+    },
+    {
+      "path": "icons/gaming/epic-games.png",
+      "title": "Epic Games",
+      "category": "gaming",
+      "sha256": "d7be6ec09640ba50f777350d26ca49cc9a34cd2a79f3f64ac619c670632138be",
+      "size": 84410
+    },
+    {
+      "path": "icons/gaming/nintendo.png",
+      "title": "Nintendo",
+      "category": "gaming",
+      "sha256": "785cfcd3492057b6c0bf0f23f5f566610616c0d34ffde940f4042aa5bdb351ed",
+      "size": 17383
+    },
+    {
+      "path": "icons/gaming/playstation.png",
+      "title": "PlayStation",
+      "category": "gaming",
+      "sha256": "15e9589c8fff79f7fcd48f1edc9e359a9f99b197ba541b929137d60ed3501238",
+      "size": 39092
+    },
+    {
+      "path": "icons/gaming/steam.png",
+      "title": "Steam",
+      "category": "gaming",
+      "sha256": "4eb40d403a93a727a2f736fd462460aa470df9c5acad2d781a7a816aadaacb87",
+      "size": 56286
+    },
+    {
+      "path": "icons/learning/anki.png",
+      "title": "Anki中文网",
+      "category": "learning",
+      "sha256": "2ce0831dd724f457a51a08d3bb15ad032f3b62e2f59ec7f3b5b73743824408b3",
+      "size": 47492
+    },
+    {
+      "path": "icons/media/apple-music.png",
+      "title": "‎Apple Music",
+      "category": "media",
+      "sha256": "69227c586da44cd706941f6d88ab821a6f8f4a7f47eaee78aa21d734d3cc9242",
+      "size": 101936
+    },
+    {
+      "path": "icons/media/audiences.png",
+      "title": "Audiences",
+      "category": "media",
+      "sha256": "2773c1aa7998f10f639c4c94cc93f5d4d23b1c07c1972ab531f97155433626ce",
+      "size": 62825
+    },
+    {
+      "path": "icons/media/bilibili.png",
+      "title": "bilibili",
+      "category": "media",
+      "sha256": "2fcd01ca46bffbe8d2bd4381f3744167a089ce4a4a84a21ae7179f5c0defaad8",
+      "size": 21931
+    },
+    {
+      "path": "icons/media/btnull.png",
+      "title": "BTNULL",
+      "category": "media",
+      "sha256": "22d2e5f8072038c530467ec0641238e3c18d63bd0196156e3cec93d48aa6881a",
+      "size": 112924
+    },
+    {
+      "path": "icons/media/btschool.png",
+      "title": "BTSCHOOL",
+      "category": "media",
+      "sha256": "e9661ba8526be957010e596896d9c9bf6d8e14c12d9eb195720841aa615ec46e",
+      "size": 67226
+    },
+    {
+      "path": "icons/media/flowus.png",
+      "title": "最全IPTV电视直播源及工具",
+      "category": "media",
+      "sha256": "3fd8a44db981fe3eb18347f49c792d971f41e3e169a4812835e08fb36c2e7e45",
+      "size": 12917
+    },
+    {
+      "path": "icons/media/guaniu.png",
+      "title": "瓜牛居士",
+      "category": "media",
+      "sha256": "43d9e3a966ffdf6b7c28f9aeaccf4449c37ebed9b855fc5ee2a5b0a4ee98bf37",
+      "size": 141280
+    },
+    {
+      "path": "icons/media/haowallpaper.png",
+      "title": "哲风壁纸",
+      "category": "media",
+      "sha256": "54159b1f8c2c0319ab1a9ce3b2c8b7854dbae700d74488caf2bc3278fec68aad",
+      "size": 42998
+    },
+    {
+      "path": "icons/media/hd-kylin.png",
+      "title": "HDKylin",
+      "category": "media",
+      "sha256": "0c48c4429d87b665c4e8809e5ed86340dc2d9c4e9b72ada4f223c0e27a4d7bf3",
+      "size": 68760
+    },
+    {
+      "path": "icons/media/m-team.png",
+      "title": "M-Team",
+      "category": "media",
+      "sha256": "987520fa16ac8c1cc167706b69da9c570bc979ce1b8bb2d713123c9bf1555256",
+      "size": 38339
+    },
+    {
+      "path": "icons/media/media-library.png",
+      "title": "影音资源",
+      "category": "media",
+      "sha256": "d7d824a119ac6b9afe278374f0c84492a75b5290ff9bef06998aceb37a25167c",
+      "size": 163305
+    },
+    {
+      "path": "icons/media/myhkw.png",
+      "title": "明月浩空网",
+      "category": "media",
+      "sha256": "5e0a47dd07d4d04943a9b8db30685ac57d34ba4d461848839e68949bc76c4873",
+      "size": 141613
+    },
+    {
+      "path": "icons/media/spotify.png",
+      "title": "Spotify",
+      "category": "media",
+      "sha256": "2f95700a561b7441e6e84ef4fd5bf93d147bbacaa201ce3e1ffe2e813b325477",
+      "size": 37773
+    },
+    {
+      "path": "icons/media/youtube-music.png",
+      "title": "YouTube Music",
+      "category": "media",
+      "sha256": "4190e41173326e22ea6d52ed380f41c1da9d7cce464b8e9081a9790ff169ee7c",
+      "size": 22119
+    },
+    {
+      "path": "icons/media/youtube.png",
+      "title": "YouTube",
+      "category": "media",
+      "sha256": "e9b7f45b20a18e009c7295c0be7480432b237bcb3c3790c794582dfc54f0d015",
+      "size": 11883
+    },
+    {
+      "path": "icons/media/zhuque.png",
+      "title": "朱雀",
+      "category": "media",
+      "sha256": "1154ce44b55a86975010fdc451d51a1c6585f973897a9a1a2cdd6d2d21136370",
+      "size": 29337
+    },
+    {
+      "path": "icons/media-players/emby.png",
+      "title": "Emby",
+      "category": "media-players",
+      "sha256": "0cda962dbc83f439fd4996fa85082839288220fb23353dd8f08bfe4c84a5fad9",
+      "size": 36448
+    },
+    {
+      "path": "icons/media-players/infuse.png",
+      "title": "Infuse",
+      "category": "media-players",
+      "sha256": "c2f06db47709c766af66474d38c878a9f81c3602f8b6c0aceaf9d73112b3002f",
+      "size": 28016
+    },
+    {
+      "path": "icons/media-players/jellyfin.png",
+      "title": "Jellyfin",
+      "category": "media-players",
+      "sha256": "17ed3fe1aaec7222da0cb7304ebdf981ee012d176f826f764563f144f597ba8e",
+      "size": 51246
+    },
+    {
+      "path": "icons/media-players/movie-pilot.png",
+      "title": "MoviePilot",
+      "category": "media-players",
+      "sha256": "b2031a36268082669d5f277ee975d470ad1523fbb8b26642dcac158b6d53f77c",
+      "size": 31304
+    },
+    {
+      "path": "icons/media-players/navidrome.png",
+      "title": "Navidrome",
+      "category": "media-players",
+      "sha256": "7138fb49fd6f09ee93d89d743125c031bab4527496f4d253bea8ef7ca85b1bc3",
+      "size": 60126
+    },
+    {
+      "path": "icons/media-players/plex.png",
+      "title": "Plex",
+      "category": "media-players",
+      "sha256": "3ad16f85e9f8c99a2cc991463bdc164d2de0a964e9f7b828ee792eb1fbf37025",
+      "size": 61688
+    },
+    {
+      "path": "icons/network/censys.png",
+      "title": "Censys",
+      "category": "network",
+      "sha256": "425eb7e41b1662f63dbe6850c388df2dc634ea9499f34c5a1cd3533fa7916b7c",
+      "size": 22540
+    },
+    {
+      "path": "icons/network/emby-nginx.png",
+      "title": "Emby Nginx",
+      "category": "network",
+      "sha256": "82ef5a584a064d922439fc098db767ec833cf3af77b3fd4d4c74075a5defd2b6",
+      "size": 42359
+    },
+    {
+      "path": "icons/network/geolocation.png",
+      "title": "ip位置查询",
+      "category": "network",
+      "sha256": "8d2864064652b7d51a36983de967cea03d8609ee12dd2dc62b8954696d71e151",
+      "size": 57287
+    },
+    {
+      "path": "icons/network/gname.png",
+      "title": "GNAME",
+      "category": "network",
+      "sha256": "eba859a5d7bade0dbf53f55f0788e2ef019cd5514f960665df517692fda2464c",
+      "size": 134722
+    },
+    {
+      "path": "icons/network/huawei.png",
+      "title": "5G CPE 5s",
+      "category": "network",
+      "sha256": "9906ac0bfa4a1b3224a7baddcf7c6dee1089e68e69fa055b3530e1edb4140e47",
+      "size": 53655
+    },
+    {
+      "path": "icons/network/ipleak.png",
+      "title": "ipleak",
+      "category": "network",
+      "sha256": "8b9e9431f0d465aeac39a414ae3660c24978c9270c9ae288cf7ba569ff662a2f",
+      "size": 109678
+    },
+    {
+      "path": "icons/network/itdog.png",
+      "title": "ITDOG",
+      "category": "network",
+      "sha256": "dfec73c3d6c926180ad637d0c6515975073542bee234cf3bc504e0fd8c9e8960",
+      "size": 114259
+    },
+    {
+      "path": "icons/network/mikrotik.png",
+      "title": "MikroTik",
+      "category": "network",
+      "sha256": "889849b6710da9df876077bb541a3d4bb3033357107301d100bb1d6fc28220d9",
+      "size": 27980
+    },
+    {
+      "path": "icons/network/nexitally.png",
+      "title": "Nexitally",
+      "category": "network",
+      "sha256": "5d82e1e206dd71a4c962839f0018f37f609bc91413ad1d37b18618f878ef2034",
+      "size": 75524
+    },
+    {
+      "path": "icons/network/routeros.png",
+      "title": "RouterOS",
+      "category": "network",
+      "sha256": "b458dae296a6dc9b9a40188ef69aa8dbf37af5e3ea34aa452a0a98a09a55f7ae",
+      "size": 93787
+    },
+    {
+      "path": "icons/network/scamalytics.png",
+      "title": "Scamalytics",
+      "category": "network",
+      "sha256": "f3bea552145bee7b02e54d96394bac38c182477bf45ff7f722c62efae10e5023",
+      "size": 84901
+    },
+    {
+      "path": "icons/network/speedtest.png",
+      "title": "Speedtest",
+      "category": "network",
+      "sha256": "fd5fc9ec2569e5d70eaee703e048d60ba2bfdf5a0bebeef180750e8bfc35f09d",
+      "size": 41825
+    },
+    {
+      "path": "icons/network/sub-store.png",
+      "title": "Sub Store",
+      "category": "network",
+      "sha256": "c0640881453e708758e2649c2844749c20c4d4d9fe88fabb14241fa1d5036ab2",
+      "size": 48711
+    },
+    {
+      "path": "icons/productivity/agsv-image.png",
+      "title": "AGSVPT公开图床",
+      "category": "productivity",
+      "sha256": "fa882723aba44daa75cca942a7b41ea17504c1f28abda4ad6f1ae05af4837e37",
+      "size": 94635
+    },
+    {
+      "path": "icons/productivity/knowledge-cards.png",
+      "title": "知识卡片",
+      "category": "productivity",
+      "sha256": "853ab0872586a2a5b8873c2b44fea058a8628a0e9966e89cd1f8eefcdf4ccdb4",
+      "size": 172268
+    },
+    {
+      "path": "icons/productivity/notion.png",
+      "title": "Notion",
+      "category": "productivity",
+      "sha256": "3e234e63e97cc272464b3911fd49a7e48ccbf4def914e80e258028f232e5edbb",
+      "size": 25495
+    },
+    {
+      "path": "icons/productivity/pamir-mail.png",
+      "title": "Pamir University",
+      "category": "productivity",
+      "sha256": "2c4ba4a934f5a6492ffbc37c2eba1589c51f24688f82eb6f75d48c5f75a9d5b5",
+      "size": 20651
+    },
+    {
+      "path": "icons/productivity/pdf-guru-anki.png",
+      "title": "PDF Guru Anki",
+      "category": "productivity",
+      "sha256": "3eee59b596ef53b4bd007d1771bbbbc353a144584d14ba6352d0b22fca56d272",
+      "size": 24513
+    },
+    {
+      "path": "icons/productivity/wolai.png",
+      "title": "云深考公",
+      "category": "productivity",
+      "sha256": "7d7ee80983aa38fceaf6338b272be305e7fd3c21789872573b26d20a769ff07c",
+      "size": 15470
+    },
+    {
+      "path": "icons/proxy-clients/clash.png",
+      "title": "Clash",
+      "category": "proxy-clients",
+      "sha256": "eb8ca6f22c98a64dc7e6dd4b65d0a6ae1439b380a2089f5e1389e9cad82e484d",
+      "size": 31653
+    },
+    {
+      "path": "icons/proxy-clients/surge.png",
+      "title": "Surge",
+      "category": "proxy-clients",
+      "sha256": "19bc6966fa41467a5f3253d19799de6e456f29036e8897a300eabd84d8db57d1",
+      "size": 45909
+    },
+    {
+      "path": "icons/regions/australia.png",
+      "title": "澳大利亚",
+      "category": "regions",
+      "sha256": "4782de6a77c9dd2d00a75e602f567a79566ae0e4bfce422eb1eb6e1da46565b3",
+      "size": 76882
+    },
+    {
+      "path": "icons/regions/canada.png",
+      "title": "加拿大",
+      "category": "regions",
+      "sha256": "a623c718fb24290bdfe1798662264518f82063c17733aa192193c8c95de0b1dd",
+      "size": 50030
+    },
+    {
+      "path": "icons/regions/china.png",
+      "title": "中国",
+      "category": "regions",
+      "sha256": "703a48f08e5263059fc3c8fa2430580440ed456e4a206c2f3a3f13129fcc6c09",
+      "size": 55598
+    },
+    {
+      "path": "icons/regions/germany.png",
+      "title": "德国",
+      "category": "regions",
+      "sha256": "8d83683e7dfe7922d6cb710a02aaad5885e9cffdd7a56479750b93c59503b5dc",
+      "size": 3607
+    },
+    {
+      "path": "icons/regions/hong-kong.png",
+      "title": "中国香港",
+      "category": "regions",
+      "sha256": "ccd8b7ff4375b1442e3989ea59342183f7fa68b1bfa45ade99b4a3a67f5e9019",
+      "size": 110047
+    },
+    {
+      "path": "icons/regions/japan.png",
+      "title": "日本",
+      "category": "regions",
+      "sha256": "f26de300346cd1095d2ac78678b4cf962c59c49b76145f2eba1a5f194a69b1a3",
+      "size": 39069
+    },
+    {
+      "path": "icons/regions/netherlands.png",
+      "title": "荷兰",
+      "category": "regions",
+      "sha256": "56bcbfd61b47dc727e289006f395c31ce1cc75b9810a94fc17d1249eb4203f66",
+      "size": 52358
+    },
+    {
+      "path": "icons/regions/singapore.png",
+      "title": "新加坡",
+      "category": "regions",
+      "sha256": "ec84bfe57aeb6f42c981ded30bcb4ec3b7a9d4d261fd63e37dfe46864f9d65be",
+      "size": 47853
+    },
+    {
+      "path": "icons/regions/south-korea.png",
+      "title": "韩国",
+      "category": "regions",
+      "sha256": "37276b94c132bf44bee44d2d3b53b3b221feb92b8d04b48ac3fe89a16a9f72b8",
+      "size": 87567
+    },
+    {
+      "path": "icons/regions/taiwan.png",
+      "title": "中国台湾",
+      "category": "regions",
+      "sha256": "600a9aaab1d4555e36dc3419b7206bdaf79f4ac30d8af32c415625020094cfc3",
+      "size": 27547
+    },
+    {
+      "path": "icons/regions/united-kingdom.png",
+      "title": "英国",
+      "category": "regions",
+      "sha256": "e1d58304b88d94f20e6a15e7866d0f874bdf54505049fe3a09628f66f05c6c9b",
+      "size": 113567
+    },
+    {
+      "path": "icons/regions/united-states.png",
+      "title": "美国",
+      "category": "regions",
+      "sha256": "35ad5efd51aa71e32424360e837ea13deffb824898a0058e673fdab119611fad",
+      "size": 79292
+    },
+    {
+      "path": "icons/routes/bgp.png",
+      "title": "BGP",
+      "category": "routes",
+      "sha256": "d68dac3ee65954527bc2843fe50940ad52a025665ea245b2788f859229e26948",
+      "size": 72123
+    },
+    {
+      "path": "icons/routes/gia.png",
+      "title": "GIA",
+      "category": "routes",
+      "sha256": "fa68cfcc6e48d28a68069de8a3999c7fbce3d5c776040d7cb2df659019f2a51f",
+      "size": 69799
+    },
+    {
+      "path": "icons/routes/iepl.png",
+      "title": "IEPL",
+      "category": "routes",
+      "sha256": "6af4c74a8c5d05fd85f2d236160f527c27a7b5094a296f9a88f1918e85ae3b30",
+      "size": 67538
+    },
+    {
+      "path": "icons/routes/iplc.png",
+      "title": "IPLC",
+      "category": "routes",
+      "sha256": "5f99ee2f2d0643c61b1012c45907eb4a688b423b04f9d718d3ee37b2002c8395",
+      "size": 68943
+    },
+    {
+      "path": "icons/self-hosted/fnos.png",
+      "title": "飞牛 fnOS",
+      "category": "self-hosted",
+      "sha256": "52c63e7f5c9f9b3f782000105a776248be832d6e7c7fd3822a77c171bad91d6a",
+      "size": 34814
+    },
+    {
+      "path": "icons/self-hosted/private-service.png",
+      "title": "私有服务",
+      "category": "self-hosted",
+      "sha256": "b3ed324956ba5770e61acac2f3023e913f54f5c46c6f2898099eaedf32897851",
+      "size": 174323
+    },
+    {
+      "path": "icons/self-hosted/proxmox-helper-scripts.png",
+      "title": "Proxmox VE Helper",
+      "category": "self-hosted",
+      "sha256": "84fcfdabac5783dcc611029e8e62a1119ba0d6bcb6a778aeee59d4faba511703",
+      "size": 18228
+    },
+    {
+      "path": "icons/self-hosted/proxmox.png",
+      "title": "PVE",
+      "category": "self-hosted",
+      "sha256": "86cc66b35e4e1d93ff9678b19c41b23553ad273cddcc7cdcf0bbf7afece8f189",
+      "size": 42212
+    },
+    {
+      "path": "icons/self-hosted/qbittorrent.png",
+      "title": "qBittorrent",
+      "category": "self-hosted",
+      "sha256": "631d3307ce7e2fa44df65ca8c6a567ca2350ac039913770fc93348960a4c593e",
+      "size": 81324
+    },
+    {
+      "path": "icons/self-hosted/smbox.png",
+      "title": "SMBox",
+      "category": "self-hosted",
+      "sha256": "bcef06437274906dcce016ee8e7b8827333c7c7b4af9901c818aed9f80879d5b",
+      "size": 35902
+    },
+    {
+      "path": "icons/self-hosted/sun-panel-helper.png",
+      "title": "Sun-Panel-Helper",
+      "category": "self-hosted",
+      "sha256": "a4ae3323bc6fb80fa9caee0925d70819c849280ce2355f8381cb8417410b1b23",
+      "size": 25227
+    },
+    {
+      "path": "icons/social/52pojie.png",
+      "title": "吾爱破解",
+      "category": "social",
+      "sha256": "5f9554b137fb05091bff74f0e24e52577fe1089e8fe0707b7190dd075e30a22f",
+      "size": 79240
+    },
+    {
+      "path": "icons/social/bahamut.png",
+      "title": "巴哈姆特",
+      "category": "social",
+      "sha256": "b58931f3d8c8fd3500477f21531314e1714fda9fe21857f8d3cc73fb827bd2ec",
+      "size": 33876
+    },
+    {
+      "path": "icons/social/chiphell.png",
+      "title": "Chiphell",
+      "category": "social",
+      "sha256": "d4807fbe0629d8076e6fde6739a805faec46635a55ab80f0e00ddc069d592fab",
+      "size": 52418
+    },
+    {
+      "path": "icons/social/community.png",
+      "title": "社区交流",
+      "category": "social",
+      "sha256": "d440975232525bad8ec2700dd1ee19327d33fbe567892f04ec4174bd84b4a00d",
+      "size": 184331
+    },
+    {
+      "path": "icons/social/hostloc.png",
+      "title": "HOSTLOC",
+      "category": "social",
+      "sha256": "0fe0a40065611d3d7bd97bead51a4578837b4c1a1915b2cb62e40d3aa12f2838",
+      "size": 17550
+    },
+    {
+      "path": "icons/social/linuxdo.png",
+      "title": "LINUX DO",
+      "category": "social",
+      "sha256": "ad4cdb5e8a109816f8c3546a50670cd8086ec8dab40bd35d73dabad679f6d8aa",
+      "size": 22369
+    },
+    {
+      "path": "icons/social/nga.png",
+      "title": "NGA",
+      "category": "social",
+      "sha256": "c84676c9d477330e8eb86a03b115ecf48c4ad43f7409fd0e3aa1e33e3115b7d1",
+      "size": 36810
+    },
+    {
+      "path": "icons/social/nodeseek.png",
+      "title": "NodeSeek",
+      "category": "social",
+      "sha256": "282a2185b16b792cb8d5146dc1c2cc1589547b897cf8d0dabf52248c4fa51b4d",
+      "size": 26388
+    },
+    {
+      "path": "icons/social/pixiv.png",
+      "title": "pixiv",
+      "category": "social",
+      "sha256": "64c77a1d9956c00bcda1e7e01837276f8a7b5758244655efa45ceebdeb938881",
+      "size": 22069
+    },
+    {
+      "path": "icons/social/playgm.png",
+      "title": "爆棚小组",
+      "category": "social",
+      "sha256": "f57c7cb6dd9e120b040100bb3bb21b884fcf10207acad4ea7975c53c5f3d48d4",
+      "size": 76718
+    },
+    {
+      "path": "icons/social/reddit.png",
+      "title": "Reddit",
+      "category": "social",
+      "sha256": "945b02b28eaed461fe019cc184f151f98512b10e05549324e41d9c9557d9cf34",
+      "size": 32536
+    },
+    {
+      "path": "icons/social/v2ex.png",
+      "title": "V2EX",
+      "category": "social",
+      "sha256": "75a2c2ccff58c3d3d59c2ee74140a5acce3cc2373494851c01cff8ce717b6d3c",
+      "size": 22718
+    },
+    {
+      "path": "icons/social/x.png",
+      "title": "X",
+      "category": "social",
+      "sha256": "5000ac54fb2a7ee2782db7ba8cd40f8f5febf2d8df9d354823a73497661b96cb",
+      "size": 31634
+    }
+  ]
+}

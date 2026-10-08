@@ -1,0 +1,54 @@
+{{define "site"}}<article class="site-card" data-site="{{.ID}}">
+  <a class="site-link" href="{{.URL}}" target="{{target .}}" rel="noopener noreferrer"{{if .Notice}} title="{{.Notice}}"{{end}}>
+    <span class="site-icon tone-{{tone .ID}}{{if icon .}} sprite{{end}}" data-icon="{{.Icon}}">{{if icon .}}<img class="atlas" src="{{icon .}}" width="48" height="48" alt="" loading="lazy" decoding="async">{{else}}<span>{{initial .}}</span>{{end}}</span>
+    <span class="site-copy"><strong title="{{.Title}}">{{.Title}}</strong><span class="description">{{.Description}}</span>{{if .Notice}}<small class="notice">需确认入口</small>{{end}}</span><span class="external" aria-hidden="true">↗</span>
+  </a>{{if .AlternateURLs}}<details class="alternates"><summary>备用入口</summary>{{range .AlternateURLs}}<a href="{{.}}" target="_blank" rel="noopener noreferrer">{{.}} ↗</a>{{end}}</details>{{end}}
+</article>{{end}}
+<!doctype html>
+<html lang="zh-CN" data-layout="{{.Config.Settings.Layout}}" data-density="{{.Config.Settings.Density}}" data-descriptions="{{.Config.Settings.ShowDescriptions}}">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-{{.CSPHash}}'; style-src 'self'; img-src 'self' https://raw.githubusercontent.com; connect-src 'self' https://api.github.com; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="description" content="个人导航、常用网站与 ZZP 的公开项目。"><meta name="color-scheme" content="light dark"><meta name="theme-color" content="#f5f6f8">
+  <script>{{.ThemeScript}}</script>
+  <title>{{if eq .Page "projects"}}我的项目{{else}}个人导航{{end}} · {{.Config.Settings.Title}}</title>
+  <link rel="icon" href="{{asset "brand/icon.svg"}}" type="image/svg+xml"><link rel="apple-touch-icon" href="{{asset "brand/icon-180.png"}}">
+  <link rel="canonical" href="{{.Canonical}}"><link rel="manifest" href="{{.Prefix}}manifest.webmanifest">
+  <link rel="stylesheet" href="{{asset "style.css"}}">
+  <meta property="og:title" content="{{.Config.Settings.Title}} · 个人导航"><meta property="og:description" content="常用网站、自己的服务与公开项目。"><meta property="og:type" content="website"><meta property="og:url" content="{{.Canonical}}">
+  <script id="bootstrap" type="application/json">{{.Bootstrap}}</script>
+  <script type="module" src="{{asset "app.js"}}"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到内容</a>
+  <header class="site-header">
+    <a class="brand" href="{{.Prefix}}"><img src="{{asset "brand/icon.svg"}}" width="32" height="32" alt=""><strong>{{.Config.Settings.Title}}</strong><span>个人空间</span></a>
+    <nav class="page-nav" aria-label="页面"><a href="{{.Prefix}}"{{if eq .Page "home"}} aria-current="page"{{end}}>导航</a><a href="{{.Prefix}}projects/"{{if eq .Page "projects"}} aria-current="page"{{end}}>我的项目</a></nav>
+    <div class="header-actions"><select id="appearance" aria-label="浏览外观" hidden><option value="shared">共享默认</option><option value="system">跟随系统</option><option value="light">浅色</option><option value="dark">深色</option></select>{{if eq .Page "home"}}<button id="edit" class="quiet" hidden>管理导航</button>{{else}}<a class="button quiet" href="{{.Prefix}}?edit=1">管理导航</a>{{end}}</div>
+  </header>
+  <div class="workspace {{if eq .Page "projects"}}projects-workspace{{end}}">
+    {{if eq .Page "home"}}<aside class="sidebar"><p class="sidebar-label">我的导航</p><nav id="groups" aria-label="网站分类"><a href="{{.Prefix}}" data-group="" class="active"><span>全部网站</span><small>{{.Total}}</small></a><a href="{{.Prefix}}?group=pinned#pinned" data-group="pinned"><span>☆ 置顶</span><small>{{len .Pinned}}</small></a><span class="nav-divider"></span>{{range .Config.Groups}}<a href="?group={{.ID}}#g-{{.ID}}" data-group="{{.ID}}"><span>{{.Title}}</span><small>{{len .Sites}}</small></a>{{end}}</nav><div class="sidebar-foot"><span class="status-dot"></span> 公开浏览 · GitHub 同步<p>共享配置，随处可用。</p></div></aside>{{end}}
+    <main id="main" tabindex="-1">
+      <div class="introduction"><p class="eyebrow">{{if eq .Page "projects"}}BUILT BY ZZP{{else}}YOUR EVERYDAY START{{end}}</p><h1>{{if eq .Page "projects"}}小工具，解决具体的事。{{else}}常用网站，一处直达。{{end}}</h1><p>{{if eq .Page "projects"}}自己做，自己用，也分享给需要的人。{{else}}{{.Config.Settings.Subtitle}}{{end}}</p></div>
+      {{if eq .Page "home"}}
+      <div class="browse-toolbar"><label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="搜索名称、描述或网址" aria-label="搜索网站" autocomplete="off"><kbd>/</kbd></label><button id="layout" aria-label="切换网格或列表" title="切换网格或列表" hidden>☷</button></div>
+      <div class="results-bar"><span id="result-count" role="status">{{.Total}} 个网站 · {{len .Config.Groups}} 个分类</span><div class="result-actions"><select id="sort" aria-label="浏览排序"><option value="manual">自定义顺序</option><option value="name">名称排序</option></select><button id="clear-filter" class="text-button" hidden>显示全部</button></div></div>
+      <div id="navigation-content">
+      {{if .Pinned}}<section id="pinned" class="site-section pinned-section"><div class="section-heading"><h2>置顶</h2><span>常用的，放在手边</span></div><div class="site-grid">{{range .Pinned}}{{template "site" .}}{{end}}</div></section>{{end}}
+      {{range .Config.Groups}}<section id="g-{{.ID}}" class="site-section group" data-group="{{.ID}}"><div class="section-heading"><h2>{{.Title}}</h2><span>{{len .Sites}} 个网站</span></div><div class="site-grid">{{range .Sites}}{{template "site" .}}{{end}}</div></section>{{end}}
+      </div><div id="empty" class="empty-state" hidden><span>⌕</span><h2>没有找到匹配的网站</h2><p>试试更短的关键词，或者切换分类。</p></div>
+      <noscript><p>JavaScript 已关闭，仍可通过以上链接浏览。搜索、编辑和离线缓存需要启用 JavaScript。</p></noscript>
+      {{else}}
+      <section class="projects-section"><div class="section-heading"><h2>工具与资源</h2><span>在浏览器里，打开就用</span></div><div class="project-grid">
+      {{range .Projects}}{{if eq .Kind "tool"}}<article class="project-card"><a href="{{.URL}}" target="_blank" rel="noopener noreferrer">
+        <div class="project-preview preview-{{.Preview}}" aria-hidden="true">{{if eq .Preview "anki"}}<div class="note-preview"><small>问答 <span>正面</span></small><b>一个知识点，<br>一张记忆卡片。</b><hr><i>编辑字段 → 预览 → 导出 Anki</i></div>{{else if eq .Preview "fund"}}<div class="fund-preview"><small>固定四基金 · 目标配比</small><div class="allocation"><i></i><i></i><i></i><i></i></div><b>50 <small>%</small>　33.33 <small>%</small></b><p>持仓诊断 → 调整方案 → 执行清单</p></div>{{else}}<img src="{{asset "brand/gallery-fuji.webp"}}" width="300" height="170" alt="" loading="lazy"><img src="{{asset "brand/gallery-study.webp"}}" width="300" height="170" alt="" loading="lazy"><img src="{{asset "brand/gallery-snow.webp"}}" width="300" height="200" alt="" loading="lazy">{{end}}</div>
+        <div class="project-copy"><img src="{{asset (printf "brand/%s" .Icon)}}" alt="" width="28" height="28"><h3>{{.Title}} <span>↗</span></h3><p>{{.Description}}</p></div></a><div class="project-links">{{range .Links}}<a href="{{.URL}}" target="_blank" rel="noopener noreferrer">{{.Title}} ↗</a>{{else}}<span>{{if eq .ID "fund"}}本地计算 · 可离线使用{{else}}精选图片 · 持续整理{{end}}</span>{{end}}</div></article>{{end}}{{end}}
+      </div></section>
+      <section class="projects-section"><div class="section-heading"><h2>规则与配置</h2><span>先看说明，再按需导入</span></div><div class="resource-grid">{{range .Projects}}{{if eq .Kind "resource"}}<a class="resource-card" href="{{.URL}}" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">⌘</span><div><h3>{{.Title}}</h3><p>{{.Description}}</p></div><span aria-hidden="true">↗</span></a>{{end}}{{end}}</div></section>
+      {{end}}
+      <footer class="site-footer"><div><a href="https://github.com/zzpice/zzp-home" target="_blank" rel="noopener noreferrer">GitHub ↗</a><span id="connection-status">正式配置 · {{slice .Version 0 8}}</span></div><div><button id="check-update" class="text-button" hidden>检查更新</button><a href="{{.Prefix}}recovery.html">缓存恢复</a><details class="install"><summary>添加到主屏幕</summary><p>iPhone / iPad：Safari 分享菜单 → 添加到主屏幕。Android：浏览器菜单 → 安装应用或添加到主屏幕。已缓存的导航可离线浏览，外部网站仍需其自身网络连接。</p></details></div></footer>
+    </main>
+  </div>
+  <div id="update-banner" class="update-banner" hidden><span>新版本已准备好</span><button id="apply-update">保存草稿并更新</button><button id="defer-update" class="quiet">稍后</button></div>
+  <div id="toast" class="toast" role="status" hidden></div>
+</body></html>

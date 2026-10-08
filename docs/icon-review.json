@@ -1,0 +1,1280 @@
+{
+  "archiveSHA256": "ec20792505e8d5801b909f749dbe441d913af82843cb0ecae465f6bb08f68513",
+  "matchedLocalReferences": 89,
+  "matchedUniqueFiles": 84,
+  "sourceFileCount": 68,
+  "sourceKinds": {
+    "library": 19,
+    "uploaded": 30,
+    "official-favicon": 15,
+    "generated": 4
+  },
+  "genericEntries": 17,
+  "entries": [
+    {
+      "id": "sp-01-001",
+      "title": "YouTube",
+      "originalPath": "/uploads/2025/8/2/2e3bffdfd5f17e1678e369bc37b880b0.png",
+      "originalAvailable": true,
+      "originalSize": [
+        225,
+        225
+      ],
+      "originalSHA256": "fdc9f84ca1b4375ebba305a77952f67471520c9acf158c17d25a1f639dc4f64d",
+      "selectedIcon": "icons/media/youtube.png",
+      "selectedSource": "https://raw.githubusercontent.com/homarr-labs/dashboard-icons/57e939e504eda0ea764098015da93aa666ad6f31/png/youtube.png",
+      "decision": "复用 assets / 固定图标库或较好的原站素材"
+    },
+    {
+      "id": "sp-01-002",
+      "title": "bilibili",
+      "originalPath": "/uploads/2025/8/3/fc6f4e349e0347956396e39680111e2c.png",
+      "originalAvailable": true,
+      "originalSize": [
+        1024,
+        1024
+      ],
+      "originalSHA256": "589adb4d82b25f8d214b232a6df2dedf03b81bbfb35a792cc245f0122d026199",
+      "selectedIcon": "icons/media/bilibili.png",
+      "selectedSource": "uploads.zip!2025/8/3/fc6f4e349e0347956396e39680111e2c.png",
+      "decision": "采用较好的归档素材，按统一标准处理"
+    },
+    {
+      "id": "sp-01-003",
+      "title": "YouTube Music",
+      "originalPath": "/uploads/2025/8/2/b84ee9af917ea2e3ba96ba3a3c9f1fe9.png",
+      "originalAvailable": true,
+      "originalSize": [
+        1024,
+        1024
+      ],
+      "originalSHA256": "ef27047527c0ac3a07a9fab7e4a2b55cb955302fffd6e4f91d9ed019cc8a01a6",
+      "selectedIcon": "icons/media/youtube-music.png",
+      "selectedSource": "uploads.zip!2025/8/2/b84ee9af917ea2e3ba96ba3a3c9f1fe9.png",
+      "decision": "采用较好的归档素材，按统一标准处理"
+    },
+    {
+      "id": "sp-01-004",
+      "title": "‎Apple Music",
+      "originalPath": "/uploads/2025/8/2/dd466d96aa536072bc2c2c487eb97d83.png",
+      "originalAvailable": true,
+      "originalSize": [
+        1024,
+        1024
+      ],
+      "originalSHA256": "d85561f327a019a418dcbf87b71e5399257bffc320444eedc437d1e62e782ed9",
+      "selectedIcon": "icons/media/apple-music.png",
+      "selectedSource": "uploads.zip!2025/8/2/dd466d96aa536072bc2c2c487eb97d83.png",
+      "decision": "采用较好的归档素材，按统一标准处理"
+    },
+    {
+      "id": "sp-01-005",
+      "title": "X",
+      "originalPath": "/uploads/2025/8/2/d275b56866ea33edab98ce4c21f0793c.png",
+      "originalAvailable": true,
+      "originalSize": [
+        225,
+        225
+      ],
+      "originalSHA256": "664a00016a3b7a874f185748b210014add7f720ca32ad621136ed9b4dd1fbc75",
+      "selectedIcon": "icons/social/x.png",
+      "selectedSource": "https://raw.githubusercontent.com/homarr-labs/dashboard-icons/57e939e504eda0ea764098015da93aa666ad6f31/png/x.png",
+      "decision": "复用 assets / 固定图标库或较好的原站素材"
+    },
+    {
+      "id": "sp-01-006",
+      "title": "Spotify",
+      "originalPath": "/uploads/2026/2/28/e68a28750ab1b70101c03808b16083ab.ico",
+      "originalAvailable": true,
+      "originalSize": [
+        48,
+        48
+      ],
+      "originalSHA256": "0f31d2eacc14d9e4ff0462210d15547cbe67935d32713b8605629f0f6cf5f378",
+      "selectedIcon": "icons/media/spotify.png",
+      "selectedSource": "https://raw.githubusercontent.com/homarr-labs/dashboard-icons/57e939e504eda0ea764098015da93aa666ad6f31/png/spotify.png",
+      "decision": "复用 assets / 固定图标库或较好的原站素材"
+    },
+    {
+      "id": "sp-01-007",
+      "title": "Notion",
+      "originalPath": "/uploads/2025/11/3/73ced378adbc7fb5b934e058f436c892.ico",
+      "originalAvailable": true,
+      "originalSize": [
+        64,
+        64
+      ],
+      "originalSHA256": "541fc85f92e348bcf46f70944b95fd558d16adbc5a0698eaa1239dccd8c9e455",
+      "selectedIcon": "icons/productivity/notion.png",
+      "selectedSource": "https://raw.githubusercontent.com/homarr-labs/dashboard-icons/57e939e504eda0ea764098015da93aa666ad6f31/png/notion.png",
+      "decision": "复用 assets / 固定图标库或较好的原站素材"
+    },
+    {
+      "id": "sp-01-008",
+      "title": "Pamir University",
+      "originalPath": "",
+      "originalAvailable": false,
+      "originalSize": null,
+      "originalSHA256": null,
+      "selectedIcon": "icons/productivity/pamir-mail.png",
+      "selectedSource": "https://mail.ryanvan.com/assets/mail-CSokca-y.png",
+      "decision": "复用 assets / 固定图标库或较好的原站素材"
+    },
+    {
+      "id": "sp-01-009",
+      "title": "InteractiveBrokers",
+      "originalPath": "/uploads/2026/6/9/91ec7d85407cff83d9b35af91233b78f.png",
+      "originalAvailable": true,
+      "originalSize": [
+        192,
+        192
+      ],
+      "originalSHA256": "5c658db5247eccd8ecda0e8fe17434b9cb4e999a501677e35910504fd0419261",
+      "selectedIcon": "icons/finance/interactive-brokers.png",
+      "selectedSource": "existing assets catalog",
+      "decision": "复用 assets / 固定图标库或较好的原站素材"
+    },
+    {
+      "id": "sp-01-010",
+      "title": "Charles Schwab",
+      "originalPath": "/uploads/2026/6/9/f60f9c0cd7d7f8dec88808805fe3da2f.ico",
+      "originalAvailable": true,
+      "originalSize": [
+        256,
+        256
+      ],
+      "originalSHA256": "0f782c501c5f3ea571d14bb19c9d9791d90ac2edd4c332244bbad37b5947b33c",
+      "selectedIcon": "icons/finance/charles-schwab.png",
+      "selectedSource": "existing assets catalog",
+      "decision": "复用 assets / 固定图标库或较好的原站素材"
+    },
+    {
+      "id": "sp-01-011",
+      "title": "AGSVPT公开图床",
+      "originalPath": "/uploads/2026/10/4/4fbd19e4998b3f7a0e89e5606a5d2c3f.ico",
+      "originalAvailable": true,
+      "originalSize": [
+        128,
+        128
+      ],
+      "originalSHA256": "89e0462105404391c6a8d85b769185ab8f28b8a4be45481a8b46b61ada14805a",
+      "selectedIcon": "icons/productivity/agsv-image.png",
+      "selectedSource": "https://img.seedvault.cn/favicon.ico",
+      "decision": "复用 assets / 固定图标库或较好的原站素材"
+    },
+    {
+      "id": "sp-02-001",
+      "title": "RouterOS",
+      "originalPath": "/uploads/2025/8/2/538390352d48e021a376b5f1998ef4de.png",
+      "originalAvailable": true,
+      "originalSize": [
+        800,
+        800
+      ],
+      "originalSHA256": "07f8a01401fb35f24e592e84b18c7f48bec4ef33a6478f7388c9e76d28fe6abf",
+      "selectedIcon": "icons/network/routeros.png",
+      "selectedSource": "uploads.zip!2025/8/2/538390352d48e021a376b5f1998ef4de.png",
+      "decision": "采用较好的归档素材，按统一标准处理"
+    },
+    {
+      "id": "sp-02-002",
+      "title": "PVE",
+      "originalPath": "/uploads/2025/8/2/a88f3303df1479e8b06cd9ea08ddbeda.png",
+      "originalAvailable": true,
+      "originalSize": [
+        512,
+        512
+      ],
+      "originalSHA256": "fe866a94839ac1f2ac7a0cdaabf1e0cd18ccfdc0a53e7605099a722c14808350",
+      "selectedIcon": "icons/self-hosted/proxmox.png",
+      "selectedSource": "https://raw.githubusercontent.com/homarr-labs/dashboard-icons/57e939e504eda0ea764098015da93aa666ad6f31/png/proxmox.png",
+      "decision": "复用 assets / 固定图标库或较好的原站素材"
+    },
+    {
+      "id": "sp-02-003",
+      "title": "飞牛 fnOS",
+      "originalPath": "/uploads/2025/10/5/742062dcfd3329a46eae48b437b178eb.webp",
+      "originalAvailable": true,
+      "originalSize": [
+        512,
+        513
+      ],
+      "originalSHA256": "c2b82dd70a6e1eb6e335cea13cc92d249911f054aa1a19ae3430855d4ba84573",
+      "selectedIcon": "icons/self-hosted/fnos.png",
+      "selectedSource": "uploads.zip!2025/10/5/742062dcfd3329a46eae48b437b178eb.webp",
+      "decision": "采用较好的归档素材，按统一标准处理"
+    },
+    {
+      "id": "sp-02-004",
+      "title": "飞牛 fnOS",
+      "originalPath": "/uploads/2025/10/5/742062dcfd3329a46eae48b437b178eb.webp",
+      "originalAvailable": true,
+      "originalSize": [
+        512,
+        513
+      ],
+      "originalSHA256": "c2b82dd70a6e1eb6e335cea13cc92d249911f054aa1a19ae3430855d4ba84573",
+      "selectedIcon": "icons/self-hosted/fnos.png",
+      "selectedSource": "uploads.zip!2025/10/5/742062dcfd3329a46eae48b437b178eb.webp",
+      "decision": "采用较好的归档素材，按统一标准处理"
+    },
+    {
+      "id": "sp-02-005",
+      "title": "MoviePilot",
+      "originalPath": "/uploads/2025/8/2/0a4371c57c30126fc8128cdbe0f4f6cf.webp",
+      "originalAvailable": true,
+      "originalSize": [
+        512,
+        512
+      ],
+      "originalSHA256": "0cf5be1d79866adb4adf8e233770e140737a8ce281d09d6642bd316564dd0aae",
+      "selectedIcon": "icons/media-players/movie-pilot.png",
+      "selectedSource": "https://raw.githubusercontent.com/homarr-labs/dashboard-icons/57e939e504eda0ea764098015da93aa666ad6f31/png/movie-pilot.png",
+      "decision": "复用 assets / 固定图标库或较好的原站素材"
+    },
+    {
+      "id": "sp-02-006",
+      "title": "qBittorrent",
+      "originalPath": "/uploads/2025/8/2/0069b64e2f920b339bc8906c132cc5cd.png",
+      "originalAvailable": true,
+      "originalSize": [
+        1024,
+        1024
+      ],
+      "originalSHA256": "e7e73add36802fc6ab54e71147e16ea5e870bbf40c862cf266005d71b91fe806",
+      "selectedIcon": "icons/self-hosted/qbittorrent.png",
+      "selectedSource": "uploads.zip!2025/8/2/0069b64e2f920b339bc8906c132cc5cd.png",
+      "decision": "采用较好的归档素材，按统一标准处理"
+    },
+    {
+      "id": "sp-02-007",
+      "title": "Emby",
+      "originalPath": "/uploads/2025/8/2/068e26eaf482fb980d8273311e186b9c.png",
+      "originalAvailable": true,
+      "originalSize": [
+        1024,
+        1024
+      ],
+      "originalSHA256": "dc0fee8582d20e75f1673f945a2fde77d1c819330675b4827229991234c7c424",
+      "selectedIcon": "icons/media-players/emby.png",
+      "selectedSource": "existing assets catalog",
+      "decision": "复用 assets / 固定图标库或较好的原站素材"
+    },
+    {
+      "id": "sp-02-008",
+      "title": "Emby",
+      "originalPath": "/uploads/2025/8/2/068e26eaf482fb980d8273311e186b9c.png",
+      "originalAvailable": true,
+      "originalSize": [
+        1024,
+        1024
+      ],
+      "originalSHA256": "dc0fee8582d20e75f1673f945a2fde77d1c819330675b4827229991234c7c424",
+      "selectedIcon": "icons/media-players/emby.png",
+      "selectedSource": "existing assets catalog",
+      "decision": "复用 assets / 固定图标库或较好的原站素材"
+    },
+    {
+      "id": "sp-02-009",
+      "title": "Emby Nginx",
+      "originalPath": "/uploads/2025/8/29/d64a9189dccbc0d187ca2c306acc4cc4.ico",
+      "originalAvailable": true,
+      "originalSize": [
+        128,
+        128
+      ],
+      "originalSHA256": "b3475df6924d9456be2e31741ba02e4bf284f2d1bcf7c821d3e90bf1c41a7f2e",
+      "selectedIcon": "icons/network/emby-nginx.png",
+      "selectedSource": "uploads.zip!2025/8/29/d64a9189dccbc0d187ca2c306acc4cc4.ico",
+      "decision": "采用较好的归档素材，按统一标准处理"
+    },
+    {
+      "id": "sp-02-010",
+      "title": "SMBox",
+      "originalPath": "/uploads/2025/8/2/510e0166260c755a4656b9386d5a805c.webp",
+      "originalAvailable": true,
+      "originalSize": [
+        512,
+        512
+      ],
+      "originalSHA256": "8bf19e44e2af7c6e8ce5267be3b39f88c8ae71cdbeeff9fdb5101cdf83cf2f12",
+      "selectedIcon": "icons/self-hosted/smbox.png",
+      "selectedSource": "uploads.zip!2025/8/2/510e0166260c755a4656b9386d5a805c.webp",
+      "decision": "采用较好的归档素材，按统一标准处理"
+    },
+    {
+      "id": "sp-02-011",
+      "title": "SMBox",
+      "originalPath": "/uploads/2025/8/2/510e0166260c755a4656b9386d5a805c.webp",
+      "originalAvailable": true,
+      "originalSize": [
+        512,
+        512
+      ],
+      "originalSHA256": "8bf19e44e2af7c6e8ce5267be3b39f88c8ae71cdbeeff9fdb5101cdf83cf2f12",
+      "selectedIcon": "icons/self-hosted/smbox.png",
+      "selectedSource": "uploads.zip!2025/8/2/510e0166260c755a4656b9386d5a805c.webp",
+      "decision": "采用较好的归档素材，按统一标准处理"
+    },
+    {
+      "id": "sp-02-012",
+      "title": "Huawei AP",
+      "originalPath": "/uploads/2025/8/2/36ebe5d98cf2159e1c2033f197238773.jpg",
+      "originalAvailable": true,
+      "originalSize": [
+        222,
+        222
+      ],
+      "originalSHA256": "d521c2ccccb295887a5d508df3e6d6354354638a1182beeb70b05d797b2ea0a7",
+      "selectedIcon": "icons/network/huawei.png",
+      "selectedSource": "https://raw.githubusercontent.com/homarr-labs/dashboard-icons/57e939e504eda0ea764098015da93aa666ad6f31/png/huawei.png",
+      "decision": "复用 assets / 固定图标库或较好的原站素材"
+    },
+    {
+      "id": "sp-02-013",
+      "title": "5G CPE 5s",
+      "originalPath": "/uploads/2025/8/2/36ebe5d98cf2159e1c2033f197238773.jpg",
+      "originalAvailable": true,
+      "originalSize": [
+        222,
+        222
+      ],
+      "originalSHA256": "d521c2ccccb295887a5d508df3e6d6354354638a1182beeb70b05d797b2ea0a7",
+      "selectedIcon": "icons/network/huawei.png",
+      "selectedSource": "https://raw.githubusercontent.com/homarr-labs/dashboard-icons/57e939e504eda0ea764098015da93aa666ad6f31/png/huawei.png",
+      "decision": "复用 assets / 固定图标库或较好的原站素材"
+    },
+    {
+      "id": "sp-02-014",
+      "title": "Sub Store",
+      "originalPath": "/uploads/2025/8/2/19acd52f9dd57a4f12e7bae39eccaacf.webp",
+      "originalAvailable": true,
+      "originalSize": [
+        512,
+        512
+      ],
+      "originalSHA256": "91eafb0367c0bea104e566f846549fbc30bb931c9159454f6dcbf2f17d7897ee",
+      "selectedIcon": "icons/network/sub-store.png",
+      "selectedSource": "https://raw.githubusercontent.com/homarr-labs/dashboard-icons/57e939e504eda0ea764098015da93aa666ad6f31/png/sub-store.png",
+      "decision": "复用 assets / 固定图标库或较好的原站素材"
+    },
+    {
+      "id": "sp-02-015",
+      "title": "S-UI",
+      "originalPath": "/uploads/2025/8/2/e7459fc5242a72b19257e42c5e39b43c.ico",
+      "originalAvailable": true,
+      "originalSize": [
+        46,
+        47
+      ],
+      "originalSHA256": "ae7bd84e0d50077ebb0030dd9aa04a0c623b56b7b7d6ae2186842ae2c0266c45",
+      "selectedIcon": "icons/self-hosted/private-service.png",
+      "selectedSource": "OpenAI ImageGen / exec-fe90524f-8267-421e-99bd-6daf911337ea",
+      "decision": "采用清晰通用图案；原图过小、模糊、为截图或缺乏可靠品牌素材"
+    },
+    {
+      "id": "sp-02-016",
+      "title": "Sun-Panel-Helper",
+      "originalPath": "/uploads/2025/9/21/a526061d89f242f185af79c59881c538.svg",
+      "originalAvailable": true,
+      "originalSize": "SVG",
+      "originalSHA256": "d54e29c7de4e6762cdd8884413b404725a54c3dfeca9f477e55fb41b1dfff0ee",
+      "selectedIcon": "icons/self-hosted/sun-panel-helper.png",
+      "selectedSource": "uploads.zip!2025/9/21/a526061d89f242f185af79c59881c538.svg",
+      "decision": "采用较好的归档素材，按统一标准处理"
+    },
+    {
+      "id": "sp-02-017",
+      "title": "Navidrome",
+      "originalPath": "/uploads/2025/10/8/47f1e7bfab034a83ceb744ed89085b12.png",
+      "originalAvailable": true,
+      "originalSize": [
+        192,
+        192
+      ],
+      "originalSHA256": "f4b626075a233b81db83b90cc0da3b1a7b093485ec831160530607916c595658",
+      "selectedIcon": "icons/media-players/navidrome.png",
+      "selectedSource": "https://raw.githubusercontent.com/homarr-labs/dashboard-icons/57e939e504eda0ea764098015da93aa666ad6f31/png/navidrome.png",
+      "decision": "复用 assets / 固定图标库或较好的原站素材"
+    },
+    {
+      "id": "sp-02-018",
+      "title": "Music Tag Web",
+      "originalPath": "/uploads/2025/8/21/3a6768370037fe2d0e1a252415b58493.webp",
+      "originalAvailable": true,
+      "originalSize": [
+        512,
+        512
+      ],
+      "originalSHA256": "3e78880a3b95bcdfdc728f576c2c34eb9befe2aab6d2a1596b63b997526a2cfc",
+      "selectedIcon": "icons/media-players/navidrome.png",
+      "selectedSource": "https://raw.githubusercontent.com/homarr-labs/dashboard-icons/57e939e504eda0ea764098015da93aa666ad6f31/png/navidrome.png",
+      "decision": "复用 assets / 固定图标库或较好的原站素材；沿用用户选择的 Navidrome 图案，不声明官方标识"
+    },
+    {
+      "id": "sp-02-019",
+      "title": "GitHub 文件加速",
+      "originalPath": "/uploads/2025/8/2/bd0b5cf2e15491977eb23ceba98a00b8.png",
+      "originalAvailable": true,
+      "originalSize": [
+        119,
+        119
+      ],
+      "originalSHA256": "0a23afd2c6376bb29cef027e609610df6a24e9d9cf1b569a66b03bf0638da849",
+      "selectedIcon": "icons/development/github.png",
+      "selectedSource": "existing assets catalog",
+      "decision": "复用 assets / 固定图标库或较好的原站素材"
+    },
+    {
+      "id": "sp-03-001",
+      "title": "M-Team",
+      "originalPath": "/uploads/2025/8/2/56074ee5acb824c6347818303289b768.png",
+      "originalAvailable": true,
+      "originalSize": [
+        128,
+        128
+      ],
+      "originalSHA256": "fa50eab6542a28061d22ac8bdd1f9be68609f466cfa1c4004017c314c17d3224",
+      "selectedIcon": "icons/media/m-team.png",
+      "selectedSource": "uploads.zip!2025/8/2/56074ee5acb824c6347818303289b768.png",
+      "decision": "采用较好的归档素材，按统一标准处理"
+    },
+    {
+      "id": "sp-03-002",
+      "title": "CHDBits",
+      "originalPath": "/uploads/2025/8/2/5acb784cb784d11188430971a917ab66.ico",
+      "originalAvailable": true,
+      "originalSize": [
+        48,
+        48
+      ],
+      "originalSHA256": "61875b9f18310c24550ccb4f4379998a77fd372491a7e99000d6edbb25498a2e",
+      "selectedIcon": "icons/media/media-library.png",
+      "selectedSource": "OpenAI ImageGen / exec-861a1412-7397-45d7-8c62-e5a86fe64f73",
+      "decision": "采用清晰通用图案；原图过小、模糊、为截图或缺乏可靠品牌素材"
+    },
+    {
+      "id": "sp-03-003",
+      "title": "Audiences",
+      "originalPath": "/uploads/2025/8/2/beebdf7a3c2f26c5156f0d5ebfc86a25.jpg",
+      "originalAvailable": true,
+      "originalSize": [
+        225,
+        225
+      ],
+      "originalSHA256": "8b3001330070c8c351dff658be232ddbe4b8ad7c1b7c9c5ec449b710f096eb7e",
+      "selectedIcon": "icons/media/audiences.png",
+      "selectedSource": "uploads.zip!2025/8/2/beebdf7a3c2f26c5156f0d5ebfc86a25.jpg",
+      "decision": "采用较好的归档素材，按统一标准处理"
+    },
+    {
+      "id": "sp-03-004",
+      "title": "HDKylin",
+      "originalPath": "/uploads/2025/8/2/a1fea89e3de75f137e4a8ef07a566396.png",
+      "originalAvailable": true,
+      "originalSize": [
+        266,
+        190
+      ],
+      "originalSHA256": "f0202a5d3dbfcb34e9a0e2b2c760edc17762e4b4186eb78b24404fa8cd4b0a48",
+      "selectedIcon": "icons/media/hd-kylin.png",
+      "selectedSource": "uploads.zip!2025/8/2/a1fea89e3de75f137e4a8ef07a566396.png",
+      "decision": "采用较好的归档素材，按统一标准处理"
+    },
+    {
+      "id": "sp-03-005",
+      "title": "AGSV",
+      "originalPath": "/uploads/2025/8/2/3bce40dfeba0d7fbba9e1ae195d2d0fe.ico",
+      "originalAvailable": true,
+      "originalSize": [
+        48,
+        48
+      ],
+      "originalSHA256": "cc005065c325c60347816a6bfac7993fdef881e88e93d198331370a0a759296f",
+      "selectedIcon": "icons/media/media-library.png",
+      "selectedSource": "OpenAI ImageGen / exec-861a1412-7397-45d7-8c62-e5a86fe64f73",
+      "decision": "采用清晰通用图案；原图过小、模糊、为截图或缺乏可靠品牌素材"
+    },
+    {
+      "id": "sp-03-006",
+      "title": "BTSCHOOL",
+      "originalPath": "/uploads/2025/8/2/61325ce1fd4c2f6a0f316faba356a387.jpg",
+      "originalAvailable": true,
+      "originalSize": [
+        280,
+        210
+      ],
+      "originalSHA256": "bf3ee2e60d62457a24490f1d35c2edc8773ed86f103e9c3762e844355e037c11",
+      "selectedIcon": "icons/media/btschool.png",
+      "selectedSource": "uploads.zip!2025/8/2/61325ce1fd4c2f6a0f316faba356a387.jpg",
+      "decision": "采用较好的归档素材，按统一标准处理"
+    },
+    {
+      "id": "sp-03-007",
+      "title": "朱雀",
+      "originalPath": "/uploads/2025/8/2/ec269af655a0b815e4b0836757256c81.png",
+      "originalAvailable": true,
+      "originalSize": [
+        512,
+        512
+      ],
+      "originalSHA256": "2a943a3d5846caaffa2d4ac706419a8d47935826d718c78f3b9a86bf0a229ef6",
+      "selectedIcon": "icons/media/zhuque.png",
+      "selectedSource": "https://zhuque.in/assets/images/512.png",
+      "decision": "复用 assets / 固定图标库或较好的原站素材"
+    },
+    {
+      "id": "sp-03-008",
+      "title": "CarPT",
+      "originalPath": "/uploads/2025/8/2/3938cb6680570d111b1e3516cffff87f.ico",
+      "originalAvailable": true,
+      "originalSize": [
+        32,
+        32
+      ],
+      "originalSHA256": "bf922ffdea43e3dcc950f4a0892bda0de97790cd79480a72f9ca9e1d104dc879",
+      "selectedIcon": "icons/media/media-library.png",
+      "selectedSource": "OpenAI ImageGen / exec-861a1412-7397-45d7-8c62-e5a86fe64f73",
+      "decision": "采用清晰通用图案；原图过小、模糊、为截图或缺乏可靠品牌素材"
+    },
+    {
+      "id": "sp-04-001",
+      "title": "V2EX",
+      "originalPath": "/uploads/2025/8/2/394c668491151f2c29ecae89e8a1140c.png",
+      "originalAvailable": true,
+      "originalSize": [
+        192,
+        192
+      ],
+      "originalSHA256": "eae0856c83fe83e63d57ba6964c9261333b02b177fe513a32a74b59e1de03fe0",
+      "selectedIcon": "icons/social/v2ex.png",
+      "selectedSource": "https://www.v2ex.com/static/icon-192.png",
+      "decision": "复用 assets / 固定图标库或较好的原站素材"
+    },
+    {
+      "id": "sp-04-002",
+      "title": "恩山",
+      "originalPath": "/uploads/2025/8/2/909575097b7735c8c6fc803732fb92e3.ico",
+      "originalAvailable": true,
+      "originalSize": [
+        64,
+        64
+      ],
+      "originalSHA256": "ce4fe55fadd62596c99cf59c9e414b884c1ef2723f0c5e533c6b680d91419cce",
+      "selectedIcon": "icons/social/community.png",
+      "selectedSource": "OpenAI ImageGen / exec-a4f5889b-e54e-4a3d-a5da-2098f9110de3",
+      "decision": "采用清晰通用图案；原图过小、模糊、为截图或缺乏可靠品牌素材"
+    },
+    {
+      "id": "sp-04-003",
+      "title": "HOSTLOC",
+      "originalPath": "/uploads/2025/8/2/e4541549a99c2812fc5475b08d375f09.png",
+      "originalAvailable": true,
+      "originalSize": [
+        250,
+        250
+      ],
+      "originalSHA256": "2c9bb9935da7c2dbbc700eb8f80942c404bc149540eedd5da66ecebf49e59186",
+      "selectedIcon": "icons/social/hostloc.png",
+      "selectedSource": "uploads.zip!2025/8/2/e4541549a99c2812fc5475b08d375f09.png",
+      "decision": "采用较好的归档素材，按统一标准处理"
+    },
+    {
+      "id": "sp-04-004",
+      "title": "LINUX DO",
+      "originalPath": "/uploads/2025/8/2/3f960dab58095f53518f8ef4cca42c54.png",
+      "originalAvailable": true,
+      "originalSize": [
+        896,
+        896
+      ],
+      "originalSHA256": "ec212694698034178b58c5c49ef935175cbbefd37a915f7edcf74681677e2772",
+      "selectedIcon": "icons/social/linuxdo.png",
+      "selectedSource": "uploads.zip!2025/8/2/3f960dab58095f53518f8ef4cca42c54.png",
+      "decision": "采用较好的归档素材，按统一标准处理"
+    },
+    {
+      "id": "sp-04-005",
+      "title": "Chiphell",
+      "originalPath": "/uploads/2025/8/2/e397032de0f8326d031a001a2b095bd8.png",
+      "originalAvailable": true,
+      "originalSize": [
+        82,
+        97
+      ],
+      "originalSHA256": "cf84129197909836dc3ce943c1c028f2da5be87f562ecd651110af30d94c8ad6",
+      "selectedIcon": "icons/social/chiphell.png",
+      "selectedSource": "uploads.zip!2025/8/2/e397032de0f8326d031a001a2b095bd8.png",
+      "decision": "采用较好的归档素材，按统一标准处理"
+    },
+    {
+      "id": "sp-04-006",
+      "title": "NGA",
+      "originalPath": "/uploads/2025/8/2/8aa4783db3c1c6f9ac3de51192257a52.png",
+      "originalAvailable": true,
+      "originalSize": [
+        225,
+        225
+      ],
+      "originalSHA256": "e09c3b16627974cc1f95ee08d844b8f5963803b87504fc2f9563569952be6fc1",
+      "selectedIcon": "icons/social/nga.png",
+      "selectedSource": "uploads.zip!2025/8/2/8aa4783db3c1c6f9ac3de51192257a52.png",
+      "decision": "采用较好的归档素材，按统一标准处理"
+    },
+    {
+      "id": "sp-04-007",
+      "title": "Github",
+      "originalPath": "/uploads/2025/8/2/bd0b5cf2e15491977eb23ceba98a00b8.png",
+      "originalAvailable": true,
+      "originalSize": [
+        119,
+        119
+      ],
+      "originalSHA256": "0a23afd2c6376bb29cef027e609610df6a24e9d9cf1b569a66b03bf0638da849",
+      "selectedIcon": "icons/development/github.png",
+      "selectedSource": "existing assets catalog",
+      "decision": "复用 assets / 固定图标库或较好的原站素材"
+    },
+    {
+      "id": "sp-04-008",
+      "title": "NodeSeek",
+      "originalPath": "/uploads/2025/8/2/3afb7f7a27ff9cf2abdd34756a01cecd.png",
+      "originalAvailable": true,
+      "originalSize": [
+        225,
+        225
+      ],
+      "originalSHA256": "58994be2fb6a87d10bd6169fdc1f71149a3a28404bcad840641b76fc4c4f633e",
+      "selectedIcon": "icons/social/nodeseek.png",
+      "selectedSource": "https://www.nodeseek.com/static/image/favicon/android-chrome-512x512.png",
+      "decision": "复用 assets / 固定图标库或较好的原站素材"
+    },
+    {
+      "id": "sp-04-009",
+      "title": "爆棚小组",
+      "originalPath": "/uploads/2025/8/2/107c2c1ba050600d0d35b1200dff92ba.jpg",
+      "originalAvailable": true,
+      "originalSize": [
+        278,
+        181
+      ],
+      "originalSHA256": "9efef549a4980cd389f0861a3faa96fc94d3a597f7f46010349512f066ad0581",
+      "selectedIcon": "icons/social/playgm.png",
+      "selectedSource": "uploads.zip!2025/8/2/107c2c1ba050600d0d35b1200dff92ba.jpg",
+      "decision": "采用较好的归档素材，按统一标准处理"
+    },
+    {
+      "id": "sp-04-010",
+      "title": "MikroTik",
+      "originalPath": "/uploads/2025/8/2/c88619b68d11666d8e462f844b03fd2d.png",
+      "originalAvailable": true,
+      "originalSize": [
+        225,
+        225
+      ],
+      "originalSHA256": "25d5bbc00007ba8bdfe36d1e235d000f6743871a1e6da8cca8f13ac62fd59e9c",
+      "selectedIcon": "icons/network/mikrotik.png",
+      "selectedSource": "https://raw.githubusercontent.com/homarr-labs/dashboard-icons/57e939e504eda0ea764098015da93aa666ad6f31/png/mikrotik.png",
+      "decision": "复用 assets / 固定图标库或较好的原站素材"
+    },
+    {
+      "id": "sp-04-011",
+      "title": "Reddit",
+      "originalPath": "/uploads/2025/8/2/33174f15b72a08a680befb80ae75c9da.png",
+      "originalAvailable": true,
+      "originalSize": [
+        64,
+        64
+      ],
+      "originalSHA256": "f60ae5a33ee8d16c71a0ff6b45e3c2524f9ccaf3cd33e6636c6493dd4ec2d953",
+      "selectedIcon": "icons/social/reddit.png",
+      "selectedSource": "https://raw.githubusercontent.com/homarr-labs/dashboard-icons/57e939e504eda0ea764098015da93aa666ad6f31/png/reddit.png",
+      "decision": "复用 assets / 固定图标库或较好的原站素材"
+    },
+    {
+      "id": "sp-04-012",
+      "title": "巴哈姆特",
+      "originalPath": "/uploads/2025/8/2/29d9fca068dda039deda464e53850e62.png",
+      "originalAvailable": true,
+      "originalSize": [
+        225,
+        225
+      ],
+      "originalSHA256": "88d850472cd0dff127d9f102c0bd8b9977f3794f28742187d842a0a9f6b1702d",
+      "selectedIcon": "icons/social/bahamut.png",
+      "selectedSource": "https://i2.bahamut.com.tw/favicon.svg?v=1689129528",
+      "decision": "复用 assets / 固定图标库或较好的原站素材"
+    },
+    {
+      "id": "sp-04-013",
+      "title": "吾爱破解",
+      "originalPath": "/uploads/2026/8/8/30184d7c158a6df8fa879e17713bf92e.ico",
+      "originalAvailable": true,
+      "originalSize": [
+        64,
+        64
+      ],
+      "originalSHA256": "bba4e2c1ee3f338c13e73f4693d2adff635362308264fbe3ce78b67eb076e160",
+      "selectedIcon": "icons/social/52pojie.png",
+      "selectedSource": "https://www.52pojie.cn/favicon.svg",
+      "decision": "复用 assets / 固定图标库或较好的原站素材"
+    },
+    {
+      "id": "sp-05-001",
+      "title": "Anki中文网",
+      "originalPath": "/uploads/2025/8/2/2aa04997e7a104d88d34fc710daf15a6.png",
+      "originalAvailable": true,
+      "originalSize": [
+        776,
+        776
+      ],
+      "originalSHA256": "e0a10711c68229f055c15d56398cf98dc129bfce3db3ee2f3841e3bdd2837ecb",
+      "selectedIcon": "icons/learning/anki.png",
+      "selectedSource": "https://raw.githubusercontent.com/homarr-labs/dashboard-icons/57e939e504eda0ea764098015da93aa666ad6f31/png/anki.png",
+      "decision": "复用 assets / 固定图标库或较好的原站素材"
+    },
+    {
+      "id": "sp-05-002",
+      "title": "PDF Guru Anki",
+      "originalPath": "/uploads/2025/8/2/42581a9594a76ec73244be9adf0b0416.ico",
+      "originalAvailable": true,
+      "originalSize": [
+        2737,
+        2053
+      ],
+      "originalSHA256": "d6d64096bff649b00b9e1bf2cc617d665135fe9d1be839d7b9ebcff499cb1b1a",
+      "selectedIcon": "icons/productivity/pdf-guru-anki.png",
+      "selectedSource": "https://guru.kevin2li.top/img/favicon.ico",
+      "decision": "复用 assets / 固定图标库或较好的原站素材"
+    },
+    {
+      "id": "sp-05-003",
+      "title": "云深考公",
+      "originalPath": "/uploads/2026/6/10/09f3ff959a53db756d4522d0c8cba031.png",
+      "originalAvailable": true,
+      "originalSize": [
+        128,
+        128
+      ],
+      "originalSHA256": "51e49e98c252792a562fd95964aa407d91601e78d123abd2b4da4bb818b25a7c",
+      "selectedIcon": "icons/productivity/wolai.png",
+      "selectedSource": "https://cdn.wostatic.cn/dist/app_icon_1024.png",
+      "decision": "复用 assets / 固定图标库或较好的原站素材"
+    },
+    {
+      "id": "sp-05-004",
+      "title": "kikkua · 知识卡片",
+      "originalPath": "https://kikkua.online/data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📕%3C/text%3E%3C/svg%3E",
+      "originalAvailable": false,
+      "originalSize": null,
+      "originalSHA256": null,
+      "selectedIcon": "icons/productivity/knowledge-cards.png",
+      "selectedSource": "OpenAI ImageGen / exec-4e438255-2910-4a78-afea-07e69971064a",
+      "decision": "采用清晰通用图案；原图过小、模糊、为截图或缺乏可靠品牌素材"
+    },
+    {
+      "id": "sp-06-001",
+      "title": "瓜牛居士",
+      "originalPath": "/uploads/2025/8/2/35cc993523ef54a4928bf1aefabddba0.png",
+      "originalAvailable": true,
+      "originalSize": [
+        192,
+        192
+      ],
+      "originalSHA256": "2c53a80c8f442ec8ade2dad6b7298f0eddbecc5fd0033d59555e633d14028ba7",
+      "selectedIcon": "icons/media/guaniu.png",
+      "selectedSource": "uploads.zip!2025/8/2/35cc993523ef54a4928bf1aefabddba0.png",
+      "decision": "采用较好的归档素材，按统一标准处理"
+    },
+    {
+      "id": "sp-06-002",
+      "title": "BTNULL",
+      "originalPath": "/uploads/2025/8/2/b51e5260a736dfab11ef03eafee349a4.jpg",
+      "originalAvailable": true,
+      "originalSize": [
+        225,
+        225
+      ],
+      "originalSHA256": "6bdb838d45bcfa71af47076ae358318ff4f96cc44c907e94002e05f365caa980",
+      "selectedIcon": "icons/media/btnull.png",
+      "selectedSource": "uploads.zip!2025/8/2/b51e5260a736dfab11ef03eafee349a4.jpg",
+      "decision": "采用较好的归档素材，按统一标准处理"
+    },
+    {
+      "id": "sp-06-003",
+      "title": "哲风壁纸",
+      "originalPath": "/uploads/2025/8/2/aed9289cecc69c6acf4e72b21edea9e5.ico",
+      "originalAvailable": true,
+      "originalSize": [
+        512,
+        512
+      ],
+      "originalSHA256": "143e2fe0a6dce0919e7178689bfec05bf52bd671bebb4eb425b120b729c91b7f",
+      "selectedIcon": "icons/media/haowallpaper.png",
+      "selectedSource": "https://haowallpaper.com/favicon.ico",
+      "decision": "复用 assets / 固定图标库或较好的原站素材"
+    },
+    {
+      "id": "sp-06-004",
+      "title": "最全IPTV电视直播源及工具",
+      "originalPath": "/uploads/2025/9/14/30e91c58a40fa89f24ba1e0fec8faa95.png",
+      "originalAvailable": true,
+      "originalSize": [
+        48,
+        48
+      ],
+      "originalSHA256": "9cf0e97735ffbe4ecda264f9487b7df63389fc5a258c88a4feb068fd08612122",
+      "selectedIcon": "icons/media/flowus.png",
+      "selectedSource": "https://cdn2.flowus.cn/assets/flowus-favicon-36b0b2bc.svg",
+      "decision": "复用 assets / 固定图标库或较好的原站素材"
+    },
+    {
+      "id": "sp-06-005",
+      "title": "明月浩空网",
+      "originalPath": "/uploads/2025/9/21/b4d7667076b9caa9ed4bb92642be7ee1.ico",
+      "originalAvailable": true,
+      "originalSize": [
+        128,
+        128
+      ],
+      "originalSHA256": "0210ca0ab4e32fb82c7183743f31a40ccd8764a3aa19e9a9e5f2f3aefc5799da",
+      "selectedIcon": "icons/media/myhkw.png",
+      "selectedSource": "https://myhkw.cn/favicon.ico",
+      "decision": "复用 assets / 固定图标库或较好的原站素材"
+    },
+    {
+      "id": "sp-07-001",
+      "title": "bandwagonhost",
+      "originalPath": "/uploads/2025/8/2/ec50f5dee0254782c51fe01bf4f2e59a.webp",
+      "originalAvailable": true,
+      "originalSize": [
+        325,
+        325
+      ],
+      "originalSHA256": "359e7f6cf8b0a12f7f739e23107892e79f906d0a71dd81529f729329871d8adf",
+      "selectedIcon": "icons/self-hosted/private-service.png",
+      "selectedSource": "OpenAI ImageGen / exec-fe90524f-8267-421e-99bd-6daf911337ea",
+      "decision": "采用清晰通用图案；原图过小、模糊、为截图或缺乏可靠品牌素材"
+    },
+    {
+      "id": "sp-07-002",
+      "title": "DMIT",
+      "originalPath": "/uploads/2025/8/2/5f32a774bc72edf937cdbc2e2fb1a027.png",
+      "originalAvailable": true,
+      "originalSize": [
+        148,
+        148
+      ],
+      "originalSHA256": "903b1912296538ad5e198bd305296685ab713db3778bfe5ebad90f7f67b6ad95",
+      "selectedIcon": "icons/self-hosted/private-service.png",
+      "selectedSource": "OpenAI ImageGen / exec-fe90524f-8267-421e-99bd-6daf911337ea",
+      "decision": "采用清晰通用图案；原图过小、模糊、为截图或缺乏可靠品牌素材"
+    },
+    {
+      "id": "sp-07-003",
+      "title": "阿里云",
+      "originalPath": "/uploads/2025/8/2/9c00b249967c5c9a5325f5e58bfbd404.webp",
+      "originalAvailable": true,
+      "originalSize": [
+        512,
+        512
+      ],
+      "originalSHA256": "4a871d87ab6faea4bc5edeee28c97b07461094dc73948ce75bca810b95ad63bd",
+      "selectedIcon": "icons/cloud/aliyun.png",
+      "selectedSource": "https://raw.githubusercontent.com/homarr-labs/dashboard-icons/57e939e504eda0ea764098015da93aa666ad6f31/png/aliyun.png",
+      "decision": "复用 assets / 固定图标库或较好的原站素材"
+    },
+    {
+      "id": "sp-08-001",
+      "title": "FlowerCloud",
+      "originalPath": "/uploads/2025/8/2/355cef82913e005956bab6f370568b2a.ico",
+      "originalAvailable": true,
+      "originalSize": [
+        48,
+        48
+      ],
+      "originalSHA256": "26a4f4906ba6cefb13d7215700a41cf2680ddc6fca06940160c1f1a83bf7ecbb",
+      "selectedIcon": "icons/self-hosted/private-service.png",
+      "selectedSource": "OpenAI ImageGen / exec-fe90524f-8267-421e-99bd-6daf911337ea",
+      "decision": "采用清晰通用图案；原图过小、模糊、为截图或缺乏可靠品牌素材"
+    },
+    {
+      "id": "sp-08-002",
+      "title": "Nexitally",
+      "originalPath": "/uploads/2025/8/2/a006f311163b78c7f79bbca660b3bdc9.png",
+      "originalAvailable": true,
+      "originalSize": [
+        1024,
+        1024
+      ],
+      "originalSHA256": "77e9078ae7fe9f16f6b1dcee850decddda0719dc44aecf3fb184f6862916fa0a",
+      "selectedIcon": "icons/network/nexitally.png",
+      "selectedSource": "https://naiixi.com/images/mainlogo.png",
+      "decision": "复用 assets / 固定图标库或较好的原站素材"
+    },
+    {
+      "id": "sp-08-003",
+      "title": "YToo",
+      "originalPath": "/uploads/2025/8/2/9c9e642bd64196f7e2dc1e5549eba6de.jpg",
+      "originalAvailable": true,
+      "originalSize": [
+        640,
+        640
+      ],
+      "originalSHA256": "d6aa7f066d8db64886e6b7a581360128e04d58ace740efb0fdbc766aade35cd2",
+      "selectedIcon": "icons/cloud/ytoo.png",
+      "selectedSource": "uploads.zip!2025/8/2/9c9e642bd64196f7e2dc1e5549eba6de.jpg",
+      "decision": "采用较好的归档素材，按统一标准处理"
+    },
+    {
+      "id": "sp-09-001",
+      "title": "Proxmox VE Helper",
+      "originalPath": "/uploads/2025/8/18/291135b2b9738b691dae9fe77f01540a.ico",
+      "originalAvailable": true,
+      "originalSize": [
+        35,
+        48
+      ],
+      "originalSHA256": "3f61372f3048ff1f5d1d3c251f10f8c58ae0aa71353fdacf98fc13d076ef3e0b",
+      "selectedIcon": "icons/self-hosted/proxmox-helper-scripts.png",
+      "selectedSource": "https://raw.githubusercontent.com/selfhst/icons/2053b70b283ffed5f2cc1424d1e17d9c554a846d/png/proxmox-helper-scripts.png",
+      "decision": "复用 assets / 固定图标库或较好的原站素材"
+    },
+    {
+      "id": "sp-09-002",
+      "title": "Speedtest",
+      "originalPath": "/uploads/2025/8/2/ed04095f217f7cd65c29617062c48c14.png",
+      "originalAvailable": true,
+      "originalSize": [
+        512,
+        512
+      ],
+      "originalSHA256": "9ededae78f7f9826622ead0cd30cf67c4511d5e95f5946e9ccb69e5736d9fbed",
+      "selectedIcon": "icons/network/speedtest.png",
+      "selectedSource": "https://raw.githubusercontent.com/homarr-labs/dashboard-icons/57e939e504eda0ea764098015da93aa666ad6f31/png/ookla-speedtest.png",
+      "decision": "复用 assets / 固定图标库或较好的原站素材"
+    },
+    {
+      "id": "sp-09-003",
+      "title": "ITDOG",
+      "originalPath": "/uploads/2025/8/2/f2290234fa87a2b789733af81ca9e18c.jpg",
+      "originalAvailable": true,
+      "originalSize": [
+        126,
+        126
+      ],
+      "originalSHA256": "eeef7026a6bba833da04d684d92959eb1f506b4a65a0fa6a485b328bfecb1cda",
+      "selectedIcon": "icons/network/itdog.png",
+      "selectedSource": "uploads.zip!2025/8/2/f2290234fa87a2b789733af81ca9e18c.jpg",
+      "decision": "采用较好的归档素材，按统一标准处理"
+    },
+    {
+      "id": "sp-09-004",
+      "title": "ipleak",
+      "originalPath": "/uploads/2025/8/2/2fddd1ff3eb51db9f2b909e0065f43f6.png",
+      "originalAvailable": true,
+      "originalSize": [
+        137,
+        137
+      ],
+      "originalSHA256": "b05e95166d95da1ae146bbe0a8f811e0ab56e83872db73e5c5426ae3623f926e",
+      "selectedIcon": "icons/network/ipleak.png",
+      "selectedSource": "uploads.zip!2025/8/2/2fddd1ff3eb51db9f2b909e0065f43f6.png",
+      "decision": "采用较好的归档素材，按统一标准处理"
+    },
+    {
+      "id": "sp-09-005",
+      "title": "ip位置查询",
+      "originalPath": "/uploads/2025/8/2/3bf3d4ed85d239ad622db206575dbd5e.png",
+      "originalAvailable": true,
+      "originalSize": [
+        400,
+        400
+      ],
+      "originalSHA256": "1b9a121202d1b428a51a9e10095b7aa42aa614a291721a4ece72b7cd781ec32b",
+      "selectedIcon": "icons/network/geolocation.png",
+      "selectedSource": "uploads.zip!2025/8/2/3bf3d4ed85d239ad622db206575dbd5e.png",
+      "decision": "采用较好的归档素材，按统一标准处理"
+    },
+    {
+      "id": "sp-09-006",
+      "title": "Censys",
+      "originalPath": "/uploads/2025/8/2/903004a102077fada049cca95b3fcea8.jpg",
+      "originalAvailable": true,
+      "originalSize": [
+        400,
+        400
+      ],
+      "originalSHA256": "dc6c417b403ed414f6d0c5105b7e17f1f95d181be4df9043b50d37b69e56e668",
+      "selectedIcon": "icons/network/censys.png",
+      "selectedSource": "uploads.zip!2025/8/2/2c35f6af1730bf7d12e8a97f80bad43d.png",
+      "decision": "采用较好的归档素材，按统一标准处理；原配置选图与 Scamalytics 放反，已按官网纠正"
+    },
+    {
+      "id": "sp-09-007",
+      "title": "Scamalytics",
+      "originalPath": "/uploads/2025/8/2/2c35f6af1730bf7d12e8a97f80bad43d.png",
+      "originalAvailable": true,
+      "originalSize": [
+        400,
+        400
+      ],
+      "originalSHA256": "743d4586cce004bd8e00bf827d45b7dd5b6a1ee601aeb5a14e7a6adb924e3925",
+      "selectedIcon": "icons/network/scamalytics.png",
+      "selectedSource": "https://scamalytics.com/wp-content/uploads/2016/06/icon_128.png",
+      "decision": "复用 assets / 固定图标库或较好的原站素材"
+    },
+    {
+      "id": "sp-10-001",
+      "title": "Cloudflare",
+      "originalPath": "/uploads/2025/8/2/bb5778b4efa9f6c4937f8759c8fb28a6.png",
+      "originalAvailable": true,
+      "originalSize": [
+        225,
+        225
+      ],
+      "originalSHA256": "2ea5f0b0dd6f2711e2bfe9899bfea0ed098079a6d8d0dda306eddf86094ba037",
+      "selectedIcon": "icons/cloud/cloudflare.png",
+      "selectedSource": "https://raw.githubusercontent.com/homarr-labs/dashboard-icons/57e939e504eda0ea764098015da93aa666ad6f31/png/cloudflare.png",
+      "decision": "复用 assets / 固定图标库或较好的原站素材"
+    },
+    {
+      "id": "sp-10-002",
+      "title": "NameSilo",
+      "originalPath": "/uploads/2025/8/2/54007765ef981db750302f45795ef5ee.png",
+      "originalAvailable": true,
+      "originalSize": [
+        316,
+        316
+      ],
+      "originalSHA256": "aec059f63cca8fc62d7c0aa3994ca1b7ed17cb852948f96796d0fa51a8ec3130",
+      "selectedIcon": "icons/cloud/namesilo.png",
+      "selectedSource": "https://raw.githubusercontent.com/homarr-labs/dashboard-icons/57e939e504eda0ea764098015da93aa666ad6f31/png/name-silo.png",
+      "decision": "复用 assets / 固定图标库或较好的原站素材"
+    },
+    {
+      "id": "sp-10-003",
+      "title": "GNAME",
+      "originalPath": "/uploads/2025/8/2/d72d08cbbe4e5a4c6907877a7c05167c.jpg",
+      "originalAvailable": true,
+      "originalSize": [
+        225,
+        225
+      ],
+      "originalSHA256": "c9b6884186fcf190f25f79b2f2d79f92b1035d65d935de4ff26692d1803083c3",
+      "selectedIcon": "icons/network/gname.png",
+      "selectedSource": "uploads.zip!2025/8/2/d72d08cbbe4e5a4c6907877a7c05167c.jpg",
+      "decision": "采用较好的归档素材，按统一标准处理"
+    },
+    {
+      "id": "sp-10-004",
+      "title": "porkbun",
+      "originalPath": "/uploads/2025/8/2/681c5938e452c82723e99a155d3edac2.png",
+      "originalAvailable": true,
+      "originalSize": [
+        512,
+        512
+      ],
+      "originalSHA256": "20036b6bd2295743a97dd2db9245cf53373c178a4aeaf52fe9f07b0497bb780e",
+      "selectedIcon": "icons/cloud/porkbun.png",
+      "selectedSource": "https://raw.githubusercontent.com/homarr-labs/dashboard-icons/57e939e504eda0ea764098015da93aa666ad6f31/png/porkbun.png",
+      "decision": "复用 assets / 固定图标库或较好的原站素材"
+    },
+    {
+      "id": "sp-11-001",
+      "title": "南+ South Plus",
+      "originalPath": "/uploads/2025/8/2/cd3fef69710b9dea8dd0b4ec0b57577b.png",
+      "originalAvailable": true,
+      "originalSize": [
+        200,
+        200
+      ],
+      "originalSHA256": "98b94e0316b8e385af51d388ddd18a396d41b074ba215c1b6775ae649fb58bfd",
+      "selectedIcon": "icons/adult/south-plus.png",
+      "selectedSource": "uploads.zip!2025/8/2/cd3fef69710b9dea8dd0b4ec0b57577b.png",
+      "decision": "采用较好的归档素材，按统一标准处理"
+    },
+    {
+      "id": "sp-11-002",
+      "title": "moxing",
+      "originalPath": "/uploads/2025/8/2/8e264bc2c63e4694253d7c560a0d52ee.jpeg",
+      "originalAvailable": true,
+      "originalSize": [
+        1024,
+        1024
+      ],
+      "originalSHA256": "68e9f610dac586f045bead204ce7d329fb9e13e04d8990735fa657d1c14385be",
+      "selectedIcon": "icons/adult/moxing.png",
+      "selectedSource": "uploads.zip!2025/8/2/8e264bc2c63e4694253d7c560a0d52ee.jpeg",
+      "decision": "采用较好的归档素材，按统一标准处理"
+    },
+    {
+      "id": "sp-11-003",
+      "title": "98堂",
+      "originalPath": "/uploads/2025/8/2/f1698bccb6185ae9c5fded33a55794d7.jpg",
+      "originalAvailable": true,
+      "originalSize": [
+        400,
+        400
+      ],
+      "originalSHA256": "10d394b510b381d05874c2b7178686f46b5ed3fb5362aa7e02c5134c9002a3bf",
+      "selectedIcon": "icons/adult/sehuatang.png",
+      "selectedSource": "uploads.zip!2025/8/2/f1698bccb6185ae9c5fded33a55794d7.jpg",
+      "decision": "采用较好的归档素材，按统一标准处理"
+    },
+    {
+      "id": "sp-11-004",
+      "title": "pixiv",
+      "originalPath": "/uploads/2025/8/2/ad71271a2dd2762d3b6c3b547f1fde24.png",
+      "originalAvailable": true,
+      "originalSize": [
+        119,
+        119
+      ],
+      "originalSHA256": "3071592bcd421b38f8c036317b3eecaf0556db7d283f0f1686cd0f6748d4f45f",
+      "selectedIcon": "icons/social/pixiv.png",
+      "selectedSource": "https://raw.githubusercontent.com/selfhst/icons/2053b70b283ffed5f2cc1424d1e17d9c554a846d/png/pixiv.png",
+      "decision": "复用 assets / 固定图标库或较好的原站素材"
+    },
+    {
+      "id": "sp-11-005",
+      "title": "1024",
+      "originalPath": "/uploads/2025/8/2/0cfa0aaaa3a0e6ea68850b2599bc4fbb.jpg",
+      "originalAvailable": true,
+      "originalSize": [
+        60,
+        60
+      ],
+      "originalSHA256": "2074a03d2988853ada0d14bd94f464a126ac968b14c5d998584701f8b680e3e2",
+      "selectedIcon": "icons/social/community.png",
+      "selectedSource": "OpenAI ImageGen / exec-a4f5889b-e54e-4a3d-a5da-2098f9110de3",
+      "decision": "采用清晰通用图案；原图过小、模糊、为截图或缺乏可靠品牌素材"
+    },
+    {
+      "id": "sp-11-006",
+      "title": "风花雪月",
+      "originalPath": "/uploads/2025/8/2/ef02bcb6458fbe438167d3e85a1a0dc4.png",
+      "originalAvailable": true,
+      "originalSize": [
+        860,
+        580
+      ],
+      "originalSHA256": "f738240782d26269036b6bfda38805466784295fb7d29450c18348d56d2bb71f",
+      "selectedIcon": "icons/social/community.png",
+      "selectedSource": "OpenAI ImageGen / exec-a4f5889b-e54e-4a3d-a5da-2098f9110de3",
+      "decision": "采用清晰通用图案；原图过小、模糊、为截图或缺乏可靠品牌素材"
+    },
+    {
+      "id": "sp-11-007",
+      "title": "禁忌书屋",
+      "originalPath": "/uploads/2025/8/2/2bb46adf380535e94f49a18032b947d7.jpg",
+      "originalAvailable": true,
+      "originalSize": [
+        474,
+        474
+      ],
+      "originalSHA256": "e67283ff4579242f3902a2e89ad4f4f3b8257a6063671756db802782eca5cddb",
+      "selectedIcon": "icons/productivity/knowledge-cards.png",
+      "selectedSource": "OpenAI ImageGen / exec-4e438255-2910-4a78-afea-07e69971064a",
+      "decision": "采用清晰通用图案；原图过小、模糊、为截图或缺乏可靠品牌素材"
+    },
+    {
+      "id": "sp-11-008",
+      "title": "XVIDEOS",
+      "originalPath": "/uploads/2025/8/2/f0102f85733c6d26184a35fa53ae554d.png",
+      "originalAvailable": true,
+      "originalSize": [
+        512,
+        512
+      ],
+      "originalSHA256": "bcb129f2a58040871a9e9d3c500403171955e4ba17e8efded6308e40817d4d5c",
+      "selectedIcon": "icons/adult/xvideos.png",
+      "selectedSource": "https://assets-cdn77.xvideos-cdn.com/v3/img/skins/default/logo/xv.white.svg",
+      "decision": "复用 assets / 固定图标库或较好的原站素材"
+    },
+    {
+      "id": "sp-11-009",
+      "title": "Pornhub",
+      "originalPath": "/uploads/2025/8/2/0fdc70cd6143692e9ba09d8cc242037e.png",
+      "originalAvailable": true,
+      "originalSize": [
+        150,
+        150
+      ],
+      "originalSHA256": "a55082ea5c738825021411bf2c28f9557484705aac1a10ec2de7452c9e09f830",
+      "selectedIcon": "icons/adult/pornhub.png",
+      "selectedSource": "uploads.zip!2025/8/2/0fdc70cd6143692e9ba09d8cc242037e.png",
+      "decision": "采用较好的归档素材，按统一标准处理"
+    },
+    {
+      "id": "sp-11-010",
+      "title": "MissAV",
+      "originalPath": "/uploads/2025/8/2/0cdfcfcd63e01651c0e51b6456f499ab.ico",
+      "originalAvailable": true,
+      "originalSize": [
+        48,
+        48
+      ],
+      "originalSHA256": "77ba87f988860da018e51fa65f02b422a6cd03a42c6156e412ad7f4ebcffc751",
+      "selectedIcon": "icons/media/media-library.png",
+      "selectedSource": "OpenAI ImageGen / exec-861a1412-7397-45d7-8c62-e5a86fe64f73",
+      "decision": "采用清晰通用图案；原图过小、模糊、为截图或缺乏可靠品牌素材"
+    },
+    {
+      "id": "sp-11-011",
+      "title": "漫小肆韓漫",
+      "originalPath": "/uploads/2025/8/2/6192e29ba1360d6bd5e089e887baa103.ico",
+      "originalAvailable": true,
+      "originalSize": [
+        32,
+        32
+      ],
+      "originalSHA256": "a90ee6230965a6f9325de3ad25a121c6dfa2799ea8f189fc2458502f8b169b29",
+      "selectedIcon": "icons/media/media-library.png",
+      "selectedSource": "OpenAI ImageGen / exec-861a1412-7397-45d7-8c62-e5a86fe64f73",
+      "decision": "采用清晰通用图案；原图过小、模糊、为截图或缺乏可靠品牌素材"
+    },
+    {
+      "id": "sp-11-012",
+      "title": "老王论坛",
+      "originalPath": "/uploads/2025/9/2/f790c6d9f7d7af44ffb1f83cb0a9822b.ico",
+      "originalAvailable": true,
+      "originalSize": [
+        32,
+        32
+      ],
+      "originalSHA256": "64cbb68a04074de515f6cd1c787668515dc54943f55f349839140cbcca7f48bf",
+      "selectedIcon": "icons/social/community.png",
+      "selectedSource": "OpenAI ImageGen / exec-a4f5889b-e54e-4a3d-a5da-2098f9110de3",
+      "decision": "采用清晰通用图案；原图过小、模糊、为截图或缺乏可靠品牌素材"
+    },
+    {
+      "id": "sp-11-013",
+      "title": "绅士仓库",
+      "originalPath": "/uploads/2025/12/31/ae8b29882ec36b287641c3ef47764f65.ico",
+      "originalAvailable": true,
+      "originalSize": [
+        16,
+        16
+      ],
+      "originalSHA256": "709160ca89cda3b2b7b8fd604dd19ff8323a0a8c60af0642a84417df8a819f6c",
+      "selectedIcon": "icons/media/media-library.png",
+      "selectedSource": "OpenAI ImageGen / exec-861a1412-7397-45d7-8c62-e5a86fe64f73",
+      "decision": "采用清晰通用图案；原图过小、模糊、为截图或缺乏可靠品牌素材"
+    },
+    {
+      "id": "sp-11-014",
+      "title": "禁漫天堂",
+      "originalPath": "/uploads/2026/4/25/e57a785bf8de042612ae6bdc2b7f3908.ico",
+      "originalAvailable": true,
+      "originalSize": [
+        16,
+        16
+      ],
+      "originalSHA256": "46523b6b3d20299881cf0eb7c533d91609d2e7501fc1740d28e8eabb636d1d0d",
+      "selectedIcon": "icons/media/media-library.png",
+      "selectedSource": "OpenAI ImageGen / exec-861a1412-7397-45d7-8c62-e5a86fe64f73",
+      "decision": "采用清晰通用图案；原图过小、模糊、为截图或缺乏可靠品牌素材"
+    }
+  ]
+}
