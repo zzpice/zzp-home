@@ -422,11 +422,14 @@ $("#defer-update").addEventListener("click", () => {
   $("#update-banner").hidden = true;
 });
 $("#apply-update").addEventListener("click", async (event) => {
-  if (!registration?.waiting) return;
   const button = event.currentTarget;
   button.disabled = true;
   try {
     if (editor) await editor.prepareUpdate();
+    const latest = await navigator.serviceWorker.getRegistration(baseURL.href);
+    const waiting = latest?.waiting;
+    if (!waiting) throw Error("候选版本已变化，请检查更新后重试。");
+    registration = latest;
     allowUpdate = true;
     const answer = await new Promise((resolve, reject) => {
       const channel = new MessageChannel();
@@ -439,9 +442,7 @@ $("#apply-update").addEventListener("click", async (event) => {
         channel.port1.close();
         resolve(e.data);
       };
-      registration.waiting.postMessage({ type: "APPLY_UPDATE" }, [
-        channel.port2,
-      ]);
+      waiting.postMessage({ type: "APPLY_UPDATE" }, [channel.port2]);
     });
     if (!answer.allowed)
       throw Error(

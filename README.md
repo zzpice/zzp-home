@@ -30,7 +30,7 @@ go run ./cmd/zzp-home serve
 go test ./...
 go vet ./...
 npm install --no-save --package-lock=false playwright@1.62.1
-npx playwright install --with-deps chromium webkit
+npx playwright install --with-deps --only-shell chromium webkit
 node --test tests/*.test.js
 node scripts/browser-check.cjs
 ```

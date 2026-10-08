@@ -761,7 +761,14 @@ async function updates(browser) {
     });
     assert.ok(repaired.includes('id="bootstrap"'));
     const other = await context.newPage();
-    errorsOn(other);
+    const otherErrors = errorsOn(other);
+    for (const tab of [page, other])
+      await tab.evaluate(() => {
+        window.updateMessages = [];
+        navigator.serviceWorker.addEventListener("message", (e) =>
+          window.updateMessages.push(e.data?.type),
+        );
+      });
     await other.goto(origin + "/");
     await openEditor(other);
     await addSite(other, "尚未应用但已保存的输入");
@@ -814,11 +821,18 @@ async function updates(browser) {
           toast: document.querySelector("#toast").textContent,
           inert: document.body.inert,
           states: window.workerStates,
+          messages: window.updateMessages,
+          buttonDisabled: document.querySelector("#apply-update").disabled,
           waiting: !!(await navigator.serviceWorker.getRegistration()).waiting,
           release: JSON.parse(document.querySelector("#bootstrap").textContent)
             .release,
         })),
-        { errors, otherOpen: !other.isClosed() },
+        {
+          errors,
+          otherErrors,
+          otherOpen: !other.isClosed(),
+          otherMessages: await other.evaluate(() => window.updateMessages),
+        },
       );
       throw error;
     }
