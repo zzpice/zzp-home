@@ -762,6 +762,7 @@ async function updates(browser) {
     assert.ok(repaired.includes('id="bootstrap"'));
     const other = await context.newPage();
     const otherErrors = errorsOn(other);
+    await other.goto(origin + "/");
     for (const tab of [page, other])
       await tab.evaluate(() => {
         window.updateMessages = [];
@@ -769,7 +770,6 @@ async function updates(browser) {
           window.updateMessages.push(e.data?.type),
         );
       });
-    await other.goto(origin + "/");
     await openEditor(other);
     await addSite(other, "尚未应用但已保存的输入");
     await other.waitForFunction(() =>
