@@ -710,7 +710,7 @@ async function publish(browser) {
     await page.locator("#preview-badge button").click();
     assert.equal(
       await page.locator("#g-daily .site-card").count(),
-      14,
+      dailyCount + 1,
       "return to latest saved config",
     );
     // Successful saves do not reappear as unsynced drafts while deployment is pending.
