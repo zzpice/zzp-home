@@ -143,15 +143,12 @@ async function browse(browser, label) {
         1,
         "single shared atlas",
       );
-      // Page load does not wait for lazy images, especially in WebKit.
-      await page.locator(".site-icon img").first().evaluate((img) => img.decode());
-      assert.equal(
-        await page
-          .locator(".site-icon img")
-          .first()
-          .evaluate((i) => i.naturalWidth > 0),
-        true,
-      );
+      // WebKit may restart lazy images during DOM initialization. Poll their
+      // final loaded state rather than a decode promise tied to an earlier load.
+      await page.waitForFunction(() => {
+        const img = document.querySelector(".site-icon img");
+        return img?.complete && img.naturalWidth > 0;
+      });
       await noOverflow(page);
       await page.locator("#search").fill("Emby");
       assert.equal(await page.locator(".site-card:visible").count(), 3);
