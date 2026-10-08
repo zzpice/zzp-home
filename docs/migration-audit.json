@@ -8,7 +8,7 @@
   "beforeGroups": 11,
   "afterGroups": 7,
   "alternateLinks": 2,
-  "redactedSites": 2,
+  "redactedSites": 0,
   "reusedIcons": 91,
   "unresolvedIcons": 0,
   "missingLocalOriginals": 0,
@@ -448,7 +448,7 @@
           },
           "sort": 14,
           "title": "Sub Store",
-          "url": "http://192.168.100.57:3011",
+          "url": "http://192.168.100.57:3011?api=http://192.168.100.57:3011/T3B9dgzBzdRbBF8Aqzzp",
           "lanUrl": "",
           "description": "",
           "openMethod": 2,
@@ -465,7 +465,7 @@
           },
           "sort": 15,
           "title": "S-UI",
-          "url": "http://154.17.2.75:49520/",
+          "url": "http://154.17.2.75:49520/zhouzhipeng/",
           "lanUrl": "",
           "description": "DMIT",
           "openMethod": 2,
@@ -1966,7 +1966,7 @@
       "iconStatus": "replaced-with-assets",
       "originalIconStatus": "original-file-available",
       "notes": [
-        "移除认证参数 api",
+        "用户明确允许公开此局域网 Sub-Store 完整 API 路由；保留原始链接",
         "原始归档文件已匹配；是否采用由图标质量审查决定"
       ]
     },
@@ -1978,7 +1978,7 @@
       "iconStatus": "replaced-with-assets",
       "originalIconStatus": "original-file-available",
       "notes": [
-        "移除不透明的管理面板路径",
+        "用户明确允许公开 S-UI 完整管理入口；保留原始链接",
         "原始归档文件已匹配；是否采用由图标质量审查决定"
       ]
     },

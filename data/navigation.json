@@ -385,7 +385,7 @@
           "id": "sp-02-014",
           "title": "Sub Store",
           "description": "",
-          "url": "http://192.168.100.57:3011",
+          "url": "http://192.168.100.57:3011?api=http://192.168.100.57:3011/T3B9dgzBzdRbBF8Aqzzp",
           "alternateUrls": [],
           "icon": "icons/network/sub-store.png",
           "iconText": "",
@@ -394,20 +394,20 @@
           "tags": [
             "内网"
           ],
-          "notice": "认证部分已移除，请确认安全入口"
+          "notice": ""
         },
         {
           "id": "sp-02-015",
           "title": "S-UI",
           "description": "DMIT",
-          "url": "http://154.17.2.75:49520/",
+          "url": "http://154.17.2.75:49520/zhouzhipeng/",
           "alternateUrls": [],
           "icon": "icons/self-hosted/private-service.png",
           "iconText": "",
           "pinned": false,
           "newTab": true,
           "tags": [],
-          "notice": "认证部分已移除，请确认安全入口"
+          "notice": ""
         },
         {
           "id": "sp-02-016",

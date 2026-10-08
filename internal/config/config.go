@@ -51,6 +51,22 @@ var secretKey = regexp.MustCompile(`(?i)^(access[_-]?token|refresh[_-]?token|tok
 
 func IsSecretKey(k string) bool        { return secretKey.MatchString(k) }
 func ContainsCredential(s string) bool { return tokenPattern.MatchString(s) }
+
+// The owner explicitly approved publishing this LAN Sub-Store API route.
+// Keep the exception restricted to this deployment and an endpoint-only value;
+// userinfo, actual credential formats and other authentication parameters remain blocked.
+func publicSubStoreAPI(u *url.URL) bool {
+	if u.Scheme != "http" || u.Host != "192.168.100.57:3011" || (u.Path != "" && u.Path != "/") || u.User != nil {
+		return false
+	}
+	values := u.Query()["api"]
+	if len(values) != 1 {
+		return false
+	}
+	api, e := url.Parse(values[0])
+	return e == nil && api.Scheme == u.Scheme && api.Host == u.Host && api.User == nil && api.RawQuery == "" && api.Fragment == "" && regexp.MustCompile(`^/[A-Za-z0-9_-]{20}$`).MatchString(api.Path)
+}
+
 func URLProblem(raw string) string {
 	if len(raw) > 2048 || strings.TrimSpace(raw) != raw || strings.ContainsAny(raw, "\r\n\t") {
 		return "链接长度或空白无效"
@@ -74,7 +90,7 @@ func URLProblem(raw string) string {
 		return "链接包含疑似凭据"
 	}
 	for k := range u.Query() {
-		if IsSecretKey(k) {
+		if IsSecretKey(k) && !(k == "api" && publicSubStoreAPI(u)) {
 			return "链接包含认证参数"
 		}
 	}

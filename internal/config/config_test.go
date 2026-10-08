@@ -2,6 +2,7 @@ package config
 
 import (
 	"encoding/json"
+	"net/url"
 	"os"
 	"strings"
 	"testing"
@@ -54,6 +55,32 @@ func TestCredentialURLValidation(t *testing.T) {
 		}
 	}
 }
+func TestApprovedSubStoreRouteRemainsPublic(t *testing.T) {
+	approved := "http://192.168.100.57:3011?api=" + url.QueryEscape("http://192.168.100.57:3011/abcdefghijklmnopqrst")
+	if problem := URLProblem(approved); problem != "" {
+		t.Fatal("rejected approved LAN routing URL: " + problem)
+	}
+	if kept, notes := redactURL(approved); kept != approved || len(notes) != 0 {
+		t.Fatal("approved URL must be retained byte-for-byte")
+	}
+	for _, rejected := range []string{
+		approved + "&token=test",
+		approved + "&api=" + url.QueryEscape("http://192.168.100.57:3011/abcdefghijklmnopqrst"),
+		strings.Replace(approved, "192.168.100.57:3011?", "example.com:3011?", 1),
+		"http://192.168.100.57:3011?api=" + url.QueryEscape("http://192.168.100.57:3011/abcdefghijklmnopqrst?token=test"),
+		"http://192.168.100.57:3011?api=" + url.QueryEscape("http://192.168.100.57:3011/ghp_abcdefghijklmnop"),
+	} {
+		if URLProblem(rejected) == "" {
+			t.Fatal("public routing exception must not permit other credentials")
+		}
+	}
+	source := SunPanel{Version: 1, AppName: "Sun-Panel-Config", Icons: []SunGroup{{Title: "服务", Children: []SunSite{{Title: "Sub Store", URL: approved}}}}}
+	raw, _ := json.Marshal(source)
+	c, audit, e := Migrate(raw)
+	if e != nil || audit.RedactedSites != 0 || c.Groups[1].Sites[0].URL != approved || c.Groups[1].Sites[0].Notice != "" || audit.Groups[0].Children[0].URL != approved {
+		t.Fatal("migration must preserve the approved URL and omit redaction notices")
+	}
+}
 func TestStrictConfig(t *testing.T) {
 	c := realConfig(t)
 	b := Encode(c)
@@ -101,7 +128,7 @@ func TestRequiredFieldsDoNotBecomeSilentDefaults(t *testing.T) {
 func TestMigrationRetainsFieldsAndRedacts(t *testing.T) {
 	source := SunPanel{Version: 1, AppName: "Sun-Panel-Config", AppVersion: "test", Icons: []SunGroup{{Title: "服务", Sort: 2, Children: []SunSite{
 		{Title: "Sub Store", URL: "http://192.168.100.57:3011?api=http%3A%2F%2F192.168.100.57%3A3001%2Fexample-secret-route", Sort: 1, OpenMethod: 2, Icon: SunIcon{ItemType: 2, Src: "/uploads/missing.png"}},
-		{Title: "S-UI", URL: "http://203.0.113.1:8080/example-secret-route", Sort: 2},
+		{Title: "S-UI", URL: "http://203.0.113.1:8080/owner-approved-panel", Sort: 2},
 		{Title: "Emby", URL: "http://192.168.100.57:8096", LANURL: "https://example.com/emby", Sort: 3, Description: "direct", CardType: 1},
 		{Title: "Emby", URL: "http://192.168.100.57:8097", Sort: 3, Description: "alternate"},
 	}}, {Title: "常用", Sort: 1, CardStyle: json.RawMessage(`{"style":0,"textColor":"#ffffff","textInfoHideDescription":false,"textIconHideTitle":true}`), Children: []SunSite{{Title: "Test", URL: "https://example.com/?locale=zh_CN", Icon: SunIcon{ItemType: 1, Text: "测试"}}}}}}
@@ -110,7 +137,7 @@ func TestMigrationRetainsFieldsAndRedacts(t *testing.T) {
 	if e != nil {
 		t.Fatal(e)
 	}
-	if m.BeforeSites != 5 || m.AfterSites != 5 || m.AlternateLinks != 1 || m.RedactedSites != 2 {
+	if m.BeforeSites != 5 || m.AfterSites != 5 || m.AlternateLinks != 1 || m.RedactedSites != 1 {
 		t.Fatalf("bad migration stats: %+v", m)
 	}
 	report, _ := json.Marshal(m)
@@ -125,6 +152,9 @@ func TestMigrationRetainsFieldsAndRedacts(t *testing.T) {
 	}
 	if len(c.Groups[1].Sites) != 4 || c.Groups[1].Sites[2].Description != "direct" {
 		t.Fatal("lost stable equal-sort order")
+	}
+	if c.Groups[1].Sites[1].URL != "http://203.0.113.1:8080/owner-approved-panel" || c.Groups[1].Sites[1].Notice != "" {
+		t.Fatal("changed the owner's approved S-UI management URL")
 	}
 	if m.MissingLocalOriginals != 1 || m.RecoveredLocalOriginals != 0 {
 		t.Fatal("missing original incorrectly reported as recovered")

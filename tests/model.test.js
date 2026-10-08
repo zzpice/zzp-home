@@ -49,6 +49,34 @@ test("credential parameters, encoded credentials and unsafe protocols are blocke
   }
   assert.ok(urlProblem("https://example.com/" + "中".repeat(700)));
 });
+test("approved Sub-Store and S-UI links survive validation without allowing other credentials", () => {
+  const approved =
+    "http://192.168.100.57:3011?api=" +
+    encodeURIComponent("http://192.168.100.57:3011/abcdefghijklmnopqrst");
+  assert.equal(urlProblem(approved), "");
+  assert.equal(urlProblem("http://203.0.113.1:8080/owner-approved-panel"), "");
+  for (const rejected of [
+    approved + "&token=test",
+    approved +
+      "&api=" +
+      encodeURIComponent("http://192.168.100.57:3011/abcdefghijklmnopqrst"),
+    approved.replace("192.168.100.57:3011?", "example.com:3011?"),
+    "http://192.168.100.57:3011?api=" +
+      encodeURIComponent(
+        "http://192.168.100.57:3011/abcdefghijklmnopqrst?token=test",
+      ),
+    "http://192.168.100.57:3011?api=" +
+      encodeURIComponent("http://192.168.100.57:3011/ghp_abcdefghijklmnop"),
+  ])
+    assert.ok(urlProblem(rejected));
+  for (const title of ["Sub Store", "S-UI"]) {
+    const site = baseline.groups
+      .flatMap((g) => g.sites)
+      .find((s) => s.title === title);
+    assert.equal(urlProblem(site.url), "");
+    assert.equal(site.notice, "");
+  }
+});
 test("search uses all terms, description, alternate URL and normalized width", () => {
   const site = {
     title: "Abc",

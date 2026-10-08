@@ -5,8 +5,11 @@ import (
 	"encoding/json"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
 	"testing"
+
+	"github.com/zzpice/zzp-home/internal/config"
 )
 
 func TestBlobSHA(t *testing.T) {
@@ -27,6 +30,25 @@ func TestBuildDeterminismAndWhitelist(t *testing.T) {
 	}
 	if !bytes.Contains(html, []byte(`id="bootstrap"`)) || !bytes.Contains(html, []byte(`data-site="`)) {
 		t.Fatal("missing prerender / data snapshot")
+	}
+	match := regexp.MustCompile(`<script[^>]*id="bootstrap"[^>]*>([^<]*)</script>`).FindSubmatch(html)
+	if len(match) != 2 {
+		t.Fatal("missing parseable bootstrap snapshot")
+	}
+	var bootstrap struct {
+		Config json.RawMessage `json:"config"`
+	}
+	if e = json.Unmarshal(match[1], &bootstrap); e != nil {
+		t.Fatal(e)
+	}
+	snapshot, e := config.Decode(bootstrap.Config)
+	if e != nil {
+		t.Fatal(e)
+	}
+	sourceBytes, _ := os.ReadFile(filepath.Join(root, "data/navigation.json"))
+	source, e := config.Decode(sourceBytes)
+	if e != nil || !bytes.Equal(config.Encode(source), config.Encode(snapshot)) {
+		t.Fatal("prerender must preserve complete approved URLs and configuration")
 	}
 	second, e := Build(root, out, os.Getenv("ASSETS_DIR"))
 	if e != nil {
@@ -62,8 +84,8 @@ func TestBuildDeterminismAndWhitelist(t *testing.T) {
 		}
 		if !d.IsDir() && (strings.HasSuffix(path, ".json") || strings.HasSuffix(path, ".html")) {
 			b, _ := os.ReadFile(path)
-			if bytes.Contains(b, []byte("?api=")) {
-				t.Fatalf("credential parameter in %s", path)
+			if config.ContainsCredential(string(b)) {
+				t.Fatalf("credential format in %s", path)
 			}
 		}
 		return nil

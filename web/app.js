@@ -395,13 +395,16 @@ async function register() {
       { scope: baseURL.pathname, updateViaCache: "none" },
     );
     const show = () => {
-      if (registration.waiting) $("#update-banner").hidden = false;
+      $("#update-banner").hidden = !(
+        registration.waiting && navigator.serviceWorker.controller
+      );
     };
     show();
     registration.addEventListener("updatefound", () => {
       const worker = registration.installing;
       worker?.addEventListener("statechange", () => {
-        if (worker.state === "installed") show();
+        if (["installed", "redundant", "activated"].includes(worker.state))
+          show();
       });
     });
     $("#check-update").hidden = false;

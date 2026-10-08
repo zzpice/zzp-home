@@ -233,6 +233,31 @@ async function edit(browser, label, width) {
     await page.goto(origin + "/");
     await openEditor(page);
     assert.equal(await page.locator(".edit-site-row").count(), 13);
+    await page
+      .locator(
+        ".editor-group[data-group-id=self-hosted] [data-action=select-group]",
+      )
+      .click();
+    for (const title of ["Sub Store", "S-UI"]) {
+      const site = config.groups
+        .flatMap((g) => g.sites)
+        .find((s) => s.title === title);
+      await page
+        .locator(`[data-site-id="${site.id}"] [data-action=edit-site]`)
+        .click();
+      const form = page.locator(".form-dialog[open] form");
+      assert.equal(await form.locator("[name=url]").inputValue(), site.url);
+      await form.locator("[type=submit]").click();
+      assert.equal(
+        (await exportDraft(page)).groups
+          .flatMap((g) => g.sites)
+          .find((s) => s.id === site.id).url,
+        site.url,
+      );
+    }
+    await page
+      .locator(".editor-group[data-group-id=daily] [data-action=select-group]")
+      .click();
     await page.locator("[data-action=add-site]").click();
     assert.equal(
       await page
@@ -749,6 +774,7 @@ async function updates(browser) {
   try {
     await page.goto(origin + "/");
     await controlled(page);
+    assert.equal(await page.locator("#update-banner").isVisible(), false);
     const previous = (await boot(page)).release;
     const repaired = await page.evaluate(async () => {
       const name = (await caches.keys()).find((x) =>
@@ -781,6 +807,9 @@ async function updates(browser) {
     broken = "app.js";
     await page.evaluate(async () => {
       const r = await navigator.serviceWorker.getRegistration();
+      // waitForFunction must inspect a synchronous property: an async predicate
+      // returns a truthy Promise even when it eventually resolves to false.
+      window.updateRegistration = r;
       window.workerStates = [];
       r.addEventListener("updatefound", () => {
         const w = r.installing;
@@ -802,9 +831,7 @@ async function updates(browser) {
     await page.evaluate(async () =>
       (await navigator.serviceWorker.getRegistration()).update(),
     );
-    await page.waitForFunction(
-      async () => !!(await navigator.serviceWorker.getRegistration()).waiting,
-    );
+    await page.waitForFunction(() => !!window.updateRegistration.waiting);
     await page.locator("#update-banner:visible").waitFor();
     await page.locator("#apply-update").click();
     try {

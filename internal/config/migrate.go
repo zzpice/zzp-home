@@ -122,13 +122,19 @@ func MigrateWithSources(raw []byte, aliases map[string]string, available map[str
 				target = 4
 			}
 			entry := MigrationEntry{ID: id, SourceGroup: g.Title, Destination: titles[target], OriginalSort: s.Sort, Notes: []string{}}
-			safe, notes := redactURL(s.URL, s.Title)
+			safe, notes := redactURL(s.URL)
 			redacted := len(notes) > 0
+			if approved, e := url.Parse(s.URL); e == nil && publicSubStoreAPI(approved) {
+				entry.Notes = append(entry.Notes, "用户明确允许公开此局域网 Sub-Store 完整 API 路由；保留原始链接")
+			}
+			if s.Title == "S-UI" {
+				entry.Notes = append(entry.Notes, "用户明确允许公开 S-UI 完整管理入口；保留原始链接")
+			}
 			s.URL = safe
 			entry.Notes = append(entry.Notes, notes...)
 			alt := []string{}
 			if s.LANURL != "" {
-				s.LANURL, notes = redactURL(s.LANURL, s.Title)
+				s.LANURL, notes = redactURL(s.LANURL)
 				redacted = redacted || len(notes) > 0
 				alt = append(alt, s.LANURL)
 				entry.Notes = append(entry.Notes, notes...)
@@ -197,7 +203,7 @@ func MigrateWithSources(raw []byte, aliases map[string]string, available map[str
 	}
 	return c, m, c.Validate()
 }
-func redactURL(raw, title string) (string, []string) {
+func redactURL(raw string) (string, []string) {
 	notes := []string{}
 	u, e := url.Parse(raw)
 	if e != nil {
@@ -209,18 +215,13 @@ func redactURL(raw, title string) (string, []string) {
 	}
 	q := u.Query()
 	for k := range q {
-		if IsSecretKey(k) {
+		if IsSecretKey(k) && !(k == "api" && publicSubStoreAPI(u)) {
 			q.Del(k)
 			notes = append(notes, "移除认证参数 "+k)
 		}
 	}
 	if len(notes) > 0 {
 		u.RawQuery = q.Encode()
-	}
-	if title == "S-UI" && u.Path != "" && u.Path != "/" {
-		u.Path = "/"
-		u.RawPath = ""
-		notes = append(notes, "移除不透明的管理面板路径")
 	}
 	return u.String(), notes
 }

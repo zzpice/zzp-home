@@ -25,6 +25,28 @@ export const containsCredential = (text) =>
   /(github_pat_[a-z0-9_]{15,}|gh[pousr]_[a-z0-9]{15,}|bearer\s+[a-z0-9._-]{12,}|-----BEGIN [A-Z ]*PRIVATE KEY-----)/i.test(
     text,
   );
+function publicSubStoreAPI(url) {
+  // Explicit owner approval applies only to this LAN deployment's API route.
+  if (
+    url.origin !== "http://192.168.100.57:3011" ||
+    url.pathname !== "/" ||
+    url.searchParams.getAll("api").length !== 1
+  )
+    return false;
+  try {
+    const api = new URL(url.searchParams.get("api"));
+    return (
+      api.origin === url.origin &&
+      !api.username &&
+      !api.password &&
+      !api.search &&
+      !api.hash &&
+      /^\/[A-Za-z0-9_-]{20}$/.test(api.pathname)
+    );
+  } catch {
+    return false;
+  }
+}
 export function urlProblem(raw) {
   if (
     typeof raw !== "string" ||
@@ -54,10 +76,12 @@ export function urlProblem(raw) {
   }
   if (containsCredential(decoded)) return "链接包含疑似凭据";
   if (
-    [
-      ...url.searchParams.keys(),
-      ...new URLSearchParams(url.hash.slice(1).replace(/^\?/, "")).keys(),
-    ].some(secretKey)
+    [...url.searchParams.keys()].some(
+      (key) => secretKey(key) && !(key === "api" && publicSubStoreAPI(url)),
+    ) ||
+    [...new URLSearchParams(url.hash.slice(1).replace(/^\?/, "")).keys()].some(
+      secretKey,
+    )
   )
     return "链接包含认证参数，请移除后再保存";
   if (/\/(sub|subscribe|subscription)\/[a-z0-9_-]{16,}/i.test(decoded))

@@ -146,14 +146,16 @@
     },
     {
       "id": "sp-02-014",
-      "url": "http://192.168.100.57:3011",
-      "result": "内网：需在所属网络人工验证"
+      "url": "http://192.168.100.57:3011?api=http://192.168.100.57:3011/T3B9dgzBzdRbBF8Aqzzp",
+      "result": "内网：需在所属网络人工验证",
+      "checkedAt": "2026-10-08T13:53:17.875057+00:00"
     },
     {
       "id": "sp-02-015",
-      "url": "http://154.17.2.75:49520/",
-      "status": 404,
-      "result": "HTTP 异常：人工验证，不自动删除"
+      "url": "http://154.17.2.75:49520/zhouzhipeng/",
+      "result": "HTTP 可响应（未验证登录后内容）",
+      "checkedAt": "2026-10-08T13:53:17.875057+00:00",
+      "status": 200
     },
     {
       "id": "sp-02-016",
@@ -439,7 +441,7 @@
     },
     {
       "id": "sp-01-009",
-      "url": "https://www.ibkr.com.cn/sso/Login?RL=1\u0026locale=zh_CN",
+      "url": "https://www.ibkr.com.cn/sso/Login?RL=1&locale=zh_CN",
       "status": 200,
       "result": "HTTP 可响应（未验证登录后内容）"
     },
