@@ -49,6 +49,21 @@
     "links": []
   },
   {
+    "id": "sub-store",
+    "title": "Sub-Store",
+    "category": "工具",
+    "description": "订阅与节点管理，支持聚合、过滤和格式转换。",
+    "url": "https://sub.zzp.moe/",
+    "preview": "",
+    "icon": "icons/network/sub-store.png",
+    "links": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/zzpice/sub-store-cloudflare"
+      }
+    ]
+  },
+  {
     "id": "routeros-adlist",
     "title": "RouterOS Adlist",
     "description": "由 anti-AD 转换的 DNS 广告过滤规则。",
