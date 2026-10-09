@@ -28,6 +28,8 @@ go run ./cmd/zzp-home serve
 
 打开 `http://127.0.0.1:4173/`。构建首次从 assets 的固定提交下载所需图标和来源记录，之后复用 `.cache/assets/`；也可加 `-assets ../assets` 使用对应的本地资源库。图标 SHA 不一致会停止构建。
 
+自定义 `build -out` 时，仓库内输出必须位于 `build/` 下；构建会替换输出目录，不能指向源码、正式数据或仓库根目录。
+
 ```sh
 go test ./...
 go vet ./...

@@ -42,8 +42,62 @@ func BlobSHA(raw []byte) string {
 	h.Write(raw)
 	return hex.EncodeToString(h.Sum(nil))
 }
+
+// Resolve the existing ancestor too when the requested output does not exist yet.
+func resolvedPath(path string) (string, error) {
+	real, err := filepath.EvalSymlinks(path)
+	if err == nil || !os.IsNotExist(err) {
+		return real, err
+	}
+	parent, err := resolvedPath(filepath.Dir(path))
+	if err != nil {
+		return "", err
+	}
+	return filepath.Join(parent, filepath.Base(path)), nil
+}
+
+// SameFile also catches case aliases on case-insensitive filesystems.
+func pathContains(parent, child string) bool {
+	parentInfo, err := os.Stat(parent)
+	if err != nil {
+		return false
+	}
+	for {
+		if info, err := os.Stat(child); err == nil && os.SameFile(parentInfo, info) {
+			return true
+		}
+		next := filepath.Dir(child)
+		if next == child {
+			return false
+		}
+		child = next
+	}
+}
+
 func Build(root, out, assets string) (BuildResult, error) {
 	var result BuildResult
+	out = filepath.Clean(out)
+	absOut, e := filepath.Abs(out)
+	if e != nil {
+		return result, e
+	}
+	absRoot, e := filepath.Abs(root)
+	if e != nil {
+		return result, e
+	}
+	absOut, e = resolvedPath(absOut)
+	if e != nil {
+		return result, e
+	}
+	absRoot, e = filepath.EvalSymlinks(absRoot)
+	if e != nil {
+		return result, e
+	}
+	insideRoot := strings.HasPrefix(absOut, absRoot+string(os.PathSeparator)) || pathContains(absRoot, absOut)
+	insideBuild := strings.HasPrefix(absOut, filepath.Join(absRoot, "build")+string(os.PathSeparator))
+	if pathContains(absOut, absRoot) || (insideRoot && !insideBuild) {
+		return result, fmt.Errorf("仓库内输出目录必须位于 build/ 下，不可覆盖源代码")
+	}
 	raw, e := os.ReadFile(filepath.Join(root, "data/navigation.json"))
 	if e != nil {
 		return result, e
@@ -312,11 +366,6 @@ func Build(root, out, assets string) (BuildResult, error) {
 	}
 	output["sw.js"] = []byte(strings.NewReplacer("__VERSION__", version, "__MANIFEST__", string(manifestRaw)).Replace(string(worker)))
 	output["version.json"], _ = json.Marshal(map[string]any{"version": version, "blobSha": BlobSHA(raw)})
-	absOut, _ := filepath.Abs(out)
-	absRoot, _ := filepath.Abs(root)
-	if absOut == absRoot || absOut == "/" || strings.HasPrefix(absRoot, absOut+string(os.PathSeparator)) {
-		return result, fmt.Errorf("输出目录不可覆盖源代码")
-	}
 	stage := out + ".tmp"
 	if e = os.RemoveAll(stage); e != nil {
 		return result, e

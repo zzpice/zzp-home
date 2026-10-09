@@ -17,6 +17,54 @@ func TestBlobSHA(t *testing.T) {
 		t.Fatal("blob SHA must match Git")
 	}
 }
+
+func TestBuildRejectsSourceOutputBeforeReadingInputs(t *testing.T) {
+	root := t.TempDir()
+	for _, name := range []string{".", "..", "data", "web", "internal", ".git", "build", "build/../data"} {
+		out := filepath.Join(root, name)
+		_, err := Build(root, out, "")
+		if err == nil || !strings.Contains(err.Error(), "不可覆盖源代码") {
+			t.Fatalf("unsafe output %q was not rejected: %v", name, err)
+		}
+	}
+	for _, out := range []string{filepath.Join(root, "build", "pages"), filepath.Join(t.TempDir(), "pages")} {
+		_, err := Build(root, out, "")
+		if err == nil || strings.Contains(err.Error(), "不可覆盖源代码") {
+			t.Fatalf("safe output should reach input validation: %v", err)
+		}
+	}
+}
+
+func TestBuildRejectsOutputThroughSourceSymlink(t *testing.T) {
+	root := t.TempDir()
+	data := filepath.Join(root, "data")
+	if err := os.Mkdir(data, 0755); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.Symlink(data, filepath.Join(root, "build")); err != nil {
+		t.Skipf("symlinks unavailable: %v", err)
+	}
+	_, err := Build(root, filepath.Join(root, "build", "pages"), "")
+	if err == nil || !strings.Contains(err.Error(), "不可覆盖源代码") {
+		t.Fatalf("symlink must not bypass source protection: %v", err)
+	}
+}
+
+func TestBuildRejectsSourceOutputThroughCaseAlias(t *testing.T) {
+	root := filepath.Join(t.TempDir(), "source")
+	if err := os.Mkdir(root, 0755); err != nil {
+		t.Fatal(err)
+	}
+	alias := filepath.Join(filepath.Dir(root), "SOURCE")
+	if _, err := os.Stat(alias); err != nil {
+		t.Skip("case-sensitive filesystem")
+	}
+	_, err := Build(root, filepath.Join(alias, "data"), "")
+	if err == nil || !strings.Contains(err.Error(), "不可覆盖源代码") {
+		t.Fatalf("case alias must not bypass source protection: %v", err)
+	}
+}
+
 func TestBuildDeterminismAndWhitelist(t *testing.T) {
 	root := "../.."
 	out := filepath.Join(t.TempDir(), "pages")
@@ -59,7 +107,7 @@ func TestBuildDeterminismAndWhitelist(t *testing.T) {
 			}
 		}
 	}
-	second, e := Build(root, out, os.Getenv("ASSETS_DIR"))
+	second, e := Build(root, out+string(os.PathSeparator), os.Getenv("ASSETS_DIR"))
 	if e != nil {
 		t.Fatal(e)
 	}
