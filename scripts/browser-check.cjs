@@ -213,7 +213,7 @@ async function browse(browser, label) {
         await page.locator(".allocation-numbers b").allTextContents(),
         ["50%", "33.33%", "12.5%", "4.17%"],
       );
-      assert.equal(await page.locator(".preview-gallery img").count(), projects.filter(p => p.kind === "tool" && !["anki", "fund"].includes(p.preview)).length * 3);
+      assert.equal(await page.locator(".preview-gallery img").count(), projects.filter(p => p.kind === "tool" && p.preview === "gallery").length * 3);
       assert.ok(
         await page
           .locator(".allocation-numbers")
