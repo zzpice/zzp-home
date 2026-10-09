@@ -54,7 +54,7 @@
     "kind": "tool",
     "description": "订阅与节点管理，支持聚合、过滤和格式转换。",
     "url": "https://sub.zzp.moe/",
-    "preview": "",
+    "preview": "substore",
     "icon": "icons/network/sub-store.png",
     "links": [
       {

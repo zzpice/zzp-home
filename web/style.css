@@ -711,7 +711,11 @@ kbd {
   color: var(--text);
 }
 .fund-preview {
-  width: 80%;
+  width: calc(100% - 32px);
+  min-height: calc(100% - 32px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 10px;
@@ -772,7 +776,11 @@ kbd {
   background: var(--accent-soft);
 }
 .proxy-preview {
-  width: 80%;
+  width: calc(100% - 32px);
+  min-height: calc(100% - 32px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 18px;
   border: 1px solid var(--line);
   border-radius: 10px;
@@ -809,6 +817,48 @@ kbd {
 .proxy-result {
   background: var(--accent-soft);
   color: var(--accent);
+}
+.preview-substore {
+  background: var(--accent-soft);
+}
+.substore-preview {
+  width: calc(100% - 32px);
+  min-height: calc(100% - 32px);
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+}
+.substore-preview > small {
+  color: var(--muted);
+  font-size: 10px;
+}
+.substore-source {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  padding: 9px 10px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+}
+.substore-source i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.substore-formats {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+  color: var(--accent);
+  font-size: 9px;
 }
 .preview-gallery {
   display: grid;
@@ -1571,7 +1621,8 @@ dialog::backdrop {
   }
   .fund-preview {
     padding: 14px 7px;
-    width: 94%;
+    width: calc(100% - 20px);
+    min-height: calc(100% - 20px);
   }
   .fund-preview > small {
     font-size: 7px;
@@ -1597,7 +1648,8 @@ dialog::backdrop {
     margin: 12px 0 8px;
   }
   .proxy-preview {
-    width: 94%;
+    width: calc(100% - 20px);
+    min-height: calc(100% - 20px);
     padding: 12px 7px;
   }
   .proxy-preview > small {
@@ -1613,6 +1665,15 @@ dialog::backdrop {
     margin: 6px 0;
     font-size: 7px;
   }
+  .substore-preview {
+    width: calc(100% - 20px);
+    min-height: calc(100% - 20px);
+    padding: 10px 7px;
+    gap: 5px;
+  }
+  .substore-preview > small { font-size: 8px; }
+  .substore-source { font-size: 8px; padding: 7px 5px; gap: 5px; }
+  .substore-formats { font-size: 6px; gap: 3px; }
   .preview-gallery {
     gap: 4px;
     padding: 10px;
