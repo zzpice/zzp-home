@@ -823,19 +823,6 @@
       "title": "网络与云服务",
       "sites": [
         {
-          "id": "sp-02-019",
-          "title": "GitHub 文件加速",
-          "description": "加速 GitHub 公开文件、Release 与源码归档。",
-          "url": "https://gh.zzp.moe/",
-          "alternateUrls": [],
-          "icon": "icons/development/github.png",
-          "iconText": "",
-          "pinned": false,
-          "newTab": true,
-          "tags": [],
-          "notice": ""
-        },
-        {
           "id": "sp-07-001",
           "title": "bandwagonhost",
           "description": "搬瓦工CN2GIA代表",
