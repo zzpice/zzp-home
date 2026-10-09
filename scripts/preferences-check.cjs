@@ -69,6 +69,9 @@ module.exports = async function preferences(browser, label, origin, repo) {
   await page.locator('#wallpaper-mode').selectOption('off');assert.equal(await page.locator('#wallpaper-image').isHidden(),true);
   await page.locator('#wallpaper-mode').selectOption('fixed');
   await page.waitForFunction(()=>document.documentElement.dataset.wallpaper==='on');
+  // Wait for the asynchronous cache write before testing offline fallback.
+  await page.waitForFunction(async url=>!!await (await caches.open('zzp-home-wallpaper-v1')).match(url),
+   'https://zzpice.github.io/assets/'+items[0].background);
   await context.setOffline(true);
   await page.locator('#wallpaper-fixed').selectOption(items[1].path);
   await page.waitForFunction(()=>document.documentElement.dataset.wallpaper==='on');
