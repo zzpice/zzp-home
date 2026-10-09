@@ -190,6 +190,29 @@ func Build(root, out, assets string) (BuildResult, error) {
 	for _, i := range idx.Icons {
 		iconByPath[i.Path] = i
 	}
+	// Project PNGs use the same pinned assets index and checksum as navigation icons.
+	// Existing brand illustrations retain their current paths.
+	for i, p := range projects {
+		if p.Icon == "" {
+			continue
+		}
+		if !strings.HasPrefix(p.Icon, "icons/") {
+			projects[i].Icon = "brand/" + p.Icon
+			continue
+		}
+		entry, ok := iconByPath[p.Icon]
+		if !ok {
+			return result, fmt.Errorf("项目图标未登记: %s", p.Icon)
+		}
+		b, err := assetBytes(root, assets, idx, p.Icon, entry.SHA256)
+		if err != nil {
+			return result, err
+		}
+		if err = CheckPNG(b); err != nil {
+			return result, err
+		}
+		files[p.Icon] = b
+	}
 	used := map[string]bool{}
 	for _, g := range c.Groups {
 		for _, s := range g.Sites {

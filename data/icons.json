@@ -1,6 +1,6 @@
 {
   "repository": "zzpice/assets",
-  "revision": "976b3e8dc8922a6bae810419a2f05725101bdfbe",
+  "revision": "8876beff485e37cd3c5fed8e2eecea30495f20d4",
   "source": "icons/SOURCES.md",
   "icons": [
     {
@@ -163,6 +163,13 @@
       "category": "development",
       "sha256": "967e9621493ef5d5b671140bed1492068e5905d577b1c93cc078730567f007b1",
       "size": 6888
+    },
+    {
+      "path": "icons/development/github-proxy.png",
+      "title": "GitHub 文件加速",
+      "category": "development",
+      "sha256": "4f35bd9aa767cbcbebf2c0310632a713f191180690e6f2560efe0c9494c60179",
+      "size": 17673
     },
     {
       "path": "icons/development/github.png",
