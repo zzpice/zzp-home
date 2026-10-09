@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   check:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 25
     steps:
       - uses: actions/checkout@v7
@@ -32,12 +32,12 @@ jobs:
           try:
               files = subprocess.check_output(['git', 'diff', '--name-only', os.environ.get('BASE', ''), 'HEAD'], text=True).splitlines()
               code = any(p.startswith(('web/', 'internal/', 'cmd/', 'tests/', 'scripts/', '.github/workflows/')) or p == 'go.mod' for p in files)
-              core = any(p.startswith(('internal/', 'cmd/', '.github/workflows/')) or p in ('go.mod', 'web/worker.template', 'web/storage.js', 'web/recovery.js') for p in files)
+              core = any(p.startswith(('internal/', 'cmd/', 'tests/fixtures/', '.github/workflows/')) or p in ('go.mod', 'web/app.js', 'web/worker.template', 'web/storage.js', 'web/recovery.js', 'web/recovery.html', 'scripts/browser-check.cjs') for p in files)
               editor = any(p in ('web/editor.js', 'web/github.js', 'web/model.js') for p in files)
           except subprocess.CalledProcessError:
               code = core = editor = True
           browser = 'browse,preferences'
-          if editor: browser += ',edit,publish,updates'
+          if editor: browser += ',edit,publish,offline,updates,failures'
           if core: browser = 'browse,preferences,edit,publish,offline,updates,failures'
           with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
               output.write('code=' + str(code).lower() + '\n' + 'browser=' + browser + '\n')
@@ -81,7 +81,7 @@ jobs:
   deploy:
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     needs: check
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       pages: write
       id-token: write

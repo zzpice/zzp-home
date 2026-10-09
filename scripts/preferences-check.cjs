@@ -6,11 +6,12 @@ module.exports = async function preferences(browser, label, origin, repo) {
  const image=fs.readFileSync(path.join(repo,'icons/gallery-fuji.webp'));
  const sampleItems=['alpha','beta'].map(name=>({path:`wallpapers/landscape/1920x1080/${name}.jpg`,title:name,width:1920,height:1080,device:'desktop',sha:name[0].repeat(40),background:`app/previews/${name}-background-1234567890.webp`}));
  for(const width of [1440,390]) {
-  let items=sampleItems.slice();
+  let items=sampleItems.slice(), networkAvailable=true;
   const context=await browser.newContext({viewport:{width,height:900},serviceWorkers:'block'}), page=await context.newPage(), requests=[], errors=[];
   page.on('pageerror',error=>errors.push(error.message));
   await context.route('https://zzpice.github.io/assets/**',route=>{
    requests.push(route.request().url());
+   if(!networkAvailable) return route.abort('internetdisconnected');
    if(route.request().url().endsWith('/index.json')) return route.fulfill({contentType:'application/json',body:JSON.stringify({version:1,wallpapers:items})});
    return route.fulfill({contentType:'image/webp',body:image});
   });
@@ -68,14 +69,24 @@ module.exports = async function preferences(browser, label, origin, repo) {
   }
   await page.locator('#wallpaper-mode').selectOption('off');assert.equal(await page.locator('#wallpaper-image').isHidden(),true);
   await page.locator('#wallpaper-mode').selectOption('fixed');
-  await page.waitForFunction(()=>document.documentElement.dataset.wallpaper==='on');
-  // Wait for the asynchronous cache write before testing offline fallback.
-  await page.waitForFunction(async url=>!!await (await caches.open('zzp-home-wallpaper-v1')).match(url),
-   'https://zzpice.github.io/assets/'+items[0].background);
-  await context.setOffline(true);
+  // The completed status is set after cache.put; an async waitForFunction predicate
+  // would merely return a truthy Promise in the pinned Playwright version.
+  await page.waitForFunction(()=>document.querySelector('#wallpaper-status').textContent.includes('当前：alpha'));
+  const cachedURL='https://zzpice.github.io/assets/'+items[0].background,
+   unavailableURL='https://zzpice.github.io/assets/'+items[1].background;
+  assert.equal(await page.evaluate(async url=>!!await (await caches.open('zzp-home-wallpaper-v1')).match(url),cachedURL),true,'the fallback image is persisted');
+  // Daily selection may have warmed beta earlier; require an uncached target.
+  await page.evaluate(async url=>await (await caches.open('zzp-home-wallpaper-v1')).delete(url),unavailableURL);
+  // Fail HTTP requests directly: WebKit's offline emulation also rejects local
+  // blob images. Keep the same cache-fallback assertions in both engines.
+  networkAvailable=false;
   await page.locator('#wallpaper-fixed').selectOption(items[1].path);
-  await page.waitForFunction(()=>document.documentElement.dataset.wallpaper==='on');
-  await context.setOffline(false);
+  await page.waitForFunction(()=>document.querySelector('#wallpaper-status').textContent.includes('使用上次已缓存的壁纸'));
+  assert.equal(await page.evaluate(()=>document.documentElement.dataset.wallpaper),'on');
+  assert.equal(await page.evaluate(()=>JSON.parse(localStorage.getItem('zzp-home-wallpaper-last')).url),cachedURL);
+  networkAvailable=true;
+  await page.evaluate(()=>window.dispatchEvent(new Event('online')));
+  await page.waitForFunction(()=>document.querySelector('#wallpaper-status').textContent.includes('当前：beta'));
   assert.ok(requests.filter(url=>url.endsWith('/index.json')).length<=1,'both pages share the cached static index');
   // A freshly deployed index must retire a removed fixed selection on both pages.
   items=items.filter(item=>item.path!==sampleItems[1].path);

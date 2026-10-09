@@ -64,15 +64,17 @@ function errorsOn(page) {
   page.on("dialog", (d) => d.accept());
   return errors;
 }
-async function openEditor(page, fresh = true) {
-  if (!await page.locator("#edit").isVisible()) await page.locator("#browse-settings").click();
+async function openEditor(page) {
+  // Wait for app initialization before deciding where the responsive shortcut lives.
+  await page.locator("#edit:not([hidden])").waitFor({ state: "attached" });
+  if (await page.locator("#browse-dialog #edit").count()) {
+    if (!await page.locator("#browse-dialog[open]").count())
+      await page.locator("#browse-settings").click();
+  } else if (await page.locator("#browse-dialog[open]").count()) {
+    await page.locator("#close-browse-settings").click();
+  }
   await page.locator("#edit").click();
   await page.locator(".editor-dialog[open]").waitFor();
-  if (fresh) {
-    await page.waitForTimeout(100);
-    if (await page.locator("#fresh").isVisible())
-      await page.locator("#fresh").click();
-  }
 }
 async function addSite(page, title = "浏览器测试入口") {
   await page.locator("[data-action=add-site]").click();
@@ -128,7 +130,8 @@ async function noOverflow(page) {
       );
 }
 async function chooseAppearance(page, mode) {
-  const tucked = !await page.locator("#appearance").isVisible();
+  await page.locator("#appearance:not([hidden])").waitFor({ state: "attached" });
+  const tucked = await page.locator("#browse-dialog #appearance").count();
   if (tucked) await page.locator("#browse-settings").click();
   await page.locator("#appearance").selectOption(mode);
   if (tucked) await page.locator("#close-browse-settings").click();
@@ -209,17 +212,20 @@ async function browse(browser, label) {
         await page.locator(".resource-card .resource-icon img").count(),
         projects.filter(p => p.kind === "resource").length,
       );
-      assert.deepEqual(
-        await page.locator(".allocation-numbers b").allTextContents(),
-        ["50%", "33.33%", "12.5%", "4.17%"],
-      );
+      const allocations = page.locator(".allocation-numbers");
+      const fundCount = projects.filter(p => p.kind === "tool" && p.preview === "fund").length;
+      assert.equal(await allocations.count(), fundCount);
+      for (let i = 0; i < fundCount; i++) {
+        assert.deepEqual(
+          await allocations.nth(i).locator("b").allTextContents(),
+          ["50%", "33.33%", "12.5%", "4.17%"],
+        );
+        assert.ok(
+          await allocations.nth(i).evaluate(el => el.scrollWidth <= el.clientWidth + 1),
+          "all four allocations fit the preview",
+        );
+      }
       assert.equal(await page.locator(".preview-gallery img").count(), projects.filter(p => p.kind === "tool" && p.preview === "gallery").length * 3);
-      assert.ok(
-        await page
-          .locator(".allocation-numbers")
-          .evaluate((el) => el.scrollWidth <= el.clientWidth + 1),
-        "all four allocations fit the preview",
-      );
       const links = await page
         .locator("main a[href]")
         .evaluateAll((ns) => ns.map((el) => el.href));
@@ -513,7 +519,7 @@ async function edit(browser, label, width) {
     await openEditor(page);
     await page.locator("[data-action=close]").click();
     await page.reload();
-    await openEditor(page, false);
+    await openEditor(page);
     await page.locator("#restore").click();
     assert.equal((await exportDraft(page)).settings.subtitle, "导入成功");
     await page
@@ -592,7 +598,7 @@ async function pins(browser, label, width) {
       firstID,
     );
     await page.reload();
-    await openEditor(page, false);
+    await openEditor(page);
     await page.locator("#restore").click();
     assert.equal(await rows.last().getAttribute("data-pin-id"), firstID);
     assert.deepEqual(errors, []);
@@ -727,7 +733,11 @@ async function publish(browser) {
     await page.locator("[data-action=close]").click();
     await page.locator(".editor-dialog[open]").waitFor({ state: "hidden" });
     await page.reload();
-    await openEditor(page, false);
+    await openEditor(page);
+    await page.locator("[data-action=drafts]").click();
+    await page.waitForFunction(() =>
+      document.querySelector("#toast").textContent.includes("没有其他未同步草稿"),
+    );
     assert.equal(await page.locator("#restore").count(), 0);
     assert.deepEqual(errors, []);
   } finally {
@@ -981,7 +991,7 @@ async function updates(browser) {
       (await boot(page)).config.settings.subtitle,
       "缓存升级检查 · 新的正式配置",
     );
-    await openEditor(page, false);
+    await openEditor(page);
     await page.locator("#restore").click();
     await page.locator(".form-dialog[open] [name=title]").waitFor();
     assert.equal(
