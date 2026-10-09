@@ -39,6 +39,16 @@
     "links": []
   },
   {
+    "id": "github-proxy",
+    "title": "GitHub 文件加速",
+    "description": "加速 GitHub 公开文件、Release 与源码归档。",
+    "url": "https://gh.zzp.moe/",
+    "kind": "tool",
+    "preview": "proxy",
+    "icon": "",
+    "links": []
+  },
+  {
     "id": "routeros-adlist",
     "title": "RouterOS Adlist",
     "description": "由 anti-AD 转换的 DNS 广告过滤规则。",

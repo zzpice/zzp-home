@@ -667,7 +667,8 @@ kbd {
   justify-content: center;
   overflow: hidden;
 }
-.preview-anki {
+.preview-anki,
+.preview-proxy {
   background: var(--accent-soft);
   color: var(--text);
 }

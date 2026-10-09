@@ -825,8 +825,8 @@
         {
           "id": "sp-02-019",
           "title": "GitHub 文件加速",
-          "description": "自己的加速站",
-          "url": "https://github.zzp.moe/",
+          "description": "加速 GitHub 公开文件、Release 与源码归档。",
+          "url": "https://gh.zzp.moe/",
           "alternateUrls": [],
           "icon": "icons/development/github.png",
           "iconText": "",

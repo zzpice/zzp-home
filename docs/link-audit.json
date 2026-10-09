@@ -334,9 +334,9 @@
     },
     {
       "id": "sp-02-019",
-      "url": "https://github.zzp.moe/",
+      "url": "https://gh.zzp.moe/",
       "status": 200,
-      "result": "HTTP 可响应（未验证登录后内容）"
+      "result": "2026-10-09 新入口验证通过：HTTPS、公开文件下载、Range 与 Git 读取"
     },
     {
       "id": "sp-07-001",
