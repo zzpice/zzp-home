@@ -65,6 +65,7 @@ function errorsOn(page) {
   return errors;
 }
 async function openEditor(page, fresh = true) {
+  if (!await page.locator("#edit").isVisible()) await page.locator("#browse-settings").click();
   await page.locator("#edit").click();
   await page.locator(".editor-dialog[open]").waitFor();
   if (fresh) {
@@ -126,6 +127,12 @@ async function noOverflow(page) {
         selector + " overflow",
       );
 }
+async function chooseAppearance(page, mode) {
+  const tucked = !await page.locator("#appearance").isVisible();
+  if (tucked) await page.locator("#browse-settings").click();
+  await page.locator("#appearance").selectOption(mode);
+  if (tucked) await page.locator("#close-browse-settings").click();
+}
 async function browse(browser, label) {
   for (const width of [1440, 768, 390, 320]) {
     const context = await browser.newContext({
@@ -141,7 +148,7 @@ async function browse(browser, label) {
     });
     try {
       await page.goto(origin + "/");
-      await page.locator("#edit:visible").waitFor();
+      await page.locator("#browse-settings:visible").waitFor();
       assert.equal(await page.locator(".group .site-card").count(), count);
       assert.equal(
         await page
@@ -170,7 +177,7 @@ async function browse(browser, label) {
       assert.equal(page.url(), route);
       assert.equal(await page.locator("#sort").inputValue(), "name");
       assert.equal(await page.locator(".site-card:visible").count(), networkCount);
-      await page.locator("#appearance").selectOption("dark");
+      await chooseAppearance(page, "dark");
       assert.equal(
         await page.locator("html").getAttribute("data-theme"),
         "dark",
@@ -180,7 +187,7 @@ async function browse(browser, label) {
         await page.locator("html").getAttribute("data-theme"),
         "dark",
       );
-      await page.locator("#appearance").selectOption("system");
+      await chooseAppearance(page, "system");
       for (const colorScheme of ["light", "dark"]) {
         await page.emulateMedia({ colorScheme });
         await page.waitForFunction(
@@ -188,7 +195,7 @@ async function browse(browser, label) {
           colorScheme,
         );
       }
-      await page.locator("#appearance").selectOption("shared");
+      await chooseAppearance(page, "shared");
       await page.locator("#layout").click();
       assert.equal(
         await page.locator("html").getAttribute("data-layout"),
@@ -329,6 +336,7 @@ async function edit(browser, label, width) {
     assert.equal(await page.locator(".edit-site-row").count(), dailyCount);
     await page.locator("[data-action=redo]").click();
     assert.equal(await page.locator(".edit-site-row").count(), dailyCount + 1);
+    const beforeDescription = (await exportDraft(page)).groups[0].sites.at(-1);
     await page
       .locator(`[data-site-id="${addedID}"] [data-action=edit-site]`)
       .click();
@@ -337,7 +345,7 @@ async function edit(browser, label, width) {
       .fill("更新描述");
     await page.locator(".form-dialog[open] [type=submit]").click();
     let exported = await exportDraft(page);
-    assert.equal(exported.groups[0].sites.at(-1).description, "更新描述");
+    assert.deepEqual(exported.groups[0].sites.at(-1), {...beforeDescription, description: "更新描述"});
     assert.equal(
       exported.groups[0].sites.at(-1).icon,
       "icons/media/youtube.png",

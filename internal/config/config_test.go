@@ -221,3 +221,19 @@ func TestMigrationRetainsFieldsAndRedacts(t *testing.T) {
 		t.Fatal("archive availability must be distinct from the selected replacement")
 	}
 }
+
+func TestRetiredWallpaperMigration(t *testing.T) {
+	c := fixtureConfig(t)
+	c.Settings.Wallpaper = &Wallpaper{Mode: "bing", Path: ""}
+	migrated, err := Decode(Encode(c))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if migrated.Settings.Wallpaper.Mode != "daily" || migrated.Settings.Wallpaper.Path != "" {
+		t.Fatal("retired wallpaper mode was not migrated")
+	}
+	migrated.Settings.Wallpaper = c.Settings.Wallpaper
+	if string(Encode(migrated)) != string(Encode(c)) {
+		t.Fatal("migration changed unrelated data")
+	}
+}

@@ -127,6 +127,9 @@ func Decode(raw []byte) (Config, error) {
 	if err := requiredFields(raw); err != nil {
 		return c, err
 	}
+	if w := c.Settings.Wallpaper; w != nil && w.Mode == "bing" {
+		w.Mode, w.Path = "daily", ""
+	}
 	return c, c.Validate()
 }
 func (c Config) Validate() error {
@@ -140,7 +143,7 @@ func (c Config) Validate() error {
 		return errors.New("站点标题 / 副标题无效")
 	}
 	if w := c.Settings.Wallpaper; w != nil {
-		validMode := w.Mode == "daily" || w.Mode == "fixed" || w.Mode == "bing" || w.Mode == "off"
+		validMode := w.Mode == "daily" || w.Mode == "fixed" || w.Mode == "off"
 		validPath := regexp.MustCompile(`^wallpapers/[a-z0-9][a-z0-9-]*/[1-9][0-9]*x[1-9][0-9]*/[a-z0-9][a-z0-9-]*\.(png|jpe?g|gif|webp|avif)$`).MatchString(w.Path)
 		if !validMode || (w.Path != "" && !validPath) || (w.Mode == "fixed" && !validPath) {
 			return errors.New("壁纸设置无效")

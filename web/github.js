@@ -1,4 +1,4 @@
-import { assertValid, equal } from "./model.js";
+import { assertValid, equal, migrateConfig } from "./model.js";
 export const REPOSITORY = "zzpice/zzp-home";
 const ROOT = "/repos/" + REPOSITORY;
 const FILE = "/contents/data/navigation.json";
@@ -93,7 +93,7 @@ export class GitHubPublisher {
       !/^[a-f0-9]{40,64}$/.test(file.sha)
     )
       throw Error("GitHub 配置文件格式无效");
-    const config = assertValid(JSON.parse(fromBase64(file.content)));
+    const config = assertValid(migrateConfig(JSON.parse(fromBase64(file.content))));
     return { sha: file.sha, config };
   }
   async remote() {

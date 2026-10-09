@@ -1,6 +1,7 @@
-import { allSites, pinnedSites, matches, assertValid, browseGroups } from "./model.js";
+import { allSites, pinnedSites, matches, assertValid, browseGroups, migrateConfig } from "./model.js";
 import { startWallpapers } from "./wallpaper.js";
 const boot = JSON.parse(document.querySelector("#bootstrap").textContent);
+boot.config = migrateConfig(boot.config);
 let official = assertValid(boot.config);
 const baseURL = new URL("../../", import.meta.url);
 const releaseURL = new URL("./", import.meta.url);
@@ -60,6 +61,14 @@ function applyTheme() {
       current.settings.theme
     ];
 }
+const compactHeader = matchMedia("(max-width: 760px)");
+const shortcuts = [...$(".header-shortcuts").children];
+function placeShortcuts() {
+  const target = $(compactHeader.matches ? ".settings-shortcuts" : ".header-shortcuts");
+  target.append(...shortcuts);
+}
+compactHeader.addEventListener("change", placeShortcuts);
+placeShortcuts();
 $("#appearance").hidden = false;
 applyTheme();
 $("#appearance").addEventListener("change", (event) => {
@@ -331,6 +340,7 @@ if (boot.page === "home") {
   });
   $("#edit").hidden = false;
   async function openEditor() {
+    if ($("#browse-dialog").open) $("#browse-dialog").close();
     $("#edit").focus({ preventScroll: true });
     try {
       if (!editor) {

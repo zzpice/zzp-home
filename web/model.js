@@ -1,6 +1,13 @@
 // Pure shared editor/search model; no DOM, storage, network, or credentials.
 export const clone = (value) =>
   value === undefined ? undefined : structuredClone(value);
+// Retain old imports/drafts while retiring the removed wallpaper mode.
+export function migrateConfig(value) {
+  const result = clone(value);
+  if (result?.settings?.wallpaper?.mode === "bing")
+    result.settings.wallpaper = {mode: "daily", path: ""};
+  return result;
+}
 export function equal(a, b) {
   if (a === b) return true;
   if (
@@ -61,7 +68,7 @@ export function urlProblem(raw) {
   } catch {
     return "请填写完整的 HTTP / HTTPS 链接";
   }
-  if (!["https:", "http:"].includes(url.protocol) || !url.hostname)
+  if (!/^https?:\/\/[^/?#\\]+(?:[/?#]|$)/i.test(raw) || !["https:", "http:"].includes(url.protocol) || !url.hostname)
     return "仅支持 HTTP / HTTPS 链接";
   if (url.username || url.password) return "链接包含认证信息";
   let decoded = raw;
@@ -128,7 +135,7 @@ export function validateConfig(c) {
       const w = c.settings.wallpaper;
       if (object(w, ["mode", "path"], "壁纸")) {
         const validPath = typeof w.path === "string" && /^wallpapers\/[a-z0-9][a-z0-9-]*\/[1-9][0-9]*x[1-9][0-9]*\/[a-z0-9][a-z0-9-]*\.(png|jpe?g|gif|webp|avif)$/.test(w.path);
-        if (!["daily", "fixed", "bing", "off"].includes(w.mode) || typeof w.path !== "string" || (w.path !== "" && !validPath) || (w.mode === "fixed" && !validPath)) errors.push("壁纸设置无效");
+        if (!["daily", "fixed", "off"].includes(w.mode) || typeof w.path !== "string" || (w.path !== "" && !validPath) || (w.mode === "fixed" && !validPath)) errors.push("壁纸设置无效");
       }
     }
     if (
@@ -308,8 +315,8 @@ export function moveGroup(c, id, index) {
 export class History {
   constructor(value, saved) {
     this.entries = saved?.entries?.length
-      ? saved.entries.slice(-60).map(clone)
-      : [clone(value)];
+      ? saved.entries.slice(-60).map(migrateConfig)
+      : [migrateConfig(value)];
     this.index = Number.isInteger(saved?.index)
       ? Math.max(0, Math.min(saved.index, this.entries.length - 1))
       : 0;
@@ -342,7 +349,7 @@ export class History {
     return this.value;
   }
   serialize() {
-    return { entries: this.entries, index: this.index };
+    return { entries: clone(this.entries), index: this.index };
   }
 }
 

@@ -202,3 +202,19 @@ test("object field order is immaterial, while array order remains meaningful", (
   b.groups.reverse();
   assert.equal(equal(a, b), false);
 });
+
+test("queued draft history is an immutable snapshot across subsequent edits", () => {
+  const history = new History(baseline);
+  const snapshot = history.serialize();
+  history.commit(moveGroup(baseline, baseline.groups[0].id, 1));
+  history.undo();
+  history.commit(moveGroup(baseline, baseline.groups[0].id, 2));
+  assert.deepEqual(snapshot, {entries: [baseline], index: 0});
+  assert.deepEqual(new History(baseline, snapshot).value, baseline);
+});
+
+test("URL validation rejects browser-repaired inputs that the Go build rejects", () => {
+  for (const url of ['https:example.com', 'http:///example.com', 'https://example.com\\path'])
+    assert.ok(urlProblem(url), url);
+  assert.equal(urlProblem('HTTPS://example.com/path?q=normal'), '');
+});

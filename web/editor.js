@@ -1,6 +1,7 @@
 import {
   History,
   clone,
+  migrateConfig,
   equal,
   assertValid,
   moveSite,
@@ -17,7 +18,7 @@ import {
 } from "./model.js";
 import { saveDraft, loadDrafts, tabID } from "./storage.js";
 import { GitHubPublisher, ConflictError } from "./github.js";
-import { loadWallpaperIndex, fillWallpaperSelect } from "./wallpaper.js";
+import { loadWallpaperIndex, fillWallpaperSelect, preference } from "./wallpaper.js";
 const escape = (value) =>
   String(value ?? "").replace(
     /[&<>"']/g,
@@ -280,9 +281,9 @@ export async function createEditor({ boot, releaseURL, toast, onPreview }) {
       )}</select></label><label class="field"><span>默认布局</span><select name="layout"><option value="grid" ${s.layout === "grid" ? "selected" : ""}>图标网格</option><option value="list" ${s.layout === "list" ? "selected" : ""}>列表</option></select></label></div><label class="field"><span>默认密度</span><select name="density"><option value="comfortable" ${s.density === "comfortable" ? "selected" : ""}>舒展</option><option value="compact" ${s.density === "compact" ? "selected" : ""}>紧凑</option></select></label><label class="check-field"><input type="checkbox" name="showDescriptions" ${s.showDescriptions ? "checked" : ""}>显示网站描述</label><p class="form-error" role="alert"></p><button class="primary" type="submit">应用外观设置</button></form>`;
     const form = $(panel, "form");
     const wallpaperFields = document.createElement("div");
-    wallpaperFields.innerHTML = `<label class="field"><span>默认壁纸</span><select name="wallpaperMode"><option value="daily">仓库每日轮换</option><option value="fixed">固定仓库壁纸</option><option value="bing">Bing 每日壁纸（失败时回退）</option><option value="off">关闭壁纸</option></select></label><label class="field" id="shared-wallpaper-fixed"><span>固定图片</span><select name="wallpaperPath"></select></label>`;
+    wallpaperFields.innerHTML = `<label class="field"><span>默认壁纸</span><select name="wallpaperMode"><option value="daily">仓库每日轮换</option><option value="fixed">固定仓库壁纸</option><option value="off">关闭壁纸</option></select></label><label class="field" id="shared-wallpaper-fixed"><span>固定图片</span><select name="wallpaperPath"></select></label>`;
     form.querySelector(".check-field").before(wallpaperFields);
-    form.elements.wallpaperMode.value = s.wallpaper?.mode || "daily";
+    form.elements.wallpaperMode.value = preference(s.wallpaper).mode === "shared" ? "off" : preference(s.wallpaper).mode;
     const syncWallpaper = () => { wallpaperFields.querySelector("#shared-wallpaper-fixed").hidden = form.elements.wallpaperMode.value !== "fixed"; };
     fillWallpaperSelect(form.elements.wallpaperPath, [], s.wallpaper?.path || "");
     loadWallpaperIndex().then(items => { if (form.isConnected) fillWallpaperSelect(form.elements.wallpaperPath, items, form.elements.wallpaperPath.value); });
@@ -320,7 +321,7 @@ export async function createEditor({ boot, releaseURL, toast, onPreview }) {
   function applySettings(values = working?.values) {
     if (!values) return;
     const next = clone(history.value);
-    next.settings = clone(values);
+    next.settings = migrateConfig({settings: values}).settings;
     assertValid(next);
     working = null;
     commit(next);
@@ -738,6 +739,8 @@ export async function createEditor({ boot, releaseURL, toast, onPreview }) {
       $(d, "#restore").addEventListener("click", async () => {
         try {
           const record = drafts[Number($(d, "select").value)];
+          record.config = migrateConfig(record.config);
+          record.baseConfig = migrateConfig(record.baseConfig);
           assertValid(record.config);
           assertValid(record.baseConfig);
           if (!/^[a-f0-9]{40,64}$/.test(record.baseSha))
@@ -801,6 +804,7 @@ export async function createEditor({ boot, releaseURL, toast, onPreview }) {
       if (busy) return;
       busy = true;
       $(d, ".form-error").textContent = "";
+      $(d, "#publish-result").replaceChildren();
       let publisher;
       try {
         publisher = new GitHubPublisher(form.elements.credential.value);
@@ -814,11 +818,12 @@ export async function createEditor({ boot, releaseURL, toast, onPreview }) {
         history = new History(base);
         render();
         onPreview(clone(base), false);
-        await persist();
+        const localSaved = await persist().then(() => true, () => false);
         $(d, "#conflict").hidden = true;
         $(d, ".publish-status").textContent = result.alreadyInMain
           ? "配置已在 GitHub。部署完成后可检查更新。"
-          : "已保存到 GitHub，正在自动部署。本机草稿已同步。";
+          : "已保存到 GitHub，等待自动部署。";
+        if (!localSaved) $(d, ".publish-status").textContent += " 本机草稿存储失败，请导出备份。";
         const link = document.createElement("a");
         link.href = result.commit
           ? "https://github.com/zzpice/zzp-home/commit/" + result.commit
@@ -828,6 +833,7 @@ export async function createEditor({ boot, releaseURL, toast, onPreview }) {
         link.textContent = result.commit ? "查看保存记录 ↗" : "查看部署 ↗";
         $(d, "#publish-result").replaceChildren(link);
       } catch (error) {
+        $(d, ".publish-status").textContent = "保存未完成，本机草稿保留。";
         $(d, ".form-error").textContent = error.message;
         if (error instanceof ConflictError) {
           remoteConflict = error.remote;
@@ -1040,7 +1046,7 @@ export async function createEditor({ boot, releaseURL, toast, onPreview }) {
       if (file.size > 2_000_000) throw Error("配置文件过大");
       let config;
       try {
-        config = JSON.parse(await file.text());
+        config = migrateConfig(JSON.parse(await file.text()));
       } catch {
         throw Error("文件不是有效 JSON");
       }

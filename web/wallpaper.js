@@ -18,7 +18,8 @@ export function dailyWallpaper(items, now = Date.now()) {
   return pool.length ? pool[((dayNumber(now) % pool.length) + pool.length) % pool.length] : null;
 }
 export function preference(value) {
-  return value && ["shared", "daily", "fixed", "bing", "off"].includes(value.mode) && (value.mode !== "fixed" || wallpaperPath.test(value.path)) ? {mode: value.mode, path: value.path || ""} : {mode: "shared", path: ""};
+  if (value?.mode === "bing") return {mode: "daily", path: ""};
+  return value && ["shared", "daily", "fixed", "off"].includes(value.mode) && (value.mode !== "fixed" || wallpaperPath.test(value.path)) ? {mode: value.mode, path: value.path || ""} : {mode: "shared", path: ""};
 }
 function read(key) { try { return JSON.parse(localStorage.getItem(key)); } catch { return null; } }
 function write(key, value) { try { localStorage.setItem(key, JSON.stringify(value)); } catch {} }
@@ -65,8 +66,9 @@ export function fillWallpaperSelect(select, items, selected = "") {
 }
 export function startWallpapers(defaults) {
   const image = document.querySelector("#wallpaper-image"), mode = document.querySelector("#wallpaper-mode"), fixed = document.querySelector("#wallpaper-fixed"), status = document.querySelector("#wallpaper-status");
-  let shared = defaults || {mode: "daily", path: ""}, local = preference(read(PREF_KEY)), generation = 0, objectURL, lastSelection;
-  function syncControls() { mode.value = local.mode; mode.options[0].textContent = "共享默认 · " + ({daily: "仓库每日轮换", fixed: "固定仓库壁纸", bing: "Bing 每日壁纸", off: "关闭壁纸"}[shared.mode] || "仓库每日轮换"); document.querySelector("#fixed-wallpaper-field").hidden = local.mode !== "fixed"; }
+  let shared = defaults || {mode: "off", path: ""}, local = preference(read(PREF_KEY)), generation = 0, objectURL, lastSelection;
+  if (read(PREF_KEY)?.mode === "bing") write(PREF_KEY, local);
+  function syncControls() { mode.value = local.mode; mode.options[0].textContent = "共享默认 · " + ({daily: "仓库每日轮换", fixed: "固定仓库壁纸", off: "关闭壁纸"}[shared.mode] || "关闭壁纸"); document.querySelector("#fixed-wallpaper-field").hidden = local.mode !== "fixed"; }
   const effective = () => local.mode === "shared" ? preference(shared) : local;
   function hide() { image.hidden = true; document.documentElement.removeAttribute("data-wallpaper"); if (objectURL) URL.revokeObjectURL(objectURL); objectURL = null; }
   async function display(url, seq, save = true) {
@@ -102,28 +104,15 @@ export function startWallpapers(defaults) {
     const items = await loadWallpaperIndex();
     if (seq !== generation) return;
     fillWallpaperSelect(fixed, items, local.path);
-    const selectionKey = JSON.stringify([selected, dayNumber(), items.map(item => [item.path, item.sha])]);
+    const selectionKey = JSON.stringify([selected, dayNumber(), items.map(item => [item.path, item.sha, item.background, item.thumbnail])]);
     if (selectionKey === lastSelection && !image.hidden) return;
     let item = selected.mode === "fixed" ? items.find(item => item.path === selected.path) : null;
     item ||= dailyWallpaper(items);
-    let bingFailed = false;
-    if (selected.mode === "bing") {
-      try {
-        // Bing is optional: no proxy, sync job, or third-party image service.
-        const data = await json("https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=zh-CN", 3500);
-        const path = data.images?.[0]?.url;
-        if (typeof path !== "string" || !path.startsWith("/th?id=OHR.")) throw Error("Bing 不可用");
-        const url = new URL(path, "https://www.bing.com");
-        if (url.origin !== "https://www.bing.com" || !await display(url.href, seq)) throw Error("Bing 不可用");
-        if (seq === generation) { lastSelection = selectionKey; status.textContent = "Bing 每日壁纸。"; }
-        return;
-      } catch { bingFailed = true; }
-    }
     if (seq !== generation) return;
     // Only the selected 1920px derivative is requested; originals stay in assets.
     const path = item?.background || item?.thumbnail;
     if (path && await display(ASSETS + path, seq)) {
-      if (seq === generation) { lastSelection = selectionKey; status.textContent = (bingFailed ? "Bing 暂不可用，已回退。" : selected.mode === "fixed" && item.path !== selected.path ? "原壁纸已移除，已回退。" : "") + "当前：" + item.title + (selected.mode === "fixed" && item.path === selected.path ? "" : " · 每日轮换（UTC+8）"); }
+      if (seq === generation) { lastSelection = selectionKey; status.textContent = (selected.mode === "fixed" && item.path !== selected.path ? "原壁纸已移除，已回退。" : "") + "当前：" + item.title + (selected.mode === "fixed" && item.path === selected.path ? "" : " · 每日轮换（UTC+8）"); }
       return;
     }
     if (seq !== generation) return;
@@ -149,5 +138,5 @@ export function startWallpapers(defaults) {
   setInterval(() => { if (!document.hidden) refresh(); }, 60000);
   syncControls();
   if ("requestIdleCallback" in window) requestIdleCallback(refresh, {timeout: 1500}); else setTimeout(refresh, 100);
-  return {updateDefaults(value) { shared = value || {mode: "daily", path: ""}; refresh(); }};
+  return {updateDefaults(value) { shared = value || {mode: "off", path: ""}; refresh(); }};
 }
