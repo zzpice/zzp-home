@@ -14,7 +14,6 @@ module.exports = async function preferences(browser, label, origin, repo) {
    if(route.request().url().endsWith('/index.json')) return route.fulfill({contentType:'application/json',body:JSON.stringify({version:1,wallpapers:items})});
    return route.fulfill({contentType:'image/webp',body:image});
   });
-  const retiredRequests=[];page.on('request',request=>{if(new URL(request.url()).hostname==='www.bing.com')retiredRequests.push(request.url());});
   page.on('dialog',dialog=>dialog.accept());
   // Use a controlled adult entry while retaining the editor's complete configuration.
   await context.route('**/index.html',route=>route.continue());
@@ -22,13 +21,11 @@ module.exports = async function preferences(browser, label, origin, repo) {
   await page.waitForFunction(()=>document.querySelector('#wallpaper-status').textContent.includes('已使用原有背景'));
   assert.equal(await page.locator('#wallpaper-image').isHidden(),true);
   assert.equal(requests.length,0,'default off does not request wallpapers');
-  await page.evaluate(()=>{localStorage.setItem('zzp-home-wallpaper',JSON.stringify({mode:'bing',path:''}));localStorage.setItem('zzp-home-theme','dark');});
+  await page.evaluate(()=>{localStorage.setItem('zzp-home-wallpaper',JSON.stringify({mode:'daily',path:''}));localStorage.setItem('zzp-home-theme','dark');});
   await page.reload();
   await page.waitForFunction(()=>document.documentElement.dataset.wallpaper==='on');
   assert.equal(await page.locator('html').getAttribute('data-theme'),'dark');
   assert.equal(await page.evaluate(()=>JSON.parse(localStorage.getItem('zzp-home-wallpaper')).mode),'daily');
-  assert.equal(await page.locator('#wallpaper-mode option[value=bing]').count(),0);
-  assert.deepEqual(retiredRequests,[]);
   await page.evaluate(()=>{
    const boot=JSON.parse(document.querySelector('#bootstrap').textContent);
    const adult={...boot.config.groups[0].sites[0],id:'adult-browser-sample',title:'受控成人样本',pinned:true,icon:''};

@@ -1,7 +1,6 @@
 import {
   History,
   clone,
-  migrateConfig,
   equal,
   assertValid,
   moveSite,
@@ -321,7 +320,7 @@ export async function createEditor({ boot, releaseURL, toast, onPreview }) {
   function applySettings(values = working?.values) {
     if (!values) return;
     const next = clone(history.value);
-    next.settings = migrateConfig({settings: values}).settings;
+    next.settings = clone(values);
     assertValid(next);
     working = null;
     commit(next);
@@ -739,8 +738,6 @@ export async function createEditor({ boot, releaseURL, toast, onPreview }) {
       $(d, "#restore").addEventListener("click", async () => {
         try {
           const record = drafts[Number($(d, "select").value)];
-          record.config = migrateConfig(record.config);
-          record.baseConfig = migrateConfig(record.baseConfig);
           assertValid(record.config);
           assertValid(record.baseConfig);
           if (!/^[a-f0-9]{40,64}$/.test(record.baseSha))
@@ -1046,7 +1043,7 @@ export async function createEditor({ boot, releaseURL, toast, onPreview }) {
       if (file.size > 2_000_000) throw Error("配置文件过大");
       let config;
       try {
-        config = migrateConfig(JSON.parse(await file.text()));
+        config = JSON.parse(await file.text());
       } catch {
         throw Error("文件不是有效 JSON");
       }

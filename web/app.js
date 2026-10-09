@@ -1,7 +1,6 @@
-import { allSites, pinnedSites, matches, assertValid, browseGroups, migrateConfig } from "./model.js";
+import { allSites, pinnedSites, matches, assertValid, browseGroups } from "./model.js";
 import { startWallpapers } from "./wallpaper.js";
 const boot = JSON.parse(document.querySelector("#bootstrap").textContent);
-boot.config = migrateConfig(boot.config);
 let official = assertValid(boot.config);
 const baseURL = new URL("../../", import.meta.url);
 const releaseURL = new URL("./", import.meta.url);

@@ -127,9 +127,6 @@ func Decode(raw []byte) (Config, error) {
 	if err := requiredFields(raw); err != nil {
 		return c, err
 	}
-	if w := c.Settings.Wallpaper; w != nil && w.Mode == "bing" {
-		w.Mode, w.Path = "daily", ""
-	}
 	return c, c.Validate()
 }
 func (c Config) Validate() error {

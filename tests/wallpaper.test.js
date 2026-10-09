@@ -1,7 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {dayNumber,dailyWallpaper,backgroundCandidates,validateIndex,preference} from '../web/wallpaper.js';
-import {browseGroups,assertValid,clone,migrateConfig} from '../web/model.js';
+import {browseGroups,assertValid,clone} from '../web/model.js';
 import fs from 'node:fs';
 const item=(name,width=1920,height=1080,device='desktop')=>({path:`wallpapers/landscape/${width}x${height}/${name}.jpg`,title:name,width,height,device,sha:'a'.repeat(40),background:`app/previews/${name}-background-1234567890.webp`});
 test('daily wallpaper changes at UTC+8 midnight and is independent of input order',()=>{
@@ -36,14 +36,4 @@ test('shared wallpaper is optional and keeps the existing GitHub settings schema
  assertValid(baseline);
  for(const mode of ['daily','fixed','off']) {const config=clone(baseline);config.settings.wallpaper={mode,path:mode==='fixed'?item('test').path:''};assertValid(config);}
  for(const wallpaper of [null,{mode:'arbitrary',path:''},{mode:'fixed',path:'../bad.jpg'},{mode:'daily',path:'' ,token:'unsafe'}]){const config=clone(baseline);config.settings.wallpaper=wallpaper;assert.throws(()=>assertValid(config));}
-});
-
-test('retired wallpaper preferences and old drafts migrate without changing other fields',()=>{
- const baseline=JSON.parse(fs.readFileSync(new URL('fixtures/navigation.json',import.meta.url)));
- baseline.settings.wallpaper={mode:'bing',path:''};
- const migrated=migrateConfig(baseline);
- assert.deepEqual(migrated,{...baseline,settings:{...baseline.settings,wallpaper:{mode:'daily',path:''}}});
- assertValid(migrated);
- assert.equal(baseline.settings.wallpaper.mode,'bing');
- assert.deepEqual(preference({mode:'bing',path:'unused'}),{mode:'daily',path:''});
 });

@@ -1,13 +1,6 @@
 // Pure shared editor/search model; no DOM, storage, network, or credentials.
 export const clone = (value) =>
   value === undefined ? undefined : structuredClone(value);
-// Retain old imports/drafts while retiring the removed wallpaper mode.
-export function migrateConfig(value) {
-  const result = clone(value);
-  if (result?.settings?.wallpaper?.mode === "bing")
-    result.settings.wallpaper = {mode: "daily", path: ""};
-  return result;
-}
 export function equal(a, b) {
   if (a === b) return true;
   if (
@@ -315,8 +308,8 @@ export function moveGroup(c, id, index) {
 export class History {
   constructor(value, saved) {
     this.entries = saved?.entries?.length
-      ? saved.entries.slice(-60).map(migrateConfig)
-      : [migrateConfig(value)];
+      ? saved.entries.slice(-60).map(clone)
+      : [clone(value)];
     this.index = Number.isInteger(saved?.index)
       ? Math.max(0, Math.min(saved.index, this.entries.length - 1))
       : 0;
