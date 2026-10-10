@@ -1655,11 +1655,11 @@ dialog::backdrop {
     height: 76px;
   }
   .cover-label strong {
-    font-size: 10px;
+    font-size: 11px;
+    letter-spacing: -.025em;
   }
   .cover-label span {
-    font-size: 7px;
-    letter-spacing: .09em;
+    display: none;
   }
   .preview-gallery {
     gap: 4px;
