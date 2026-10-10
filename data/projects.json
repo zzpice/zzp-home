@@ -55,11 +55,11 @@
     "description": "自建订阅与节点管理，支持订阅聚合、过滤和格式转换。",
     "url": "https://misub.zzp.moe/login",
     "preview": "substore",
-    "icon": "",
+    "icon": "misub.svg",
     "links": [
       {
-        "title": "上游开源项目",
-        "url": "https://github.com/imzyb/MiSub"
+        "title": "GitHub 源代码",
+        "url": "https://github.com/zzpice/misub"
       }
     ]
   },
