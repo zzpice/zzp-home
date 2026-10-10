@@ -772,93 +772,92 @@ kbd {
   border-top: 1px solid var(--line);
   color: var(--muted);
 }
-.preview-proxy {
+.preview-proxy,
+.preview-substore {
+  --cover-accent: #5367d6;
   background: var(--accent-soft);
-}
-.proxy-preview {
-  width: calc(100% - 32px);
-  min-height: calc(100% - 32px);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 18px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  background: var(--surface);
-}
-.proxy-preview > small {
-  display: block;
-  margin-bottom: 8px;
-  font-size: 10px;
-  color: var(--muted);
-}
-.proxy-field {
-  padding: 8px 10px;
-  border: 1px solid var(--line);
-  border-radius: 5px;
-  background: var(--bg);
-  font: 10px/1.5 ui-monospace, SFMono-Regular, Consolas, monospace;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.proxy-flow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  margin: 8px 0;
-  font-size: 10px;
-  color: var(--muted);
-}
-.proxy-flow span {
-  color: var(--accent);
-}
-.proxy-result {
-  background: var(--accent-soft);
-  color: var(--accent);
 }
 .preview-substore {
-  background: var(--accent-soft);
+  --cover-accent: #168777;
 }
-.substore-preview {
+:root[data-theme="dark"] .preview-proxy {
+  --cover-accent: #a5b2ff;
+}
+:root[data-theme="dark"] .preview-substore {
+  --cover-accent: #6dc9b6;
+}
+.project-cover {
   width: calc(100% - 32px);
-  min-height: calc(100% - 32px);
-  padding: 18px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  background: var(--surface);
+  height: calc(100% - 32px);
+  padding: 10px 12px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 10px;
-}
-.substore-preview > small {
-  color: var(--muted);
-  font-size: 10px;
-}
-.substore-source {
-  display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 11px;
-  padding: 9px 10px;
-  background: var(--bg);
+  justify-content: center;
+  background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 5px;
+  border-radius: 10px;
+  color: var(--text);
 }
-.substore-source i {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent);
+.cover-mark {
+  display: block;
+  width: 100%;
+  height: min(104px, 62%);
 }
-.substore-formats {
+.cover-paper {
+  fill: var(--bg);
+  stroke: var(--line);
+  stroke-width: 2;
+}
+.cover-glyph {
+  fill: none;
+  stroke: var(--text);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.cover-dot {
+  fill: var(--cover-accent);
+}
+.cover-route {
+  fill: none;
+  stroke: var(--cover-accent);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.cover-brand {
+  fill: var(--cover-accent);
+}
+.cover-inverse-fill,
+.cover-inverse-dot {
+  fill: var(--surface);
+}
+.cover-inverse {
+  fill: none;
+  stroke: var(--surface);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.cover-label {
   display: flex;
-  justify-content: space-between;
-  gap: 5px;
-  color: var(--accent);
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  text-align: center;
+}
+.cover-label strong {
+  font-size: 15px;
+  font-weight: 650;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+.cover-label span {
   font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  color: var(--muted);
 }
 .preview-gallery {
   display: grid;
@@ -1647,33 +1646,21 @@ dialog::backdrop {
     height: 14px;
     margin: 12px 0 8px;
   }
-  .proxy-preview {
-    width: calc(100% - 20px);
-    min-height: calc(100% - 20px);
-    padding: 12px 7px;
-  }
-  .proxy-preview > small {
-    margin-bottom: 6px;
-    font-size: 8px;
-  }
-  .proxy-field {
+  .project-cover {
+    width: calc(100% - 16px);
+    height: calc(100% - 16px);
     padding: 6px 4px;
+  }
+  .cover-mark {
+    height: 76px;
+  }
+  .cover-label strong {
+    font-size: 10px;
+  }
+  .cover-label span {
     font-size: 7px;
+    letter-spacing: .09em;
   }
-  .proxy-flow {
-    gap: 4px;
-    margin: 6px 0;
-    font-size: 7px;
-  }
-  .substore-preview {
-    width: calc(100% - 20px);
-    min-height: calc(100% - 20px);
-    padding: 10px 7px;
-    gap: 5px;
-  }
-  .substore-preview > small { font-size: 8px; }
-  .substore-source { font-size: 8px; padding: 7px 5px; gap: 5px; }
-  .substore-formats { font-size: 6px; gap: 3px; }
   .preview-gallery {
     gap: 4px;
     padding: 10px;

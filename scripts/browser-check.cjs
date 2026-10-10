@@ -212,6 +212,25 @@ async function browse(browser, label) {
         await page.locator(".resource-card .resource-icon img").count(),
         projects.filter(p => p.kind === "resource").length,
       );
+      // Cover art must stay within its card at desktop, tablet, and mobile widths.
+      for (const preview of ["proxy", "substore"]) {
+        const region = page.locator(".preview-" + preview);
+        const cover = region.locator(".project-cover");
+        assert.equal(await cover.count(), 1, preview + " has one cover");
+        assert.equal(await cover.locator("svg").count(), 1, preview + " has inline artwork");
+        assert.ok(await cover.locator(".cover-label strong").isVisible());
+        const bounds = await region.evaluate((el) => {
+          const outer = el.getBoundingClientRect();
+          const inner = el.querySelector(".project-cover").getBoundingClientRect();
+          return {
+            fits: inner.left >= outer.left - 1 && inner.right <= outer.right + 1 &&
+              inner.top >= outer.top - 1 && inner.bottom <= outer.bottom + 1,
+            artworkWidth: el.querySelector("svg").getBoundingClientRect().width,
+          };
+        });
+        assert.ok(bounds.fits, preview + " cover stays inside preview");
+        assert.ok(bounds.artworkWidth >= 80, preview + " artwork remains legible");
+      }
       const allocations = page.locator(".allocation-numbers");
       const fundCount = projects.filter(p => p.kind === "tool" && p.preview === "fund").length;
       assert.equal(await allocations.count(), fundCount);
