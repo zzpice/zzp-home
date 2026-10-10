@@ -409,8 +409,10 @@
           "id": "sp-02-015",
           "title": "S-UI",
           "description": "DMIT",
-          "url": "http://154.17.2.75:49520/zhouzhipeng/",
-          "alternateUrls": [],
+          "url": "http://dmit.zzp.moe:49520/zhouzhipeng/",
+          "alternateUrls": [
+            "http://154.17.2.75:49520/zhouzhipeng/"
+          ],
           "icon": "icons/self-hosted/s-ui.png",
           "iconText": "",
           "pinned": false,
