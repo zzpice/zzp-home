@@ -49,17 +49,17 @@
     "links": []
   },
   {
-    "id": "sub-store",
-    "title": "Sub-Store",
+    "id": "misub",
+    "title": "MiSub 订阅管理",
     "kind": "tool",
-    "description": "订阅与节点管理，支持聚合、过滤和格式转换。",
-    "url": "https://sub.zzp.moe/",
+    "description": "自建订阅与节点管理，支持订阅聚合、过滤和格式转换。",
+    "url": "https://misub.zzp.moe/login",
     "preview": "substore",
-    "icon": "icons/network/sub-store.png",
+    "icon": "",
     "links": [
       {
-        "title": "GitHub",
-        "url": "https://github.com/zzpice/sub-store-cloudflare"
+        "title": "上游开源项目",
+        "url": "https://github.com/imzyb/MiSub"
       }
     ]
   },
