@@ -53,7 +53,7 @@
     "title": "MiSub 订阅管理",
     "kind": "tool",
     "description": "自建订阅与节点管理，支持订阅聚合、过滤和格式转换。",
-    "url": "https://misub.zzp.moe/login",
+    "url": "https://misub.zzp.moe/",
     "preview": "substore",
     "icon": "misub.svg",
     "links": [
